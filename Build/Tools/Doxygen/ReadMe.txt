@@ -1,0 +1,1 @@
+The version of Doxygen stored here is 1.8.8.

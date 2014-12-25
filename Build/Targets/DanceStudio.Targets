@@ -18,6 +18,9 @@
     <DanceStudioRepositoryRoot>$(MSBuildThisFileDirectory)..\..\</DanceStudioRepositoryRoot>
     <DanceStudioBuildFolderRoot>$(DanceStudioRepositoryRoot)Build\</DanceStudioBuildFolderRoot>
     <DanceStudioBuildToolsRoot>$(DanceStudioBuildFolderRoot)Tools\</DanceStudioBuildToolsRoot>
+    <DanceStudioShouldRunDoxygen>false</DanceStudioShouldRunDoxygen>
+    <DanceStudioDoxygenExePath>$(DanceStudioBuildToolsRoot)Doxygen\Doxygen.exe</DanceStudioDoxygenExePath>
+    <DanceStudioDoxygenConfigurationFilePath>$(DanceStudioBuildToolsRoot)Doxygen\Doxyfile</DanceStudioDoxygenConfigurationFilePath>
   </PropertyGroup>
 
   <!--
@@ -33,4 +36,14 @@
 
   <!--Enable StyleCop in all builds.-->
   <Import Project="$(DanceStudioBuildToolsRoot)StyleCop\StyleCop.Targets" />
+
+  <!--
+  =======================================================================
+  Run Doxygen to generate the documentation for the source code.
+  =======================================================================
+  -->
+  <Target Name="DanceStudioDoxygenTarget" AfterTargets="AfterBuild">
+    <Message Importance="high" Text="Running Doxygen documentation generation against '$(DanceStudioBuildToolsRoot)Doxygen\Doxyfile'." />
+    <Exec Command="$(DanceStudioDoxygenExePath) $(DanceStudioDoxygenConfigurationFilePath)" />
+  </Target>
 </Project>
