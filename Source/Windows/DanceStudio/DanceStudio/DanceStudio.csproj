@@ -17,6 +17,7 @@
     <UICulture>en-US</UICulture>
     <DanceStudioShouldRunDoxygen>true</DanceStudioShouldRunDoxygen>
     <DanceStudioShouldGenerateUids>true</DanceStudioShouldGenerateUids>
+    <DanceStudioShouldGenerateLocalizationFile>true</DanceStudioShouldGenerateLocalizationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

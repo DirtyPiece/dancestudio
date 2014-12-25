@@ -11,7 +11,9 @@ namespace DanceStudio
     using System.Collections.Generic;
     using System.Configuration;
     using System.Data;
+    using System.Globalization;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
     using System.Windows;
 
@@ -20,5 +22,11 @@ namespace DanceStudio
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="App"/> class.
+        /// </summary>
+        public App()
+        {
+        }
     }
 }
