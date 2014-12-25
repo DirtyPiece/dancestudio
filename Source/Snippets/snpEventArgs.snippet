@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpEventArgs</Title>
+			<Shortcut>snpEventArgs</Shortcut>
+			<Description>Snippet for a standard C# event arguments class.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>The name of the event args class.</ToolTip>
+					<Default>Something</Default>
+				</Literal>
+				<Literal>
+					<ID>summary</ID>
+					<ToolTip>The summary that describes the event args.</ToolTip>
+					<Default>event args that do something.</Default>
+				</Literal>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>paramName</ID>
+                    <ToolTip>The name of the parameter.</ToolTip>
+                    <Default>someParameter</Default>
+                </Literal>
+                <Literal>
+                    <ID>paramDescription</ID>
+                    <ToolTip>The description for the parameter.</ToolTip>
+                    <Default>parameter that does something.</Default>
+                </Literal>
+                <Literal>
+                    <ID>propertyName</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>SomeProperty</Default>
+                </Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[/// <summary>
+    /// Represents $summary$
+    /// </summary>
+    public class $name$EventArgs : EventArgs
+    {
+        #region Lifetime Methods
+	    /// <summary>
+	    /// Initializes a new instance of the <see cref="$name$"/> class.
+	    /// </summary>
+        /// <param name="$paramName$">$paramDescription$</param>
+	    public $name$EventArgs($type$ $paramName$)
+	    {
+            this.$propertyName$ = $paramName$;$end$
+	    }
+	    #endregion // Lifetime Methods
+        
+	    #region Properties
+        /// <summary>
+        /// Gets the $paramDescription$
+        /// </summary>
+        public $type$ $propertyName$
+        {
+            get;
+            private set;
+        }
+	    #endregion // Properties
+    }]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpEventArgs2</Title>
+            <Shortcut>snpEventArgs2</Shortcut>
+            <Description>Snippet for a standard C# event arguments class that has two properties.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the event args class.</ToolTip>
+                    <Default>Something</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the event args.</ToolTip>
+                    <Default>event args that do something.</Default>
+                </Literal>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>paramName</ID>
+                    <ToolTip>The name of the parameter.</ToolTip>
+                    <Default>someParameter</Default>
+                </Literal>
+                <Literal>
+                    <ID>paramDescription</ID>
+                    <ToolTip>The description for the parameter.</ToolTip>
+                    <Default>parameter that does something.</Default>
+                </Literal>
+                <Literal>
+                    <ID>propertyName</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>SomeProperty</Default>
+                </Literal>
+                <Literal>
+                    <ID>type2</ID>
+                    <ToolTip>The type of the second property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>paramName2</ID>
+                    <ToolTip>The name of the second parameter.</ToolTip>
+                    <Default>someParameter</Default>
+                </Literal>
+                <Literal>
+                    <ID>paramDescription2</ID>
+                    <ToolTip>The description for the second parameter.</ToolTip>
+                    <Default>parameter that does something.</Default>
+                </Literal>
+                <Literal>
+                    <ID>propertyName2</ID>
+                    <ToolTip>The name of the second property.</ToolTip>
+                    <Default>SomeProperty</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+    /// Represents $summary$
+    /// </summary>
+    public class $name$EventArgs : EventArgs
+    {
+        #region Lifetime Methods
+	    /// <summary>
+	    /// Initializes a new instance of the <see cref="$name$"/> class.
+	    /// </summary>
+        /// <param name="$paramName$">The $paramDescription$</param>
+        /// <param name="$paramName2$">The $paramDescription2$</param>
+	    public $name$EventArgs($type$ $paramName$, $type2$ $paramName2$)
+	    {
+            this.$propertyName$ = $paramName$;$end$
+            this.$propertyName2$ = $paramName2$;$end$
+	    }
+	    #endregion // Lifetime Methods
+        
+	    #region Properties
+        /// <summary>
+        /// Gets the $paramDescription$
+        /// </summary>
+        public $type$ $propertyName$ { get; private set; }
+        
+        /// <summary>
+        /// Gets the $paramDescription2$
+        /// </summary>
+        public $type2$ $propertyName2$ { get; private set; }
+	    #endregion // Properties
+    }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

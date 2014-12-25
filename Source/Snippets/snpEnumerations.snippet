@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpEnum</Title>
+			<Shortcut>snpEnum</Shortcut>
+			<Description>Snippet for a standard C# enumeration.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>summary</ID>
+					<ToolTip>The summary that describes the enumeration.</ToolTip>
+					<Default>different types.</Default>
+				</Literal>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>The name of the enumeration.</ToolTip>
+					<Default>Region</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[/// <summary>
+			/// Specifies $summary$
+			/// </summary>
+			public enum $name$
+			{
+				$end$
+			}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpEnumItem</Title>
+			<Shortcut>snpEnumItem</Shortcut>
+			<Description>Snippet for a standard C# enumeration item.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>summary</ID>
+					<ToolTip>The summary that describes the enumeration item.</ToolTip>
+					<Default>An item.</Default>
+				</Literal>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>The name of the enumeration item.</ToolTip>
+					<Default>Region</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[/// <summary>$summary$</summary>
+				$name$,$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

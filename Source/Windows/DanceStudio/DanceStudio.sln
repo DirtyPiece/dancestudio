@@ -12,16 +12,65 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{4043
 		..\..\..\Build\Targets\DanceStudio.Targets = ..\..\..\Build\Targets\DanceStudio.Targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{577A690D-F3C1-4623-9390-2F8AE56EBCE4}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Snippets\snpClasses.snippet = ..\..\Snippets\snpClasses.snippet
+		..\..\Snippets\snpDebug.snippet = ..\..\Snippets\snpDebug.snippet
+		..\..\Snippets\snpDelegates.snippet = ..\..\Snippets\snpDelegates.snippet
+		..\..\Snippets\snpEnumerations.snippet = ..\..\Snippets\snpEnumerations.snippet
+		..\..\Snippets\snpEnums.snippet = ..\..\Snippets\snpEnums.snippet
+		..\..\Snippets\snpEventArgs.snippet = ..\..\Snippets\snpEventArgs.snippet
+		..\..\Snippets\snpEvents.snippet = ..\..\Snippets\snpEvents.snippet
+		..\..\Snippets\snpInterfaces.snippet = ..\..\Snippets\snpInterfaces.snippet
+		..\..\Snippets\snpProperties.snippet = ..\..\Snippets\snpProperties.snippet
+		..\..\Snippets\snpRegions.snippet = ..\..\Snippets\snpRegions.snippet
+		..\..\Snippets\snpXna.snippet = ..\..\Snippets\snpXna.snippet
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core", "DanceStudio.Core\DanceStudio.Core.vcxproj", "{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core.Cli", "DanceStudio.Core.Cli\DanceStudio.Core.Cli.vcxproj", "{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
 		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Release|Win32.ActiveCfg = Release|Any CPU
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Win32.Build.0 = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Any CPU.ActiveCfg = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Win32.ActiveCfg = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Win32.Build.0 = Release|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Debug|Win32.Build.0 = Debug|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Release|Any CPU.ActiveCfg = Release|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Release|Win32.ActiveCfg = Release|Win32
+		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

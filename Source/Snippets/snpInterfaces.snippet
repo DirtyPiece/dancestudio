@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpInterface</Title>
+            <Shortcut>snpInterface</Shortcut>
+            <Description>Snippet for a standard C# interface.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the interface.</ToolTip>
+                    <Default>MyInterface</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the interface.</ToolTip>
+                    <Default>some functionality.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+/// Represents a contract for an object that exposes $summary$
+/// </summary>
+public interface I$name$
+{        
+        #region Events
+        #endregion // Events
+		
+		#region Properties
+		#endregion // Properties
+
+		#region Methods
+		#endregion // Methods
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

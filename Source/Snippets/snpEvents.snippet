@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpEvent</Title>
+      <Shortcut>snpEvent</Shortcut>
+			<Description>Snippet for a standard C# event.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>summary</ID>
+					<ToolTip>The summary for the event.</ToolTip>
+					<Default>whenever something happens.</Default>
+				</Literal>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>The name of the event.</ToolTip>
+					<Default>Event</Default>
+				</Literal>
+				<Literal>
+					<ID>accessLevel</ID>
+					<ToolTip>The level of exposure for the event.</ToolTip>
+					<Default>public</Default>
+				</Literal>
+				<Literal>
+					<ID>eventArgs</ID>
+					<ToolTip>The type of event arguments that are passed by the event.</ToolTip>
+					<Default>EventArgs</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[/// <summary>
+			/// Occurs $summary$
+			/// </summary>
+			$accessLevel$ event EventHandler<$eventArgs$> $name$;$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpEventMethod</Title>
+			<Shortcut>snpEventMethod</Shortcut>
+			<Description>Defines a method that raises an event.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>The name of the event method.</ToolTip>
+					<Default>RaisedEvent</Default>
+				</Literal>
+				<Literal>
+					<ID>args</ID>
+					<ToolTip>The event argument type that the event requires.</ToolTip>
+					<Default>EventArgs</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[/// <summary>
+				/// Raises the <see cref="$name$"/> event.
+				/// </summary>
+                /// <param name="e">The <see cref="$args$"/> instance containing the event data.</param>
+				protected void On$name$($args$ e)
+				{
+                    EventHandler<$args$> handler = this.$name$;
+					if ( handler != null )
+                    {
+						handler(this, e);
+                    }
+				}$end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpEventMethodPropertyChange</Title>
+            <Shortcut>snpEventMethodPropertyChange</Shortcut>
+            <Description>Defines two methods that raise an event when a property is changing and has changed.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+        /// Raises the <see cref="PropertyChanged"/> event.
+        /// </summary>
+        /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChangedEventHandler handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        /// <summary>
+        /// Raises the <see cref="PropertyChanging"/> event.
+        /// </summary>
+        /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
+        protected void OnPropertyChanging(PropertyChangingEventArgs e)
+        {
+            PropertyChangingEventHandler handler = this.PropertyChanging;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpEventRoutedField</Title>
+            <Shortcut>snpEventRoutedField</Shortcut>
+            <Description>Defines a RoutedEvent field.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the routed event.</ToolTip>
+                    <Default>Raised</Default>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>classType</ID>
+                    <ToolTip>The class that houses the event.</ToolTip>
+                    <Function>ClassName()</Function>
+                    <Default>Type</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[public static readonly RoutedEvent $name$Event = EventManager.RegisterRoutedEvent(
+                "$name$", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof($classType$));]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpEventRouted</Title>
+            <Shortcut>snpEventRouted</Shortcut>
+            <Description>Defines a RoutedEvent.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the routed event.</ToolTip>
+                    <Default>Raised</Default>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>classType</ID>
+                    <ToolTip>The class that houses the event.</ToolTip>
+                    <Function>ClassName()</Function>
+                    <Default>Type</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[public event RoutedEventHandler $name$
+                {
+                    add
+                    {
+                        AddHandler($name$Event, value);
+                    }
+                    
+                    remove
+                    {
+                        RemoveHandler($name$Event, value);
+                    }
+                }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

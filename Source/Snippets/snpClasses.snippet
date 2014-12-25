@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpClass</Title>
+            <Shortcut>snpClass</Shortcut>
+            <Description>Snippet for a standard C# class.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the class.</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the class.</ToolTip>
+                    <Default>a class that does something.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+            <![CDATA[/// <summary>
+/// Represents $summary$
+/// </summary>
+public class $name$
+{
+        #region Fields
+        #endregion // Fields
+        
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$"/> class.
+        /// </summary>
+        public $name$()
+        {$end$
+        }
+        #endregion // Lifetime Methods
+        
+        #region Events
+        #endregion // Events
+        
+        #region Properties
+        #endregion // Properties
+
+        #region Methods
+        #endregion // Methods
+        
+        #region Event Handlers
+        #endregion // Event Handlers
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpClassStatic</Title>
+            <Shortcut>snpClassStatic</Shortcut>
+            <Description>Snippet for a standard C# static class.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the class.</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the class.</ToolTip>
+                    <Default>a class that does something.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+/// Represents $summary$
+/// </summary>
+public static class $name$
+{
+        #region Fields
+        #endregion // Fields
+        
+        #region Properties
+        #endregion // Properties
+
+        #region Methods
+        $end$
+        #endregion // Methods
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpClassTest</Title>
+            <Shortcut>snpClassTest</Shortcut>
+            <Description>Snippet for a standard C# test class.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the class.</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                <Literal>
+                    <ID>testName</ID>
+                    <ToolTip>The name of the test method.</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the class.</ToolTip>
+                    <Default>a class that does something.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+/// Represents $summary$
+/// </summary>
+[TestClass]
+public class $name$
+{
+        #region Fields
+        #endregion // Fields
+        
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$"/> class.
+        /// </summary>
+        public $name$()
+        {
+        }
+        #endregion // Lifetime Methods
+        
+        #region Events
+        #endregion // Events
+        
+        #region Properties
+        #endregion // Properties
+
+        #region Methods
+        
+        #region Initialization Methods
+        /// <summary>
+        /// Initializes the tests.
+        /// </summary>
+        [TestInitialize]
+        public void InitializeTests()
+        {
+        }
+
+        /// <summary>
+        /// Finalizes the tests.
+        /// </summary>
+        [TestCleanup$end$]
+        public void FinalizeTests()
+        {
+        }
+        #endregion // Initialization Methods
+        
+        #region Test Methods
+        #endregion // Test Methods
+        
+        #region Helper Methods
+        #endregion // Helper Methods
+        
+        #endregion // Methods
+        
+        #region Event Handlers
+        #endregion // Event Handlers
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpClassPhoneTestApp</Title>
+            <Shortcut>snpClassPhoneTestApp</Shortcut>
+            <Description>Snippet for a standard WP7 C# phone test application class.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+    /// Represents the main application for running tests.
+    /// </summary>
+    public partial class App : Application
+    {
+        #region Fields
+        /// <summary>
+        /// To avoid double-initialization.
+        /// </summary>
+        private bool phoneApplicationInitialized = false;
+        #endregion // Fields
+
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="App"/> class.
+        /// </summary>
+        public App()
+        {
+            // Global handler for uncaught exceptions. 
+            this.UnhandledException += this.Application_UnhandledException;
+
+            // Standard Silverlight initialization
+            InitializeComponent();
+
+            // Phone-specific initialization
+            this.InitializePhoneApplication();
+
+            // Show graphics profiling information while debugging.
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                // Display the current frame rate counters.
+                Application.Current.Host.Settings.EnableFrameRateCounter = true;
+
+                // Show the areas of the app that are being redrawn in each frame.
+                // Application.Current.Host.Settings.EnableRedrawRegions = true;
+
+                // Enable non-production analysis visualization mode, 
+                // which shows areas of a page that are handed off to GPU with a colored overlay.
+                // Application.Current.Host.Settings.EnableCacheVisualization = true;
+
+                // Disable the application idle detection by setting the UserIdleDetectionMode property of the
+                // application's PhoneApplicationService object to Disabled.
+                // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
+                // and consume battery power when the user is not using the phone.
+                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+            }
+        }
+        #endregion // Lifetime Methods
+
+        #region Properties
+        /// <summary>
+        /// Gets easy access to the root frame of the Phone Application.
+        /// </summary>
+        public PhoneApplicationFrame RootFrame
+        {
+            get;
+            private set;
+        }
+        #endregion // Properties
+
+        #region Methods
+        /// <summary>
+        /// Initializes the phone application.
+        /// </summary>
+        private void InitializePhoneApplication()
+        {
+            if (this.phoneApplicationInitialized)
+            {
+                return;
+            }
+
+            // Create the frame but don't set it as RootVisual yet; this allows the splash
+            // screen to remain active until the application is ready to render.
+            this.RootFrame = new PhoneApplicationFrame();
+            this.RootFrame.Navigated += this.CompleteInitializePhoneApplication;
+
+            // Handle navigation failures
+            this.RootFrame.NavigationFailed += this.RootFrame_NavigationFailed;
+
+            // Ensure we don't initialize again
+            this.phoneApplicationInitialized = true;
+        }
+
+        /// <summary>
+        /// Completes the initialize phone application.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.Windows.Navigation.NavigationEventArgs"/> instance containing the event data.</param>
+        private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
+        {
+            // Set the root visual to allow the application to render
+            if (this.RootVisual != this.RootFrame)
+            {
+                this.RootVisual = this.RootFrame;
+            }
+
+            // Remove this handler since it is no longer needed
+            this.RootFrame.Navigated -= this.CompleteInitializePhoneApplication;
+        }
+        #endregion // Methods
+
+        #region Event Handlers
+        /// <summary>
+        /// Handles the Launching event of the Application control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="Microsoft.Phone.Shell.LaunchingEventArgs"/> instance containing the event data.</param>
+        private void Application_Launching(object sender, LaunchingEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Handles the Activated event of the Application control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="Microsoft.Phone.Shell.ActivatedEventArgs"/> instance containing the event data.</param>
+        private void Application_Activated(object sender, ActivatedEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Handles the Deactivated event of the Application control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="Microsoft.Phone.Shell.DeactivatedEventArgs"/> instance containing the event data.</param>
+        private void Application_Deactivated(object sender, DeactivatedEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Handles the Closing event of the Application control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="Microsoft.Phone.Shell.ClosingEventArgs"/> instance containing the event data.</param>
+        private void Application_Closing(object sender, ClosingEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Handles the NavigationFailed event of the RootFrame control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Navigation.NavigationFailedEventArgs"/> instance containing the event data.</param>
+        private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                // A navigation has failed; break into the debugger
+                System.Diagnostics.Debugger.Break();
+            }
+        }
+
+        /// <summary>
+        /// Handles the UnhandledException event of the Application control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.ApplicationUnhandledExceptionEventArgs"/> instance containing the event data.</param>
+        private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
+        {
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                // An unhandled exception has occurred; break into the debugger
+                System.Diagnostics.Debugger.Break();
+            }
+        }
+        #endregion // Event Handlers
+    }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpClassPhoneTestMainForm</Title>
+            <Shortcut>snpClassPhoneTestMainForm</Shortcut>
+            <Description>Snippet for a standard WP7 C# phone test main form class.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+    /// Represents the main page of the test application.
+    /// </summary>
+    public partial class MainPage : PhoneApplicationPage
+    {
+        #region Fields
+        #endregion // Fields
+
+        #region Properties
+        #endregion // Properties
+
+        #region Methods
+
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainPage"/> class.
+        /// </summary>
+        public MainPage()
+        {
+            this.InitializeComponent();
+        }
+        #endregion // Lifetime Methods
+
+        #endregion // Methods
+
+        #region Event Handlers
+        /// <summary>
+        /// Handles the Loaded event of the MainPage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            IMobileTestPage testPage = UnitTestSystem.CreateTestPage() as IMobileTestPage;
+
+            // Register the back key press.
+            BackKeyPress += (s, arg) =>
+            {
+                bool navigateBackSuccessfull = testPage.NavigateBack();
+                arg.Cancel = navigateBackSuccessfull;
+            };
+
+            (Application.Current.RootVisual as PhoneApplicationFrame).Content = testPage;
+        }
+        #endregion // Event Handlers
+    }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpClassForm</Title>
+            <Shortcut>snpClassForm</Shortcut>
+            <Description>Snippet for a standard C# form class.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the class.</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the class.</ToolTip>
+                    <Default>a class that does something.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+/// Represents $summary$
+/// </summary>
+public partial class $name$Form : Form
+{
+        #region Fields
+        #endregion // Fields
+        
+        #region Properties
+        #endregion // Properties
+
+        #region Methods
+        
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$Form"/> class.
+        /// </summary>
+        public $name$Form()
+        {
+                InitializeComponent();$end$
+        }
+        #endregion // Lifetime Methods
+        
+        #endregion // Methods
+        
+        #region Event Handlers
+        #endregion // Event Handlers
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpClassWindow</Title>
+            <Shortcut>snpClassWindow</Shortcut>
+            <Description>Snippet for a standard C# window class (WPF).</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the class.</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the class.</ToolTip>
+                    <Default>a class that does something.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+/// Represents $summary$
+/// </summary>
+public partial class $name$Window : Window
+{
+        #region Fields
+        #endregion // Fields
+        
+        #region Properties
+        #endregion // Properties
+
+        #region Methods
+        
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$Window"/> class.
+        /// </summary>
+        public $name$Window()
+        {
+                InitializeComponent();$end$
+        }
+        #endregion // Lifetime Methods
+        
+        #endregion // Methods
+        
+        #region Event Handlers
+        #endregion // Event Handlers
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpClassUserControlWindow</Title>
+            <Shortcut>snpClassUserControlWindow</Shortcut>
+            <Description>Snippet for a standard C# window user control class (WPF).</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the class.</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the class.</ToolTip>
+                    <Default>a class that does something.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+/// Represents $summary$
+/// </summary>
+public partial class $name$Control : UserControl
+{
+        #region Fields
+        #endregion // Fields
+        
+        #region Properties
+        #endregion // Properties
+
+        #region Methods
+        
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$Control"/> class.
+        /// </summary>
+        public $name$Control()
+        {
+                InitializeComponent();$end$
+        }
+        #endregion // Lifetime Methods
+        
+        #endregion // Methods
+        
+        #region Event Handlers
+        #endregion // Event Handlers
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpException</Title>
+            <Shortcut>snpException</Shortcut>
+            <Description>Snippet for a standard C# application exception.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the class.</ToolTip>
+                    <Default>MyClass</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the exception.</ToolTip>
+                    <Default>an exception that does something.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+/// Represents $summary$
+/// </summary>
+public class $name$Exception : Exception
+{
+        #region Fields
+        #endregion // Fields
+
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$Exception"/> class.
+        /// </summary>
+        public $name$Exception()
+        {
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$Exception"/> class.
+        /// </summary>
+        /// <param name="message">The message for the exception.</param>
+        public $name$Exception(string message)
+            : base(message)
+        {
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$Exception"/> class.
+        /// </summary>
+        /// <param name="message">The message for the exception.</param>
+        /// <param name="inner">The inner exception that was thrown.</param>
+        public $name$Exception(string message, Exception inner)
+            : base(message, inner)
+        {
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$name$Exception"/> class.
+        /// </summary>
+        /// <param name="info">The <see cref="SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+        /// <param name="context">The <see cref="StreamingContext"/> that contains contextual information about the source or destination.</param>
+        protected $name$Exception(SerializationInfo$end$ info, StreamingContext context)
+            : base(info, context)
+        {
+        }
+        #endregion // Lifetime Methods
+        
+        #region Properties
+        #endregion // Properties
+
+        #region Methods        
+        #endregion // Methods
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

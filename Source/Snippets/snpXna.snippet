@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpXnaContentTypeReader</Title>
+			<Shortcut>snpXnaContentTypeReader</Shortcut>
+			<Description>Snippet for an XNA content type reader class.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>The type of object that the reader loads.</ToolTip>
+					<Default>MyObject</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[/// <summary>
+    /// Represents a loader for a <see cref="$type$"/>.
+    /// </summary>
+    public class $type$Reader : ContentTypeReader<$type$>
+    {
+        #region Lifetime Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="$type$Reader"/> class.
+        /// </summary>
+        public $type$Reader()
+        {
+        }
+        #endregion // Lifetime Methods
+
+        #region Methods
+        /// <summary>
+        /// Reads a strongly typed object from the current stream.
+        /// </summary>
+        /// <param name="input">The ContentReader used to read the object.</param>
+        /// <param name="existingInstance">An existing object to read into.</param>
+        /// <returns>The type of object to read.</returns>
+        protected override $type$ Read(ContentReader input, $type$ existingInstance)
+        {
+            $type$ definition = new $type$();$end$
+        }
+        #endregion // Methods
+    }]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

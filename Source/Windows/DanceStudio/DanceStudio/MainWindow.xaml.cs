@@ -34,5 +34,23 @@ namespace DanceStudio
         {
             this.InitializeComponent();
         }
+
+        /// <summary>
+        /// Handles the CanExecute event of the ViewOnlineDocumentationCommandBinding control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="CanExecuteRoutedEventArgs"/> instance containing the event data.</param>
+        private void ViewOnlineDocumentationCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Handles the Executed event of the ViewOnlineDocumentationCommandBinding control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
+        private void ViewOnlineDocumentationCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+        }
     }
 }

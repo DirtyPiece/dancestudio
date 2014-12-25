@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpProperty</Title>
+            <Shortcut>snpProperty</Shortcut>
+            <Description>Snippet for a standard C# property with get and set accessors.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary for the property.</ToolTip>
+                    <Default>the field.</Default>
+                </Literal>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+                <Literal>
+                    <ID>fieldName</ID>
+                    <ToolTip>The name of the field to get and set.</ToolTip>
+                    <Default>field</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+            <![CDATA[/// <summary>
+            /// Gets or sets $summary$
+            /// </summary>
+            public $type$ $name$
+            {
+                    get
+                    {
+                        return $fieldName$;
+                    }
+                    set
+                    {
+                        $fieldName$ = value;
+                    }
+            }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyGet</Title>
+            <Shortcut>snpPropertyGet</Shortcut>
+            <Description>Snippet for a standard C# property with a get accessor.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary for the property.</ToolTip>
+                    <Default>the field.</Default>
+                </Literal>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+                <Literal>
+                    <ID>fieldName</ID>
+                    <ToolTip>The name of the field to get.</ToolTip>
+                    <Default>field</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+            /// Gets $summary$
+            /// </summary>
+            public $type$ $name$
+            {
+                get
+                {
+                    return $fieldName$;
+                }
+            }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyAuto</Title>
+            <Shortcut>snpPropertyAuto</Shortcut>
+            <Description>Snippet for a standard C# auto-backing store property with a get and set accessor (public accessibility).</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary for the property.</ToolTip>
+                    <Default>the field.</Default>
+                </Literal>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+            /// Gets or sets $summary$
+            /// </summary>
+            public $type$ $name$
+            {
+                get;
+                set;
+            }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyAutoGet</Title>
+            <Shortcut>snpPropertyAutoGet</Shortcut>
+            <Description>Snippet for a standard C# auto-backing store property with a get accessor (public accessibility).</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary for the property.</ToolTip>
+                    <Default>the field.</Default>
+                </Literal>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+            /// Gets $summary$
+            /// </summary>
+            public $type$ $name$
+            {
+                get;
+                private set;
+            }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyDependency</Title>
+            <Shortcut>snpPropertyDependency</Shortcut>
+            <Description>Snippet for a standard WPF dependency property wrapper.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the dependency property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the dependency property.</ToolTip>
+                    <Default>the property.</Default>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>className</ID>
+                    <ToolTip>The class that this property is being defined in.</ToolTip>
+                    <Function>ClassName()</Function>
+                    <Default>This is not a class.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+            /// Gets or sets $summary$
+            /// </summary>
+            public $type$ $name$
+            {
+                    get
+                    {
+                        return ($type$)this.GetValue($className$.$name$Property);
+                    }
+                    
+                    set
+                    {
+                        this.SetValue($className$.$name$Property, value);
+                    }
+            }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyDependencyGet</Title>
+            <Shortcut>snpPropertyDependencyGet</Shortcut>
+            <Description>Snippet for a standard WPF dependency property wrapper (get only).</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the dependency property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary that describes the dependency property.</ToolTip>
+                    <Default>the property.</Default>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>className</ID>
+                    <ToolTip>The class that this property is being defined in.</ToolTip>
+                    <Function>ClassName()</Function>
+                    <Default>This is not a class.</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+            /// Gets $summary$
+            /// </summary>
+            public $type$ $name$
+            {
+                    get
+                    {
+                        return ($type$)this.GetValue($className$.$name$Property);
+                    }
+                    
+                    private set
+                    {
+                        this.SetValue($className$.$name$Property, value);
+                    }
+            }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyDependencyField</Title>
+            <Shortcut>snpPropertyDependencyField</Shortcut>
+            <Description>Snippet for a standard WPF dependency property backing field.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the dependency property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>classType</ID>
+                    <ToolTip>The type of the class that contains the dependency property.</ToolTip>
+                    <Function>ClassName()</Function>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+                <Literal>
+                    <ID>default</ID>
+                    <ToolTip>The default value assigned to the property at initialization.</ToolTip>
+                    <Default>null</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+            /// Represents the field for the $name$ dependency property.
+            /// </summary>
+            public static readonly DependencyProperty $name$Property = DependencyProperty.Register(
+                "$name$",
+                typeof($type$),
+                typeof($classType$),
+                new PropertyMetadata($default$));$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyDependencyReadOnly</Title>
+            <Shortcut>snpPropertyDependencyReadOnly</Shortcut>
+            <Description>Snippet for a standard WPF dependency read only property wrapper.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the dependency property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[public $type$ $name$
+            {
+                    get
+                    {
+                        return ($type$)GetValue($name$Property);
+                    }
+            }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyDependencyReadOnlyKey</Title>
+            <Shortcut>snpPropertyDependencyReadOnlyKey</Shortcut>
+            <Description>Snippet for a standard WPF dependency property read only backing key.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the dependency property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>classType</ID>
+                    <ToolTip>The type of the class that contains the dependency property.</ToolTip>
+                    <Function>ClassName()</Function>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+                <Literal>
+                    <ID>default</ID>
+                    <ToolTip>The default value of the dependency property.</ToolTip>
+                    <Default>null</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+        /// Represents the key for the readonly $name$ dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey $name$Key = DependencyProperty.RegisterReadOnly(
+            "$name$",
+            typeof($type$),
+            typeof($classType$),
+            new PropertyMetadata($default$));]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyDependencyReadOnlyField</Title>
+            <Shortcut>snpPropertyDependencyReadOnlyField</Shortcut>
+            <Description>Snippet for a standard WPF dependency property read only backing field.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+        /// Represents the backing field for the readonly $name$ dependency property.
+        /// </summary>
+        public static readonly DependencyProperty $name$Property;]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyDependencyReadOnlyFieldInStaticConstructor</Title>
+            <Shortcut>snpPropertyDependencyReadOnlyFieldInStaticConstructor</Shortcut>
+            <Description>Snippet for a standard WPF dependency property read only backing field initialization call in the static constructor.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>classType</ID>
+                    <ToolTip>The class that houses the property.</ToolTip>
+                    <Function>ClassName()</Function>
+                    <Default>Type</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[$classType$.$name$Property = $name$Key.DependencyProperty;$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyNotification</Title>
+            <Shortcut>snpPropertyNotification</Shortcut>
+            <Description>Snippet for a INotifyPropertyChanged C# property with get and set accessors.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>summary</ID>
+                    <ToolTip>The summary for the property.</ToolTip>
+                    <Default>the field.</Default>
+                </Literal>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>The type of the property.</ToolTip>
+                    <Default>Type</Default>
+                </Literal>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the property.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+                <Literal>
+                    <ID>fieldName</ID>
+                    <ToolTip>The name of the field to get and set.</ToolTip>
+                    <Default>field</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+            /// Gets or sets $summary$
+            /// </summary>
+            public $type$ $name$
+            {
+                    get
+                    {
+                        return $fieldName$;
+                    }
+
+                    set
+                    {
+                        if ($fieldName$ != value)
+                        {
+                            this.OnPropertyChanging(new PropertyChangingEventArgs("$name$"));
+                            $fieldName$ = value;
+                            this.OnPropertyChanged(new PropertyChangedEventArgs("$name$"));
+                        }
+                    }
+            }$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>snpPropertyComponentResourceKey</Title>
+      <Shortcut>snpPropertyComponentResourceKey</Shortcut>
+      <Description>Snippet for a ComponentResourceKey field used to identify a resource.</Description>
+      <Author>Clark Morse</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>The name of the property that exposes the key field.</ToolTip>
+          <Default>PropertyName</Default>
+        </Literal>
+        <Literal>
+          <ID>fieldName</ID>
+          <ToolTip>The name of the field.</ToolTip>
+          <Default>field</Default>
+        </Literal>
+        <Literal Editable="false">
+          <ID>classType</ID>
+          <ToolTip>The class that houses the ComponentResourceKey.</ToolTip>
+          <Function>ClassName()</Function>
+          <Default>Type</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[/// <summary>
+        /// Backing field for the resource key.
+        /// </summary>
+        private static ComponentResourceKey $fieldName$ResourceKey = new ComponentResourceKey(
+            typeof($classType$),
+            "$name$ResourceKey");
+        public static ComponentResourceKey $name$ResourceKey
+        {
+            get
+            {
+                return $classType$.$fieldName$ResourceKey;
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

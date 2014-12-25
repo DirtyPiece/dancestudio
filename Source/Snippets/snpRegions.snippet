@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpRegion</Title>
+			<Shortcut>snpRegion</Shortcut>
+			<Description>Snippet for a standard C# region.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>The name of the region.</ToolTip>
+					<Default>Region</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[#region $name$
+			$end$
+			#endregion // $name$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpRegionEventHandlers</Title>
+			<Shortcut>snpRegionEventHandlers</Shortcut>
+			<Description>Snippet for a standard C# region that holds event handlers.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>The name of the region.</ToolTip>
+					<Default>Region</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[#region $name$ Event Handlers
+			$end$
+			#endregion // $name$ Event Handlers]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

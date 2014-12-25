@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>snpDelegate</Title>
+			<Shortcut>snpDelegate</Shortcut>
+			<Description>Snippet for a standard C# delegate.</Description>
+			<Author>Clark Morse</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>summary</ID>
+					<ToolTip>The summary for the delegate.</ToolTip>
+					<Default>that does something.</Default>
+				</Literal>
+				<Literal>
+					<ID>returnType</ID>
+					<ToolTip>The return type of the delegate.</ToolTip>
+					<Default>void</Default>
+				</Literal>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>The name of the delegate.</ToolTip>
+					<Default>DelegateName</Default>
+				</Literal>
+				<Literal>
+					<ID>parameters</ID>
+					<ToolTip>The parameters to the method.</ToolTip>
+					<Default></Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+			<![CDATA[/// <summary>
+			/// Represents the method $summary$
+			/// </summary>
+			/// $end$
+			public delegate $returnType$ $name$($parameters$);]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>snpPropertyDependencyChangedEventHandler</Title>
+            <Shortcut>snpPropertyDependencyChangedEventHandler</Shortcut>
+            <Description>Snippet for a stub for handling when a dependency property changes.</Description>
+            <Author>Clark Morse</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>The name of the dependency property that is changing.</ToolTip>
+                    <Default>PropertyName</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[/// <summary>
+        /// Raised when the <see cref="$name$"/> dependency property changes.
+        /// </summary>
+        /// <param name="obj">The dependency object that contains the dependency property.</param>
+        /// <param name="e">The <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void $name$Property_Changed(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+        }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -1,10 +1,34 @@
 ﻿<Window x:Uid="Window_1" x:Class="DanceStudio.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="clr-namespace:DanceStudio.Commands"
         xml:lang="en-US"
         Title="Dance Studio" Height="350" Width="525">
+    <Window.InputBindings>
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static c:CustomCommands.ViewOnlineDocumentation}" CanExecute="ViewOnlineDocumentationCommandBinding_CanExecute" Executed="ViewOnlineDocumentationCommandBinding_Executed" />
+    </Window.CommandBindings>
     <Grid x:Uid="Grid_1">
-        <Menu x:Uid="Menu_1">
-        </Menu>
+        <DockPanel>
+            <Menu x:Uid="Menu_1" DockPanel.Dock="Top">
+                <MenuItem x:Uid="MenuItem_1" Header="File" Localization.Comments="The main File menu item that allows operations like opening files and closing the application.">
+                    <MenuItem Header="New" Localization.Comments="The parent menu item that opens up options for creating new projects or songs." />
+                    <MenuItem Header="Open" Localization.Comments="The parent menu item that opens up options for opening projects or songs." />
+                    <Separator />
+                    <MenuItem x:Uid="MenuItem_2" Header="Exit" Localization.Comments="The menu item that causes the application to close." />
+                </MenuItem>
+                <MenuItem Header="Help" Localization.Comments="The menu item that displays options to help the user get information about the tool.">
+                    <MenuItem Header="View Online Documentation" Localization.Comments="Menu item that opens the documentation for the tool from the web." />
+                    <MenuItem Header="Tutorial Videos" Localization.Comments="Menu item that displays a list of tutorial videos from YouTube for helping use the tool.">
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="About Dance Studio" Localization.Comments="Shows a dialog that displays information about this version of Dance Studio." />
+                </MenuItem>
+            </Menu>
+            <Grid>
+                
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
