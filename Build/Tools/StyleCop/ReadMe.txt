@@ -1,0 +1,1 @@
+The version of StyleCop stored here is 4.7.45.0.

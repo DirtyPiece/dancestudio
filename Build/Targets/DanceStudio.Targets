@@ -1,0 +1,36 @@
+<!--=======================================================================
+// <copyright file="DanceStudio.Targets" company="Microsoft">
+// Copyright 2014 Microsoft
+// </copyright>
+// <summary>
+// A custom MSBuild target file that's included in all DanceStudio projects.
+// </summary>
+// =======================================================================-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--
+  =======================================================================
+  Common Properties
+  =======================================================================
+  -->
+  <PropertyGroup>
+    <DanceStudioRepositoryRoot>$(MSBuildThisFileDirectory)..\..\</DanceStudioRepositoryRoot>
+    <DanceStudioBuildFolderRoot>$(DanceStudioRepositoryRoot)Build\</DanceStudioBuildFolderRoot>
+    <DanceStudioBuildToolsRoot>$(DanceStudioBuildFolderRoot)Tools\</DanceStudioBuildToolsRoot>
+  </PropertyGroup>
+
+  <!--
+  =======================================================================
+  Import StyleCop for code styling checking.
+  =======================================================================
+  -->
+
+  <!--Treat StyleCop warnings as errors in release builds.-->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+
+  <!--Enable StyleCop in all builds.-->
+  <Import Project="$(DanceStudioBuildToolsRoot)StyleCop\StyleCop.Targets" />
+</Project>

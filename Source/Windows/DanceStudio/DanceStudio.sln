@@ -5,6 +5,13 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanceStudio", "DanceStudio\DanceStudio.csproj", "{66ED48B4-D509-4980-AAA2-D39E5D45E085}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{6B9D7995-5DC1-4F90-8AA8-4F2CBE02CFA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{4043B375-E2B7-48E2-BB8D-1B97343C5DC3}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Build\Targets\DanceStudio.Targets = ..\..\..\Build\Targets\DanceStudio.Targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +25,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4043B375-E2B7-48E2-BB8D-1B97343C5DC3} = {6B9D7995-5DC1-4F90-8AA8-4F2CBE02CFA5}
 	EndGlobalSection
 EndGlobal
