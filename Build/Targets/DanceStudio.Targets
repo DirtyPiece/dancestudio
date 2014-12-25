@@ -18,7 +18,6 @@
     <DanceStudioRepositoryRoot>$(MSBuildThisFileDirectory)..\..\</DanceStudioRepositoryRoot>
     <DanceStudioBuildFolderRoot>$(DanceStudioRepositoryRoot)Build\</DanceStudioBuildFolderRoot>
     <DanceStudioBuildToolsRoot>$(DanceStudioBuildFolderRoot)Tools\</DanceStudioBuildToolsRoot>
-    <DanceStudioShouldRunDoxygen>false</DanceStudioShouldRunDoxygen>
     <DanceStudioDoxygenExePath>$(DanceStudioBuildToolsRoot)Doxygen\Doxygen.exe</DanceStudioDoxygenExePath>
     <DanceStudioDoxygenConfigurationFilePath>$(DanceStudioBuildToolsRoot)Doxygen\Doxyfile</DanceStudioDoxygenConfigurationFilePath>
   </PropertyGroup>
@@ -42,7 +41,7 @@
   Run Doxygen to generate the documentation for the source code.
   =======================================================================
   -->
-  <Target Name="DanceStudioDoxygenTarget" AfterTargets="AfterBuild">
+  <Target Name="DanceStudioDoxygenTarget" AfterTargets="AfterBuild" Condition="'$(DanceStudioShouldRunDoxygen)' == 'true' AND '$(Configuration)' == 'Release'">
     <Message Importance="high" Text="Running Doxygen documentation generation against '$(DanceStudioBuildToolsRoot)Doxygen\Doxyfile'." />
     <Exec Command="$(DanceStudioDoxygenExePath) $(DanceStudioDoxygenConfigurationFilePath)" />
   </Target>
