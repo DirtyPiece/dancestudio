@@ -1,8 +1,10 @@
-﻿<Window x:Class="DanceStudio.MainWindow"
+﻿<Window x:Uid="Window_1" x:Class="DanceStudio.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <!--minor test change-->
+        xml:lang="en-US"
+        Title="Dance Studio" Height="350" Width="525">
+    <Grid x:Uid="Grid_1">
+        <Menu x:Uid="Menu_1">
+        </Menu>
     </Grid>
 </Window>

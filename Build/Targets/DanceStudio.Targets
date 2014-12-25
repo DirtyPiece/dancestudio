@@ -45,4 +45,15 @@
     <Message Importance="high" Text="Running Doxygen documentation generation against '$(DanceStudioBuildToolsRoot)Doxygen\Doxyfile'." />
     <Exec Command="$(DanceStudioDoxygenExePath) $(DanceStudioDoxygenConfigurationFilePath)" />
   </Target>
+
+  <!--
+  =======================================================================
+  Generate Uids in XAML files for use with localization.
+  =======================================================================
+  -->
+  <Target Name="DanceStudioUidsGenerationTarget" BeforeTargets="BeforeBuild" Condition="'$(DanceStudioShouldGenerateUids)' == 'true' AND '$(Configuration)' == 'Release'">
+    <Message Importance="high" Text="Generating Uids for XAML files in the project (for localization)." />
+    <MSBuild Projects="$(ProjectPath)" Targets="updateuid" />
+    <MSBuild Projects="$(ProjectPath)" Targets="checkuid" />
+  </Target>
 </Project>
