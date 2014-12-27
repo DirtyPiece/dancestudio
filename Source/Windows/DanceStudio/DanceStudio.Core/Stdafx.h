@@ -5,6 +5,9 @@
 // <date>12-26-2014</date>
 // =======================================================================
 
-#pragma once
+#ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_
+#define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_
 
 #include "Typedefs.h"
+
+#endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_
