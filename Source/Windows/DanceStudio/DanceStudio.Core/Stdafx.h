@@ -8,6 +8,11 @@
 #ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_
 
+#include <stdexcept>
+#include <cassert>
+
 #include "Typedefs.h"
+#include "Constants.h"
+#include "Validator.h"
 
 #endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_

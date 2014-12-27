@@ -1,10 +1,16 @@
-#include "stdafx.h"
+// =======================================================================
+// <copyright file="AssemblyInfo.cpp" company="Bean and Cheese Studios">
+// Copyright 2015 Bean and Cheese Studios
+// </copyright>
+// <date>12-26-2014</date>
+// =======================================================================
 
-using namespace System;
-using namespace System::Reflection;
-using namespace System::Runtime::CompilerServices;
-using namespace System::Runtime::InteropServices;
-using namespace System::Security::Permissions;
+#include "stdafx.h" // NOLINT
+
+using System::CLSCompliantAttribute;
+using System::Runtime::InteropServices::ComVisibleAttribute;
+
+using namespace System::Reflection;  // NOLINT
 
 //
 // General Information about an assembly is controlled through the following
@@ -28,7 +34,8 @@ using namespace System::Security::Permissions;
 //      Build Number
 //      Revision
 //
-// You can specify all the value or you can default the Revision and Build Numbers
+// You can specify all the value or you can default the Revision
+// and Build Numbers
 // by using the '*' as shown below:
 
 [assembly:AssemblyVersionAttribute("1.0.*")];

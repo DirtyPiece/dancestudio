@@ -1,5 +1,8 @@
-// stdafx.cpp : source file that includes just the standard includes
-// DanceStudio.Core.Cli.pch will be the pre-compiled header
-// stdafx.obj will contain the pre-compiled type information
+// =======================================================================
+// <copyright file="Stdafx.cpp" company="Bean and Cheese Studios">
+// Copyright 2015 Bean and Cheese Studios
+// </copyright>
+// <date>12-26-2014</date>
+// =======================================================================
 
-#include "stdafx.h"
+#include "stdafx.h" // NOLINT
