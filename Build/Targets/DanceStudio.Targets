@@ -21,6 +21,8 @@
     <DanceStudioDoxygenExePath>$(DanceStudioBuildToolsRoot)Doxygen\Doxygen.exe</DanceStudioDoxygenExePath>
     <DanceStudioDoxygenConfigurationFilePath>$(DanceStudioBuildToolsRoot)Doxygen\Doxyfile</DanceStudioDoxygenConfigurationFilePath>
     <DanceStudioLocBamlExePath>$(DanceStudioBuildToolsRoot)Localization\LocBaml.exe</DanceStudioLocBamlExePath>
+    <DanceStudioPythonExePath>$(DanceStudioBuildToolsRoot)Python27\python.exe</DanceStudioPythonExePath>
+    <DanceStudioCppLintPath>$(DanceStudioBuildToolsRoot)CppLint\cpplint.py</DanceStudioCppLintPath>
   </PropertyGroup>
 
   <!--
@@ -70,4 +72,19 @@
     <MSBuild Projects="$(ProjectPath)" Targets="updateuid" />
     <MSBuild Projects="$(ProjectPath)" Targets="checkuid" />
   </Target>
+
+  <!--
+  =======================================================================
+  Run CppLint using python in order to validate the C++ coding guidelines.
+  =======================================================================
+  -->
+  <Target Name="DanceStudioCppLintTarget" AfterTargets="AfterBuild" Condition="'$(DanceStudioShouldRunCppLint)' == 'true' AND '$(Configuration)' == 'Release'">
+    <ItemGroup>
+      <CppFiles Include="**\*.cpp" />
+      <CppFiles Include="**\*.h" />
+    </ItemGroup>
+    <Message Importance="high" Text="Running CppLint in order to validate C++." />
+    <Exec Command="$(DanceStudioPythonExePath) $(DanceStudioCppLintPath) --output=vs7 @(CppFiles, ' ')" IgnoreExitCode="true" />
+  </Target>
+  
 </Project>

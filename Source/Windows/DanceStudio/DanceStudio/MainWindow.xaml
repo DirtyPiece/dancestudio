@@ -7,27 +7,27 @@
     <Window.InputBindings>
     </Window.InputBindings>
     <Window.CommandBindings>
-        <CommandBinding Command="Close" CanExecute="CloseCommandBinding_CanExecute" Executed="CloseCommandBinding_Executed" />
-        <CommandBinding Command="{x:Static c:CustomCommands.ViewOnlineDocumentation}" CanExecute="ViewOnlineDocumentationCommandBinding_CanExecute" Executed="ViewOnlineDocumentationCommandBinding_Executed" />
+        <CommandBinding x:Uid="CommandBinding_1" Command="Close" CanExecute="CloseCommandBinding_CanExecute" Executed="CloseCommandBinding_Executed" />
+        <CommandBinding x:Uid="CommandBinding_2" Command="{x:Static c:CustomCommands.ViewOnlineDocumentation}" CanExecute="ViewOnlineDocumentationCommandBinding_CanExecute" Executed="ViewOnlineDocumentationCommandBinding_Executed" />
     </Window.CommandBindings>
     <Grid x:Uid="Grid_1">
-        <DockPanel>
+        <DockPanel x:Uid="DockPanel_1">
             <Menu x:Uid="Menu_1" DockPanel.Dock="Top">
                 <MenuItem x:Uid="MenuItem_1" Header="File" Localization.Comments="The main File menu item that allows operations like opening files and closing the application.">
-                    <MenuItem Header="New" Localization.Comments="The parent menu item that opens up options for creating new projects or songs." />
-                    <MenuItem Header="Open" Localization.Comments="The parent menu item that opens up options for opening projects or songs." />
-                    <Separator />
+                    <MenuItem x:Uid="MenuItem_3" Header="New" Localization.Comments="The parent menu item that opens up options for creating new projects or songs." />
+                    <MenuItem x:Uid="MenuItem_4" Header="Open" Localization.Comments="The parent menu item that opens up options for opening projects or songs." />
+                    <Separator x:Uid="Separator_1" />
                     <MenuItem x:Uid="MenuItem_2" Header="Exit" Command="Close" Localization.Comments="The menu item that causes the application to close." />
                 </MenuItem>
-                <MenuItem Header="Help" Localization.Comments="The menu item that displays options to help the user get information about the tool.">
-                    <MenuItem Header="View Online Documentation" Localization.Comments="Menu item that opens the documentation for the tool from the web." />
-                    <MenuItem Header="Tutorial Videos" Localization.Comments="Menu item that displays a list of tutorial videos from YouTube for helping use the tool.">
+                <MenuItem x:Uid="MenuItem_5" Header="Help" Localization.Comments="The menu item that displays options to help the user get information about the tool.">
+                    <MenuItem x:Uid="MenuItem_6" Header="View Online Documentation" Localization.Comments="Menu item that opens the documentation for the tool from the web." />
+                    <MenuItem x:Uid="MenuItem_7" Header="Tutorial Videos" Localization.Comments="Menu item that displays a list of tutorial videos from YouTube for helping use the tool.">
                     </MenuItem>
-                    <Separator />
-                    <MenuItem Header="About Dance Studio" Localization.Comments="Shows a dialog that displays information about this version of Dance Studio." />
+                    <Separator x:Uid="Separator_2" />
+                    <MenuItem x:Uid="MenuItem_8" Header="About Dance Studio" Localization.Comments="Shows a dialog that displays information about this version of Dance Studio." />
                 </MenuItem>
             </Menu>
-            <Grid>
+            <Grid x:Uid="Grid_2">
                 
             </Grid>
         </DockPanel>

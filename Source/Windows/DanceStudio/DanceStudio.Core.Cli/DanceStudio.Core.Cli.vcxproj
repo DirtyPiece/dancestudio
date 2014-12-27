@@ -15,6 +15,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>DanceStudioCoreCli</RootNamespace>
+    <DanceStudioShouldRunCppLint>true</DanceStudioShouldRunCppLint>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -97,7 +98,13 @@
   <ItemGroup>
     <Image Include="app.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DanceStudio.Core\DanceStudio.Core.vcxproj">
+      <Project>{2ab9cc54-a705-4bb7-8d6e-77c409fb10ed}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(ProjectDir)..\..\..\..\Build\Targets\DanceStudio.Targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>

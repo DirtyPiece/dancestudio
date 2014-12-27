@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}</ProjectGuid>
     <RootNamespace>DanceStudioCore</RootNamespace>
+    <DanceStudioShouldRunCppLint>true</DanceStudioShouldRunCppLint>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,8 +65,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="Typedefs.h" />
+    <ClInclude Include="Logger.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(ProjectDir)..\..\..\..\Build\Targets\DanceStudio.Targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
