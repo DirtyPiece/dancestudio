@@ -101,7 +101,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DanceStudio.Controller\DanceStudio.Controller.csproj">
+      <Project>{5a69ff85-bd5d-4bdb-b71b-74b892de1030}</Project>
+      <Name>DanceStudio.Controller</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ProjectDir)..\..\..\..\Build\Targets\DanceStudio.Targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

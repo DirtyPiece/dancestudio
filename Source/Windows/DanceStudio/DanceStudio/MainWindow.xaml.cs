@@ -52,5 +52,25 @@ namespace DanceStudio
         private void ViewOnlineDocumentationCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
         }
+
+        /// <summary>
+        /// Handles the CanExecute event of the CloseCommandBinding control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="CanExecuteRoutedEventArgs"/> instance containing the event data.</param>
+        private void CloseCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        /// <summary>
+        /// Handles the Executed event of the CloseCommandBinding control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
+        private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

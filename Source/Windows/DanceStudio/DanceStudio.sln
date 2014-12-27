@@ -30,6 +30,13 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core", "DanceStudio.Core\DanceStudio.Core.vcxproj", "{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core.Cli", "DanceStudio.Core.Cli\DanceStudio.Core.Cli.vcxproj", "{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED} = {2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanceStudio.Controller", "DanceStudio.Controller\DanceStudio.Controller.csproj", "{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanceStudio.CodedUITests", "DanceStudio.CodedUITests\DanceStudio.CodedUITests.csproj", "{F277D666-3F7F-4021-B04F-59AE0E3D31C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +78,26 @@ Global
 		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Release|Win32.ActiveCfg = Release|Win32
 		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Release|Win32.Build.0 = Release|Win32
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5A69FF85-BD5D-4BDB-B71B-74B892DE1030}.Release|Win32.ActiveCfg = Release|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F277D666-3F7F-4021-B04F-59AE0E3D31C3}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

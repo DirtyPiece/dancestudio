@@ -7,6 +7,7 @@
     <Window.InputBindings>
     </Window.InputBindings>
     <Window.CommandBindings>
+        <CommandBinding Command="Close" CanExecute="CloseCommandBinding_CanExecute" Executed="CloseCommandBinding_Executed" />
         <CommandBinding Command="{x:Static c:CustomCommands.ViewOnlineDocumentation}" CanExecute="ViewOnlineDocumentationCommandBinding_CanExecute" Executed="ViewOnlineDocumentationCommandBinding_Executed" />
     </Window.CommandBindings>
     <Grid x:Uid="Grid_1">
@@ -16,7 +17,7 @@
                     <MenuItem Header="New" Localization.Comments="The parent menu item that opens up options for creating new projects or songs." />
                     <MenuItem Header="Open" Localization.Comments="The parent menu item that opens up options for opening projects or songs." />
                     <Separator />
-                    <MenuItem x:Uid="MenuItem_2" Header="Exit" Localization.Comments="The menu item that causes the application to close." />
+                    <MenuItem x:Uid="MenuItem_2" Header="Exit" Command="Close" Localization.Comments="The menu item that causes the application to close." />
                 </MenuItem>
                 <MenuItem Header="Help" Localization.Comments="The menu item that displays options to help the user get information about the tool.">
                     <MenuItem Header="View Online Documentation" Localization.Comments="Menu item that opens the documentation for the tool from the web." />
