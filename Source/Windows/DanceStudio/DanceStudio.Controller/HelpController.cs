@@ -40,7 +40,6 @@ namespace DanceStudio.Controller
             }
             catch
             {
-
             }
         }
     }

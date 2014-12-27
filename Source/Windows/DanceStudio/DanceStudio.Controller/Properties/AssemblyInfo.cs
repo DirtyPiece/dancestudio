@@ -1,4 +1,11 @@
-﻿using System.Reflection;
+﻿// =======================================================================
+// <copyright file="AssemblyInfo.cs" company="Bean and Cheese Studios">
+// Copyright 2015 Bean and Cheese Studios
+// </copyright>
+// <date>12-26-2014</date>
+// =======================================================================
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
