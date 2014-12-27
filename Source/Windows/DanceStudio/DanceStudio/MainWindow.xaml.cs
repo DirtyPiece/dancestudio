@@ -21,6 +21,7 @@ namespace DanceStudio
     using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
     using System.Windows.Shapes;
+    using DanceStudio.Controller;
 
     /// <summary>
     /// Represents the main window of the application.
@@ -42,6 +43,7 @@ namespace DanceStudio
         /// <param name="e">The <see cref="CanExecuteRoutedEventArgs"/> instance containing the event data.</param>
         private void ViewOnlineDocumentationCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
+            e.CanExecute = true;
         }
 
         /// <summary>
@@ -51,6 +53,7 @@ namespace DanceStudio
         /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
         private void ViewOnlineDocumentationCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            HelpController.LaunchHelpDocumentationInDefaultBrowser();
         }
 
         /// <summary>

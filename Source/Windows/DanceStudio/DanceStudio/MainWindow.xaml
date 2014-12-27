@@ -20,7 +20,7 @@
                     <MenuItem x:Uid="MenuItem_2" Header="Exit" Command="Close" Localization.Comments="The menu item that causes the application to close." />
                 </MenuItem>
                 <MenuItem x:Uid="MenuItem_5" Header="Help" Localization.Comments="The menu item that displays options to help the user get information about the tool.">
-                    <MenuItem x:Uid="MenuItem_6" Header="View Online Documentation" Localization.Comments="Menu item that opens the documentation for the tool from the web." />
+                    <MenuItem x:Uid="MenuItem_6" Header="View Online Documentation" Command="{x:Static c:CustomCommands.ViewOnlineDocumentation}" Localization.Comments="Menu item that opens the documentation for the tool from the web." />
                     <MenuItem x:Uid="MenuItem_7" Header="Tutorial Videos" Localization.Comments="Menu item that displays a list of tutorial videos from YouTube for helping use the tool.">
                     </MenuItem>
                     <Separator x:Uid="Separator_2" />
