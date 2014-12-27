@@ -8,6 +8,8 @@
 #ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CONSTANTS_H_
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CONSTANTS_H_
 
+#include "Typedefs.h"
+
 /// <summary>
 /// The path separator to use for the current operating system
 /// that the user is using.

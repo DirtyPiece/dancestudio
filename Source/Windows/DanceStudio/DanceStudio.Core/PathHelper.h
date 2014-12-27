@@ -9,6 +9,7 @@
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_PATHHELPER_H_
 
 #include <string>
+#include "Constants.h"
 
 namespace DanceStudio {
 namespace Core {
@@ -32,9 +33,11 @@ class PathHelper {
      /// <returns>
      /// The combined path with the proper path separator applied.
      /// </returns>
-     static std::wstring Combine(
+     static inline std::wstring Combine(
          const std::wstring& path1,
-         const std::wstring& path2);
+         const std::wstring& path2) {
+         return path1 + DANCE_STUDIO_PATH_SEPARATOR + path2;
+     }
 
      /// <summary>
      /// Gets a filename with the current date formatted as the name

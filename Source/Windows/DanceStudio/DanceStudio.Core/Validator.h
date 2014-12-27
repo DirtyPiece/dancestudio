@@ -54,6 +54,23 @@ class Validator {
             throw std::out_of_range(stream.str());
         }
     }
+
+    /// <summary>
+    /// Determines whether the passed in error code determines that
+    /// a time value was successfully created.  If not, it throws an
+    /// out of range exception.
+    /// </summary>
+    /// <param name="errorCode">The error code.</param>
+    static inline void IsValidTime(errno_t errorCode) {
+        if (errorCode != 0) {
+            std::ostringstream stream;
+            stream << "The time could not be created due to error code '"
+                << errorCode
+                << "'.";
+
+            throw std::out_of_range(stream.str());
+        }
+    }
 };
 }  // namespace Core
 }  // namespace DanceStudio
