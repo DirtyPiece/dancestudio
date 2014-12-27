@@ -22,8 +22,17 @@ class Logger {
     /// <summary>
     /// Initializes a new instance of the <see cref="Logger"/> class.
     /// </summary>
-    /// <param name="outputDirectory">The output directory to store the log file at.</param>
-    Logger(const WCHAR* outputDirectory);
+    /// <param name="outputDirectory">
+    /// The output directory to store the log file at.
+    /// </param>
+    explicit Logger(const WCHAR* outputDirectory);
+
+    /// <summary>
+    /// Logs a verbose message to the Dance Studio log file.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    /// <param name="...">Arguments to format into the message.</param>
+    void LogVerbose(const WCHAR* message, ...);
 
     /// <summary>
     /// Logs an informational message to the Dance Studio log file.
@@ -31,6 +40,20 @@ class Logger {
     /// <param name="message">The message to log.</param>
     /// <param name="...">Arguments to format into the message.</param>
     void LogInfo(const WCHAR* message, ...);
+
+    /// <summary>
+    /// Logs a warning message to the Dance Studio log file.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    /// <param name="...">Arguments to format into the message.</param>
+    void LogWarning(const WCHAR* message, ...);
+
+    /// <summary>
+    /// Logs an error message to the Dance Studio log file.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    /// <param name="...">Arguments to format into the message.</param>
+    void LogError(const WCHAR* message, ...);
 
  private:
     /// <summary>
@@ -42,7 +65,9 @@ class Logger {
     /// Logs the specified message with the format parameters supplied.
     /// </summary>
     /// <param name="message">The message to log.</param>
-    /// <param name="argumentList">The argument list to format into the message.</param>
+    /// <param name="argumentList">
+    /// The argument list to format into the message.
+    /// </param>
     void Log(const WCHAR* message, va_list argumentList);
 };
 

@@ -9,6 +9,7 @@
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_VALIDATOR_H_
 
 #include <sstream>
+#include <string>
 
 namespace DanceStudio {
 namespace Core {
@@ -17,18 +18,22 @@ namespace Core {
 /// parameters and functionality.
 /// </summary>
 class Validator {
-public:
+ public:
     /// <summary>
     /// Determines whether the passed in parameter is null and,
     /// if so, throws an invalid argument exception.
     /// </summary>
     /// <param name="parameter">The parameter to validate.</param>
     /// <param name="parameterName">The name of the parameter.</param>
-    static inline void IsNotNull(const void* parameter, const CHAR* parameterName)
-    {
-        if (parameter == NULL)
-        {
-            const std::string& message = "The '" + std::string(parameterName) + "' parameter cannot be null.";
+    static inline void IsNotNull(
+        const void* parameter,
+        const CHAR* parameterName) {
+        if (parameter == NULL) {
+            const std::string& message =
+                "The '"
+              + std::string(parameterName)
+              + "' parameter cannot be null.";
+
             throw std::invalid_argument(message);
         }
     }
@@ -39,10 +44,8 @@ public:
     /// out of range exception.
     /// </summary>
     /// <param name="errorCode">The error code.</param>
-    static inline void IsFileCreated(errno_t errorCode)
-    {
-        if (errorCode != 0)
-        {
+    static inline void IsFileCreated(errno_t errorCode) {
+        if (errorCode != 0) {
             std::ostringstream stream;
             stream << "The file could not be created due to error code '"
                    << errorCode
@@ -52,7 +55,7 @@ public:
         }
     }
 };
-}
-}
+}  // namespace Core
+}  // namespace DanceStudio
 
 #endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_VALIDATOR_H_

@@ -22,19 +22,29 @@ class PathHelper {
      /// Combines the passed in two paths using the path separator
      /// appropriate for the current platform ('/' or '\\').
      /// </summary>
-     /// <param name="path1">The first path to combine (should be something like "C:\path1").</param>
-     /// <param name="path2">The second part of the path to combine (should be something without a root like "file1.bin").</param>
-     /// <returns>The combined path with the proper path separator applied.</returns>
-     static std::wstring Combine(const std::wstring& path1, const std::wstring& path2);
+     /// <param name="path1">
+     /// The first path to combine (should be something like "C:\path1").
+     /// </param>
+     /// <param name="path2">
+     /// The second part of the path to combine
+     /// (should be something without a root like "file1.bin").
+     /// </param>
+     /// <returns>
+     /// The combined path with the proper path separator applied.
+     /// </returns>
+     static std::wstring Combine(
+         const std::wstring& path1,
+         const std::wstring& path2);
 
      /// <summary>
-     /// Gets a filename with the current date formatted as the name (with no extension).
+     /// Gets a filename with the current date formatted as the name
+     /// (with no extension).
      /// Example: "2014.12.26_10.27.00".
      /// </summary>
      /// <returns>The file name formatted with the current date.</returns>
      static std::wstring GetCurrentDateFileName();
 };
-}
-}
+}  // namespace Core
+}  // namespace DanceStudio
 
 #endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_PATHHELPER_H_

@@ -5,8 +5,8 @@
 // <date>12-26-2014</date>
 // =======================================================================
 
-#ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_DEFINES_H_
-#define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_DEFINES_H_
+#ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CONSTANTS_H_
+#define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CONSTANTS_H_
 
 /// <summary>
 /// The path separator to use for the current operating system
@@ -19,4 +19,4 @@ const WCHAR DANCE_STUDIO_PATH_SEPARATOR =
 '/';  // Mac
 #endif  // _WIN32
 
-#endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_DEFINES_H_
+#endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CONSTANTS_H_
