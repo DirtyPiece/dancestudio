@@ -71,6 +71,7 @@ namespace DanceStudio.CodedUITests
         /// Tests that clicking File->Exit from the main menu closes the application properly.
         /// </summary>
         [TestMethod]
+        [Owner("DirtyPiece")]
         public void FileMenuExit_WhenClicked_ClosesTheApplication()
         {
             // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.

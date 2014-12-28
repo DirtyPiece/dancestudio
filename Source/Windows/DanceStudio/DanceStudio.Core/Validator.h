@@ -28,7 +28,7 @@ class Validator {
     static inline void IsNotNull(
         const void* parameter,
         const CHAR* parameterName) {
-        if (parameter == NULL) {
+        if (parameter == nullptr) {
             const std::string& message =
                 "The '"
               + std::string(parameterName)

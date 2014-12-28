@@ -8,4 +8,9 @@
 #ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_STDAFX_H_
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_STDAFX_H_
 
+#include <cassert>
+#include <memory>
+#include "..\DanceStudio.Core\Typedefs.h"
+#include "NativeUniquePointer.h"
+
 #endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_STDAFX_H_

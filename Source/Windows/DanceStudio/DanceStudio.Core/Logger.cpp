@@ -13,8 +13,9 @@
 
 using DanceStudio::Core::Logger;
 
-Logger::Logger(const WCHAR* outputDirectory) {
-    assert(this->file == NULL);
+Logger::Logger(const WCHAR* outputDirectory)
+    : file(nullptr) {
+    assert(this->file == nullptr);
     Validator::IsNotNull(outputDirectory, "outputDirectory");
 
     // Get a new filename with the current date stamped.
@@ -29,59 +30,38 @@ Logger::Logger(const WCHAR* outputDirectory) {
     Validator::IsFileCreated(error);
 }
 
-void Logger::LogVerbose(const WCHAR* message, ...) {
+void Logger::LogVerbose(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
-
-    va_list list;
-    va_start(list, message);
 
     const std::wstring& adjustedMessage = L"V: " + std::wstring(message);
-    this->Log(adjustedMessage.c_str(), list);
-
-    va_end(list);
+    this->Log(adjustedMessage.c_str());
 }
 
-void Logger::LogInfo(const WCHAR* message, ...) {
+void Logger::LogInfo(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
-
-    va_list list;
-    va_start(list, message);
 
     const std::wstring& adjustedMessage = L"I: " + std::wstring(message);
-    this->Log(adjustedMessage.c_str(), list);
-
-    va_end(list);
+    this->Log(adjustedMessage.c_str());
 }
 
-void Logger::LogWarning(const WCHAR* message, ...) {
+void Logger::LogWarning(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
-
-    va_list list;
-    va_start(list, message);
 
     const std::wstring& adjustedMessage = L"W: " + std::wstring(message);
-    this->Log(adjustedMessage.c_str(), list);
-
-    va_end(list);
+    this->Log(adjustedMessage.c_str());
 }
 
-void Logger::LogError(const WCHAR* message, ...) {
+void Logger::LogError(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
-
-    va_list list;
-    va_start(list, message);
 
     const std::wstring& adjustedMessage = L"E: " + std::wstring(message);
-    this->Log(adjustedMessage.c_str(), list);
-
-    va_end(list);
+    this->Log(adjustedMessage.c_str());
 }
 
-void Logger::Log(const WCHAR* message, va_list argumentList) {
-    assert(this->file != NULL);
+void Logger::Log(const WCHAR* message) {
+    assert(this->file != nullptr);
     Validator::IsNotNull(message, "message");
-    Validator::IsNotNull(argumentList, "argumentList");
 
-    vfwprintf_s(this->file, message, argumentList);
+    fwprintf(this->file, message);
     fflush(this->file);
 }
