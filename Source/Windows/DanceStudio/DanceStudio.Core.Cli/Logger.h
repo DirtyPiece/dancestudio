@@ -58,11 +58,29 @@ public ref class Logger {
     /// <param name="args">The arguments to format into the message.</param>
     void LogError(String^ message, ... array<Object^>^ args);
 
+    /// <summary>
+    /// Gets the singleton instance pf the logger.
+    /// </summary>
+    static property Logger^ Instance {
+        Logger^ get() {
+            if (instance == nullptr) {
+                instance = gcnew Logger("C:\\Trash\\blah");
+            }
+
+            return instance;
+        }
+    }
+
  private:
      /// <summary>
      /// The native logger that is wrapped by this class.
      /// </summary>
      NativeUniquePointer<DanceStudio::Core::Logger> logger;
+
+     /// <summary>
+     /// The singleton instance of the logger.
+     /// </summary>
+     static Logger^ instance = nullptr;
 };
 }  // namespace Cli
 }  // namespace Core

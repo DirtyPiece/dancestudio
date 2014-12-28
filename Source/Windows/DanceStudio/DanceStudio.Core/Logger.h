@@ -28,6 +28,11 @@ class Logger {
     explicit Logger(const WCHAR* outputDirectory);
 
     /// <summary>
+    /// Finalizes an instance of the <see cref="Logger"/> class.
+    /// </summary>
+    ~Logger();
+
+    /// <summary>
     /// Logs a verbose message to the Dance Studio log file.
     /// </summary>
     /// <param name="message">The message to log.</param>

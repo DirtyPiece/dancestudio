@@ -13,6 +13,7 @@ namespace DanceStudio.Controller
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using DanceStudio.Core.Cli;
 
     /// <summary>
     /// Represents the controller that performs operations to help the user
@@ -34,12 +35,14 @@ namespace DanceStudio.Controller
         /// </remarks>
         public static void LaunchHelpDocumentationInDefaultBrowser()
         {
+            Logger.Instance.LogVerbose("Launching the help documentation link at '{0}'.", HelpDocumentationUrl);
             try
             {
                 Process.Start(HelpDocumentationUrl);
             }
-            catch
+            catch (Exception ex)
             {
+                Logger.Instance.LogError("Failed to launch the help documentation due to an exception:\n{0}", ex.ToString());
             }
         }
     }

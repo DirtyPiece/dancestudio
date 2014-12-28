@@ -14,8 +14,8 @@ using System::Object;
 using System::String;
 using DanceStudio::Core::Cli::Logger;
 
-Logger::Logger(String^ outputDirectory)
-    : logger(nullptr) {
+Logger::Logger(String^ outputDirectory) :
+    logger(nullptr) {
     std::wstring outputDir = MarshalHelper::ConvertStringToStlString(
         outputDirectory);
 

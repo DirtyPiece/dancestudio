@@ -30,10 +30,21 @@ Logger::Logger(const WCHAR* outputDirectory)
     Validator::IsFileCreated(error);
 }
 
+Logger::~Logger() {
+    if (this->file != nullptr) {
+        fclose(this->file);
+        this->file = nullptr;
+    }
+}
+
 void Logger::LogVerbose(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
 
-    const std::wstring& adjustedMessage = L"V: " + std::wstring(message);
+    const std::wstring& adjustedMessage =
+        L"V: "
+      + std::wstring(message)
+      + L"\r\n";
+
     this->Log(adjustedMessage.c_str());
 }
 
