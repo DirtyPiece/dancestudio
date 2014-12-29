@@ -43,7 +43,7 @@ void Logger::LogVerbose(const WCHAR* message) {
     const std::wstring& adjustedMessage =
         L"V: "
       + std::wstring(message)
-      + L"\r\n";
+      + DANCE_STUDIO_NEWLINE;
 
     this->Log(adjustedMessage.c_str());
 }
@@ -51,21 +51,33 @@ void Logger::LogVerbose(const WCHAR* message) {
 void Logger::LogInfo(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
 
-    const std::wstring& adjustedMessage = L"I: " + std::wstring(message);
+	const std::wstring& adjustedMessage =
+		L"I: "
+		+ std::wstring(message)
+		+ DANCE_STUDIO_NEWLINE;
+
     this->Log(adjustedMessage.c_str());
 }
 
 void Logger::LogWarning(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
 
-    const std::wstring& adjustedMessage = L"W: " + std::wstring(message);
+	const std::wstring& adjustedMessage =
+		L"W: "
+		+ std::wstring(message)
+		+ DANCE_STUDIO_NEWLINE;
+
     this->Log(adjustedMessage.c_str());
 }
 
 void Logger::LogError(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
 
-    const std::wstring& adjustedMessage = L"E: " + std::wstring(message);
+	const std::wstring& adjustedMessage =
+		L"E: "
+		+ std::wstring(message)
+		+ DANCE_STUDIO_NEWLINE;
+
     this->Log(adjustedMessage.c_str());
 }
 

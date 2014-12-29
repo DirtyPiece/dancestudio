@@ -14,11 +14,15 @@
 /// The path separator to use for the current operating system
 /// that the user is using.
 /// </summary>
-const WCHAR DANCE_STUDIO_PATH_SEPARATOR =
-#ifdef _WIN32
-'\\';  // Windows
-#else
-'/';  // Mac
+#ifdef _WIN32  // Windows
+#define DANCE_STUDIO_PATH_SEPARATOR L'\\'
+#else  // Mac
+#define DANCE_STUDIO_PATH_SEPARATOR L'/'
 #endif  // _WIN32
+
+/// <summary>
+/// The newline ending for the current platform.
+/// </summary>
+#define DANCE_STUDIO_NEWLINE L"\n"
 
 #endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CONSTANTS_H_
