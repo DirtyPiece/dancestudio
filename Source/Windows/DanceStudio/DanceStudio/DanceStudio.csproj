@@ -59,6 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\SongPackViewModel.cs" />
+    <Compile Include="ViewModels\SongViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +108,9 @@
       <Project>{5a69ff85-bd5d-4bdb-b71b-74b892de1030}</Project>
       <Name>DanceStudio.Controller</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ProjectDir)..\..\..\..\Build\Targets\DanceStudio.Targets" />

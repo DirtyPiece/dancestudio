@@ -13,22 +13,59 @@
     <Grid x:Uid="Grid_1">
         <DockPanel x:Uid="DockPanel_1">
             <Menu x:Uid="Menu_1" DockPanel.Dock="Top">
-                <MenuItem x:Uid="MenuItem_1" Header="File" Localization.Comments="The main File menu item that allows operations like opening files and closing the application.">
-                    <MenuItem x:Uid="MenuItem_3" Header="New" Localization.Comments="The parent menu item that opens up options for creating new projects or songs." />
-                    <MenuItem x:Uid="MenuItem_4" Header="Open" Localization.Comments="The parent menu item that opens up options for opening projects or songs." />
+                <MenuItem x:Uid="MenuItem_1" Header="_File" Localization.Comments="The main File menu item that allows operations like opening files and closing the application.">
+                    <MenuItem x:Uid="MenuItem_3" Header="_New" Localization.Comments="The parent menu item that opens up options for creating new projects or songs." />
+                    <MenuItem x:Uid="MenuItem_4" Header="_Open" Localization.Comments="The parent menu item that opens up options for opening projects or songs." />
                     <Separator x:Uid="Separator_1" />
+                    <MenuItem x:Uid="MenuItem_9" Header="_Save Project" Localization.Comments="The file menu item that saves the current project the user has created (saves all their song pack settings)." />
+                    <MenuItem x:Uid="MenuItem_10" Header="Save Project _As..." Localization.Comments="The file menu item that saves the current project the user has created with a new file name/location on disk." />
+                    <Separator x:Uid="Separator_3" />
+                    <MenuItem x:Uid="MenuItem_11" Header="Export" Localization.Comments="The parent menu item for exporting to various output file formats.">
+                        <MenuItem x:Uid="MenuItem_12" Header="StepMania/ITG Arcade Format (.sm)" Localization.Comments="The menu item that lets the user export the project as a .sm stepchart file (usable by StepMania and ITG arcade cabinets)." />
+                        <MenuItem x:Uid="MenuItem_13" Header="StepMania Format (.dwi)" Localization.Comments="The menu item that lets the user export the project as a .dwi stepchart file (usable by StepMania only)." />
+                    </MenuItem>
+                    <Separator x:Uid="Separator_4" />
                     <MenuItem x:Uid="MenuItem_2" Header="Exit" Command="Close" Localization.Comments="The menu item that causes the application to close." />
                 </MenuItem>
-                <MenuItem x:Uid="MenuItem_5" Header="Help" Localization.Comments="The menu item that displays options to help the user get information about the tool.">
-                    <MenuItem x:Uid="MenuItem_6" Header="View Online Documentation" Command="{x:Static c:CustomCommands.ViewOnlineDocumentation}" Localization.Comments="Menu item that opens the documentation for the tool from the web." />
-                    <MenuItem x:Uid="MenuItem_7" Header="Tutorial Videos" Localization.Comments="Menu item that displays a list of tutorial videos from YouTube for helping use the tool.">
+                <MenuItem x:Uid="MenuItem_14" Header="_Edit">
+                    <MenuItem x:Uid="MenuItem_15" Header="Undo" />
+                    <MenuItem x:Uid="MenuItem_16" Header="Redo" />
+                    <Separator x:Uid="Separator_5" />
+                    <MenuItem x:Uid="MenuItem_17" Header="Cut" />
+                    <MenuItem x:Uid="MenuItem_18" Header="Copy" />
+                    <MenuItem x:Uid="MenuItem_19" Header="Paste" />
+                </MenuItem>
+                <MenuItem x:Uid="MenuItem_20" Header="_View">
+                    <MenuItem x:Uid="MenuItem_21" Header="Song _Pack Pane" Localization.Comments="The menu item that will show or hide the song pack pane TreeView display." />
+                    <MenuItem x:Uid="MenuItem_22" Header="_Stepchart Editor" Localization.Comments="The menu item that will show or hide the main stepchart editor (where arrows are placed)." />
+                </MenuItem>
+                <MenuItem x:Uid="MenuItem_5" Header="_Help" Localization.Comments="The menu item that displays options to help the user get information about the tool.">
+                    <MenuItem x:Uid="MenuItem_6" Header="View Online _Documentation" Command="{x:Static c:CustomCommands.ViewOnlineDocumentation}" Localization.Comments="Menu item that opens the documentation for the tool from the web." />
+                    <MenuItem x:Uid="MenuItem_7" Header="_Tutorial Videos" Localization.Comments="Menu item that displays a list of tutorial videos from YouTube for helping use the tool.">
                     </MenuItem>
-                    <Separator x:Uid="Separator_2" />
-                    <MenuItem x:Uid="MenuItem_8" Header="About Dance Studio" Localization.Comments="Shows a dialog that displays information about this version of Dance Studio." />
+                    <Separator x:Uid="Separator_6" />
+                    <MenuItem x:Uid="MenuItem_8" Header="_About Dance Studio" Localization.Comments="Shows a dialog that displays information about this version of Dance Studio." />
                 </MenuItem>
             </Menu>
             <Grid x:Uid="Grid_2">
-                
+                <DockPanel x:Uid="DockPanel_2">
+                    <ToolBarTray x:Uid="ToolBarTray_1" DockPanel.Dock="Top" Height="24">
+                    </ToolBarTray>
+                    <StatusBar x:Uid="StatusBar_1" DockPanel.Dock="Bottom" Height="30">
+                        <TextBlock x:Uid="TextBlock_1" Text="Hello" />
+                    </StatusBar>
+                    <Grid x:Uid="leftPane" Name="leftPane" DockPanel.Dock="Left" MinWidth="100">
+                        <TreeView x:Uid="songPacksTreeView" Name="songPacksTreeView">
+                            
+                        </TreeView>
+                    </Grid>
+                    <Grid x:Uid="rightPane" Name="rightPane" DockPanel.Dock="Right" MinWidth="100">
+                        
+                    </Grid>
+                    <Grid x:Uid="Grid_3">
+                        
+                    </Grid>
+                </DockPanel>
             </Grid>
         </DockPanel>
     </Grid>
