@@ -13,6 +13,18 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     /// <summary>
+    /// Event that is raised when the user clicks the
+    /// Help->DanceStudio Help menu item.
+    /// </summary>
+    @IBAction func danceStudioHelpClicked(sender: NSMenuItem) {
+        let helpDocumentationUrl = "https://onedrive.live.com/redir?resid=DFA2592B559E3EE7!113&authkey=!AGur6S7aqPKWOVE&ithint=onenote%2c"
+        
+        if let checkURL = NSURL(string: helpDocumentationUrl) {
+            NSWorkspace.sharedWorkspace().openURL(checkURL)
+        }
+    }
+    
+    /// <summary>
     /// Called when the application finished launching (used as a point to initialize the app).
     /// </summary>
     /// <param name="aNotification">The notification object.</param>
