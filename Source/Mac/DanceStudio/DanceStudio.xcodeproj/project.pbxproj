@@ -12,6 +12,7 @@
 		F09D7D9A1A585C2100B3BE77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F09D7D991A585C2100B3BE77 /* Images.xcassets */; };
 		F09D7D9D1A585C2100B3BE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F09D7D9B1A585C2100B3BE77 /* Main.storyboard */; };
 		F09D7DA91A585C2100B3BE77 /* DanceStudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D7DA81A585C2100B3BE77 /* DanceStudioTests.swift */; };
+		F0F6C44B1A587F5800C86509 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6C44A1A587F5800C86509 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		F09D7DA21A585C2100B3BE77 /* DanceStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanceStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09D7DA71A585C2100B3BE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F09D7DA81A585C2100B3BE77 /* DanceStudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceStudioTests.swift; sourceTree = "<group>"; };
+		F0F6C44A1A587F5800C86509 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				F09D7D991A585C2100B3BE77 /* Images.xcassets */,
 				F09D7D9B1A585C2100B3BE77 /* Main.storyboard */,
 				F09D7D931A585C2100B3BE77 /* Supporting Files */,
+				F0F6C44A1A587F5800C86509 /* AboutViewController.swift */,
 			);
 			path = DanceStudio;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F6C44B1A587F5800C86509 /* AboutViewController.swift in Sources */,
 				F09D7D981A585C2100B3BE77 /* ViewController.swift in Sources */,
 				F09D7D961A585C2100B3BE77 /* AppDelegate.swift in Sources */,
 			);
@@ -397,6 +401,7 @@
 				F09D7DAE1A585C2100B3BE77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F09D7DAF1A585C2100B3BE77 /* Build configuration list for PBXNativeTarget "DanceStudioTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +410,7 @@
 				F09D7DB11A585C2100B3BE77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

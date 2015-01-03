@@ -10,14 +10,15 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="DanceStudio" id="1Xt-HY-uBw">
+                            <menuItem title="Dance Studio" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="DanceStudio" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Dance Studio" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About DanceStudio" id="5kV-Vb-QxS">
+                                        <menuItem title="About Dance Studio" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                                <segue destination="JvB-3C-foI" kind="show" id="WAz-hU-XQ1"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -28,7 +29,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide DanceStudio" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide Dance Studio" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -46,7 +47,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit DanceStudio" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit Dance Studio" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -627,7 +628,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="DanceStudio Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Dance Studio Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="danceStudioHelpClicked:" target="Voe-Tx-rLC" id="Bd7-3O-qgk"/>
                                             </connections>
@@ -650,7 +651,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Dance Studio" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -663,6 +664,76 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="VPo-k1-cr2">
+            <objects>
+                <windowController id="JvB-3C-foI" sceneMemberID="viewController">
+                    <window key="window" title="AboutWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Y52-hA-aZw">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="323" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+                    </window>
+                    <connections>
+                        <segue destination="uBm-aB-M6k" kind="relationship" relationship="window.shadowedContentViewController" id="erl-tq-fv0"/>
+                    </connections>
+                </windowController>
+                <customObject id="NMM-Sk-48X" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="650" y="234"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bpJ-i5-cw8">
+            <objects>
+                <viewController id="uBm-aB-M6k" sceneMemberID="viewController">
+                    <view key="view" id="TEA-un-P7a" customClass="Aboutview">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="245"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfE-jY-zvA">
+                                <rect key="frame" x="236" y="192" width="189" height="33"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="justified" title="Dance Studio" id="0CW-eY-yRo">
+                                    <font key="font" metaFont="system" size="27"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzH-0P-qvF">
+                                <rect key="frame" x="238" y="167" width="38" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1.0.0" id="FzT-pL-Cxq">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jI4-Jp-m4V">
+                                <rect key="frame" x="238" y="99" width="224" height="60"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Dance Studio allows for the creation of beautiful and exciting step charts for Stepmania and In The Groove." id="fnd-ae-4vZ">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="258-Yf-adW">
+                                <rect key="frame" x="-3" y="-4" width="486" height="65"/>
+                                <view key="contentView">
+                                    <rect key="frame" x="1" y="1" width="484" height="63"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="258-Yf-adW" firstAttribute="leading" secondItem="TEA-un-P7a" secondAttribute="leading" id="C3t-DC-z1i"/>
+                            <constraint firstAttribute="trailing" secondItem="258-Yf-adW" secondAttribute="trailing" id="Jkw-eh-xKg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="rUM-gB-ZcC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="650" y="642.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
