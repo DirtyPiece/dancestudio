@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F09D7D961A585C2100B3BE77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D7D951A585C2100B3BE77 /* AppDelegate.swift */; };
+		F09D7D981A585C2100B3BE77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D7D971A585C2100B3BE77 /* ViewController.swift */; };
+		F09D7D9A1A585C2100B3BE77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F09D7D991A585C2100B3BE77 /* Images.xcassets */; };
+		F09D7D9D1A585C2100B3BE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F09D7D9B1A585C2100B3BE77 /* Main.storyboard */; };
+		F09D7DA91A585C2100B3BE77 /* DanceStudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D7DA81A585C2100B3BE77 /* DanceStudioTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F09D7DA31A585C2100B3BE77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F09D7D881A585C2100B3BE77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F09D7D8F1A585C2100B3BE77;
+			remoteInfo = DanceStudio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F09D7D901A585C2100B3BE77 /* DanceStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanceStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F09D7D941A585C2100B3BE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F09D7D951A585C2100B3BE77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F09D7D971A585C2100B3BE77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F09D7D991A585C2100B3BE77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F09D7D9C1A585C2100B3BE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F09D7DA21A585C2100B3BE77 /* DanceStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanceStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F09D7DA71A585C2100B3BE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F09D7DA81A585C2100B3BE77 /* DanceStudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceStudioTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F09D7D8D1A585C2100B3BE77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F09D7D9F1A585C2100B3BE77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F09D7D871A585C2100B3BE77 = {
+			isa = PBXGroup;
+			children = (
+				F09D7D921A585C2100B3BE77 /* DanceStudio */,
+				F09D7DA51A585C2100B3BE77 /* DanceStudioTests */,
+				F09D7D911A585C2100B3BE77 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F09D7D911A585C2100B3BE77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F09D7D901A585C2100B3BE77 /* DanceStudio.app */,
+				F09D7DA21A585C2100B3BE77 /* DanceStudioTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F09D7D921A585C2100B3BE77 /* DanceStudio */ = {
+			isa = PBXGroup;
+			children = (
+				F09D7D951A585C2100B3BE77 /* AppDelegate.swift */,
+				F09D7D971A585C2100B3BE77 /* ViewController.swift */,
+				F09D7D991A585C2100B3BE77 /* Images.xcassets */,
+				F09D7D9B1A585C2100B3BE77 /* Main.storyboard */,
+				F09D7D931A585C2100B3BE77 /* Supporting Files */,
+			);
+			path = DanceStudio;
+			sourceTree = "<group>";
+		};
+		F09D7D931A585C2100B3BE77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F09D7D941A585C2100B3BE77 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F09D7DA51A585C2100B3BE77 /* DanceStudioTests */ = {
+			isa = PBXGroup;
+			children = (
+				F09D7DA81A585C2100B3BE77 /* DanceStudioTests.swift */,
+				F09D7DA61A585C2100B3BE77 /* Supporting Files */,
+			);
+			path = DanceStudioTests;
+			sourceTree = "<group>";
+		};
+		F09D7DA61A585C2100B3BE77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F09D7DA71A585C2100B3BE77 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F09D7D8F1A585C2100B3BE77 /* DanceStudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F09D7DAC1A585C2100B3BE77 /* Build configuration list for PBXNativeTarget "DanceStudio" */;
+			buildPhases = (
+				F09D7D8C1A585C2100B3BE77 /* Sources */,
+				F09D7D8D1A585C2100B3BE77 /* Frameworks */,
+				F09D7D8E1A585C2100B3BE77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DanceStudio;
+			productName = DanceStudio;
+			productReference = F09D7D901A585C2100B3BE77 /* DanceStudio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F09D7DA11A585C2100B3BE77 /* DanceStudioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F09D7DAF1A585C2100B3BE77 /* Build configuration list for PBXNativeTarget "DanceStudioTests" */;
+			buildPhases = (
+				F09D7D9E1A585C2100B3BE77 /* Sources */,
+				F09D7D9F1A585C2100B3BE77 /* Frameworks */,
+				F09D7DA01A585C2100B3BE77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F09D7DA41A585C2100B3BE77 /* PBXTargetDependency */,
+			);
+			name = DanceStudioTests;
+			productName = DanceStudioTests;
+			productReference = F09D7DA21A585C2100B3BE77 /* DanceStudioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F09D7D881A585C2100B3BE77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Bean & Cheese Studios";
+				TargetAttributes = {
+					F09D7D8F1A585C2100B3BE77 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					F09D7DA11A585C2100B3BE77 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = F09D7D8F1A585C2100B3BE77;
+					};
+				};
+			};
+			buildConfigurationList = F09D7D8B1A585C2100B3BE77 /* Build configuration list for PBXProject "DanceStudio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F09D7D871A585C2100B3BE77;
+			productRefGroup = F09D7D911A585C2100B3BE77 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F09D7D8F1A585C2100B3BE77 /* DanceStudio */,
+				F09D7DA11A585C2100B3BE77 /* DanceStudioTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F09D7D8E1A585C2100B3BE77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F09D7D9A1A585C2100B3BE77 /* Images.xcassets in Resources */,
+				F09D7D9D1A585C2100B3BE77 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F09D7DA01A585C2100B3BE77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F09D7D8C1A585C2100B3BE77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F09D7D981A585C2100B3BE77 /* ViewController.swift in Sources */,
+				F09D7D961A585C2100B3BE77 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F09D7D9E1A585C2100B3BE77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F09D7DA91A585C2100B3BE77 /* DanceStudioTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F09D7DA41A585C2100B3BE77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F09D7D8F1A585C2100B3BE77 /* DanceStudio */;
+			targetProxy = F09D7DA31A585C2100B3BE77 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F09D7D9B1A585C2100B3BE77 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F09D7D9C1A585C2100B3BE77 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F09D7DAA1A585C2100B3BE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F09D7DAB1A585C2100B3BE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F09D7DAD1A585C2100B3BE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DanceStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F09D7DAE1A585C2100B3BE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DanceStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F09D7DB01A585C2100B3BE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DanceStudioTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DanceStudio.app/Contents/MacOS/DanceStudio";
+			};
+			name = Debug;
+		};
+		F09D7DB11A585C2100B3BE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DanceStudioTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DanceStudio.app/Contents/MacOS/DanceStudio";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F09D7D8B1A585C2100B3BE77 /* Build configuration list for PBXProject "DanceStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F09D7DAA1A585C2100B3BE77 /* Debug */,
+				F09D7DAB1A585C2100B3BE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F09D7DAC1A585C2100B3BE77 /* Build configuration list for PBXNativeTarget "DanceStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F09D7DAD1A585C2100B3BE77 /* Debug */,
+				F09D7DAE1A585C2100B3BE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F09D7DAF1A585C2100B3BE77 /* Build configuration list for PBXNativeTarget "DanceStudioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F09D7DB01A585C2100B3BE77 /* Debug */,
+				F09D7DB11A585C2100B3BE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F09D7D881A585C2100B3BE77 /* Project object */;
+}
