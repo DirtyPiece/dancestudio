@@ -5,8 +5,8 @@
 // <date>12-26-2014</date>
 // =======================================================================
 
-#ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_TYPEDEFS_H_
-#define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_TYPEDEFS_H_
+#ifndef SOURCE_COMMON_DANCESTUDIO_CORE_TYPEDEFS_H_
+#define SOURCE_COMMON_DANCESTUDIO_CORE_TYPEDEFS_H_
 
 // Integer types.
 typedef char SBYTE;
@@ -26,4 +26,4 @@ typedef double DOUBLE;
 typedef char CHAR;
 typedef wchar_t WCHAR;
 
-#endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_TYPEDEFS_H_
+#endif  // SOURCE_COMMON_DANCESTUDIO_CORE_TYPEDEFS_H_

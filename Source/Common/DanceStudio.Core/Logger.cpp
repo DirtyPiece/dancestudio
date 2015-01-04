@@ -13,21 +13,21 @@
 
 using DanceStudio::Core::Logger;
 
-Logger::Logger(const WCHAR* outputDirectory)
+Logger::Logger(const CHAR* outputDirectory)
     : file(nullptr) {
     assert(this->file == nullptr);
     Validator::IsNotNull(outputDirectory, "outputDirectory");
 
     // Get a new filename with the current date stamped.
-    std::wstring logFileName = PathHelper::GetCurrentDateFileName() + L".log";
+    std::string logFileName = PathHelper::GetCurrentDateFileName() + ".log";
 
     // Open the new file to start writing the log to.
-    std::wstring outputFilePath = PathHelper::Combine(
+    std::string outputFilePath = PathHelper::Combine(
         outputDirectory,
         logFileName);
 
-    errno_t error = _wfopen_s(&this->file, outputFilePath.c_str(), L"w");
-    Validator::IsFileCreated(error);
+    this->file = fopen(outputFilePath.c_str(), "w");
+    Validator::IsFileCreated(this->file, outputFilePath);
 }
 
 Logger::~Logger() {

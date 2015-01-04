@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0D909541A59C1D5000B5601 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = F0D9094C1A59C1D5000B5601 /* Constants.h */; };
+		F0D909551A59C1D5000B5601 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0D9094D1A59C1D5000B5601 /* Logger.cpp */; };
+		F0D909561A59C1D5000B5601 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = F0D9094E1A59C1D5000B5601 /* Logger.h */; };
+		F0D909571A59C1D5000B5601 /* PathHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0D9094F1A59C1D5000B5601 /* PathHelper.cpp */; };
+		F0D909581A59C1D5000B5601 /* PathHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = F0D909501A59C1D5000B5601 /* PathHelper.h */; };
+		F0D909591A59C1D5000B5601 /* Stdafx.h in Headers */ = {isa = PBXBuildFile; fileRef = F0D909511A59C1D5000B5601 /* Stdafx.h */; };
+		F0D9095A1A59C1D5000B5601 /* Typedefs.h in Headers */ = {isa = PBXBuildFile; fileRef = F0D909521A59C1D5000B5601 /* Typedefs.h */; };
+		F0D9095B1A59C1D5000B5601 /* Validator.h in Headers */ = {isa = PBXBuildFile; fileRef = F0D909531A59C1D5000B5601 /* Validator.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F0D909341A59C094000B5601 /* libDanceStudio.Core.C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDanceStudio.Core.C.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0D9094C1A59C1D5000B5601 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		F0D9094D1A59C1D5000B5601 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
+		F0D9094E1A59C1D5000B5601 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		F0D9094F1A59C1D5000B5601 /* PathHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PathHelper.cpp; sourceTree = "<group>"; };
+		F0D909501A59C1D5000B5601 /* PathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathHelper.h; sourceTree = "<group>"; };
+		F0D909511A59C1D5000B5601 /* Stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stdafx.h; sourceTree = "<group>"; };
+		F0D909521A59C1D5000B5601 /* Typedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Typedefs.h; sourceTree = "<group>"; };
+		F0D909531A59C1D5000B5601 /* Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validator.h; sourceTree = "<group>"; };
+		F0D9095C1A59EEEB000B5601 /* DanceStudio.Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DanceStudio.Core.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0D909311A59C094000B5601 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0D9092B1A59C094000B5601 = {
+			isa = PBXGroup;
+			children = (
+				F0D9093B1A59C09F000B5601 /* Source */,
+				F0D909351A59C094000B5601 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F0D909351A59C094000B5601 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0D909341A59C094000B5601 /* libDanceStudio.Core.C.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0D9093B1A59C09F000B5601 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F0D9094C1A59C1D5000B5601 /* Constants.h */,
+				F0D9094D1A59C1D5000B5601 /* Logger.cpp */,
+				F0D9094E1A59C1D5000B5601 /* Logger.h */,
+				F0D9094F1A59C1D5000B5601 /* PathHelper.cpp */,
+				F0D909501A59C1D5000B5601 /* PathHelper.h */,
+				F0D909511A59C1D5000B5601 /* Stdafx.h */,
+				F0D909521A59C1D5000B5601 /* Typedefs.h */,
+				F0D909531A59C1D5000B5601 /* Validator.h */,
+				F0D9095C1A59EEEB000B5601 /* DanceStudio.Core.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F0D909321A59C094000B5601 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0D9095A1A59C1D5000B5601 /* Typedefs.h in Headers */,
+				F0D9095B1A59C1D5000B5601 /* Validator.h in Headers */,
+				F0D909591A59C1D5000B5601 /* Stdafx.h in Headers */,
+				F0D909561A59C1D5000B5601 /* Logger.h in Headers */,
+				F0D909541A59C1D5000B5601 /* Constants.h in Headers */,
+				F0D909581A59C1D5000B5601 /* PathHelper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F0D909331A59C094000B5601 /* DanceStudio.Core.C */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0D909381A59C094000B5601 /* Build configuration list for PBXNativeTarget "DanceStudio.Core.C" */;
+			buildPhases = (
+				F0D909301A59C094000B5601 /* Sources */,
+				F0D909311A59C094000B5601 /* Frameworks */,
+				F0D909321A59C094000B5601 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DanceStudio.Core.C;
+			productName = DanceStudio.Core.C;
+			productReference = F0D909341A59C094000B5601 /* libDanceStudio.Core.C.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0D9092C1A59C094000B5601 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Bean & Cheese Studios";
+				TargetAttributes = {
+					F0D909331A59C094000B5601 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = F0D9092F1A59C094000B5601 /* Build configuration list for PBXProject "DanceStudio.Core.C" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F0D9092B1A59C094000B5601;
+			productRefGroup = F0D909351A59C094000B5601 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0D909331A59C094000B5601 /* DanceStudio.Core.C */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0D909301A59C094000B5601 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0D909571A59C1D5000B5601 /* PathHelper.cpp in Sources */,
+				F0D909551A59C1D5000B5601 /* Logger.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F0D909361A59C094000B5601 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F0D909371A59C094000B5601 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F0D909391A59C094000B5601 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F0D9093A1A59C094000B5601 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0D9092F1A59C094000B5601 /* Build configuration list for PBXProject "DanceStudio.Core.C" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0D909361A59C094000B5601 /* Debug */,
+				F0D909371A59C094000B5601 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0D909381A59C094000B5601 /* Build configuration list for PBXNativeTarget "DanceStudio.Core.C" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0D909391A59C094000B5601 /* Debug */,
+				F0D9093A1A59C094000B5601 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F0D9092C1A59C094000B5601 /* Project object */;
+}

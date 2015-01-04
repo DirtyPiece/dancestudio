@@ -5,8 +5,8 @@
 // <date>12-26-2014</date>
 // =======================================================================
 
-#ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_
-#define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_
+#ifndef SOURCE_COMMON_DANCESTUDIO_CORE_STDAFX_H_
+#define SOURCE_COMMON_DANCESTUDIO_CORE_STDAFX_H_
 
 #include <stdexcept>
 #include <cassert>
@@ -15,4 +15,4 @@
 #include "Constants.h"
 #include "Validator.h"
 
-#endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_STDAFX_H_
+#endif  // SOURCE_COMMON_DANCESTUDIO_CORE_STDAFX_H_

@@ -5,8 +5,8 @@
 // <date>12-26-2014</date>
 // =======================================================================
 
-#ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_LOGGER_H_
-#define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_LOGGER_H_
+#ifndef SOURCE_COMMON_DANCESTUDIO_CORE_LOGGER_H_
+#define SOURCE_COMMON_DANCESTUDIO_CORE_LOGGER_H_
 
 #include <stdio.h>
 
@@ -25,7 +25,7 @@ class Logger {
     /// <param name="outputDirectory">
     /// The output directory to store the log file at.
     /// </param>
-    explicit Logger(const WCHAR* outputDirectory);
+    explicit Logger(const CHAR* outputDirectory);
 
     /// <summary>
     /// Finalizes an instance of the <see cref="Logger"/> class.
@@ -72,4 +72,4 @@ class Logger {
 }  // namespace Core
 }  // namespace DanceStudio
 
-#endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_LOGGER_H_
+#endif  // SOURCE_COMMON_DANCESTUDIO_CORE_LOGGER_H_

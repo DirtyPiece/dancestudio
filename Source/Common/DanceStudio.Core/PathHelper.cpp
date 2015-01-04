@@ -12,25 +12,24 @@
 
 using DanceStudio::Core::PathHelper;
 
-std::wstring PathHelper::GetCurrentDateFileName() {
+std::string PathHelper::GetCurrentDateFileName() {
     time_t t = time(0);
-    tm now;
-    errno_t error = localtime_s(&now, &t);
-    Validator::IsValidTime(error);
+    tm* now = localtime(&t);
+    Validator::IsValidTime(now);
 
     // Create the string with format like "2014.12.26_10.27.00".
-    std::wstringstream stream;
-    stream << (now.tm_year + 1900);
+    std::stringstream stream;
+    stream << (now->tm_year + 1900);
     stream << ".";
-    stream << (now.tm_mon + 1);
+    stream << (now->tm_mon + 1);
     stream << ".";
-    stream << now.tm_mday;
+    stream << now->tm_mday;
     stream << "_";
-    stream << now.tm_hour;
+    stream << now->tm_hour;
     stream << ".";
-    stream << now.tm_min;
+    stream << now->tm_min;
     stream << ".";
-    stream << now.tm_sec;
+    stream << now->tm_sec;
 
     return stream.str();
 }

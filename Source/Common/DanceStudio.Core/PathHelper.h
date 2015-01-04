@@ -5,8 +5,8 @@
 // <date>12-26-2014</date>
 // =======================================================================
 
-#ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_PATHHELPER_H_
-#define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_PATHHELPER_H_
+#ifndef SOURCE_COMMON_DANCESTUDIO_CORE_PATHHELPER_H_
+#define SOURCE_COMMON_DANCESTUDIO_CORE_PATHHELPER_H_
 
 #include <string>
 #include "Constants.h"
@@ -33,9 +33,9 @@ class PathHelper {
      /// <returns>
      /// The combined path with the proper path separator applied.
      /// </returns>
-     static inline std::wstring Combine(
-         const std::wstring& path1,
-         const std::wstring& path2) {
+     static inline std::string Combine(
+         const std::string& path1,
+         const std::string& path2) {
          return path1 + DANCE_STUDIO_PATH_SEPARATOR + path2;
      }
 
@@ -45,9 +45,9 @@ class PathHelper {
      /// Example: "2014.12.26_10.27.00".
      /// </summary>
      /// <returns>The file name formatted with the current date.</returns>
-     static std::wstring GetCurrentDateFileName();
+     static std::string GetCurrentDateFileName();
 };
 }  // namespace Core
 }  // namespace DanceStudio
 
-#endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_PATHHELPER_H_
+#endif  // SOURCE_COMMON_DANCESTUDIO_CORE_PATHHELPER_H_

@@ -23,6 +23,13 @@
 			remoteGlobalIDString = F09D7D8F1A585C2100B3BE77;
 			remoteInfo = DanceStudio;
 		};
+		F0D909611A59F6FF000B5601 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0D9095D1A59F6FF000B5601 /* DanceStudio.Core.C.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F0D909341A59C094000B5601;
+			remoteInfo = DanceStudio.Core.C;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +42,7 @@
 		F09D7DA21A585C2100B3BE77 /* DanceStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanceStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09D7DA71A585C2100B3BE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F09D7DA81A585C2100B3BE77 /* DanceStudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceStudioTests.swift; sourceTree = "<group>"; };
+		F0D9095D1A59F6FF000B5601 /* DanceStudio.Core.C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DanceStudio.Core.C.xcodeproj; path = ../../Common/DanceStudio.Core/DanceStudio.Core.C.xcodeproj; sourceTree = "<group>"; };
 		F0F6C44A1A587F5800C86509 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +67,7 @@
 		F09D7D871A585C2100B3BE77 = {
 			isa = PBXGroup;
 			children = (
+				F0D9095D1A59F6FF000B5601 /* DanceStudio.Core.C.xcodeproj */,
 				F09D7D921A585C2100B3BE77 /* DanceStudio */,
 				F09D7DA51A585C2100B3BE77 /* DanceStudioTests */,
 				F09D7D911A585C2100B3BE77 /* Products */,
@@ -110,6 +119,14 @@
 				F09D7DA71A585C2100B3BE77 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0D9095E1A59F6FF000B5601 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0D909621A59F6FF000B5601 /* libDanceStudio.Core.C.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +196,12 @@
 			mainGroup = F09D7D871A585C2100B3BE77;
 			productRefGroup = F09D7D911A585C2100B3BE77 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F0D9095E1A59F6FF000B5601 /* Products */;
+					ProjectRef = F0D9095D1A59F6FF000B5601 /* DanceStudio.Core.C.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F09D7D8F1A585C2100B3BE77 /* DanceStudio */,
@@ -186,6 +209,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F0D909621A59F6FF000B5601 /* libDanceStudio.Core.C.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDanceStudio.Core.C.a;
+			remoteRef = F0D909611A59F6FF000B5601 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F09D7D8E1A585C2100B3BE77 /* Resources */ = {

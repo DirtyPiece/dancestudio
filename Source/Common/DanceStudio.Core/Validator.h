@@ -5,8 +5,8 @@
 // <date>12-26-2014</date>
 // =======================================================================
 
-#ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_VALIDATOR_H_
-#define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_VALIDATOR_H_
+#ifndef SOURCE_COMMON_DANCESTUDIO_CORE_VALIDATOR_H_
+#define SOURCE_COMMON_DANCESTUDIO_CORE_VALIDATOR_H_
 
 #include <sstream>
 #include <string>
@@ -39,16 +39,17 @@ class Validator {
     }
 
     /// <summary>
-    /// Determines whether the passed in error code determines that
-    /// a file was successfully created.  If not, it throws an
+    /// Determines whether the passed in file that
+    /// was successfully created.  If not, it throws an
     /// out of range exception.
     /// </summary>
-    /// <param name="errorCode">The error code.</param>
-    static inline void IsFileCreated(errno_t errorCode) {
-        if (errorCode != 0) {
-            std::ostringstream stream;
-            stream << "The file could not be created due to error code '"
-                   << errorCode
+    /// <param name="file">The pointer to the file handle to verify.</param>
+    /// <param name="filePath">The path to the file that was attempted to be opened.</param>
+    static inline void IsFileCreated(const FILE* file, const std::string& filePath) {
+        if (file == nullptr) {
+            std::stringstream stream;
+            stream << "The file could not be created at '"
+                   << filePath
                    << "'.";
 
             throw std::out_of_range(stream.str());
@@ -56,23 +57,18 @@ class Validator {
     }
 
     /// <summary>
-    /// Determines whether the passed in error code determines that
+    /// Determines whether the passed in time pointer determines that
     /// a time value was successfully created.  If not, it throws an
     /// out of range exception.
     /// </summary>
-    /// <param name="errorCode">The error code.</param>
-    static inline void IsValidTime(errno_t errorCode) {
-        if (errorCode != 0) {
-            std::ostringstream stream;
-            stream << "The time could not be created due to error code '"
-                << errorCode
-                << "'.";
-
-            throw std::out_of_range(stream.str());
+    /// <param name="time">The time value to validate for not being <c>null</c>.</param>
+    static inline void IsValidTime(const tm* time) {
+        if (time == nullptr) {
+            throw std::out_of_range("The time could not be created.");
         }
     }
 };
 }  // namespace Core
 }  // namespace DanceStudio
 
-#endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_VALIDATOR_H_
+#endif  // SOURCE_COMMON_DANCESTUDIO_CORE_VALIDATOR_H_
