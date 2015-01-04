@@ -683,11 +683,11 @@
             </objects>
             <point key="canvasLocation" x="650" y="234"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="bpJ-i5-cw8">
             <objects>
-                <viewController id="uBm-aB-M6k" sceneMemberID="viewController">
-                    <view key="view" id="TEA-un-P7a" customClass="Aboutview">
+                <viewController id="uBm-aB-M6k" customClass="AboutViewController" customModule="DanceStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="TEA-un-P7a">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="245"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -715,11 +715,21 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="258-Yf-adW">
+                            <box autoresizesSubviews="NO" misplaced="YES" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="258-Yf-adW">
                                 <rect key="frame" x="-3" y="-4" width="486" height="65"/>
                                 <view key="contentView">
                                     <rect key="frame" x="1" y="1" width="484" height="63"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XuI-TD-zFa">
+                                            <rect key="frame" x="34" y="24" width="38" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Privacy Policy¬" id="ZFk-gl-OQT">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
                                 </view>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
