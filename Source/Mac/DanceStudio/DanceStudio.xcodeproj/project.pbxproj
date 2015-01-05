@@ -12,6 +12,8 @@
 		F09D7D9A1A585C2100B3BE77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F09D7D991A585C2100B3BE77 /* Images.xcassets */; };
 		F09D7D9D1A585C2100B3BE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F09D7D9B1A585C2100B3BE77 /* Main.storyboard */; };
 		F09D7DA91A585C2100B3BE77 /* DanceStudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D7DA81A585C2100B3BE77 /* DanceStudioTests.swift */; };
+		F0D909661A5A0490000B5601 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D909651A5A0490000B5601 /* Logger.swift */; };
+		F0D909841A5A169C000B5601 /* libDanceStudio.Core.C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D909831A5A169C000B5601 /* libDanceStudio.Core.C.a */; };
 		F0F6C44B1A587F5800C86509 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6C44A1A587F5800C86509 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,9 +25,9 @@
 			remoteGlobalIDString = F09D7D8F1A585C2100B3BE77;
 			remoteInfo = DanceStudio;
 		};
-		F0D909611A59F6FF000B5601 /* PBXContainerItemProxy */ = {
+		F0D909811A5A148F000B5601 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F0D9095D1A59F6FF000B5601 /* DanceStudio.Core.C.xcodeproj */;
+			containerPortal = F0D9097D1A5A148F000B5601 /* DanceStudio.Core.C.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F0D909341A59C094000B5601;
 			remoteInfo = DanceStudio.Core.C;
@@ -42,7 +44,10 @@
 		F09D7DA21A585C2100B3BE77 /* DanceStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanceStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09D7DA71A585C2100B3BE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F09D7DA81A585C2100B3BE77 /* DanceStudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceStudioTests.swift; sourceTree = "<group>"; };
-		F0D9095D1A59F6FF000B5601 /* DanceStudio.Core.C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DanceStudio.Core.C.xcodeproj; path = ../../Common/DanceStudio.Core/DanceStudio.Core.C.xcodeproj; sourceTree = "<group>"; };
+		F0D909641A5A00FC000B5601 /* DanceStudio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DanceStudio-Bridging-Header.h"; sourceTree = "<group>"; };
+		F0D909651A5A0490000B5601 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		F0D9097D1A5A148F000B5601 /* DanceStudio.Core.C.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DanceStudio.Core.C.xcodeproj; path = ../../Common/DanceStudio.Core/DanceStudio.Core.C.xcodeproj; sourceTree = "<group>"; };
+		F0D909831A5A169C000B5601 /* libDanceStudio.Core.C.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDanceStudio.Core.C.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/DanceStudio.Core.C-dqrrlsmjevbkwgdlnadwswnpupjo/Build/Products/Debug/libDanceStudio.Core.C.a"; sourceTree = "<group>"; };
 		F0F6C44A1A587F5800C86509 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0D909841A5A169C000B5601 /* libDanceStudio.Core.C.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +73,8 @@
 		F09D7D871A585C2100B3BE77 = {
 			isa = PBXGroup;
 			children = (
-				F0D9095D1A59F6FF000B5601 /* DanceStudio.Core.C.xcodeproj */,
+				F0D909831A5A169C000B5601 /* libDanceStudio.Core.C.a */,
+				F0D9097D1A5A148F000B5601 /* DanceStudio.Core.C.xcodeproj */,
 				F09D7D921A585C2100B3BE77 /* DanceStudio */,
 				F09D7DA51A585C2100B3BE77 /* DanceStudioTests */,
 				F09D7D911A585C2100B3BE77 /* Products */,
@@ -92,6 +99,8 @@
 				F09D7D9B1A585C2100B3BE77 /* Main.storyboard */,
 				F09D7D931A585C2100B3BE77 /* Supporting Files */,
 				F0F6C44A1A587F5800C86509 /* AboutViewController.swift */,
+				F0D909641A5A00FC000B5601 /* DanceStudio-Bridging-Header.h */,
+				F0D909651A5A0490000B5601 /* Logger.swift */,
 			);
 			path = DanceStudio;
 			sourceTree = "<group>";
@@ -121,10 +130,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F0D9095E1A59F6FF000B5601 /* Products */ = {
+		F0D9097E1A5A148F000B5601 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F0D909621A59F6FF000B5601 /* libDanceStudio.Core.C.a */,
+				F0D909821A5A148F000B5601 /* libDanceStudio.Core.C.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,8 +207,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F0D9095E1A59F6FF000B5601 /* Products */;
-					ProjectRef = F0D9095D1A59F6FF000B5601 /* DanceStudio.Core.C.xcodeproj */;
+					ProductGroup = F0D9097E1A5A148F000B5601 /* Products */;
+					ProjectRef = F0D9097D1A5A148F000B5601 /* DanceStudio.Core.C.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -211,11 +220,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F0D909621A59F6FF000B5601 /* libDanceStudio.Core.C.a */ = {
+		F0D909821A5A148F000B5601 /* libDanceStudio.Core.C.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libDanceStudio.Core.C.a;
-			remoteRef = F0D909611A59F6FF000B5601 /* PBXContainerItemProxy */;
+			remoteRef = F0D909811A5A148F000B5601 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -247,6 +256,7 @@
 				F0F6C44B1A587F5800C86509 /* AboutViewController.swift in Sources */,
 				F09D7D981A585C2100B3BE77 /* ViewController.swift in Sources */,
 				F09D7D961A585C2100B3BE77 /* AppDelegate.swift in Sources */,
+				F0D909661A5A0490000B5601 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,22 +370,30 @@
 		F09D7DAD1A585C2100B3BE77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DanceStudio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/DanceStudio.Core.C-dqrrlsmjevbkwgdlnadwswnpupjo/Build/Products/Debug";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dirtypiece/Documents/Development/dancestudio/Source/Mac/DanceStudio/DanceStudio/DanceStudio-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		F09D7DAE1A585C2100B3BE77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DanceStudio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/DanceStudio.Core.C-dqrrlsmjevbkwgdlnadwswnpupjo/Build/Products/Debug";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dirtypiece/Documents/Development/dancestudio/Source/Mac/DanceStudio/DanceStudio/DanceStudio-Bridging-Header.h";
 			};
 			name = Release;
 		};

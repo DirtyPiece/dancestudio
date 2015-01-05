@@ -12,7 +12,10 @@
 
 // The following functions are all wrappers to expose the functionality
 // of DanceStudio.Core to Mac (Swift).
+#ifdef __cplusplus
 extern "C" {
+#endif  // __cplusplus
+    
     /// <summary>
     /// Allocates memory for an application logger and returns a pointer to it.
     /// </summary>
@@ -53,6 +56,8 @@ extern "C" {
     /// <param name="logger">The logger to log the message with.</param>
     /// <param name="message">The message to log.</param>
     void DSLogError(void* logger, const WCHAR* message);
+#ifdef __cplusplus
 }
+#endif  // __cplusplus
 
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_DANCESTUDIO_CORE_H_
