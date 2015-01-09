@@ -7,8 +7,10 @@
 
 #include "Stdafx.h"
 #include "PathHelper.h"
+#include <time.h>
 #include <ctime>
 #include <sstream>
+#include <string>
 
 using DanceStudio::Core::PathHelper;
 

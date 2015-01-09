@@ -19,14 +19,14 @@ TEST_CLASS(PathHelperTests) {
     DANCE_STUDIO_TEST_METHOD(
         Combine_WhenCalledOnWindows_CorrectlyInsertsBackslash,
         L"DirtyPiece") {
-        std::wstring path1 = L"C:\\SomeTestPath";
-        std::wstring path2 = L"sometestfile.log";
+        std::string path1 = "C:\\SomeTestPath";
+        std::string path2 = "sometestfile.log";
 
-        std::wstring result = PathHelper::Combine(path1, path2);
+        std::string result = PathHelper::Combine(path1, path2);
         Assert::AreEqual(
-            L"C:\\SomeTestPath\\sometestfile.log",
+            "C:\\SomeTestPath\\sometestfile.log",
             result.c_str(),
-            L"The Windows path separator was not properly inserted.");
+            "The Windows path separator was not properly inserted.");
     }
 };
 }  // namespace DanceStudioCoreUnitTests

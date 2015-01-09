@@ -27,8 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{57
 		..\..\Snippets\snpXna.snippet = ..\..\Snippets\snpXna.snippet
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core", "DanceStudio.Core\DanceStudio.Core.vcxproj", "{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core.Cli", "DanceStudio.Core.Cli\DanceStudio.Core.Cli.vcxproj", "{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED} = {2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}
@@ -44,6 +42,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core.UnitTests", "DanceStudio.Core.UnitTests\DanceStudio.Core.UnitTests.vcxproj", "{109A92F7-8EC5-4FF0-B36C-FDDD530F6BEF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED} = {2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core", "..\..\Common\DanceStudio.Core\DanceStudio.Core.vcxproj", "{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,18 +68,6 @@ Global
 		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{66ED48B4-D509-4980-AAA2-D39E5D45E085}.Release|Win32.ActiveCfg = Release|Any CPU
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Any CPU.Build.0 = Debug|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Win32.ActiveCfg = Debug|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Win32.Build.0 = Debug|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Any CPU.ActiveCfg = Release|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Any CPU.Build.0 = Release|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Win32.ActiveCfg = Release|Win32
-		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Win32.Build.0 = Release|Win32
 		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Debug|Any CPU.Build.0 = Debug|Win32
 		{DE9E1227-BDF5-4C63-86EA-54C62C7F39E9}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
@@ -121,6 +112,18 @@ Global
 		{109A92F7-8EC5-4FF0-B36C-FDDD530F6BEF}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{109A92F7-8EC5-4FF0-B36C-FDDD530F6BEF}.Release|Win32.ActiveCfg = Release|Win32
 		{109A92F7-8EC5-4FF0-B36C-FDDD530F6BEF}.Release|Win32.Build.0 = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Any CPU.Build.0 = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Debug|Win32.Build.0 = Debug|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Any CPU.ActiveCfg = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Any CPU.Build.0 = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Win32.ActiveCfg = Release|Win32
+		{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

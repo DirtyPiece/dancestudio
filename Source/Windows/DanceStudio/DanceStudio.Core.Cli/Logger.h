@@ -8,7 +8,7 @@
 #ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_LOGGER_H_
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_LOGGER_H_
 
-#include "..\DanceStudio.Core\Logger.h"
+#include "..\..\..\Common\DanceStudio.Core\Logger.h"
 #include "NativeUniquePointer.h"
 
 using System::Object;

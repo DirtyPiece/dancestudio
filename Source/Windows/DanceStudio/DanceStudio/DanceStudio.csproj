@@ -61,6 +61,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\SongPackViewModel.cs" />
     <Compile Include="ViewModels\SongViewModel.cs" />
+    <Compile Include="ViewModels\StepChartViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

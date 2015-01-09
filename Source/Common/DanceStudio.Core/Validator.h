@@ -44,8 +44,12 @@ class Validator {
     /// out of range exception.
     /// </summary>
     /// <param name="file">The pointer to the file handle to verify.</param>
-    /// <param name="filePath">The path to the file that was attempted to be opened.</param>
-    static inline void IsFileCreated(const FILE* file, const std::string& filePath) {
+    /// <param name="filePath">
+    /// The path to the file that was attempted to be opened.
+    /// </param>
+    static inline void IsFileCreated(
+        const FILE* file,
+        const std::string& filePath) {
         if (file == nullptr) {
             std::stringstream stream;
             stream << "The file could not be created at '"
@@ -61,7 +65,9 @@ class Validator {
     /// a time value was successfully created.  If not, it throws an
     /// out of range exception.
     /// </summary>
-    /// <param name="time">The time value to validate for not being <c>null</c>.</param>
+    /// <param name="time">
+    /// The time value to validate for not being <c>null</c>.
+    /// </param>
     static inline void IsValidTime(const tm* time) {
         if (time == nullptr) {
             throw std::out_of_range("The time could not be created.");
