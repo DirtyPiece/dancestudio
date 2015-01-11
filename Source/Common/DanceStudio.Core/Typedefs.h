@@ -26,4 +26,9 @@ typedef double DOUBLE;
 typedef char CHAR;
 typedef wchar_t WCHAR;
 
+// Dance Studio types.
+typedef void DS_LOGGER;
+typedef void DS_HANDLE;
+typedef void DS_STEPCHARTEDITOR;
+
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_TYPEDEFS_H_

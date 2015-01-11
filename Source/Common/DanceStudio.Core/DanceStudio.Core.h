@@ -15,6 +15,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif  // __cplusplus
+    /// ----------------------------------------------------------------------
+    /// Logger functions.
+    /// ----------------------------------------------------------------------
+
     /// <summary>
     /// Allocates memory for an application logger and returns a pointer to it.
     /// </summary>
@@ -22,41 +26,73 @@ extern "C" {
     /// The path to the output directory to store the log file in.
     /// </param>
     /// <returns>The pointer to the logger that was created.</returns>
-    void* DSLogAllocateLogger(const CHAR* outputDirectory);
+    DS_LOGGER* DSLoggerAllocate(const CHAR* outputDirectory);
 
     /// <summary>
     /// Frees memory for an application logger.
     /// </summary>
     /// <param name="logger">The logger to free.</param>
-    void DSLogFreeLogger(void* logger);
+    void DSLoggerFree(DS_LOGGER* logger);
 
     /// <summary>
     /// Logs a verbose message to the log.
     /// </summary>
     /// <param name="logger">The logger to log the message with.</param>
     /// <param name="message">The message to log.</param>
-    void DSLogVerbose(void* logger, const WCHAR* message);
+    void DSLoggerLogVerbose(DS_LOGGER* logger, const WCHAR* message);
 
     /// <summary>
     /// Logs an informational message to the log.
     /// </summary>
     /// <param name="logger">The logger to log the message with.</param>
     /// <param name="message">The message to log.</param>
-    void DSLogInfo(void* logger, const WCHAR* message);
+    void DSLoggerLogInfo(DS_LOGGER* logger, const WCHAR* message);
 
     /// <summary>
     /// Logs a warning message to the log.
     /// </summary>
     /// <param name="logger">The logger to log the message with.</param>
     /// <param name="message">The message to log.</param>
-    void DSLogWarning(void* logger, const WCHAR* message);
+    void DSLoggerLogWarning(DS_LOGGER* logger, const WCHAR* message);
 
     /// <summary>
     /// Logs an error message to the log.
     /// </summary>
     /// <param name="logger">The logger to log the message with.</param>
     /// <param name="message">The message to log.</param>
-    void DSLogError(void* logger, const WCHAR* message);
+    void DSLoggerLogError(DS_LOGGER* logger, const WCHAR* message);
+
+    /// ----------------------------------------------------------------------
+    /// Stepchart Editor functions.
+    /// ----------------------------------------------------------------------
+
+    /// <summary>
+    /// Allocates the step chart editor.
+    /// </summary>
+    /// <param name="windowHandle">
+    /// The handle to the window that the stepchart will be rendered into.
+    /// </param>
+    /// <returns>The allocated step chart editor.</returns>
+    DS_STEPCHARTEDITOR* DSStepChartEditorAllocate(DS_HANDLE* windowHandle);
+
+    /// <summary>
+    /// Frees the step chart editor.
+    /// </summary>
+    /// <param name="windowHandle">
+    /// The handle to the window that the stepchart will be rendered into.
+    /// </param>
+    void DSStepChartEditorFree(DS_STEPCHARTEDITOR* editor);
+
+    /// <summary>
+    /// Initializes the step chart editor.
+    /// </summary>
+    /// <param name="stepChartEditor">The step chart editor.</param>
+    /// <param name="windowHandle">
+    /// The handle to the window that the stepchart will be rendered into.
+    /// </param>
+    void DSStepChartEditorInitialize(
+        DS_STEPCHARTEDITOR* stepChartEditor,
+        DS_HANDLE* windowHandle);
 #ifdef __cplusplus
 }
 #endif  // __cplusplus

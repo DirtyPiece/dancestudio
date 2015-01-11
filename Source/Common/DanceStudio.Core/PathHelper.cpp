@@ -16,7 +16,7 @@ using DanceStudio::Core::PathHelper;
 
 std::string PathHelper::GetCurrentDateFileName() {
     time_t t = time(0);
-    tm* now = localtime(&t);
+    tm* now = localtime(&t); // NOLINT - localtime_r isn't available.
     Validator::IsValidTime(now);
 
     // Create the string with format like "2014.12.26_10.27.00".
