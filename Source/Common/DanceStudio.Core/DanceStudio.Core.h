@@ -35,6 +35,15 @@ extern "C" {
     void DSLoggerFree(DS_LOGGER* logger);
 
     /// <summary>
+    /// Sets a logger to use for logging from the Core library.  If
+    /// set to <c>nullptr</c>, will not log.
+    /// </summary>
+    /// <param name="logger">
+    /// The logger to set.  Can be <c>nullptr</c> to turn off core logging.
+    /// </param>
+    void DSLoggerSetCoreLogger(DS_LOGGER* logger);
+
+    /// <summary>
     /// Logs a verbose message to the log.
     /// </summary>
     /// <param name="logger">The logger to log the message with.</param>

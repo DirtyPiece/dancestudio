@@ -33,6 +33,12 @@ class StepChartEditor {
     /// Finalizes an instance of the <see cref="StepChartEditor"/> class.
     /// </summary>
     ~StepChartEditor();
+
+ private:
+    /// <summary>
+    /// Initializes the Open GL extension functions.
+    /// </summary>
+    void InitializeGLExtensions(DS_HANDLE* window);
 };
 
 }  // namespace Core

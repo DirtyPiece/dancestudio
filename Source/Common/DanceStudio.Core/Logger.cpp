@@ -13,6 +13,8 @@
 
 using DanceStudio::Core::Logger;
 
+Logger* Logger::globalLogger = nullptr;
+
 Logger::Logger(const CHAR* outputDirectory)
     : file(nullptr) {
     assert(this->file == nullptr);
@@ -87,4 +89,36 @@ void Logger::Log(const WCHAR* message) {
 
     fwprintf(this->file, message);
     fflush(this->file);
+}
+
+void Logger::SetCoreLogger(Logger* logger) {
+    Logger::globalLogger = logger;
+}
+
+void Logger::LogCoreVerbose(const WCHAR* message) {
+    Validator::IsNotNull(message, "message");
+    if (Logger::globalLogger != nullptr) {
+        Logger::globalLogger->LogVerbose(message);
+    }
+}
+
+void Logger::LogCoreInfo(const WCHAR* message) {
+    Validator::IsNotNull(message, "message");
+    if (Logger::globalLogger != nullptr) {
+        Logger::globalLogger->LogInfo(message);
+    }
+}
+
+void Logger::LogCoreWarning(const WCHAR* message) {
+    Validator::IsNotNull(message, "message");
+    if (Logger::globalLogger != nullptr) {
+        Logger::globalLogger->LogWarning(message);
+    }
+}
+
+void Logger::LogCoreError(const WCHAR* message) {
+    Validator::IsNotNull(message, "message");
+    if (Logger::globalLogger != nullptr) {
+        Logger::globalLogger->LogError(message);
+    }
 }

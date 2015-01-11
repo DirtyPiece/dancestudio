@@ -56,11 +56,46 @@ class Logger {
     /// <param name="message">The message to log.</param>
     void LogError(const WCHAR* message);
 
+    /// <summary>
+    /// Sets the global core logger.
+    /// </summary>
+    /// <param name="logger">The logger to set as the global logger.</param>
+    static void SetCoreLogger(Logger* logger);
+
+    /// <summary>
+    /// Logs a verbose message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreVerbose(const WCHAR* message);
+
+    /// <summary>
+    /// Logs an informational message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreInfo(const WCHAR* message);
+
+    /// <summary>
+    /// Logs a warning message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreWarning(const WCHAR* message);
+
+    /// <summary>
+    /// Logs an error message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreError(const WCHAR* message);
+
  private:
     /// <summary>
     /// The file pointer used to write to the log file.
     /// </summary>
     FILE* file;
+
+    /// <summary>
+    /// The global core logger used to log information from this library.
+    /// </summary>
+    static Logger* globalLogger;
 
     /// <summary>
     /// Logs the specified message with the format parameters supplied.

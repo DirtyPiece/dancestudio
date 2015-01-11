@@ -22,6 +22,11 @@ void DSLoggerFree(DS_LOGGER* logger) {
     delete logger;
 }
 
+void DSLoggerSetCoreLogger(DS_LOGGER* logger) {
+    Logger* typedLogger = static_cast<Logger*>(logger);
+    Logger::SetCoreLogger(typedLogger);
+}
+
 void DSLoggerLogVerbose(DS_LOGGER* logger, const WCHAR* message) {
     Logger* typedLogger = static_cast<Logger*>(logger);
     typedLogger->LogVerbose(message);
