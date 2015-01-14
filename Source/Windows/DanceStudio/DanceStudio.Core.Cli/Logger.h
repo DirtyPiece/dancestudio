@@ -8,8 +8,7 @@
 #ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_LOGGER_H_
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_LOGGER_H_
 
-#include "..\..\..\Common\DanceStudio.Core\Logger.h"
-#include "NativeUniquePointer.h"
+#include "..\..\..\Common\DanceStudio.Core\DanceStudio.Core.h"
 
 using System::Object;
 using System::String;
@@ -29,6 +28,11 @@ public ref class Logger {
     /// The output directory to log files to.
     /// </param>
     Logger(String^ outputDirectory);
+
+    /// <summary>
+    /// Finalizes an instance of the <see cref="Logger"/> class.
+    /// </summary>
+    ~Logger();
 
     /// <summary>
     /// Logs a verbose message to the log file.
@@ -64,6 +68,7 @@ public ref class Logger {
     static property Logger^ Instance {
         Logger^ get() {
             if (instance == nullptr) {
+#pragma warning("Fix this")
                 instance = gcnew Logger("C:\\Trash\\blah");
             }
 
@@ -75,7 +80,7 @@ public ref class Logger {
      /// <summary>
      /// The native logger that is wrapped by this class.
      /// </summary>
-     NativeUniquePointer<DanceStudio::Core::Logger> logger;
+     DS_LOGGER* logger;
 
      /// <summary>
      /// The singleton instance of the logger.

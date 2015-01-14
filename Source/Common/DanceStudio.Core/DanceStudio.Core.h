@@ -11,7 +11,7 @@
 #include "Typedefs.h"
 
 // The following functions are all wrappers to expose the functionality
-// of DanceStudio.Core to Mac (Swift).
+// of DanceStudio.Core to Mac (Swift) and C++/Cli.
 #ifdef __cplusplus
 extern "C" {
 #endif  // __cplusplus
@@ -91,17 +91,6 @@ extern "C" {
     /// The handle to the window that the stepchart will be rendered into.
     /// </param>
     void DSStepChartEditorFree(DS_STEPCHARTEDITOR* editor);
-
-    /// <summary>
-    /// Initializes the step chart editor.
-    /// </summary>
-    /// <param name="stepChartEditor">The step chart editor.</param>
-    /// <param name="windowHandle">
-    /// The handle to the window that the stepchart will be rendered into.
-    /// </param>
-    void DSStepChartEditorInitialize(
-        DS_STEPCHARTEDITOR* stepChartEditor,
-        DS_HANDLE* windowHandle);
 #ifdef __cplusplus
 }
 #endif  // __cplusplus

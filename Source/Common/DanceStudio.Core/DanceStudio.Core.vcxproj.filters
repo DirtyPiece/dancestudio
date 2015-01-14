@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Internal">
       <UniqueIdentifier>{37a98a62-a513-4c52-a49c-7c1f11c8c36b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Internal\Graphics">
+      <UniqueIdentifier>{9787577e-1b24-41de-9ad6-3cf51edd1619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Internal\Graphics">
+      <UniqueIdentifier>{1cf94069-872e-46c3-a32f-29b9dc564119}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DanceStudio.Core.h">
@@ -51,6 +57,18 @@
     <ClInclude Include="StepChartEditor.h">
       <Filter>Header Files\Internal</Filter>
     </ClInclude>
+    <ClInclude Include="OpenGLRenderer.h">
+      <Filter>Header Files\Internal\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL.h">
+      <Filter>Header Files\Internal\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLExtensions.h">
+      <Filter>Header Files\Internal\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Throw.h">
+      <Filter>Header Files\Internal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DanceStudio.Core.Logger.cpp">
@@ -66,6 +84,15 @@
       <Filter>Source Files\Internal</Filter>
     </ClCompile>
     <ClCompile Include="StepChartEditor.cpp">
+      <Filter>Source Files\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLRenderer.cpp">
+      <Filter>Source Files\Internal\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLExtensions.cpp">
+      <Filter>Source Files\Internal\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Throw.cpp">
       <Filter>Source Files\Internal</Filter>
     </ClCompile>
   </ItemGroup>

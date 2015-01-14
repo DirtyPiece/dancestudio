@@ -9,6 +9,7 @@
 #define SOURCE_COMMON_DANCESTUDIO_CORE_STEPCHARTEDITOR_H_
 
 #include "Typedefs.h"
+#include "OpenGLRenderer.h"
 
 namespace DanceStudio {
 namespace Core {
@@ -36,9 +37,10 @@ class StepChartEditor {
 
  private:
     /// <summary>
-    /// Initializes the Open GL extension functions.
+    /// The internal OpenGL renderer used to render the control
+    /// in its entirety.
     /// </summary>
-    void InitializeGLExtensions(DS_HANDLE* window);
+    OpenGLRenderer* renderer;
 };
 
 }  // namespace Core

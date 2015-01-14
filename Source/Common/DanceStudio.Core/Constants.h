@@ -25,4 +25,6 @@
 /// </summary>
 #define DANCE_STUDIO_NEWLINE L"\n"
 
+#define DANCE_STUDIO_UNUSED(x) ((void)x)
+
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_CONSTANTS_H_

@@ -15,5 +15,6 @@
 #include "Constants.h"
 #include "Validator.h"
 #include "Logger.h"
+#include "Throw.h"
 
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_STDAFX_H_

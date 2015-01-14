@@ -30,6 +30,9 @@
     <ClInclude Include="NativeUniquePointer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StepChartEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StepChartEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,6 +10,7 @@
 
 #include <sstream>
 #include <string>
+#include "Throw.h"
 
 namespace DanceStudio {
 namespace Core {
@@ -29,12 +30,7 @@ class Validator {
         const void* parameter,
         const CHAR* parameterName) {
         if (parameter == nullptr) {
-            const std::string& message =
-                "The '"
-              + std::string(parameterName)
-              + "' parameter cannot be null.";
-
-            throw std::invalid_argument(message);
+            Throw::ArgumentNullException(parameterName);
         }
     }
 
@@ -56,7 +52,7 @@ class Validator {
                    << filePath
                    << "'.";
 
-            throw std::out_of_range(stream.str());
+            Throw::InvalidOperationException(stream.str());
         }
     }
 
@@ -70,7 +66,30 @@ class Validator {
     /// </param>
     static inline void IsValidTime(const tm* time) {
         if (time == nullptr) {
-            throw std::out_of_range("The time could not be created.");
+            Throw::InvalidOperationException("The time could not be created.");
+        }
+    }
+
+    /// <summary>
+    /// Determines whether the passed in OpenGL extension function
+    /// loaded properly or not.
+    /// </summary>
+    /// <param name="function">
+    /// The function value to validate for not being <c>null</c>.
+    /// </param>
+    /// <param name="functionName">
+    /// The name of the function being checked.
+    /// </param>
+    static inline void IsOpenGLExtensionFunctionLoaded(
+        void* function,
+        const std::string& functionName) {
+        if (function == nullptr) {
+            std::stringstream stream;
+            stream << "The OpenGL extension function '"
+                   << functionName
+                   << "' was not loaded.";
+
+            Throw::InvalidOperationException(stream.str());
         }
     }
 };

@@ -19,7 +19,14 @@ Logger::Logger(String^ outputDirectory) :
     std::string outputDir = MarshalHelper::ConvertStringToStlString(
         outputDirectory);
 
-    this->logger = new DanceStudio::Core::Logger(outputDir.c_str());
+    this->logger = DSLoggerAllocate(outputDir.c_str());
+}
+
+Logger::~Logger() {
+    if (this->logger != nullptr) {
+        DSLoggerFree(this->logger);
+        this->logger = nullptr;
+    }
 }
 
 void Logger::LogVerbose(String^ message, ... array<Object^>^ args) {
@@ -27,7 +34,7 @@ void Logger::LogVerbose(String^ message, ... array<Object^>^ args) {
     std::wstring str = MarshalHelper::ConvertStringToStlWString(
         formattedMessage);
 
-    this->logger->LogVerbose(str.c_str());
+    DSLoggerLogVerbose(this->logger, str.c_str());
 }
 
 void Logger::LogInfo(String^ message, ... array<Object^>^ args) {
@@ -35,7 +42,7 @@ void Logger::LogInfo(String^ message, ... array<Object^>^ args) {
     std::wstring str = MarshalHelper::ConvertStringToStlWString(
         formattedMessage);
 
-    this->logger->LogInfo(str.c_str());
+    DSLoggerLogInfo(this->logger, str.c_str());
 }
 
 void Logger::LogWarning(String^ message, ... array<Object^>^ args) {
@@ -43,7 +50,7 @@ void Logger::LogWarning(String^ message, ... array<Object^>^ args) {
     std::wstring str = MarshalHelper::ConvertStringToStlWString(
         formattedMessage);
 
-    this->logger->LogWarning(str.c_str());
+    DSLoggerLogWarning(this->logger, str.c_str());
 }
 
 void Logger::LogError(String^ message, ... array<Object^>^ args) {
@@ -51,5 +58,5 @@ void Logger::LogError(String^ message, ... array<Object^>^ args) {
     std::wstring str = MarshalHelper::ConvertStringToStlWString(
         formattedMessage);
 
-    this->logger->LogError(str.c_str());
+    DSLoggerLogError(this->logger, str.c_str());
 }
