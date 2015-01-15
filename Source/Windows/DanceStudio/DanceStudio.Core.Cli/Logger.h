@@ -68,8 +68,8 @@ public ref class Logger {
     static property Logger^ Instance {
         Logger^ get() {
             if (instance == nullptr) {
-#pragma warning("Fix this")
-                instance = gcnew Logger("C:\\Trash\\blah");
+                String^ logFolder = CreateLogFolder();
+                instance = gcnew Logger(logFolder);
             }
 
             return instance;
@@ -86,6 +86,15 @@ public ref class Logger {
      /// The singleton instance of the logger.
      /// </summary>
      static Logger^ instance = nullptr;
+
+     /// <summary>
+     /// Creates the folder where log files will be created and returns
+     /// the folder path.
+     /// </summary>
+     /// <returns>
+     /// The path to the folder where log files will be created.
+     /// </returns>
+     static String^ CreateLogFolder();
 };
 }  // namespace Cli
 }  // namespace Core

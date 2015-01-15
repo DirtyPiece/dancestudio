@@ -12,6 +12,8 @@
 
 using System::Object;
 using System::String;
+using System::Environment;
+using System::IO::Directory;
 using DanceStudio::Core::Cli::Logger;
 
 Logger::Logger(String^ outputDirectory) :
@@ -59,4 +61,16 @@ void Logger::LogError(String^ message, ... array<Object^>^ args) {
         formattedMessage);
 
     DSLoggerLogError(this->logger, str.c_str());
+}
+
+String^ Logger::CreateLogFolder() {
+    String^ logFolder = Environment::GetFolderPath(
+        Environment::SpecialFolder::LocalApplicationData)
+      + "\\DanceStudio\\logs";
+
+    if (!Directory::Exists(logFolder)) {
+        Directory::CreateDirectory(logFolder);
+    }
+
+    return logFolder;
 }
