@@ -7,15 +7,8 @@
 
 namespace DanceStudio
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Configuration;
-    using System.Data;
-    using System.Globalization;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
     using System.Windows;
+    using DanceStudio.Core.Cli;
 
     /// <summary>
     /// Represents the main application class.
@@ -27,6 +20,9 @@ namespace DanceStudio
         /// </summary>
         public App()
         {
+            // Log a statement to ensure that the logger is present for all future
+            // operations.
+            Logger.Instance.LogInfo("The Dance Studio application was launched.");
         }
     }
 }
