@@ -10,7 +10,44 @@
 
 using DanceStudio::Core::OpenGLExtensions;
 
-OpenGLExtensions::OpenGLExtensions() {
+OpenGLExtensions::OpenGLExtensions() :
+    glAttachShader(nullptr),
+    glBindBuffer(nullptr),
+    glBindVertexArray(nullptr),
+    glBufferData(nullptr),
+    glCompileShader(nullptr),
+    glCreateProgram(nullptr),
+    glCreateShader(nullptr),
+    glDeleteBuffers(nullptr),
+    glDeleteProgram(nullptr),
+    glDeleteShader(nullptr),
+    glDeleteVertexArrays(nullptr),
+    glDetachShader(nullptr),
+    glEnableVertexAttribArray(nullptr),
+    glGenBuffers(nullptr),
+    glGenVertexArrays(nullptr),
+    glGetAttribLocation(nullptr),
+    glGetProgramInfoLog(nullptr),
+    glGetProgramiv(nullptr),
+    glGetShaderInfoLog(nullptr),
+    glGetShaderiv(nullptr),
+    glLinkProgram(nullptr),
+    glShaderSource(nullptr),
+    glUseProgram(nullptr),
+    glVertexAttribPointer(nullptr),
+    glGetUniformLocation(nullptr),
+    glUniformMatrix4fv(nullptr),
+    glActiveTexture(nullptr),
+    glUniform1i(nullptr),
+    glGenerateMipmap(nullptr),
+    glDisableVertexAttribArray(nullptr),
+    glUniform3fv(nullptr),
+    glUniform4fv(nullptr),
+#ifdef _WIN32
+    wglChoosePixelFormatARB(nullptr),
+    wglCreateContextAttribsARB(nullptr),
+    wglSwapIntervalEXT(nullptr) {
+#endif  // _WIN32
 }
 
 void OpenGLExtensions::LoadExtensionFunctions() {
@@ -225,4 +262,25 @@ void OpenGLExtensions::LoadExtensionFunctions() {
     Validator::IsOpenGLExtensionFunctionLoaded(
         glUniform4fv,
         "glUniform4fv");
+
+#ifdef _WIN32
+    wglChoosePixelFormatARB = reinterpret_cast<PFNWGLCHOOSEPIXELFORMATARBPROC>(
+        wglGetProcAddress("wglChoosePixelFormatARB"));
+    Validator::IsOpenGLExtensionFunctionLoaded(
+        wglChoosePixelFormatARB,
+        "wglChoosePixelFormatARB");
+
+    wglCreateContextAttribsARB = reinterpret_cast<
+        PFNWGLCREATECONTEXTATTRIBSARBPROC>(
+        wglGetProcAddress("wglCreateContextAttribsARB"));
+    Validator::IsOpenGLExtensionFunctionLoaded(
+        wglCreateContextAttribsARB,
+        "wglCreateContextAttribsARB");
+
+    wglSwapIntervalEXT = reinterpret_cast<PFNWGLSWAPINTERVALEXTPROC>(
+        wglGetProcAddress("wglSwapIntervalEXT"));
+    Validator::IsOpenGLExtensionFunctionLoaded(
+        wglSwapIntervalEXT,
+        "wglSwapIntervalEXT");
+#endif  // _WIN32
 }

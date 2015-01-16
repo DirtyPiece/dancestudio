@@ -15,6 +15,7 @@
 #endif  // _WIN32
 
 // Defines for OpenGL.
+#ifdef _WIN32
 #define WGL_DRAW_TO_WINDOW_ARB          0x2001
 #define WGL_ACCELERATION_ARB            0x2003
 #define WGL_SWAP_METHOD_ARB             0x2007
@@ -29,6 +30,8 @@
 #define WGL_TYPE_RGBA_ARB               0x202B
 #define WGL_CONTEXT_MAJOR_VERSION_ARB   0x2091
 #define WGL_CONTEXT_MINOR_VERSION_ARB   0x2092
+#endif  // _WIN32
+
 #define GL_ARRAY_BUFFER                 0x8892
 #define GL_STATIC_DRAW                  0x88E4
 #define GL_FRAGMENT_SHADER              0x8B30
@@ -41,6 +44,7 @@
 #define GL_ELEMENT_ARRAY_BUFFER         0x8893
 
 // Typedefs for extension methods.
+#ifdef _WIN32
 typedef BOOL(WINAPI * PFNWGLCHOOSEPIXELFORMATARBPROC) (
     HDC hdc,
     const int *piAttribIList,
@@ -53,6 +57,8 @@ typedef HGLRC(WINAPI * PFNWGLCREATECONTEXTATTRIBSARBPROC) (
     HGLRC hShareContext,
     const int *attribList);
 typedef BOOL(WINAPI * PFNWGLSWAPINTERVALEXTPROC) (int interval);
+#endif  // _WIN32
+
 typedef void (APIENTRY * PFNGLATTACHSHADERPROC) (GLuint program, GLuint shader);
 typedef void (APIENTRY * PFNGLBINDBUFFERPROC) (GLenum target, GLuint buffer);
 typedef void (APIENTRY * PFNGLBINDVERTEXARRAYPROC) (GLuint array);

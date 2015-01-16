@@ -496,6 +496,56 @@ class OpenGLExtensions {
     /// specified uniform variable.
     /// </param>
     PFNGLUNIFORM4FVPROC glUniform4fv;
+
+#ifdef _WIN32
+    /// <summary>
+    /// Windows specific OpenGL extension for choosing the
+    /// device context pixel format.
+    /// </summary>
+    /// <param name="hdc">
+    /// The device context of the window being rendered to.
+    /// </param>
+    /// <param name="piAttribIList">
+    /// The attribute list used when setting the format.
+    /// </param>
+    /// <param name="pfAttribFList">
+    /// The attribute list used when setting the format.
+    /// </param>
+    /// <param name="nMaxFormats">
+    /// The max number of formats in the formats array.
+    /// </param>
+    /// <param name="piFormats">
+    /// The array of formats to apply.
+    /// </param>
+    /// <param name="nNumFormats">
+    /// The number of formats in the array.
+    /// </param>
+    PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB;
+
+    /// <summary>
+    /// Windows specific OpenGL extension for creating
+    /// a device context.
+    /// </summary>
+    /// <param name="hDC">
+    /// The device context of the window being rendered to.
+    /// </param>
+    /// <param name="hShareContext">
+    /// The rendering context to share with this one.
+    /// </param>
+    /// <param name="attribList">
+    /// The attribute list to reference when creating the context.
+    /// </param>
+    PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB;
+
+    /// <summary>
+    /// Windows specific OpenGL extension for setting whether
+    /// or not v-sync is enabled when presenting.
+    /// </summary>
+    /// <param name="interval">
+    /// The VSync swap interval to use.
+    /// </param>
+    PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT;
+#endif  // _WIN32
 };
 }  // namespace Core
 }  // namespace DanceStudio

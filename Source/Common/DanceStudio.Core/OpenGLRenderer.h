@@ -23,8 +23,15 @@ class OpenGLRenderer {
     /// <summary>
     /// Initializes a new instance of the <see cref="OpenGLRenderer" /> class.
     /// </summary>
-    /// <param name="window">The window to render to.</param>
-    explicit OpenGLRenderer(DS_HANDLE* window);
+    /// <param name="windowHandle">
+    /// The handle of the window to render to.
+    /// </param>
+    explicit OpenGLRenderer(DS_HANDLE* windowHandle);
+
+    /// <summary>
+    /// Finalizes an instance of the <see cref="OpenGLRenderer"/> class.
+    /// </summary>
+    ~OpenGLRenderer();
 
  private:
     /// <summary>
@@ -33,15 +40,39 @@ class OpenGLRenderer {
     OpenGLExtensions extensions;
 
     /// <summary>
+    /// The device context for the window being rendered to.
+    /// </summary>
+    HDC deviceContext;
+
+    /// <summary>
+    /// The rendering context for the window being rendered to.
+    /// </summary>
+    HGLRC renderingContext;
+
+    /// <summary>
+    /// The handle of the window being rendered to.
+    /// </summary>
+    DS_HANDLE* windowHandle;
+
+    /// <summary>
     /// Initializes OpenGL with the passed in window.
     /// </summary>
-    /// <param name="window">The window to render to.</param>
-    void Initialize(DS_HANDLE* window);
+    void Initialize();
 
     /// <summary>
     /// Loads the Open GL function extension list (modern functions).
     /// </summary>
     void LoadExtensionList();
+
+    /// <summary>
+    /// Initializes the OpenGL context for rendering.
+    /// </summary>
+    void InitializeOpenGL();
+
+    /// <summary>
+    /// Logs the last error using GetLastError().
+    /// </summary>
+    void LogLastError();
 };
 }  // namespace Core
 }  // namespace DanceStudio

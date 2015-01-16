@@ -22,14 +22,6 @@ namespace Cli {
 public ref class Logger {
  public:
     /// <summary>
-    /// Initializes a new instance of the <see cref="Logger"/> class.
-    /// </summary>
-    /// <param name="outputDirectory">
-    /// The output directory to log files to.
-    /// </param>
-    Logger(String^ outputDirectory);
-
-    /// <summary>
     /// Finalizes an instance of the <see cref="Logger"/> class.
     /// </summary>
     ~Logger();
@@ -78,9 +70,17 @@ public ref class Logger {
 
  private:
      /// <summary>
+     /// Initializes a new instance of the <see cref="Logger"/> class.
+     /// </summary>
+     /// <param name="outputDirectory">
+     /// The output directory to log files to.
+     /// </param>
+     Logger(String^ outputDirectory);
+
+     /// <summary>
      /// The native logger that is wrapped by this class.
      /// </summary>
-     DS_LOGGER* logger;
+     static DS_LOGGER* logger = nullptr;
 
      /// <summary>
      /// The singleton instance of the logger.

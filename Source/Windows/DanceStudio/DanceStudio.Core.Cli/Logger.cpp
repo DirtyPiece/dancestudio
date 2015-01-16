@@ -16,18 +16,21 @@ using System::Environment;
 using System::IO::Directory;
 using DanceStudio::Core::Cli::Logger;
 
-Logger::Logger(String^ outputDirectory) :
-    logger(nullptr) {
+Logger::Logger(String^ outputDirectory) {
     std::string outputDir = MarshalHelper::ConvertStringToStlString(
         outputDirectory);
 
-    this->logger = DSLoggerAllocate(outputDir.c_str());
+    Logger::logger = DSLoggerAllocate(outputDir.c_str());
+
+    // Set the core logger so the Core library
+    // messages log as well.
+    DSLoggerSetCoreLogger(Logger::logger);
 }
 
 Logger::~Logger() {
-    if (this->logger != nullptr) {
+    if (Logger::logger != nullptr) {
         DSLoggerFree(this->logger);
-        this->logger = nullptr;
+        Logger::logger = nullptr;
     }
 }
 
@@ -36,7 +39,7 @@ void Logger::LogVerbose(String^ message, ... array<Object^>^ args) {
     std::wstring str = MarshalHelper::ConvertStringToStlWString(
         formattedMessage);
 
-    DSLoggerLogVerbose(this->logger, str.c_str());
+    DSLoggerLogVerbose(Logger::logger, str.c_str());
 }
 
 void Logger::LogInfo(String^ message, ... array<Object^>^ args) {
@@ -44,7 +47,7 @@ void Logger::LogInfo(String^ message, ... array<Object^>^ args) {
     std::wstring str = MarshalHelper::ConvertStringToStlWString(
         formattedMessage);
 
-    DSLoggerLogInfo(this->logger, str.c_str());
+    DSLoggerLogInfo(Logger::logger, str.c_str());
 }
 
 void Logger::LogWarning(String^ message, ... array<Object^>^ args) {
@@ -52,7 +55,7 @@ void Logger::LogWarning(String^ message, ... array<Object^>^ args) {
     std::wstring str = MarshalHelper::ConvertStringToStlWString(
         formattedMessage);
 
-    DSLoggerLogWarning(this->logger, str.c_str());
+    DSLoggerLogWarning(Logger::logger, str.c_str());
 }
 
 void Logger::LogError(String^ message, ... array<Object^>^ args) {
@@ -60,7 +63,7 @@ void Logger::LogError(String^ message, ... array<Object^>^ args) {
     std::wstring str = MarshalHelper::ConvertStringToStlWString(
         formattedMessage);
 
-    DSLoggerLogError(this->logger, str.c_str());
+    DSLoggerLogError(Logger::logger, str.c_str());
 }
 
 String^ Logger::CreateLogFolder() {
