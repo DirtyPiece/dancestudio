@@ -33,6 +33,16 @@ class OpenGLRenderer {
     /// </summary>
     ~OpenGLRenderer();
 
+    /// <summary>
+    /// Begins rendering of the OpenGL scene.
+    /// </summary>
+    void BeginScene();
+
+    /// <summary>
+    /// Ends rendering of the OpenGL scene.
+    /// </summary>
+    void EndScene();
+
  private:
     /// <summary>
     /// The object that loads all of the OpenGL 4.0 extension functions.
@@ -53,6 +63,16 @@ class OpenGLRenderer {
     /// The handle of the window being rendered to.
     /// </summary>
     DS_HANDLE* windowHandle;
+
+    /// <summary>
+    /// The matrix used to transform all geometry into world space.
+    /// </summary>
+    SINGLE worldMatrix[4 * 4];
+
+    /// <summary>
+    /// The matrix used to project geometry into projection space.
+    /// </summary>
+    SINGLE projectionMatrix[4 * 4];
 
     /// <summary>
     /// Initializes OpenGL with the passed in window.

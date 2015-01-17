@@ -11,6 +11,7 @@
 
 using DanceStudio::Core::Cli::StepChartEditor;
 using System::EventHandler;
+using System::Windows::Forms::Application;
 
 StepChartEditor::StepChartEditor() :
     editor(nullptr) {
@@ -38,10 +39,13 @@ void StepChartEditor::StepChartEditor_Loaded(Object^ sender, EventArgs^ e) {
     DANCE_STUDIO_UNUSED(sender);
     DANCE_STUDIO_UNUSED(e);
 
+    assert(this->editor == nullptr);
+
     // Grab the HWND for the UserControl and pass it along to the C++
     // step chart editor for rendering.
     DS_HANDLE* windowHandle = this->Handle.ToPointer();
     this->editor = DSStepChartEditorAllocate(windowHandle);
+    DSStepChartEditorUpdate(this->editor);
 }
 
 void StepChartEditor::StepChartEditor_SizeChanged(
@@ -58,5 +62,8 @@ void StepChartEditor::OnPaintBackground(PaintEventArgs^ e) {
 
 void StepChartEditor::OnPaint(PaintEventArgs^ e) {
     DANCE_STUDIO_UNUSED(e);
-    // Render with OpenGL here...
+
+    if (this->editor != nullptr) {
+        DSStepChartEditorUpdate(this->editor);
+    }
 }

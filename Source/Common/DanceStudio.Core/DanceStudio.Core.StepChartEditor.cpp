@@ -21,3 +21,8 @@ DS_STEPCHARTEDITOR* DSStepChartEditorAllocate(DS_HANDLE* windowHandle) {
 void DSStepChartEditorFree(DS_STEPCHARTEDITOR* editor) {
     delete editor;
 }
+
+void DSStepChartEditorUpdate(DS_STEPCHARTEDITOR* editor) {
+    StepChartEditor* typedEditor = static_cast<StepChartEditor*>(editor);
+    typedEditor->Update();
+}

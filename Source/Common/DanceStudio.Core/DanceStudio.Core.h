@@ -87,10 +87,18 @@ extern "C" {
     /// <summary>
     /// Frees the step chart editor.
     /// </summary>
-    /// <param name="windowHandle">
-    /// The handle to the window that the stepchart will be rendered into.
+    /// <param name="editor">
+    /// The editor to free.
     /// </param>
     void DSStepChartEditorFree(DS_STEPCHARTEDITOR* editor);
+
+    /// <summary>
+    /// Updates and renders the step chart editor.
+    /// </summary>
+    /// <param name="editor">
+    /// The editor to update.
+    /// </param>
+    void DSStepChartEditorUpdate(DS_STEPCHARTEDITOR* editor);
 #ifdef __cplusplus
 }
 #endif  // __cplusplus

@@ -25,3 +25,9 @@ StepChartEditor::~StepChartEditor() {
         renderer = nullptr;
     }
 }
+
+void StepChartEditor::Update() {
+    assert(this->renderer != nullptr);
+    this->renderer->BeginScene();
+    this->renderer->EndScene();
+}

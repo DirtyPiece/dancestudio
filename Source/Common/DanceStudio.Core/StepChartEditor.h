@@ -35,6 +35,12 @@ class StepChartEditor {
     /// </summary>
     ~StepChartEditor();
 
+    /// <summary>
+    /// Updates the geometry and other graphics of the scene.
+    /// Should be called before Render().
+    /// </summary>
+    void Update();
+
  private:
     /// <summary>
     /// The internal OpenGL renderer used to render the control
