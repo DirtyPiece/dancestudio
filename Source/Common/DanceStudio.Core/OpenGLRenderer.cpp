@@ -67,6 +67,7 @@ void OpenGLRenderer::LoadExtensionList() {
     // Set a temporary default pixel format.
     error = SetPixelFormat(deviceContext, 1, &pixelFormat);
     if (error != TRUE) {
+        this->LogLastError();
         Throw::InvalidOperationException(
             "Unable to retrieve the temporary pixel format"
             " when initializing OpenGL extensions.");
@@ -174,12 +175,12 @@ void OpenGLRenderer::InitializeOpenGL() {
     }
 
     // If the video card/display can handle our desired pixel format then we set it as the current one.
-    result = SetPixelFormat(this->deviceContext, pixelFormat[0], &pixelFormatDescriptor);
+    /*result = SetPixelFormat(this->deviceContext, pixelFormat[0], &pixelFormatDescriptor);
     if (result != 1) {
         LogLastError();
         Throw::InvalidOperationException(
             "Unable to set the desired pixel format for the device context.");
-    }
+    }*/
 
     // Set the 4.0 version of OpenGL in the attribute list.
     attributeList[0] = WGL_CONTEXT_MAJOR_VERSION_ARB;
