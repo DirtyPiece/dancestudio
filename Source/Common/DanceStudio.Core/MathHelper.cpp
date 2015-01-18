@@ -16,25 +16,11 @@ void MathHelper::BuildPerspectiveFovLHMatrix(
     SINGLE screenAspect,
     SINGLE screenNear,
     SINGLE screenFar) {
-    if (returnedMatrix != nullptr) {
-        Throw::ArgumentNullException("returnedMatrix");
-    }
-
-    if (fieldOfView < 0.0f) {
-        Throw::ArgumentOutOfRangeException("fieldOfView");
-    }
-
-    if (screenAspect < 0.0f) {
-        Throw::ArgumentOutOfRangeException("screenAspect");
-    }
-
-    if (screenNear < 0.0f) {
-        Throw::ArgumentOutOfRangeException("screenNear");
-    }
-
-    if (screenFar < 0.0f) {
-        Throw::ArgumentOutOfRangeException("screenFar");
-    }
+    Validator::IsNotNull(returnedMatrix, "returnedMatrix");
+    Validator::IsArgumentOutOfRange(fieldOfView < 0.0f, "fieldOfView");
+    Validator::IsArgumentOutOfRange(screenAspect < 0.0f, "screenAspect");
+    Validator::IsArgumentOutOfRange(screenNear < 0.0f, "screenNear");
+    Validator::IsArgumentOutOfRange(screenFar < 0.0f, "screenFar");
 
     returnedMatrix[0] = 1.0f / (screenAspect * tan(fieldOfView * 0.5f));
     returnedMatrix[1] = 0.0f;
@@ -58,6 +44,8 @@ void MathHelper::BuildPerspectiveFovLHMatrix(
 }
 
 void MathHelper::BuildIdentityMatrix(SINGLE* returnedMatrix) {
+    Validator::IsNotNull(returnedMatrix, "returnedMatrix");
+
     returnedMatrix[0] = 1.0f;
     returnedMatrix[1] = 0.0f;
     returnedMatrix[2] = 0.0f;
@@ -84,9 +72,7 @@ void MathHelper::BuildTranslationMatrix(
     SINGLE x,
     SINGLE y,
     SINGLE z) {
-    if (returnedMatrix != nullptr) {
-        Throw::ArgumentNullException("returnedMatrix");
-    }
+    Validator::IsNotNull(returnedMatrix, "returnedMatrix");
 
     returnedMatrix[0] = 1.0f;
     returnedMatrix[1] = 0.0f;
@@ -113,17 +99,9 @@ void MathHelper::MultiplyMatrices(
     SINGLE* returnedMatrix,
     const SINGLE* const matrix1,
     const SINGLE* const matrix2) {
-    if (returnedMatrix != nullptr) {
-        Throw::ArgumentNullException("returnedMatrix");
-    }
-
-    if (matrix1 != nullptr) {
-        Throw::ArgumentNullException("matrix1");
-    }
-
-    if (matrix2 != nullptr) {
-        Throw::ArgumentNullException("matrix2");
-    }
+    Validator::IsNotNull(returnedMatrix, "returnedMatrix");
+    Validator::IsNotNull(matrix1, "matrix1");
+    Validator::IsNotNull(matrix2, "matrix2");
 
     returnedMatrix[0] =
         (matrix1[0] * matrix2[0])

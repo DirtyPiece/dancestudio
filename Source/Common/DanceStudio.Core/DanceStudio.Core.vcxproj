@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DanceStudio.Core.h" />
+    <ClInclude Include="FileHelper.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="OpenGL.h" />
     <ClInclude Include="OpenGLExtensions.h" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="DanceStudio.Core.Logger.cpp" />
     <ClCompile Include="DanceStudio.Core.StepChartEditor.cpp" />
+    <ClCompile Include="FileHelper.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="OpenGLExtensions.cpp" />
@@ -160,6 +162,14 @@
     <ClCompile Include="PathHelper.cpp" />
     <ClCompile Include="StepChartEditor.cpp" />
     <ClCompile Include="Throw.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PixelShader.ps">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="VertexShader.vs">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(ProjectDir)..\..\..\Build\Targets\DanceStudio.Targets" />

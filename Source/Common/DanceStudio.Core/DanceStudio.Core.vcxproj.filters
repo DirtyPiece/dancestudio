@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Internal\Graphics">
       <UniqueIdentifier>{1cf94069-872e-46c3-a32f-29b9dc564119}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Internal\Shaders">
+      <UniqueIdentifier>{20d4c02d-f27e-4385-a6b6-7c2064b183fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DanceStudio.Core.h">
@@ -72,6 +75,9 @@
     <ClInclude Include="MathHelper.h">
       <Filter>Header Files\Internal</Filter>
     </ClInclude>
+    <ClInclude Include="FileHelper.h">
+      <Filter>Header Files\Internal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DanceStudio.Core.Logger.cpp">
@@ -101,5 +107,16 @@
     <ClCompile Include="MathHelper.cpp">
       <Filter>Source Files\Internal</Filter>
     </ClCompile>
+    <ClCompile Include="FileHelper.cpp">
+      <Filter>Source Files\Internal</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PixelShader.ps">
+      <Filter>Header Files\Internal\Shaders</Filter>
+    </None>
+    <None Include="VertexShader.vs">
+      <Filter>Header Files\Internal\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

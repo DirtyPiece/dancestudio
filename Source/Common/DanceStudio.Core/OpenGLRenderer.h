@@ -75,6 +75,21 @@ class OpenGLRenderer {
     SINGLE projectionMatrix[4 * 4];
 
     /// <summary>
+    /// The compiled vertex shader.
+    /// </summary>
+    UINT32 vertexShader;
+
+    /// <summary>
+    /// The compiled pixel shader.
+    /// </summary>
+    UINT32 pixelShader;
+
+    /// <summary>
+    /// The compiled shader program.
+    /// </summary>
+    UINT32 shaderProgram;
+
+    /// <summary>
     /// Initializes OpenGL with the passed in window.
     /// </summary>
     void Initialize();

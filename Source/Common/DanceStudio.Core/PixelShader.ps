@@ -1,0 +1,20 @@
+// =======================================================================
+// <copyright file="PixelShader.vs" company="Bean and Cheese Studios">
+// Copyright 2015 Bean and Cheese Studios
+// </copyright>
+// <date>01-17-2015</date>
+// =======================================================================
+
+// Version 4.0 GLSL.
+#version 400
+
+// The input color for the pixel.
+in vec3 inColor;
+
+// The output color after the shader processes the pixel.
+out vec4 outColor;
+
+void main(void)
+{
+    outputColor = vec4(color, 1.0f);
+}

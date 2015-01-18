@@ -8,13 +8,18 @@
 #include "Stdafx.h"
 #include "OpenGLRenderer.h"
 #include "MathHelper.h"
+#include "FileHelper.h"
 
 using DanceStudio::Core::OpenGLRenderer;
+using DanceStudio::Core::FileHelper;
 
 OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
     deviceContext(nullptr),
     renderingContext(nullptr),
-    windowHandle(nullptr) {
+    windowHandle(nullptr),
+    vertexShader(0),
+    pixelShader(0),
+    shaderProgram(0) {
     Validator::IsNotNull(windowHandle, "windowHandle");
 
     this->windowHandle = windowHandle;
@@ -36,6 +41,31 @@ OpenGLRenderer::~OpenGLRenderer() {
         this->deviceContext = nullptr;
         this->windowHandle = nullptr;
     }
+
+    if (this->shaderProgram != 0) {
+        if (this->vertexShader != 0) {
+            extensions.glDetachShader(
+                this->shaderProgram,
+                this->vertexShader);
+            extensions.glDeleteShader(
+                this->vertexShader);
+
+            this->vertexShader = 0;
+        }
+
+        if (this->pixelShader != 0) {
+            extensions.glDetachShader(
+                this->shaderProgram,
+                this->pixelShader);
+            extensions.glDeleteShader(
+                this->pixelShader);
+
+            this->pixelShader = 0;
+        }
+
+        extensions.glDeleteProgram(this->shaderProgram);
+        this->shaderProgram = 0;
+    }
 }
 
 void OpenGLRenderer::BeginScene() {
@@ -44,6 +74,15 @@ void OpenGLRenderer::BeginScene() {
 
     // Clear the back buffer and depth buffer.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    UINT32 location = -1;
+    location = extensions.glGetUniformLocation(
+        this->shaderProgram,
+        "worldMatrix");
+    if (location == -1) {
+        Throw::InvalidOperationException(
+            "The 'worldMatrix' uniform parameter is missing from the shader.");
+    }
 }
 
 void OpenGLRenderer::EndScene() {
@@ -58,6 +97,94 @@ void OpenGLRenderer::Initialize() {
     this->LoadExtensionList();
 
     this->InitializeOpenGL();
+
+    const std::string vertexShaderFilePath = "VertexShader.vs";
+    const std::string pixelShaderFilePath = "PixelShader.ps";
+
+    const CHAR* vertexShaderContents = FileHelper::LoadAllFileText(
+        vertexShaderFilePath).c_str();
+
+    const CHAR* pixelShaderContents = FileHelper::LoadAllFileText(
+        pixelShaderFilePath).c_str();
+
+    // Create the vertex and pixel shader.
+    this->vertexShader = extensions.glCreateShader(
+        GL_VERTEX_SHADER);
+    this->pixelShader = extensions.glCreateShader(
+        GL_FRAGMENT_SHADER);
+
+    // Copy the file contents into the shader objects.
+    extensions.glShaderSource(
+        this->vertexShader,
+        1 /*count*/,
+        &vertexShaderContents,
+        nullptr);
+
+    extensions.glShaderSource(
+        this->pixelShader,
+        1 /*count*/,
+        &pixelShaderContents,
+        nullptr);
+
+    // Compile the shaders.
+    BOOL status = FALSE;
+    extensions.glCompileShader(this->vertexShader);
+    extensions.glGetShaderiv(
+        this->vertexShader,
+        GL_COMPILE_STATUS,
+        &status);
+    if (status != TRUE) {
+        Throw::InvalidOperationException(
+            "The vertex shader at '"
+            + vertexShaderFilePath
+            + "' failed to compile.");
+    }
+
+    extensions.glCompileShader(this->pixelShader);
+    extensions.glGetShaderiv(
+        this->pixelShader,
+        GL_COMPILE_STATUS,
+        &status);
+    if (status != TRUE) {
+        Throw::InvalidOperationException(
+            "The pixel shader at '"
+            + pixelShaderFilePath
+            + "' failed to compile.");
+    }
+
+    // Create the shader program object.
+    this->shaderProgram = extensions.glCreateProgram();
+
+    // Attach the vertex and pixel shaders to the program object.
+    extensions.glAttachShader(
+        this->shaderProgram,
+        this->vertexShader);
+
+    extensions.glAttachShader(
+        this->shaderProgram,
+        this->pixelShader);
+
+    // Bind the input variables for the shader.
+    extensions.glBindAttribLocation(
+        this->shaderProgram,
+        0 /*index*/,
+        "inputPosition");
+
+    extensions.glBindAttribLocation(
+        this->shaderProgram,
+        1 /*index*/,
+        "inputColor");
+
+    // Link the shader program.
+    extensions.glLinkProgram(this->shaderProgram);
+    extensions.glGetProgramiv(
+        this->shaderProgram,
+        GL_LINK_STATUS,
+        &status);
+
+    if (status != TRUE) {
+        Throw::InvalidOperationException("The shader program failed to link.");
+    }
 }
 
 void OpenGLRenderer::LoadExtensionList() {

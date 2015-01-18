@@ -28,7 +28,7 @@ class Validator {
     /// <param name="parameterName">The name of the parameter.</param>
     static inline void IsNotNull(
         const void* parameter,
-        const CHAR* parameterName) {
+        const std::string& parameterName) {
         if (parameter == nullptr) {
             Throw::ArgumentNullException(parameterName);
         }
@@ -51,6 +51,28 @@ class Validator {
             stream << "The file could not be created at '"
                    << filePath
                    << "'.";
+
+            Throw::InvalidOperationException(stream.str());
+        }
+    }
+
+    /// <summary>
+    /// Determines whether the passed in file that
+    /// was successfully opened.  If not, it throws an
+    /// out of range exception.
+    /// </summary>
+    /// <param name="file">The pointer to the file handle to verify.</param>
+    /// <param name="filePath">
+    /// The path to the file that was attempted to be opened.
+    /// </param>
+    static inline void IsFileOpened(
+        const FILE* file,
+        const std::string& filePath) {
+        if (file == nullptr) {
+            std::stringstream stream;
+            stream << "The file could not be opened at '"
+                << filePath
+                << "'.";
 
             Throw::InvalidOperationException(stream.str());
         }
@@ -90,6 +112,22 @@ class Validator {
                    << "' was not loaded.";
 
             Throw::InvalidOperationException(stream.str());
+        }
+    }
+
+    /// <summary>
+    /// Determines whether the passed in parameter is out of range and,
+    /// if so, throws an invalid argument exception.
+    /// </summary>
+    /// <param name="condition">
+    /// The condition to test (if <c>true</c>, throws).
+    /// </param>
+    /// <param name="parameterName">The name of the parameter.</param>
+    static inline void IsArgumentOutOfRange(
+        bool condition,
+        const std::string& parameterName) {
+        if (condition) {
+            Throw::ArgumentOutOfRangeException(parameterName);
         }
     }
 };
