@@ -20,6 +20,12 @@ public:
     /// <param name="filePath">The file path to load.</param>
     /// <returns>The text contents of the file.</returns>
     static std::string LoadAllFileText(const std::string& filePath);
+
+    /// <summary>
+    /// Gets the executing executable directory.
+    /// </summary>
+    /// <returns>The path to the current exe.</returns>
+    static std::string GetExecutingExeDirectory();
 };
 }  // namespace Core
 }  // namespace DanceStudio

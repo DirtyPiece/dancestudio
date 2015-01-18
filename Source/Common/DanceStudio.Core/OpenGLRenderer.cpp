@@ -9,6 +9,7 @@
 #include "OpenGLRenderer.h"
 #include "MathHelper.h"
 #include "FileHelper.h"
+#include "PathHelper.h"
 
 using DanceStudio::Core::OpenGLRenderer;
 using DanceStudio::Core::FileHelper;
@@ -75,7 +76,7 @@ void OpenGLRenderer::BeginScene() {
     // Clear the back buffer and depth buffer.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    UINT32 location = -1;
+    INT32 location = -1;
     location = extensions.glGetUniformLocation(
         this->shaderProgram,
         "worldMatrix");
@@ -83,6 +84,28 @@ void OpenGLRenderer::BeginScene() {
         Throw::InvalidOperationException(
             "The 'worldMatrix' uniform parameter is missing from the shader.");
     }
+
+    extensions.glUniformMatrix4fv(
+        location,
+        1 /*count*/,
+        false /*transpose*/,
+        worldMatrix);
+
+    // TODO: Put the view matrix uniform store here.
+
+    location = extensions.glGetUniformLocation(
+        this->shaderProgram,
+        "projectionMatrix");
+    if (location == -1) {
+        Throw::InvalidOperationException(
+            "The 'projectionMatrix' uniform parameter is missing from the shader.");
+    }
+
+    extensions.glUniformMatrix4fv(
+        location,
+        1 /*count*/,
+        false /*transpose*/,
+        projectionMatrix);
 }
 
 void OpenGLRenderer::EndScene() {
@@ -98,14 +121,26 @@ void OpenGLRenderer::Initialize() {
 
     this->InitializeOpenGL();
 
-    const std::string vertexShaderFilePath = "VertexShader.vs";
-    const std::string pixelShaderFilePath = "PixelShader.ps";
+    // The shaders are copied to the output folder in the post build scripts.
+    const std::string exeDirectory = FileHelper::GetExecutingExeDirectory();
+    const std::string shaderDirectory = PathHelper::Combine(
+        exeDirectory,
+        "Shaders");
 
-    const CHAR* vertexShaderContents = FileHelper::LoadAllFileText(
-        vertexShaderFilePath).c_str();
+    const std::string vertexShaderFilePath = PathHelper::Combine(
+        shaderDirectory,
+        "VertexShader.vs");
+    const std::string pixelShaderFilePath = PathHelper::Combine(
+        shaderDirectory,
+        "PixelShader.ps");
 
-    const CHAR* pixelShaderContents = FileHelper::LoadAllFileText(
-        pixelShaderFilePath).c_str();
+    const std::string vertexShaderStringContents =
+        FileHelper::LoadAllFileText(vertexShaderFilePath);
+    const CHAR* vertexShaderContents = vertexShaderStringContents.c_str();
+
+    const std::string pixelShaderStringContents =
+        FileHelper::LoadAllFileText(pixelShaderFilePath);
+    const CHAR* pixelShaderContents = pixelShaderStringContents.c_str();
 
     // Create the vertex and pixel shader.
     this->vertexShader = extensions.glCreateShader(

@@ -96,6 +96,10 @@
     <Lib>
       <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -134,6 +138,10 @@
     <Lib>
       <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
