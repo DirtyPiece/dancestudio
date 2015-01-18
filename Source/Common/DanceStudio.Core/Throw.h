@@ -29,6 +29,15 @@ class Throw {
     static void ArgumentNullException(const std::string& paramName);
 
     /// <summary>
+    /// Throws a std::invalid_argument exception identifying the specified
+    /// parameter name in the message.
+    /// </summary>
+    /// <param name="paramName">
+    /// The name of the parameter that is out of range.
+    /// </param>
+    static void ArgumentOutOfRangeException(const std::string& paramName);
+
+    /// <summary>
     /// Throws a std::runtime_error exception identifying that an invalid
     /// operation was performed.
     /// </summary>

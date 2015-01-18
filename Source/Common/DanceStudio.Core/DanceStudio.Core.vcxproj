@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DanceStudio.Core.h" />
+    <ClInclude Include="MathHelper.h" />
     <ClInclude Include="OpenGL.h" />
     <ClInclude Include="OpenGLExtensions.h" />
     <ClInclude Include="OpenGLRenderer.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="DanceStudio.Core.Logger.cpp" />
     <ClCompile Include="DanceStudio.Core.StepChartEditor.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="OpenGLExtensions.cpp" />
     <ClCompile Include="OpenGLRenderer.cpp" />
     <ClCompile Include="PathHelper.cpp" />

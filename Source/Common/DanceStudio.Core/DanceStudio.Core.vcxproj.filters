@@ -69,6 +69,9 @@
     <ClInclude Include="Throw.h">
       <Filter>Header Files\Internal</Filter>
     </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Header Files\Internal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DanceStudio.Core.Logger.cpp">
@@ -93,6 +96,9 @@
       <Filter>Source Files\Internal\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Throw.cpp">
+      <Filter>Source Files\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="MathHelper.cpp">
       <Filter>Source Files\Internal</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,6 +7,7 @@
 
 #include "Stdafx.h"
 #include "OpenGLRenderer.h"
+#include "MathHelper.h"
 
 using DanceStudio::Core::OpenGLRenderer;
 
@@ -181,19 +182,18 @@ void OpenGLRenderer::InitializeOpenGL() {
     attributeListInt[18] = 0;
 
     // Query for a pixel format that fits the attributes we want.
-    result = extensions.wglChoosePixelFormatARB(this->deviceContext, attributeListInt, nullptr, 1, pixelFormat, &formatCount);
+    result = extensions.wglChoosePixelFormatARB(
+        this->deviceContext,
+        attributeListInt,
+        nullptr,
+        1,
+        pixelFormat,
+        &formatCount);
+
     if (result != TRUE) {
         Throw::InvalidOperationException(
             "The pixel format desired for rendering is not compatible.");
     }
-
-    // If the video card/display can handle our desired pixel format then we set it as the current one.
-    /*result = SetPixelFormat(this->deviceContext, pixelFormat[0], &pixelFormatDescriptor);
-    if (result != 1) {
-        LogLastError();
-        Throw::InvalidOperationException(
-            "Unable to set the desired pixel format for the device context.");
-    }*/
 
     // Set the 4.0 version of OpenGL in the attribute list.
     attributeList[0] = WGL_CONTEXT_MAJOR_VERSION_ARB;
@@ -206,7 +206,11 @@ void OpenGLRenderer::InitializeOpenGL() {
 
     // Create a OpenGL 4.0 rendering context.
     assert(this->renderingContext == nullptr);
-    this->renderingContext = extensions.wglCreateContextAttribsARB(this->deviceContext, 0, attributeList);
+    this->renderingContext = extensions.wglCreateContextAttribsARB(
+        this->deviceContext,
+        0,
+        attributeList);
+
     if (this->renderingContext == nullptr) {
         Throw::InvalidOperationException(
             "Unable to create the OpenGL rendering context.");
@@ -233,23 +237,31 @@ void OpenGLRenderer::InitializeOpenGL() {
     glCullFace(GL_BACK);
 
     // Initialize the world/model matrix to the identity matrix.
-    // BuildIdentityMatrix(m_worldMatrix);
+    MathHelper::BuildIdentityMatrix(this->worldMatrix);
 
     // Set the field of view and screen aspect ratio.
     fieldOfView = 3.14159265358979323846f / 4.0f;
-    // screenAspect = (float)screenWidth / (float)screenHeight;
+
+    SINGLE screenWidth = 100;
+    SINGLE screenHeight = 100;
+    screenAspect = screenWidth / screenHeight;
+
+    SINGLE screenNear = 0.1f;
+    SINGLE screenFar = 1000.0f;
 
     // Build the perspective projection matrix.
-    // BuildPerspectiveFovLHMatrix(m_projectionMatrix, fieldOfView, screenAspect, screenNear, screenDepth);
+    MathHelper::BuildPerspectiveFovLHMatrix(
+        this->projectionMatrix,
+        fieldOfView,
+        screenAspect,
+        screenNear,
+        screenFar);
 
     // Get the name of the video card.
-    const CHAR* vendorString = reinterpret_cast<const CHAR*>(glGetString(GL_VENDOR));
-    const CHAR* rendererString = reinterpret_cast<const CHAR*>(glGetString(GL_RENDERER));
-
-    // Store the video card name in a class member variable so it can be retrieved later.
-    /*strcpy_s(m_videoCardDescription, vendorString);
-    strcat_s(m_videoCardDescription, " - ");
-    strcat_s(m_videoCardDescription, rendererString);*/
+    const CHAR* vendorString = reinterpret_cast<const CHAR*>(
+        glGetString(GL_VENDOR));
+    const CHAR* rendererString = reinterpret_cast<const CHAR*>(
+        glGetString(GL_RENDERER));
 
     // Turn on or off the vertical sync depending on the input bool value.
     /*if (true)
@@ -285,7 +297,7 @@ void OpenGLRenderer::LogLastError() {
         nullptr);
 
     std::wstringstream stream;
-    stream 
+    stream
         << L"GetLastError() returned error code '"
         << error
         << L"' which resolves to message '"

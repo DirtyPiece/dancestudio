@@ -15,6 +15,11 @@ void Throw::ArgumentNullException(const std::string& paramName) {
     throw std::invalid_argument("'" + paramName + "' cannot be null.");
 }
 
+void Throw::ArgumentOutOfRangeException(const std::string& paramName) {
+    throw std::invalid_argument(
+        "The argument '" + paramName + "' is out of range.");
+}
+
 void Throw::InvalidOperationException(const std::string& message) {
     throw std::runtime_error(message);
 }
