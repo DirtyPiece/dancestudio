@@ -25,7 +25,8 @@ std::string FileHelper::LoadAllFileText(const std::string& filePath) {
     fseek(file, 0, SEEK_SET);
 
     CHAR* buffer = new CHAR[fileSize + 1];
-    INT32 readSize = fread(buffer, sizeof(CHAR), fileSize, file);
+    Validator::IsMemoryAllocated(buffer, "the file at '" + filePath + "'");
+    size_t readSize = fread(buffer, sizeof(CHAR), fileSize, file);
 
     // Terminate the string.
     buffer[readSize] = 0;
@@ -38,6 +39,8 @@ std::string FileHelper::LoadAllFileText(const std::string& filePath) {
 std::string FileHelper::GetExecutingExeDirectory() {
     const INT32 bufferSize = MAX_PATH + 1;
     CHAR* filePath = new CHAR[bufferSize];
+    Validator::IsMemoryAllocated(filePath, "storing the exe folder path.");
+
     DWORD result = GetModuleFileName(
         nullptr,
         filePath,

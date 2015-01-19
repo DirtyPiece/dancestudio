@@ -23,3 +23,10 @@ void Throw::ArgumentOutOfRangeException(const std::string& paramName) {
 void Throw::InvalidOperationException(const std::string& message) {
     throw std::runtime_error(message);
 }
+
+void Throw::OutOfMemoryException(const std::string& memoryRegionName) {
+    throw std::runtime_error(
+        "Ran out of memory while attempting to allocate for '"
+      + memoryRegionName
+      + "'.");
+}

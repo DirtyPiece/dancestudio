@@ -169,6 +169,7 @@ void OpenGLRenderer::Initialize() {
         GL_COMPILE_STATUS,
         &status);
     if (status != TRUE) {
+        LogShaderCompileErrorMessage(this->vertexShader);
         Throw::InvalidOperationException(
             "The vertex shader at '"
             + vertexShaderFilePath
@@ -181,6 +182,7 @@ void OpenGLRenderer::Initialize() {
         GL_COMPILE_STATUS,
         &status);
     if (status != TRUE) {
+        LogShaderCompileErrorMessage(this->pixelShader);
         Throw::InvalidOperationException(
             "The pixel shader at '"
             + pixelShaderFilePath
@@ -218,6 +220,7 @@ void OpenGLRenderer::Initialize() {
         &status);
 
     if (status != TRUE) {
+        LogShaderLinkErrorMessage();
         Throw::InvalidOperationException("The shader program failed to link.");
     }
 }
@@ -293,7 +296,6 @@ void OpenGLRenderer::InitializeOpenGL() {
     BOOL result;
     INT32 attributeList[5];
     SINGLE fieldOfView, screenAspect;
-    PIXELFORMATDESCRIPTOR pixelFormatDescriptor;
 
     // Get the device context for this window.
     assert(this->deviceContext == nullptr);
@@ -419,11 +421,25 @@ void OpenGLRenderer::InitializeOpenGL() {
         screenNear,
         screenFar);
 
-    // Get the name of the video card.
+    // Get the details of the video card.
     const CHAR* vendorString = reinterpret_cast<const CHAR*>(
         glGetString(GL_VENDOR));
     const CHAR* rendererString = reinterpret_cast<const CHAR*>(
         glGetString(GL_RENDERER));
+    const CHAR* versionString = reinterpret_cast<const CHAR*>(
+        glGetString(GL_VERSION));
+
+    Logger::LogCoreVerbose(
+        (std::string("Video card vendor: ")
+      + vendorString).c_str());
+
+    Logger::LogCoreVerbose(
+        (std::string("Video card renderer: ")
+        + rendererString).c_str());
+
+    Logger::LogCoreVerbose(
+        (std::string("Video card version: ")
+        + versionString).c_str());
 
     // Turn on or off the vertical sync depending on the input bool value.
     /*if (true)
@@ -470,4 +486,45 @@ void OpenGLRenderer::LogLastError() {
 
     LocalFree(lpMsgBuf);
 #endif  // _WIN32
+}
+
+void OpenGLRenderer::LogShaderCompileErrorMessage(INT32 shaderId) {
+    assert(shaderId >= 0);
+
+    INT32 logSize = 0;
+    extensions.glGetShaderiv(shaderId, GL_INFO_LOG_LENGTH, &logSize);
+
+    // Account for the null terminator;
+    ++logSize;
+
+    CHAR* logMessage = new CHAR[logSize];
+    Validator::IsMemoryAllocated(
+        logMessage,
+        "the shader compiler error message.");
+
+    extensions.glGetShaderInfoLog(shaderId, logSize, nullptr, logMessage);
+
+    // TODO: log the message to the logger.
+}
+
+void OpenGLRenderer::LogShaderLinkErrorMessage() {
+    INT32 logSize = 0;
+    extensions.glGetProgramiv(
+        this->shaderProgram,
+        GL_INFO_LOG_LENGTH,
+        &logSize);
+
+    // Account for the null terminator;
+    ++logSize;
+
+    CHAR* logMessage = new CHAR[logSize];
+    Validator::IsMemoryAllocated(logMessage, "the shader linker error message.");
+
+    extensions.glGetProgramInfoLog(
+        this->shaderProgram,
+        logSize,
+        nullptr,
+        logMessage);
+
+    // TODO: log the message to the logger.
 }

@@ -39,10 +39,22 @@ class Logger {
     void LogVerbose(const WCHAR* message);
 
     /// <summary>
+    /// Logs a verbose message to the Dance Studio log file.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    void LogVerbose(const CHAR* message);
+
+    /// <summary>
     /// Logs an informational message to the Dance Studio log file.
     /// </summary>
     /// <param name="message">The message to log.</param>
     void LogInfo(const WCHAR* message);
+
+    /// <summary>
+    /// Logs an informational message to the Dance Studio log file.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    void LogInfo(const CHAR* message);
 
     /// <summary>
     /// Logs a warning message to the Dance Studio log file.
@@ -51,10 +63,22 @@ class Logger {
     void LogWarning(const WCHAR* message);
 
     /// <summary>
+    /// Logs a warning message to the Dance Studio log file.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    void LogWarning(const CHAR* message);
+
+    /// <summary>
     /// Logs an error message to the Dance Studio log file.
     /// </summary>
     /// <param name="message">The message to log.</param>
     void LogError(const WCHAR* message);
+
+    /// <summary>
+    /// Logs an error message to the Dance Studio log file.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    void LogError(const CHAR* message);
 
     /// <summary>
     /// Sets the global core logger.
@@ -69,10 +93,22 @@ class Logger {
     static void LogCoreVerbose(const WCHAR* message);
 
     /// <summary>
+    /// Logs a verbose message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreVerbose(const CHAR* message);
+
+    /// <summary>
     /// Logs an informational message for the core library.
     /// </summary>
     /// <param name="message">The message to log.</param>
     static void LogCoreInfo(const WCHAR* message);
+
+    /// <summary>
+    /// Logs an informational message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreInfo(const CHAR* message);
 
     /// <summary>
     /// Logs a warning message for the core library.
@@ -81,10 +117,22 @@ class Logger {
     static void LogCoreWarning(const WCHAR* message);
 
     /// <summary>
+    /// Logs a warning message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreWarning(const CHAR* message);
+
+    /// <summary>
     /// Logs an error message for the core library.
     /// </summary>
     /// <param name="message">The message to log.</param>
     static void LogCoreError(const WCHAR* message);
+
+    /// <summary>
+    /// Logs an error message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreError(const CHAR* message);
 
  private:
     /// <summary>
@@ -102,6 +150,12 @@ class Logger {
     /// </summary>
     /// <param name="message">The message to log.</param>
     void Log(const WCHAR* message);
+
+    /// <summary>
+    /// Logs the specified message with the format parameters supplied.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    void Log(const CHAR* message);
 };
 
 }  // namespace Core

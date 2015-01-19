@@ -23,7 +23,12 @@
 /// <summary>
 /// The newline ending for the current platform.
 /// </summary>
-#define DANCE_STUDIO_NEWLINE L"\n"
+#define DANCE_STUDIO_NEWLINE "\n"
+
+/// <summary>
+/// The newline ending for the current platform.
+/// </summary>
+#define DANCE_STUDIO_NEWLINE_W L"\n"
 
 #define DANCE_STUDIO_UNUSED(x) ((void)x)
 

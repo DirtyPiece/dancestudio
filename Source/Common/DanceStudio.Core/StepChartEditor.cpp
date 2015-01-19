@@ -16,6 +16,9 @@ StepChartEditor::StepChartEditor(DS_HANDLE* window) :
     Validator::IsNotNull(window, "window");
 
     renderer = new OpenGLRenderer(window);
+    Validator::IsMemoryAllocated(
+        renderer,
+        "the step chart editor's internal renderer.");
 }
 
 StepChartEditor::~StepChartEditor() {

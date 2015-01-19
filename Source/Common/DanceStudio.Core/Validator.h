@@ -130,6 +130,25 @@ class Validator {
             Throw::ArgumentOutOfRangeException(parameterName);
         }
     }
+
+    /// <summary>
+    /// Determines whether or not the passed in memory location was
+    /// able to be allocated.
+    /// </summary>
+    /// <param name="memory">The memory.</param>
+    /// <param name="memoryRegionName">
+    /// The name of the memory region to validate.  If the memory is null,
+    /// will use the parameter in the exception message as:
+    /// [Ran out of memory while attempting to allocate for
+    /// {memoryRegionName}.].
+    /// </param>
+    static inline void IsMemoryAllocated(
+        const void* memory,
+        const std::string& memoryRegionName) {
+        if (memory == nullptr) {
+            Throw::OutOfMemoryException(memoryRegionName);
+        }
+    }
 };
 }  // namespace Core
 }  // namespace DanceStudio

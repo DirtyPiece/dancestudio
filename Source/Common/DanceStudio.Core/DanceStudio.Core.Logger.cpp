@@ -12,9 +12,11 @@
 #include "Logger.h"
 
 using DanceStudio::Core::Logger;
+using DanceStudio::Core::Validator;
 
 DS_LOGGER* DSLoggerAllocate(const CHAR* outputDirectory) {
     Logger* logger = new Logger(outputDirectory);
+    Validator::IsMemoryAllocated(logger, "the native logger.");
     return logger;
 }
 

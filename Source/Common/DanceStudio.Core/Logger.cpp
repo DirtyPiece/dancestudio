@@ -45,7 +45,18 @@ void Logger::LogVerbose(const WCHAR* message) {
     const std::wstring& adjustedMessage =
         L"V: "
       + std::wstring(message)
-      + DANCE_STUDIO_NEWLINE;
+      + DANCE_STUDIO_NEWLINE_W;
+
+    this->Log(adjustedMessage.c_str());
+}
+
+void Logger::LogVerbose(const CHAR* message) {
+    Validator::IsNotNull(message, "message");
+
+    const std::string& adjustedMessage =
+        "V: "
+        + std::string(message)
+        + DANCE_STUDIO_NEWLINE;
 
     this->Log(adjustedMessage.c_str());
 }
@@ -56,6 +67,17 @@ void Logger::LogInfo(const WCHAR* message) {
     const std::wstring& adjustedMessage =
         L"I: "
         + std::wstring(message)
+        + DANCE_STUDIO_NEWLINE_W;
+
+    this->Log(adjustedMessage.c_str());
+}
+
+void Logger::LogInfo(const CHAR* message) {
+    Validator::IsNotNull(message, "message");
+
+    const std::string& adjustedMessage =
+        "I: "
+        + std::string(message)
         + DANCE_STUDIO_NEWLINE;
 
     this->Log(adjustedMessage.c_str());
@@ -67,6 +89,17 @@ void Logger::LogWarning(const WCHAR* message) {
     const std::wstring& adjustedMessage =
         L"W: "
         + std::wstring(message)
+        + DANCE_STUDIO_NEWLINE_W;
+
+    this->Log(adjustedMessage.c_str());
+}
+
+void Logger::LogWarning(const CHAR* message) {
+    Validator::IsNotNull(message, "message");
+
+    const std::string& adjustedMessage =
+        "W: "
+        + std::string(message)
         + DANCE_STUDIO_NEWLINE;
 
     this->Log(adjustedMessage.c_str());
@@ -78,6 +111,17 @@ void Logger::LogError(const WCHAR* message) {
     const std::wstring& adjustedMessage =
         L"E: "
         + std::wstring(message)
+        + DANCE_STUDIO_NEWLINE_W;
+
+    this->Log(adjustedMessage.c_str());
+}
+
+void Logger::LogError(const CHAR* message) {
+    Validator::IsNotNull(message, "message");
+
+    const std::string& adjustedMessage =
+        "E: "
+        + std::string(message)
         + DANCE_STUDIO_NEWLINE;
 
     this->Log(adjustedMessage.c_str());
@@ -88,6 +132,14 @@ void Logger::Log(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
 
     fwprintf(this->file, message);
+    fflush(this->file);
+}
+
+void Logger::Log(const CHAR* message) {
+    assert(this->file != nullptr);
+    Validator::IsNotNull(message, "message");
+
+    fprintf(this->file, message);
     fflush(this->file);
 }
 
@@ -102,7 +154,21 @@ void Logger::LogCoreVerbose(const WCHAR* message) {
     }
 }
 
+void Logger::LogCoreVerbose(const CHAR* message) {
+    Validator::IsNotNull(message, "message");
+    if (Logger::globalLogger != nullptr) {
+        Logger::globalLogger->LogVerbose(message);
+    }
+}
+
 void Logger::LogCoreInfo(const WCHAR* message) {
+    Validator::IsNotNull(message, "message");
+    if (Logger::globalLogger != nullptr) {
+        Logger::globalLogger->LogInfo(message);
+    }
+}
+
+void Logger::LogCoreInfo(const CHAR* message) {
     Validator::IsNotNull(message, "message");
     if (Logger::globalLogger != nullptr) {
         Logger::globalLogger->LogInfo(message);
@@ -116,7 +182,21 @@ void Logger::LogCoreWarning(const WCHAR* message) {
     }
 }
 
+void Logger::LogCoreWarning(const CHAR* message) {
+    Validator::IsNotNull(message, "message");
+    if (Logger::globalLogger != nullptr) {
+        Logger::globalLogger->LogWarning(message);
+    }
+}
+
 void Logger::LogCoreError(const WCHAR* message) {
+    Validator::IsNotNull(message, "message");
+    if (Logger::globalLogger != nullptr) {
+        Logger::globalLogger->LogError(message);
+    }
+}
+
+void Logger::LogCoreError(const CHAR* message) {
     Validator::IsNotNull(message, "message");
     if (Logger::globalLogger != nullptr) {
         Logger::globalLogger->LogError(message);

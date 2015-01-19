@@ -12,6 +12,7 @@
 #include "StepChartEditor.h"
 
 using DanceStudio::Core::StepChartEditor;
+using DanceStudio::Core::Validator;
 
 DS_STEPCHARTEDITOR* DSStepChartEditorAllocate(DS_HANDLE* windowHandle) {
     StepChartEditor* editor = new StepChartEditor(windowHandle);
@@ -24,5 +25,6 @@ void DSStepChartEditorFree(DS_STEPCHARTEDITOR* editor) {
 
 void DSStepChartEditorUpdate(DS_STEPCHARTEDITOR* editor) {
     StepChartEditor* typedEditor = static_cast<StepChartEditor*>(editor);
+    Validator::IsMemoryAllocated(typedEditor, "the native step chart editor.");
     typedEditor->Update();
 }

@@ -108,6 +108,19 @@ class OpenGLRenderer {
     /// Logs the last error using GetLastError().
     /// </summary>
     void LogLastError();
+
+    /// <summary>
+    /// Logs a shader compile error message to the log file.
+    /// </summary>
+    /// <param name="shaderId">
+    /// The ID of the shader that was attempted to be compiled.
+    /// </param>
+    void LogShaderCompileErrorMessage(INT32 shaderId);
+
+    /// <summary>
+    /// Logs a shader link error message to the log file.
+    /// </summary>
+    void LogShaderLinkErrorMessage();
 };
 }  // namespace Core
 }  // namespace DanceStudio

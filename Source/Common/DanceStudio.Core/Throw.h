@@ -43,6 +43,15 @@ class Throw {
     /// </summary>
     /// <param name="message">The exception message body.</param>
     static void InvalidOperationException(const std::string& message);
+
+    /// <summary>
+    /// Throws a std::runtime_error exception identifying that the program
+    /// ran out of memory when attempting the allocation.
+    /// </summary>
+    /// <param name="memoryRegionName">
+    /// The name of the memory location attempting to be allocated.
+    /// </param>
+    static void OutOfMemoryException(const std::string& memoryRegionName);
 };
 }  // namespace Core
 }  // namespace DanceStudio
