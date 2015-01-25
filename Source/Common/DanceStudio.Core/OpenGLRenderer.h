@@ -90,6 +90,31 @@ class OpenGLRenderer {
     UINT32 shaderProgram;
 
     /// <summary>
+    /// The number of vertices in the model geometry.
+    /// </summary>
+    INT32 vertexCount;
+
+    /// <summary>
+    /// The number of indices in the model index buffer.
+    /// </summary>
+    INT32 indexCount;
+
+    /// <summary>
+    /// The vertex array identifier.
+    /// </summary>
+    UINT32 vertexArrayId;
+
+    /// <summary>
+    /// The vertex buffer identifier.
+    /// </summary>
+    UINT32 vertexBufferId;
+
+    /// <summary>
+    /// The index buffer identifier.
+    /// </summary>
+    UINT32 indexBufferId;
+
+    /// <summary>
     /// Initializes OpenGL with the passed in window.
     /// </summary>
     void Initialize();
@@ -121,6 +146,42 @@ class OpenGLRenderer {
     /// Logs a shader link error message to the log file.
     /// </summary>
     void LogShaderLinkErrorMessage();
+
+    /// <summary>
+    /// Represents the format of each vertex in the model.
+    /// </summary>
+    struct VertexType
+    {
+        /// <summary>
+        /// The x coordinate of the vertex.
+        /// </summary>
+        SINGLE x;
+
+        /// <summary>
+        /// The y coordinate of the vertex.
+        /// </summary>
+        SINGLE y;
+
+        /// <summary>
+        /// The z coordinate of the vertex.
+        /// </summary>
+        SINGLE z;
+
+        /// <summary>
+        /// The red color component of the vertex.
+        /// </summary>
+        SINGLE r;
+
+        /// <summary>
+        /// The green color component of the vertex.
+        /// </summary>
+        SINGLE g;
+
+        /// <summary>
+        /// The blue color component of the vertex.
+        /// </summary>
+        SINGLE b;
+    };
 };
 }  // namespace Core
 }  // namespace DanceStudio

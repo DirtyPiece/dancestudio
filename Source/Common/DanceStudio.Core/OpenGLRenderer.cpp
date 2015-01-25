@@ -20,7 +20,12 @@ OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
     windowHandle(nullptr),
     vertexShader(0),
     pixelShader(0),
-    shaderProgram(0) {
+    shaderProgram(0),
+    vertexCount(0),
+    indexCount(0),
+    vertexArrayId(0),
+    vertexBufferId(0),
+    indexBufferId(0) {
     Validator::IsNotNull(windowHandle, "windowHandle");
 
     this->windowHandle = windowHandle;
@@ -223,6 +228,122 @@ void OpenGLRenderer::Initialize() {
         LogShaderLinkErrorMessage();
         Throw::InvalidOperationException("The shader program failed to link.");
     }
+
+    // Load the vertex data.
+    VertexType* vertices = nullptr;
+    UINT32* indices = nullptr;
+
+    this->vertexCount = 3;
+    this->indexCount = 3;
+
+    vertices = new VertexType[this->vertexCount];
+    Validator::IsMemoryAllocated(vertices, "the vertices of the model");
+
+    indices = new UINT32[this->indexCount];
+    Validator::IsMemoryAllocated(vertices, "the indices of the model");
+
+    // Load the vertex array with data.
+
+    // Bottom left.
+    vertices[0].x = -1.0f;  // Position.
+    vertices[0].y = -1.0f;
+    vertices[0].z = 0.0f;
+
+    vertices[0].r = 0.0f;  // Color.
+    vertices[0].g = 1.0f;
+    vertices[0].b = 0.0f;
+
+    // Top middle.
+    vertices[1].x = 0.0f;  // Position.
+    vertices[1].y = 1.0f;
+    vertices[1].z = 0.0f;
+
+    vertices[1].r = 0.0f;  // Color.
+    vertices[1].g = 1.0f;
+    vertices[1].b = 0.0f;
+
+    // Bottom right.
+    vertices[2].x = 1.0f;  // Position.
+    vertices[2].y = -1.0f;
+    vertices[2].z = 0.0f;
+
+    vertices[2].r = 0.0f;  // Color.
+    vertices[2].g = 1.0f;
+    vertices[2].b = 0.0f;
+
+    // Load the index array with data.
+    indices[0] = 0;  // Bottom left.
+    indices[1] = 1;  // Top middle.
+    indices[2] = 2;  // Bottom right.
+
+    // Allocate the vertex array object for OpenGL.
+    extensions.glGenVertexArrays(1, &this->vertexArrayId);
+
+    // Bind the vertex array object.
+    extensions.glBindVertexArray(this->vertexArrayId);
+
+    // Generate an ID for the vertex buffer.
+    extensions.glGenBuffers(1, &this->vertexBufferId);
+
+    // Bind the vertex buffer.
+    extensions.glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferId);
+
+    // Load the vertex data into the buffer.
+    extensions.glBufferData(
+        GL_ARRAY_BUFFER,
+        this->vertexCount * sizeof(VertexType),
+        vertices,
+        GL_STATIC_DRAW);
+
+    // Enable the vertex position attribute.
+    extensions.glEnableVertexAttribArray(0);
+
+    // Enable the vertex color attribute.
+    extensions.glEnableVertexAttribArray(1);
+
+    // Bind the vertex buffer again.
+    extensions.glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferId);
+
+    // Describe the format of the position data.
+    extensions.glVertexAttribPointer(
+        0 /*index*/,
+        3 /*size*/,
+        GL_FLOAT,
+        false /*normalized*/,
+        sizeof(VertexType),
+        nullptr);
+
+    // Bind the vertex buffer again.
+    extensions.glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferId);
+
+    // Describe the format of the color data.
+    extensions.glVertexAttribPointer(
+        1 /*index*/,
+        3 /*size*/,
+        GL_FLOAT,
+        false /*normalized*/,
+        sizeof(VertexType),
+        reinterpret_cast<BYTE*>(0) + (3 * sizeof(SINGLE)));
+
+    // Generate an ID for the index buffer.
+    extensions.glGenBuffers(1, &this->indexBufferId);
+
+    // Bind the index buffer.
+    extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->indexBufferId);
+
+    // Load the index data into the buffer.
+    extensions.glBufferData(
+        GL_ELEMENT_ARRAY_BUFFER,
+        this->indexCount * sizeof(UINT32),
+        indices,
+        GL_STATIC_DRAW);
+
+    // Clean up the buffers.
+    delete[] vertices;
+    vertices = nullptr;
+
+    delete[] indices;
+    indices = nullptr;
 }
 
 void OpenGLRenderer::LoadExtensionList() {
