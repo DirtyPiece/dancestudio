@@ -145,10 +145,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EXCEPTION_POINTERS.h" />
+    <ClInclude Include="EXCEPTION_RECORD.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MarshalHelper.h" />
     <ClInclude Include="NativeUniquePointer.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SEHException.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="StepChartEditor.h" />
   </ItemGroup>

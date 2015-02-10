@@ -34,6 +34,9 @@
     <Filter Include="Header Files\Internal\Shaders">
       <UniqueIdentifier>{20d4c02d-f27e-4385-a6b6-7c2064b183fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Internal\Exceptions">
+      <UniqueIdentifier>{ececcfe9-df65-4c5c-84f3-401914b4cb6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DanceStudio.Core.h">
@@ -69,14 +72,17 @@
     <ClInclude Include="OpenGLExtensions.h">
       <Filter>Header Files\Internal\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Throw.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
     <ClInclude Include="MathHelper.h">
       <Filter>Header Files\Internal</Filter>
     </ClInclude>
     <ClInclude Include="FileHelper.h">
       <Filter>Header Files\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Throw.h">
+      <Filter>Header Files\Internal\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="SEHException.h">
+      <Filter>Header Files\Internal\Exceptions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

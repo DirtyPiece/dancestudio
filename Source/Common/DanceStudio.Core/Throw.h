@@ -52,6 +52,36 @@ class Throw {
     /// The name of the memory location attempting to be allocated.
     /// </param>
     static void OutOfMemoryException(const std::string& memoryRegionName);
+
+private:
+    /// <summary>
+    /// Throws a platform specific instruction (Windows versus Mac).
+    /// </summary>
+    /// <param name="title">
+    /// The title to place in the exception.
+    /// </param>
+    /// <param name="message">
+    /// The message body which includes things like the exception details.
+    /// </param>
+    static void PlatformSpecificException(
+        const std::string& title,
+        const std::string& message);
+
+#ifdef _WIN32
+    /// <summary>
+    /// Throws a Structured Exception Handling exception that will be marshaled
+    /// through to C#.
+    /// </summary>
+    /// <param name="title">
+    /// The title to place in the exception.
+    /// </param>
+    /// <param name="message">
+    /// The message body which includes things like the exception details.
+    /// </param>
+    static void SEHException(
+        const std::string& title,
+        const std::string& message);
+#endif  // _WIN32
 };
 }  // namespace Core
 }  // namespace DanceStudio

@@ -11,7 +11,13 @@
 
 using DanceStudio::Core::Cli::StepChartEditor;
 using System::EventHandler;
+using System::AppDomain;
+using System::Object;
+using System::UnhandledExceptionEventArgs;
+using System::UnhandledExceptionEventHandler;
+using System::Threading::ThreadExceptionEventHandler;
 using System::Windows::Forms::Application;
+using System::Windows::Forms::UnhandledExceptionMode;
 
 StepChartEditor::StepChartEditor() :
     editor(nullptr) {
@@ -41,6 +47,17 @@ void StepChartEditor::StepChartEditor_Loaded(Object^ sender, EventArgs^ e) {
 
     assert(this->editor == nullptr);
 
+    // Register for notification of native exceptions that occur and
+    // need to be marshalled to C# (via SEHException).
+    Application::ThreadException += gcnew ThreadExceptionEventHandler(
+        this,
+        &StepChartEditor::OnThreadException);
+
+    /*Application::SetUnhandledExceptionMode(
+        UnhandledExceptionMode::CatchException);*/
+
+    AppDomain::CurrentDomain->UnhandledException += gcnew System::UnhandledExceptionEventHandler(this, &StepChartEditor::OnUnhandledException);
+
     // Grab the HWND for the UserControl and pass it along to the C++
     // step chart editor for rendering.
     DS_HANDLE* windowHandle = this->Handle.ToPointer();
@@ -66,4 +83,19 @@ void StepChartEditor::OnPaint(PaintEventArgs^ e) {
     if (this->editor != nullptr) {
         DSStepChartEditorUpdate(this->editor);
     }
+}
+
+void StepChartEditor::OnThreadException(
+    Object^ sender,
+    ThreadExceptionEventArgs^ e) {
+    int x = 5;
+    x++;
+}
+
+
+void StepChartEditor::OnUnhandledException(
+    Object ^sender,
+    UnhandledExceptionEventArgs ^e) {
+    int x = 5;
+    x++;
 }

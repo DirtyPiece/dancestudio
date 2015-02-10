@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Interop">
+      <UniqueIdentifier>{b5614627-7658-42d5-ba90-9c039173ad20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h">
@@ -32,6 +35,15 @@
     </ClInclude>
     <ClInclude Include="StepChartEditor.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EXCEPTION_POINTERS.h">
+      <Filter>Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="SEHException.h">
+      <Filter>Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="EXCEPTION_RECORD.h">
+      <Filter>Interop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

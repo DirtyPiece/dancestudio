@@ -30,6 +30,14 @@
 /// </summary>
 #define DANCE_STUDIO_NEWLINE_W L"\n"
 
+/// <summary>
+/// Macro for marking function parameters as unused (to avoid warnings).
+/// </summary>
 #define DANCE_STUDIO_UNUSED(x) ((void)x)
+
+/// <summary>
+/// The maximum length of exception message details.
+/// </summary>
+#define DANCE_STUDIO_MAX_EXCEPTION_MESSAGE_LENGTH 1024
 
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_CONSTANTS_H_

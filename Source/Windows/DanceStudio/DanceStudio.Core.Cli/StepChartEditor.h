@@ -14,6 +14,7 @@ using System::Windows::Forms::UserControl;
 using System::Object;
 using System::EventArgs;
 using System::Windows::Forms::PaintEventArgs;
+using System::Threading::ThreadExceptionEventArgs;
 
 namespace DanceStudio {
 namespace Core {
@@ -75,6 +76,14 @@ public ref class StepChartEditor : public UserControl {
     /// </param>
     /// <param name="e">The event arguments (empty).</param>
     void StepChartEditor_SizeChanged(Object^ sender, EventArgs^ e);
+
+    /// <summary>
+    /// Called when an unhandled exception is thrown on a background thread.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The event details.</param>
+    void OnThreadException(Object ^sender, ThreadExceptionEventArgs ^e);
+    void OnUnhandledException(System::Object ^sender, System::UnhandledExceptionEventArgs ^e);
 };
 }  // namespace Cli
 }  // namespace Core

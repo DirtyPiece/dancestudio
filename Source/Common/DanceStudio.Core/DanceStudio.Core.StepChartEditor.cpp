@@ -16,6 +16,7 @@ using DanceStudio::Core::Validator;
 
 DS_STEPCHARTEDITOR* DSStepChartEditorAllocate(DS_HANDLE* windowHandle) {
     StepChartEditor* editor = new StepChartEditor(windowHandle);
+    Validator::IsMemoryAllocated(editor, "the native step chart editor.");
     return editor;
 }
 
