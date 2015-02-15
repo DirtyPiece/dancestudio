@@ -8,11 +8,15 @@
 #ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_EXCEPTION_RECORD_H_
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_EXCEPTION_RECORD_H_
 
+#include "..\..\..\Common\DanceStudio.Core\Constants.h"
+
 using System::IntPtr;
 using System::Int32;
 using System::UInt32;
 using System::Runtime::InteropServices::StructLayoutAttribute;
+using System::Runtime::InteropServices::LayoutKind;
 using System::Runtime::InteropServices::MarshalAsAttribute;
+using System::Runtime::InteropServices::UnmanagedType;
 
 namespace DanceStudio {
 namespace Core {
@@ -20,7 +24,7 @@ namespace Cli {
 /// <summary>
 /// Represents a marshaled EXCEPTION_RECORD structure.
 /// </summary>
-[StructLayout(LayoutKind.Sequential, Pack = 1)]
+[StructLayout(LayoutKind::Sequential, Pack = 1)]
 public ref struct EXCEPTION_RECORD
 {
     /// <summary>
@@ -64,7 +68,7 @@ public ref struct EXCEPTION_RECORD
     /// most exception codes, the array elements are undefined. The following
     /// table describes the exception codes whose array elements are defined.
     /// </summary>
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = EXCEPTION_MAXIMUM_PARAMETERS)]
+    [MarshalAs(UnmanagedType::ByValArray, SizeConst = DANCE_STUDIO_MAX_EXCEPTION_MESSAGE_LENGTH)]
     array<UInt32>^ ExceptionInformation;
 };
 };  // namespace Cli

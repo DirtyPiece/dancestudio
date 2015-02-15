@@ -47,10 +47,10 @@ using DanceStudio.Core.Cli;
         /// Handles the DispatcherUnhandledException event of the App control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="DispatcherUnhandledExceptionEventArgs"/> instance containing the event data.</param>
-        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        /// <param name="ex">The <see cref="DispatcherUnhandledExceptionEventArgs"/> instance containing the event data.</param>
+        private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs ex)
         {
-            
+            ShowExceptionDialog(ex.Exception);
         }
 
         /// <summary>

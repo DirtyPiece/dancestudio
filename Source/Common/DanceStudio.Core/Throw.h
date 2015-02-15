@@ -63,9 +63,20 @@ private:
     /// <param name="message">
     /// The message body which includes things like the exception details.
     /// </param>
+    /// <param name="exceptionCode">
+    /// The exception code used to identify the type of exception on the
+    /// managed side.
+    /// </param>
     static void PlatformSpecificException(
         const std::string& title,
-        const std::string& message);
+        const std::string& message,
+        UINT32 exceptionCode);
+
+    /// <summary>
+    /// Gets the current callstack from the call point.
+    /// </summary>
+    /// <returns>The callstack string.</returns>
+    static std::string GetCurrentCallstack();
 
 #ifdef _WIN32
     /// <summary>
@@ -78,9 +89,14 @@ private:
     /// <param name="message">
     /// The message body which includes things like the exception details.
     /// </param>
+    /// <param name="exceptionCode">
+    /// The exception code used to identify the type of exception on the
+    /// managed side.
+    /// </param>
     static void SEHException(
         const std::string& title,
-        const std::string& message);
+        const std::string& message,
+        UINT32 exceptionCode);
 #endif  // _WIN32
 };
 }  // namespace Core

@@ -11,6 +11,9 @@
 using System::String;
 using System::Runtime::InteropServices::StructLayoutAttribute;
 using System::Runtime::InteropServices::MarshalAsAttribute;
+using System::Runtime::InteropServices::LayoutKind;
+using System::Runtime::InteropServices::CharSet;
+using System::Runtime::InteropServices::UnmanagedType;
 
 namespace DanceStudio {
 namespace Core {
@@ -18,19 +21,19 @@ namespace Cli {
 /// <summary>
 /// Represents a marshaled SEH exception from C++.
 /// </summary>
-[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
+[StructLayout(LayoutKind::Sequential, Pack = 1, CharSet = CharSet::Ansi)]
 public ref struct SEHException
 {
     /// <summary>
     /// The title of the exception.
     /// </summary>
-    [MarshalAs(UnmanagedType.LPStr)]
+    [MarshalAs(UnmanagedType::LPStr)]
     String^ Title;
 
     /// <summary>
     /// The detailed message for the exception (stack trace, etc.).
     /// </summary>
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1024)]
+    [MarshalAs(UnmanagedType::ByValTStr, SizeConst = 1024)]
     String^ Message;
 };
 };  // namespace Cli

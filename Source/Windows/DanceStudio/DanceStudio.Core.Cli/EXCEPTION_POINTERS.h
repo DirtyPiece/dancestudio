@@ -10,6 +10,7 @@
 
 using System::IntPtr;
 using System::Runtime::InteropServices::StructLayoutAttribute;
+using System::Runtime::InteropServices::LayoutKind;
 
 namespace DanceStudio {
 namespace Core {
@@ -17,20 +18,20 @@ namespace Cli {
 /// <summary>
 /// Represents a marshaled EXCEPTION_POINTERS structure.
 /// </summary>
-[StructLayout(LayoutKind.Sequential, Pack = 1)]
+[StructLayout(LayoutKind::Sequential, Pack = 1)]
 public ref struct EXCEPTION_POINTERS
 {
     /// <summary>
     /// A pointer to an EXCEPTION_RECORD structure that contains a
     /// machine-independent description of the exception.
     /// </summary>
-    IntPtr^ ExceptionRecord;
+    IntPtr ExceptionRecord;
 
     /// <summary>
     /// A pointer to a CONTEXT structure that contains a processor-specific
     /// description of the state of the processor at the time of the exception.
     /// </summary>
-    IntPtr^ Context;
+    IntPtr Context;
 };
 };  // namespace Cli
 };  // namespace Core

@@ -14,6 +14,7 @@
 
 #include "Throw.h"
 #include "SEHException.h"
+#include "DanceStudioExceptionType.h"
 
 using DanceStudio::Core::Throw;
 using DanceStudio::Core::SEHException;
@@ -21,19 +22,22 @@ using DanceStudio::Core::SEHException;
 void Throw::ArgumentNullException(const std::string& paramName) {
     Throw::PlatformSpecificException(
         "ArgumentNullException",
-        "'" + paramName + "' cannot be null.");
+        "'" + paramName + "' cannot be null.",
+        DANCE_STUDIO_EXCEPTION_TYPE_ARGUMENT_NULL);
 }
 
 void Throw::ArgumentOutOfRangeException(const std::string& paramName) {
     Throw::PlatformSpecificException(
         "ArgumentOutOfRangeException",
-        "The argument '" + paramName + "' is out of range.");
+        "The argument '" + paramName + "' is out of range.",
+        DANCE_STUDIO_EXCEPTION_TYPE_ARGUMENT_OUT_OF_RANGE);
 }
 
 void Throw::InvalidOperationException(const std::string& message) {
     Throw::PlatformSpecificException(
         "InvalidOperationException",
-        message);
+        message,
+        DANCE_STUDIO_EXCEPTION_TYPE_INVALID_OPERATION);
 }
 
 void Throw::OutOfMemoryException(const std::string& memoryRegionName) {
@@ -41,21 +45,33 @@ void Throw::OutOfMemoryException(const std::string& memoryRegionName) {
         "OutOfMemoryException",
         "Ran out of memory while attempting to allocate for '"
         + memoryRegionName
-        + "'.");
+        + "'.",
+        DANCE_STUDIO_EXCEPTION_TYPE_OUT_OF_MEMORY);
 }
 
 void Throw::PlatformSpecificException(
     const std::string& title,
-    const std::string& message) {
+    const std::string& message,
+    UINT32 exceptionCode) {
 #ifdef _WIN32
-    Throw::SEHException(title, message);
+    Throw::SEHException(title, message, exceptionCode);
 #endif  // _WIN32
+}
+
+std::string Throw::GetCurrentCallstack() {
+    try {
+        throw std::exception();
+    }
+    catch (const std::exception& ex) {
+        return ex.what();
+    }
 }
 
 #ifdef _WIN32
 void Throw::SEHException(
     const std::string& title,
-    const std::string& message) {
+    const std::string& message,
+    UINT32 exceptionCode) {
 
     DanceStudio::Core::SEHException* exception = reinterpret_cast<DanceStudio::Core::SEHException*>(
         CoTaskMemAlloc(sizeof(DanceStudio::Core::SEHException)));
@@ -75,11 +91,11 @@ void Throw::SEHException(
         DANCE_STUDIO_MAX_EXCEPTION_MESSAGE_LENGTH);
 
     // Raise the exception message.  Freeing of the exception memory will
-    // happen on the C# side after recieving it.
+    // happen on the C# side after receiving it.
     RaiseException(
-        100     /* Error code */,
-        0       /* Exception flags */,
-        1       /* Number of exceptions */,
+        exceptionCode,
+        0               /* Exception flags */,
+        1               /* Number of exceptions */,
         reinterpret_cast<const ULONG_PTR*>(&exception));
 }
 #endif  // _WIN32

@@ -40,4 +40,9 @@
 /// </summary>
 #define DANCE_STUDIO_MAX_EXCEPTION_MESSAGE_LENGTH 1024
 
+/// <summary>
+/// The maximum length of exception callstack details.
+/// </summary>
+#define DANCE_STUDIO_MAX_CALLSTACK_LENGTH 1024
+
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_CONSTANTS_H_

@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DanceStudio.Core.h" />
+    <ClInclude Include="DanceStudioExceptionType.h" />
     <ClInclude Include="FileHelper.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="OpenGL.h" />

@@ -22,6 +22,7 @@ namespace Core {
 struct SEHException {
     CHAR* Title;
     CHAR Message[DANCE_STUDIO_MAX_EXCEPTION_MESSAGE_LENGTH];
+    CHAR CallStack[DANCE_STUDIO_MAX_CALLSTACK_LENGTH];
 };
 }  // namespace Core
 }  // namespace DanceStudio

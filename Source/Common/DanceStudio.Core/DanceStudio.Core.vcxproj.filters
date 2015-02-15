@@ -84,6 +84,9 @@
     <ClInclude Include="SEHException.h">
       <Filter>Header Files\Internal\Exceptions</Filter>
     </ClInclude>
+    <ClInclude Include="DanceStudioExceptionType.h">
+      <Filter>Header Files\Internal\Exceptions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DanceStudio.Core.Logger.cpp">

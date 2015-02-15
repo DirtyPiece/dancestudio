@@ -7,9 +7,12 @@
 
 #include "Stdafx.h"
 #include "StepChartEditor.h"
+#include "SEHException.h"
+#include "ExceptionHelper.h"
 #include "..\..\..\Common\DanceStudio.Core\Constants.h"
 
 using DanceStudio::Core::Cli::StepChartEditor;
+using DanceStudio::Core::Cli::ExceptionHelper;
 using System::EventHandler;
 using System::AppDomain;
 using System::Object;
@@ -56,7 +59,7 @@ void StepChartEditor::StepChartEditor_Loaded(Object^ sender, EventArgs^ e) {
     /*Application::SetUnhandledExceptionMode(
         UnhandledExceptionMode::CatchException);*/
 
-    AppDomain::CurrentDomain->UnhandledException += gcnew System::UnhandledExceptionEventHandler(this, &StepChartEditor::OnUnhandledException);
+    //AppDomain::CurrentDomain->UnhandledException += gcnew System::UnhandledExceptionEventHandler(this, &StepChartEditor::OnUnhandledException);
 
     // Grab the HWND for the UserControl and pass it along to the C++
     // step chart editor for rendering.
@@ -88,14 +91,37 @@ void StepChartEditor::OnPaint(PaintEventArgs^ e) {
 void StepChartEditor::OnThreadException(
     Object^ sender,
     ThreadExceptionEventArgs^ e) {
-    int x = 5;
-    x++;
+    if (e->Exception->GetType() == System::Runtime::InteropServices::SEHException::typeid)
+    {
+        System::Runtime::InteropServices::SEHException^ sehException =
+            dynamic_cast<System::Runtime::InteropServices::SEHException^>(e->Exception);
+
+        // Unwrap the SEH exception and rethrow in inner native exception as a
+        // managed exception.
+        ExceptionHelper::ThrowSEHException(sehException);
+    }
+    else
+    {
+        throw e->Exception;
+    }
 }
 
 
 void StepChartEditor::OnUnhandledException(
     Object ^sender,
     UnhandledExceptionEventArgs ^e) {
-    int x = 5;
-    x++;
+    if (e->ExceptionObject->GetType() == System::Runtime::InteropServices::SEHException::typeid)
+    {
+        System::Runtime::InteropServices::SEHException^ sehException =
+            dynamic_cast<System::Runtime::InteropServices::SEHException^>(
+            e->ExceptionObject);
+
+        // Unwrap the SEH exception and rethrow in inner native exception as a
+        // managed exception.
+        ExceptionHelper::ThrowSEHException(sehException);
+    }
+    else
+    {
+        throw e->ExceptionObject;
+    }
 }
