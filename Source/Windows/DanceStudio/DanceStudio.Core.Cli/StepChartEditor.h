@@ -82,8 +82,8 @@ public ref class StepChartEditor : public UserControl {
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The event details.</param>
-    void OnThreadException(Object ^sender, ThreadExceptionEventArgs ^e);
-    void OnUnhandledException(System::Object ^sender, System::UnhandledExceptionEventArgs ^e);
+    /*void OnThreadException(Object ^sender, ThreadExceptionEventArgs ^e);
+    void OnUnhandledException(System::Object ^sender, System::UnhandledExceptionEventArgs ^e);*/
 };
 }  // namespace Cli
 }  // namespace Core

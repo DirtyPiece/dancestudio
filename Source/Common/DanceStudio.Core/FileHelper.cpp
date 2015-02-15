@@ -8,6 +8,7 @@
 #include "Stdafx.h"
 #include "FileHelper.h"
 #include <stdio.h>
+#include <string>
 
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN

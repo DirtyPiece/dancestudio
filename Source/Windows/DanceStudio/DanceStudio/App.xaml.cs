@@ -40,7 +40,7 @@ using DanceStudio.Core.Cli;
         /// <param name="ex">The <see cref="ThreadExceptionEventArgs"/> instance containing the event data.</param>
         private void Application_ThreadException(object sender, ThreadExceptionEventArgs ex)
         {
-            ShowExceptionDialog(ex.Exception);
+            this.LogAndDisplayUnhandledException(ex.Exception);
         }
 
         /// <summary>
@@ -50,21 +50,52 @@ using DanceStudio.Core.Cli;
         /// <param name="ex">The <see cref="DispatcherUnhandledExceptionEventArgs"/> instance containing the event data.</param>
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs ex)
         {
-            ShowExceptionDialog(ex.Exception);
+            this.LogAndDisplayUnhandledException(ex.Exception);
+        }
+
+        /// <summary>
+        /// Logs and displays an unhandled exception.
+        /// </summary>
+        /// <param name="ex">The exception to log and display.</param>
+        private void LogAndDisplayUnhandledException(Exception ex)
+        {
+            Exception dialogException = null;
+            System.Runtime.InteropServices.SEHException sehException = ex as System.Runtime.InteropServices.SEHException;
+            if (sehException != null)
+            {
+                try
+                {
+                    dialogException = ExceptionHelper.UnpackSEHException(sehException);
+                }
+                catch (Exception unpackException)
+                {
+                    dialogException = unpackException;
+                }
+            }
+            else
+            {
+                Logger.Instance.LogError(
+                    "Unhandled exception encountered in the application:\n{0}",
+                    ex);
+
+                dialogException = ex;
+            }
+
+            string message = string.Format(
+                "Unhandled thread exception occured:\n{0}",
+                dialogException);
+
+            Logger.Instance.LogError(message);
+            //// ShowExceptionDialog(message);
         }
 
         /// <summary>
         /// Shows an exception message dialog.
         /// </summary>
-        /// <param name="ex">The exception to show.</param>
-        private void ShowExceptionDialog(Exception ex)
+        /// <param name="message">The message to show.</param>
+        private void ShowExceptionDialog(string message)
         {
-            string message = string.Format(
-                "Unhandled thread exception occured:\n{0}",
-                ex);
-
-            Logger.Instance.LogError(message);
-            MessageBox.Show(message);
+            System.Windows.Forms.MessageBox.Show(message);
         }
     }
 }

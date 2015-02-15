@@ -53,7 +53,7 @@ class Throw {
     /// </param>
     static void OutOfMemoryException(const std::string& memoryRegionName);
 
-private:
+ private:
     /// <summary>
     /// Throws a platform specific instruction (Windows versus Mac).
     /// </summary>

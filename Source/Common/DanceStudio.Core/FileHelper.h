@@ -12,8 +12,11 @@
 
 namespace DanceStudio {
 namespace Core {
+/// <summary>
+/// Represents a helper for dealing with file operations.
+/// </summary>
 class FileHelper {
-public:
+ public:
     /// <summary>
     /// Loads all the text from a file.
     /// </summary>

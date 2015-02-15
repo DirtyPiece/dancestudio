@@ -10,6 +10,7 @@
 #include "MathHelper.h"
 #include "FileHelper.h"
 #include "PathHelper.h"
+#include <string>
 
 using DanceStudio::Core::OpenGLRenderer;
 using DanceStudio::Core::FileHelper;
@@ -96,14 +97,15 @@ void OpenGLRenderer::BeginScene() {
         false /*transpose*/,
         worldMatrix);
 
-    // TODO: Put the view matrix uniform store here.
+    // TODO(dirtypiece): Put the view matrix uniform store here.
 
     location = extensions.glGetUniformLocation(
         this->shaderProgram,
         "projectionMatrix");
     if (location == -1) {
         Throw::InvalidOperationException(
-            "The 'projectionMatrix' uniform parameter is missing from the shader.");
+            "The 'projectionMatrix' uniform parameter is"
+            " missing from the shader.");
     }
 
     extensions.glUniformMatrix4fv(
@@ -625,7 +627,7 @@ void OpenGLRenderer::LogShaderCompileErrorMessage(INT32 shaderId) {
 
     extensions.glGetShaderInfoLog(shaderId, logSize, nullptr, logMessage);
 
-    // TODO: log the message to the logger.
+    // TODO(dirtypiece): log the message to the logger.
 }
 
 void OpenGLRenderer::LogShaderLinkErrorMessage() {
@@ -639,7 +641,9 @@ void OpenGLRenderer::LogShaderLinkErrorMessage() {
     ++logSize;
 
     CHAR* logMessage = new CHAR[logSize];
-    Validator::IsMemoryAllocated(logMessage, "the shader linker error message.");
+    Validator::IsMemoryAllocated(
+        logMessage,
+        "the shader linker error message.");
 
     extensions.glGetProgramInfoLog(
         this->shaderProgram,
@@ -647,5 +651,5 @@ void OpenGLRenderer::LogShaderLinkErrorMessage() {
         nullptr,
         logMessage);
 
-    // TODO: log the message to the logger.
+    // TODO(dirtypiece): log the message to the logger.
 }

@@ -150,8 +150,7 @@ class OpenGLRenderer {
     /// <summary>
     /// Represents the format of each vertex in the model.
     /// </summary>
-    struct VertexType
-    {
+    struct VertexType {
         /// <summary>
         /// The x coordinate of the vertex.
         /// </summary>

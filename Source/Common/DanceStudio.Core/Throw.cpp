@@ -59,12 +59,7 @@ void Throw::PlatformSpecificException(
 }
 
 std::string Throw::GetCurrentCallstack() {
-    try {
-        throw std::exception();
-    }
-    catch (const std::exception& ex) {
-        return ex.what();
-    }
+    return "TODO: To be implemented in the future for Dance Studio.";
 }
 
 #ifdef _WIN32
@@ -73,8 +68,9 @@ void Throw::SEHException(
     const std::string& message,
     UINT32 exceptionCode) {
 
-    DanceStudio::Core::SEHException* exception = reinterpret_cast<DanceStudio::Core::SEHException*>(
-        CoTaskMemAlloc(sizeof(DanceStudio::Core::SEHException)));
+    DanceStudio::Core::SEHException* exception =
+        reinterpret_cast<DanceStudio::Core::SEHException*>(
+            CoTaskMemAlloc(sizeof(DanceStudio::Core::SEHException)));
 
     Validator::IsMemoryAllocated(exception, "an SEH exception object.");
 
@@ -89,6 +85,12 @@ void Throw::SEHException(
         exception->Message,
         message.c_str(),
         DANCE_STUDIO_MAX_EXCEPTION_MESSAGE_LENGTH);
+
+    std::string callstack = Throw::GetCurrentCallstack();
+    strncpy(
+        exception->CallStack,
+        callstack.c_str(),
+        DANCE_STUDIO_MAX_CALLSTACK_LENGTH);
 
     // Raise the exception message.  Freeing of the exception memory will
     // happen on the C# side after receiving it.

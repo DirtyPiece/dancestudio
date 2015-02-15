@@ -23,7 +23,7 @@ using System::InvalidOperationException;
 using System::OutOfMemoryException;
 using System::Runtime::InteropServices::Marshal;
 
-void ExceptionHelper::ThrowSEHException(
+Exception^ ExceptionHelper::UnpackSEHException(
     System::Runtime::InteropServices::SEHException^ exception) {
     assert(exception != nullptr);
 
@@ -42,24 +42,25 @@ void ExceptionHelper::ThrowSEHException(
             EXCEPTION_POINTERS::typeid));
 
     // Convert the EXCEPTION_RECORD structure into the managed version.
-    EXCEPTION_RECORD^ record = 
+    EXCEPTION_RECORD^ record =
         dynamic_cast<EXCEPTION_RECORD^>(
         Marshal::PtrToStructure(
             managedExceptionPointers->ExceptionRecord,
             EXCEPTION_RECORD::typeid));
 
     if (managedExceptionPointers == nullptr) {
-        // TODO: Throw here.
+        // TODO(dirtypiece): Throw here.
     }
 
     // Verify that this is an exception code we recognize.
     if (exceptionCode >= DANCE_STUDIO_EXCEPTION_TYPE_START
      && exceptionCode < DANCE_STUDIO_EXCEPTION_TYPE_END) {
         if (record->NumberParameters <= 0) {
-            // TODO: Throw here.
+            // TODO(dirtypiece): Throw here.
         }
 
-        IntPtr exceptionInfoPointer(safe_cast<INT32>(record->ExceptionInformation[0]));
+        IntPtr exceptionInfoPointer(
+            safe_cast<INT32>(record->ExceptionInformation[0]));
 
         // Grab out the SEH exception structure.
         SEHException^ sehException = dynamic_cast<SEHException^>(
@@ -72,35 +73,44 @@ void ExceptionHelper::ThrowSEHException(
         Marshal::FreeCoTaskMem(exceptionInfoPointer);
 
         // Throw the managed exception.
-        ExceptionHelper::ThrowManagedException(
+        Exception^ ex = ExceptionHelper::CreateManagedExceptionFromSEHException(
             exceptionCode,
             sehException->Message,
+            sehException->StackTrace,
             exception);
+
+        return ex;
     }
+
+    // TODO(dirtypiece): Throw an exception here.
+    return nullptr;
 }
 
-void ExceptionHelper::ThrowManagedException(
+Exception^ ExceptionHelper::CreateManagedExceptionFromSEHException(
     INT32 exceptionCode,
     String^ message,
-    System::Runtime::InteropServices::SEHException^ sehException){
+    String^ callstack,
+    System::Runtime::InteropServices::SEHException^ sehException) {
     assert(exceptionCode >= 0);
+    assert(message != nullptr);
+    assert(callstack != nullptr);
     assert(sehException != nullptr);
 
     switch (exceptionCode) {
         case DANCE_STUDIO_EXCEPTION_TYPE_ARGUMENT_NULL:
-            throw gcnew ArgumentNullException(
+            return gcnew ArgumentNullException(
                 message,
                 sehException);
         case DANCE_STUDIO_EXCEPTION_TYPE_ARGUMENT_OUT_OF_RANGE:
-            throw gcnew ArgumentOutOfRangeException(
+            return gcnew ArgumentOutOfRangeException(
                 message,
                 sehException);
         case DANCE_STUDIO_EXCEPTION_TYPE_INVALID_OPERATION:
-            throw gcnew InvalidOperationException(
+            return gcnew InvalidOperationException(
                 message,
                 sehException);
         case DANCE_STUDIO_EXCEPTION_TYPE_OUT_OF_MEMORY:
-            throw gcnew OutOfMemoryException(
+            return gcnew OutOfMemoryException(
                 message,
                 sehException);
         default:

@@ -20,8 +20,19 @@ namespace Core {
 /// that is thrown in order to marshal exception details between C++ and C#.
 /// </summary>
 struct SEHException {
+    /// <summary>
+    /// The title of the exception message (ArgumentNullException, etc.)
+    /// </summary>
     CHAR* Title;
+
+    /// <summary>
+    /// The message to display in the exception.
+    /// </summary>
     CHAR Message[DANCE_STUDIO_MAX_EXCEPTION_MESSAGE_LENGTH];
+
+    /// <summary>
+    /// The call stack of where the message was thrown from.
+    /// </summary>
     CHAR CallStack[DANCE_STUDIO_MAX_CALLSTACK_LENGTH];
 };
 }  // namespace Core

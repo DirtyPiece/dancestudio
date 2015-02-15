@@ -50,17 +50,6 @@ void StepChartEditor::StepChartEditor_Loaded(Object^ sender, EventArgs^ e) {
 
     assert(this->editor == nullptr);
 
-    // Register for notification of native exceptions that occur and
-    // need to be marshalled to C# (via SEHException).
-    Application::ThreadException += gcnew ThreadExceptionEventHandler(
-        this,
-        &StepChartEditor::OnThreadException);
-
-    /*Application::SetUnhandledExceptionMode(
-        UnhandledExceptionMode::CatchException);*/
-
-    //AppDomain::CurrentDomain->UnhandledException += gcnew System::UnhandledExceptionEventHandler(this, &StepChartEditor::OnUnhandledException);
-
     // Grab the HWND for the UserControl and pass it along to the C++
     // step chart editor for rendering.
     DS_HANDLE* windowHandle = this->Handle.ToPointer();
@@ -85,43 +74,5 @@ void StepChartEditor::OnPaint(PaintEventArgs^ e) {
 
     if (this->editor != nullptr) {
         DSStepChartEditorUpdate(this->editor);
-    }
-}
-
-void StepChartEditor::OnThreadException(
-    Object^ sender,
-    ThreadExceptionEventArgs^ e) {
-    if (e->Exception->GetType() == System::Runtime::InteropServices::SEHException::typeid)
-    {
-        System::Runtime::InteropServices::SEHException^ sehException =
-            dynamic_cast<System::Runtime::InteropServices::SEHException^>(e->Exception);
-
-        // Unwrap the SEH exception and rethrow in inner native exception as a
-        // managed exception.
-        ExceptionHelper::ThrowSEHException(sehException);
-    }
-    else
-    {
-        throw e->Exception;
-    }
-}
-
-
-void StepChartEditor::OnUnhandledException(
-    Object ^sender,
-    UnhandledExceptionEventArgs ^e) {
-    if (e->ExceptionObject->GetType() == System::Runtime::InteropServices::SEHException::typeid)
-    {
-        System::Runtime::InteropServices::SEHException^ sehException =
-            dynamic_cast<System::Runtime::InteropServices::SEHException^>(
-            e->ExceptionObject);
-
-        // Unwrap the SEH exception and rethrow in inner native exception as a
-        // managed exception.
-        ExceptionHelper::ThrowSEHException(sehException);
-    }
-    else
-    {
-        throw e->ExceptionObject;
     }
 }

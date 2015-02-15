@@ -19,8 +19,7 @@ namespace Cli {
 /// Represents a marshaled EXCEPTION_POINTERS structure.
 /// </summary>
 [StructLayout(LayoutKind::Sequential, Pack = 1)]
-public ref struct EXCEPTION_POINTERS
-{
+public ref struct EXCEPTION_POINTERS {
     /// <summary>
     /// A pointer to an EXCEPTION_RECORD structure that contains a
     /// machine-independent description of the exception.

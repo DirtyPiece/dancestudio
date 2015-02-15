@@ -13,6 +13,7 @@
 
 using System::Object;
 using System::String;
+using System::Exception;
 
 namespace DanceStudio {
 namespace Core {
@@ -23,18 +24,21 @@ namespace Cli {
 public ref class ExceptionHelper {
  public:
      /// <summary>
-     /// Throws a managed exception that represents the contents
+     /// Retrieves managed exception that represents the contents
      /// of the SEH exception.
      /// </summary>
      /// <param name="exception">
-     /// The exception to be repackaged and thrown.
+     /// The exception to be repackaged and returned.
      /// </param>
-     static void ThrowSEHException(
+     /// <returns>
+     /// The exception that was unpackaged.
+     /// </returns>
+     static Exception^ UnpackSEHException(
          System::Runtime::InteropServices::SEHException^ exception);
 
  private:
      /// <summary>
-     /// Throws a managed exception that corresponds with the passed
+     /// Creates a managed exception that corresponds with the passed
      /// in exception code.
      /// </summary>
      /// <param name="exceptionCode">
@@ -43,12 +47,19 @@ public ref class ExceptionHelper {
      /// <param name="message">
      /// The message to display on the managed exception.
      /// </param>
+     /// <param name="callstack">
+     /// The callstack to display on the managed exception.
+     /// </param>
      /// <param name="sehException">
      /// The SEH exception which will be added as the inner exception.
      /// </param>
-     static void ThrowManagedException(
+     /// <returns>
+     /// The managed exception representation of the SEH exception.
+     /// </returns>
+     static Exception^ CreateManagedExceptionFromSEHException(
          INT32 exceptionCode,
          String^ message,
+         String^ callstack,
          System::Runtime::InteropServices::SEHException^ sehException);
 };
 }  // namespace Cli

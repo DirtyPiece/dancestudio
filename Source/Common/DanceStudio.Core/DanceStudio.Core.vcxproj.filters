@@ -5,127 +5,114 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Public Interface">
-      <UniqueIdentifier>{87451b63-5c9f-4b79-a6e6-be712be2860f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Internal">
+    <Filter Include="Source Files\Internal">
       <UniqueIdentifier>{b2a55f93-d76a-4ad0-af43-b2dca4fafd3c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Public Interface">
-      <UniqueIdentifier>{d0da4a5e-fa32-415c-9474-ac1da3e4fc60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Internal">
-      <UniqueIdentifier>{37a98a62-a513-4c52-a49c-7c1f11c8c36b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Internal\Graphics">
-      <UniqueIdentifier>{9787577e-1b24-41de-9ad6-3cf51edd1619}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Internal\Graphics">
-      <UniqueIdentifier>{1cf94069-872e-46c3-a32f-29b9dc564119}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Internal\Shaders">
-      <UniqueIdentifier>{20d4c02d-f27e-4385-a6b6-7c2064b183fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Internal\Exceptions">
+    <Filter Include="Source Files\Exceptions">
       <UniqueIdentifier>{ececcfe9-df65-4c5c-84f3-401914b4cb6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{9787577e-1b24-41de-9ad6-3cf51edd1619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{20d4c02d-f27e-4385-a6b6-7c2064b183fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Public Interface">
+      <UniqueIdentifier>{87451b63-5c9f-4b79-a6e6-be712be2860f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DanceStudio.Core.h">
-      <Filter>Header Files\Public Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="Logger.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="PathHelper.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="Stdafx.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="Validator.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="Typedefs.h">
-      <Filter>Header Files\Public Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="StepChartEditor.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGLRenderer.h">
-      <Filter>Header Files\Internal\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL.h">
-      <Filter>Header Files\Internal\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGLExtensions.h">
-      <Filter>Header Files\Internal\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="MathHelper.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="FileHelper.h">
-      <Filter>Header Files\Internal</Filter>
-    </ClInclude>
-    <ClInclude Include="Throw.h">
-      <Filter>Header Files\Internal\Exceptions</Filter>
+    <ClInclude Include="DanceStudioExceptionType.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="SEHException.h">
-      <Filter>Header Files\Internal\Exceptions</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="DanceStudioExceptionType.h">
-      <Filter>Header Files\Internal\Exceptions</Filter>
+    <ClInclude Include="Throw.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLExtensions.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLRenderer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PathHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StepChartEditor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Validator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DanceStudio.Core.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Typedefs.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DanceStudio.Core.Logger.cpp">
-      <Filter>Source Files\Public Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="DanceStudio.Core.StepChartEditor.cpp">
-      <Filter>Source Files\Public Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="Logger.cpp">
-      <Filter>Source Files\Internal</Filter>
-    </ClCompile>
-    <ClCompile Include="PathHelper.cpp">
-      <Filter>Source Files\Internal</Filter>
-    </ClCompile>
-    <ClCompile Include="StepChartEditor.cpp">
-      <Filter>Source Files\Internal</Filter>
+    <ClCompile Include="OpenGLExtensions.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OpenGLRenderer.cpp">
-      <Filter>Source Files\Internal\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenGLExtensions.cpp">
-      <Filter>Source Files\Internal\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Throw.cpp">
-      <Filter>Source Files\Internal</Filter>
-    </ClCompile>
-    <ClCompile Include="MathHelper.cpp">
-      <Filter>Source Files\Internal</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileHelper.cpp">
-      <Filter>Source Files\Internal</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MathHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PathHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StepChartEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Throw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DanceStudio.Core.Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DanceStudio.Core.StepChartEditor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="PixelShader.ps">
-      <Filter>Header Files\Internal\Shaders</Filter>
+      <Filter>Source Files</Filter>
     </None>
     <None Include="VertexShader.vs">
-      <Filter>Header Files\Internal\Shaders</Filter>
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
 </Project>

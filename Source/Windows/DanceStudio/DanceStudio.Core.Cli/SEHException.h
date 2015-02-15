@@ -8,6 +8,8 @@
 #ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_SEHEXCEPTION_H_
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_SEHEXCEPTION_H_
 
+#include "..\..\..\Common\DanceStudio.Core\Constants.h"
+
 using System::String;
 using System::Runtime::InteropServices::StructLayoutAttribute;
 using System::Runtime::InteropServices::MarshalAsAttribute;
@@ -22,8 +24,7 @@ namespace Cli {
 /// Represents a marshaled SEH exception from C++.
 /// </summary>
 [StructLayout(LayoutKind::Sequential, Pack = 1, CharSet = CharSet::Ansi)]
-public ref struct SEHException
-{
+public ref struct SEHException {
     /// <summary>
     /// The title of the exception.
     /// </summary>
@@ -33,8 +34,18 @@ public ref struct SEHException
     /// <summary>
     /// The detailed message for the exception (stack trace, etc.).
     /// </summary>
-    [MarshalAs(UnmanagedType::ByValTStr, SizeConst = 1024)]
+    [MarshalAs(
+        UnmanagedType::ByValTStr,
+        SizeConst = DANCE_STUDIO_MAX_EXCEPTION_MESSAGE_LENGTH)]
     String^ Message;
+
+    /// <summary>
+    /// The detailed message for the exception (stack trace, etc.).
+    /// </summary>
+    [MarshalAs(
+        UnmanagedType::ByValTStr,
+        SizeConst = DANCE_STUDIO_MAX_CALLSTACK_LENGTH)]
+    String^ StackTrace;
 };
 };  // namespace Cli
 };  // namespace Core
