@@ -161,6 +161,10 @@ void Logger::LogCoreVerbose(const CHAR* message) {
     }
 }
 
+void Logger::LogCoreVerbose(const std::string& message) {
+    Logger::LogCoreVerbose(message.c_str());
+}
+
 void Logger::LogCoreInfo(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
     if (Logger::globalLogger != nullptr) {
@@ -173,6 +177,10 @@ void Logger::LogCoreInfo(const CHAR* message) {
     if (Logger::globalLogger != nullptr) {
         Logger::globalLogger->LogInfo(message);
     }
+}
+
+void Logger::LogCoreInfo(const std::string& message) {
+    Logger::LogCoreInfo(message.c_str());
 }
 
 void Logger::LogCoreWarning(const WCHAR* message) {
@@ -189,6 +197,10 @@ void Logger::LogCoreWarning(const CHAR* message) {
     }
 }
 
+void Logger::LogCoreWarning(const std::string& message) {
+    Logger::LogCoreWarning(message.c_str());
+}
+
 void Logger::LogCoreError(const WCHAR* message) {
     Validator::IsNotNull(message, "message");
     if (Logger::globalLogger != nullptr) {
@@ -201,4 +213,8 @@ void Logger::LogCoreError(const CHAR* message) {
     if (Logger::globalLogger != nullptr) {
         Logger::globalLogger->LogError(message);
     }
+}
+
+void Logger::LogCoreError(const std::string& message) {
+    Logger::LogCoreError(message.c_str());
 }

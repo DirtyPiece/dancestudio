@@ -9,6 +9,7 @@
 #define SOURCE_COMMON_DANCESTUDIO_CORE_LOGGER_H_
 
 #include <stdio.h>
+#include <string>
 
 namespace DanceStudio {
 namespace Core {
@@ -99,6 +100,12 @@ class Logger {
     static void LogCoreVerbose(const CHAR* message);
 
     /// <summary>
+    /// Logs a verbose message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreVerbose(const std::string& message);
+
+    /// <summary>
     /// Logs an informational message for the core library.
     /// </summary>
     /// <param name="message">The message to log.</param>
@@ -109,6 +116,12 @@ class Logger {
     /// </summary>
     /// <param name="message">The message to log.</param>
     static void LogCoreInfo(const CHAR* message);
+
+    /// <summary>
+    /// Logs an informational message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreInfo(const std::string& message);
 
     /// <summary>
     /// Logs a warning message for the core library.
@@ -123,6 +136,12 @@ class Logger {
     static void LogCoreWarning(const CHAR* message);
 
     /// <summary>
+    /// Logs a warning message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreWarning(const std::string& message);
+
+    /// <summary>
     /// Logs an error message for the core library.
     /// </summary>
     /// <param name="message">The message to log.</param>
@@ -133,6 +152,12 @@ class Logger {
     /// </summary>
     /// <param name="message">The message to log.</param>
     static void LogCoreError(const CHAR* message);
+
+    /// <summary>
+    /// Logs an error message for the core library.
+    /// </summary>
+    /// <param name="message">The message to log.</param>
+    static void LogCoreError(const std::string& message);
 
  private:
     /// <summary>

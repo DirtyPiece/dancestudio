@@ -8,10 +8,11 @@
 namespace DanceStudio
 {
     using System;
-using System.Threading;
-using System.Windows;
-using System.Windows.Threading;
-using DanceStudio.Core.Cli;
+    using System.Threading;
+    using System.Windows;
+    using System.Windows.Threading;
+    using DanceStudio.Core.Cli;
+    using System.Reflection;
 
     /// <summary>
     /// Represents the main application class.
@@ -25,7 +26,9 @@ using DanceStudio.Core.Cli;
         {
             // Log a statement to ensure that the logger is present for all future
             // operations.
-            Logger.Instance.LogInfo("The Dance Studio application was launched.");
+            Logger.Instance.LogInfo(
+                "Dance Studio version '{0}' was launched.",
+                Assembly.GetExecutingAssembly().GetName().Version);
 
             // Set up listeners to handle unhandled exceptions (WPF swallows by default).
             // We want to be able to catch and log exceptions from the native layer.

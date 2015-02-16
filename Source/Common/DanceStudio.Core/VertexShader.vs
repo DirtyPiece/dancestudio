@@ -15,7 +15,7 @@ in vec3 inputPosition;
 in vec3 inputColor;
 
 // The output color passed to the pixel shader.
-out vec3 outColor;
+out vec3 outputColor;
 
 // Uniform variables calculated once.
 uniform mat4 worldMatrix;
@@ -30,5 +30,5 @@ void main(void)
     gl_Position = projectionMatrix * gl_Position;
 
     // Store the input color for the pixel shader to use.
-    color = inputColor;
+    outputColor = inputColor;
 }
