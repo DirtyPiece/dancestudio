@@ -10,6 +10,7 @@
 #include "EXCEPTION_POINTERS.h"
 #include "EXCEPTION_RECORD.h"
 #include "SEHException.h"
+#include "Throw.h"
 #include "..\..\..\Common\DanceStudio.Core\DanceStudioExceptionType.h"
 
 using DanceStudio::Core::Cli::ExceptionHelper;
@@ -41,6 +42,12 @@ Exception^ ExceptionHelper::UnpackSEHException(
             exceptionPointers,
             EXCEPTION_POINTERS::typeid));
 
+    if (managedExceptionPointers == nullptr) {
+        Throw::InvalidOperationException(
+            "The EXCEPTION_POINTERS structure"
+            " could not be marshaled properly.");
+    }
+
     // Convert the EXCEPTION_RECORD structure into the managed version.
     EXCEPTION_RECORD^ record =
         dynamic_cast<EXCEPTION_RECORD^>(
@@ -48,15 +55,19 @@ Exception^ ExceptionHelper::UnpackSEHException(
             managedExceptionPointers->ExceptionRecord,
             EXCEPTION_RECORD::typeid));
 
-    if (managedExceptionPointers == nullptr) {
-        // TODO(dirtypiece): Throw here.
+    if (record == nullptr) {
+        Throw::InvalidOperationException(
+            "The EXCEPTION_RECORD structure"
+            " could not be marshaled properly.");
     }
 
     // Verify that this is an exception code we recognize.
     if (exceptionCode >= DANCE_STUDIO_EXCEPTION_TYPE_START
      && exceptionCode < DANCE_STUDIO_EXCEPTION_TYPE_END) {
         if (record->NumberParameters <= 0) {
-            // TODO(dirtypiece): Throw here.
+            Throw::InvalidOperationException(
+                "The number of parameters for the exception"
+                " record should be greater than 0.");
         }
 
         IntPtr exceptionInfoPointer(
@@ -81,8 +92,11 @@ Exception^ ExceptionHelper::UnpackSEHException(
 
         return ex;
     }
-
-    // TODO(dirtypiece): Throw an exception here.
+    else {
+        Logger::Instance->LogVerbose(
+            "The SEH Exception was not a Dance Studio SEH exception.");
+    }
+    
     return nullptr;
 }
 

@@ -155,6 +155,7 @@
     <ClInclude Include="SEHException.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="StepChartEditor.h" />
+    <ClInclude Include="Throw.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />

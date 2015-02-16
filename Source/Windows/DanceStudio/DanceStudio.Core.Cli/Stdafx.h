@@ -13,5 +13,6 @@
 #include "..\..\..\Common\DanceStudio.Core\Typedefs.h"
 #include "..\..\..\Common\DanceStudio.Core\DanceStudio.Core.h"
 #include "NativeUniquePointer.h"
+#include "Logger.h"
 
 #endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_STDAFX_H_

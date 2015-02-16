@@ -83,7 +83,7 @@ using DanceStudio.Core.Cli;
 
             string message = string.Format(
                 "Unhandled thread exception occured:\n{0}",
-                dialogException);
+                dialogException ?? ex);
 
             Logger.Instance.LogError(message);
             //// ShowExceptionDialog(message);
