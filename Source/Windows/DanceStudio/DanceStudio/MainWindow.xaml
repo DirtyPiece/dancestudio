@@ -6,7 +6,8 @@
         xml:lang="en-US"
         Title="Dance Studio" Height="350" Width="525"
         x:Name="DanceStudioWindow"
-        Closed="DanceStudioWindow_Closed">
+        Closed="DanceStudioWindow_Closed"
+        Loaded="DanceStudioWindow_Loaded">
     <Window.InputBindings>
     </Window.InputBindings>
     <Window.CommandBindings>
@@ -67,7 +68,7 @@
                     </Grid>
                     <Grid x:Uid="Grid_3">
                         <WindowsFormsHost x:Uid="WindowsFormsHost_1">
-                            <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" />
+                            <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" x:Name="MainStepChartEditor" />
                         </WindowsFormsHost>
                     </Grid>
                 </DockPanel>

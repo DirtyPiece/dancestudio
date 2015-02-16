@@ -44,6 +44,12 @@ StepChartEditor::~StepChartEditor() {
     }
 }
 
+void StepChartEditor::Tick() {
+    if (this->editor != nullptr) {
+        DSStepChartEditorUpdate(this->editor);
+    }
+}
+
 void StepChartEditor::StepChartEditor_Loaded(Object^ sender, EventArgs^ e) {
     DANCE_STUDIO_UNUSED(sender);
     DANCE_STUDIO_UNUSED(e);

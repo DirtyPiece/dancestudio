@@ -77,7 +77,7 @@ OpenGLRenderer::~OpenGLRenderer() {
 
 void OpenGLRenderer::BeginScene() {
     // Clear the scene to black.
-    glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(1.0f, 1.0f, 0.0f, 0.0f);
 
     // Clear the back buffer and depth buffer.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -117,7 +117,11 @@ void OpenGLRenderer::BeginScene() {
 
 void OpenGLRenderer::EndScene() {
     assert(this->deviceContext != nullptr);
-    SwapBuffers(this->deviceContext);
+    if (SwapBuffers(this->deviceContext) == FALSE) {
+        this->LogLastError();
+        Throw::InvalidOperationException(
+            "Unable to swap the front and back buffers for rendering.");
+    }
 }
 
 void OpenGLRenderer::Initialize() {

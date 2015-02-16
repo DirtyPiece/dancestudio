@@ -35,6 +35,11 @@ public ref class StepChartEditor : public UserControl {
     /// </summary>
     ~StepChartEditor();
 
+    /// <summary>
+    /// Updates the rendering of the control.
+    /// </summary>
+    void Tick();
+
  protected:
     /// <summary>
     /// Called when the background is about to paint.  Overriding it

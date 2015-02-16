@@ -86,5 +86,16 @@ namespace DanceStudio
         {
             Logger.Instance.LogInfo("DanceStudio was closed.");
         }
+
+        /// <summary>
+        /// Handles the Loaded event of the DanceStudioWindow control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void DanceStudioWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Now that the step chart editor is initialized, store the global property to it.
+            App.StepChartEditor = this.MainStepChartEditor;
+        }
     }
 }

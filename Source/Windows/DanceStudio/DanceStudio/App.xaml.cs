@@ -13,12 +13,23 @@ namespace DanceStudio
     using System.Windows.Threading;
     using DanceStudio.Core.Cli;
     using System.Reflection;
+    using DanceStudio.Helpers;
+    using System.Windows.Media;
 
     /// <summary>
     /// Represents the main application class.
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Gets or sets main <see cref="StepChartEditor"/> control.
+        /// </summary>
+        public static StepChartEditor StepChartEditor
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="App"/> class.
         /// </summary>
@@ -34,6 +45,17 @@ namespace DanceStudio
             // We want to be able to catch and log exceptions from the native layer.
             App.Current.DispatcherUnhandledException += this.App_DispatcherUnhandledException;
             System.Windows.Forms.Application.ThreadException += this.Application_ThreadException;
+
+            // Register the main tick function for rendering OpenGL.
+            CompositionTarget.Rendering += CompositionTarget_Rendering;
+        }
+
+        void CompositionTarget_Rendering(object sender, EventArgs e)
+        {
+            if (App.StepChartEditor != null)
+            {
+                App.StepChartEditor.Tick();
+            }
         }
 
         /// <summary>
