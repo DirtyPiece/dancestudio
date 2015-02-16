@@ -9,12 +9,12 @@
 #version 400
 
 // The input color for the pixel.
-in vec3 inputColor;
+in vec3 color;
 
 // The output color after the shader processes the pixel.
 out vec4 outputColor;
 
 void main(void)
 {
-    outputColor = vec4(inputColor, 1.0f);
+    outputColor = vec4(color, 1.0f);
 }

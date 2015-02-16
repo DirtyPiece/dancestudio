@@ -22,6 +22,7 @@ namespace DanceStudio
     using System.Windows.Navigation;
     using System.Windows.Shapes;
     using DanceStudio.Controller;
+    using DanceStudio.Core.Cli;
 
     /// <summary>
     /// Represents the main window of the application.
@@ -74,6 +75,16 @@ namespace DanceStudio
         private void CloseCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Handles the Closed event of the DanceStudioWindow control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void DanceStudioWindow_Closed(object sender, EventArgs e)
+        {
+            Logger.Instance.LogInfo("DanceStudio was closed.");
         }
     }
 }
