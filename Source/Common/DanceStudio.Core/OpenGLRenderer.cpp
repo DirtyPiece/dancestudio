@@ -77,7 +77,10 @@ OpenGLRenderer::~OpenGLRenderer() {
 
 void OpenGLRenderer::BeginScene() {
     // Clear the scene to black.
-    glClearColor(1.0f, 1.0f, 0.0f, 0.0f);
+    float r = (float)(rand() % 25) / 25.0;
+    float g = (float)(rand() % 25) / 25.0;
+    float b = (float)(rand() % 25) / 25.0;
+    glClearColor(r, g, b, 1.0f);
 
     // Clear the back buffer and depth buffer.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -113,6 +116,10 @@ void OpenGLRenderer::BeginScene() {
         1 /*count*/,
         false /*transpose*/,
         projectionMatrix);
+
+    // Render the geometry.
+    extensions.glBindVertexArray(this->vertexArrayId);
+    glDrawElements(GL_TRIANGLES, this->indexCount, GL_UNSIGNED_INT, 0);
 }
 
 void OpenGLRenderer::EndScene() {
