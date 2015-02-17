@@ -148,6 +148,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DanceStudio.Core.h" />
     <ClInclude Include="DanceStudioExceptionType.h" />
@@ -164,8 +165,10 @@
     <ClInclude Include="Typedefs.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Validator.h" />
+    <ClInclude Include="Vector3d.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DanceStudio.Core.Logger.cpp" />
     <ClCompile Include="DanceStudio.Core.StepChartEditor.cpp" />
     <ClCompile Include="FileHelper.cpp" />

@@ -29,6 +29,9 @@ StepChartEditor::~StepChartEditor() {
     }
 }
 
+/// <summary>
+/// Updates this instance.
+/// </summary>
 void StepChartEditor::Update() {
     assert(this->renderer != nullptr);
     this->renderer->BeginScene();
