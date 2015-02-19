@@ -100,7 +100,23 @@ void OpenGLRenderer::BeginScene() {
         false /*transpose*/,
         worldMatrix);
 
-    // TODO(dirtypiece): Put the view matrix uniform store here.
+    camera.Update();
+    camera.GetViewMatrix(viewMatrix);
+
+    location = extensions.glGetUniformLocation(
+        this->shaderProgram,
+        "viewMatrix");
+    if (location == -1) {
+        Throw::InvalidOperationException(
+            "The 'viewMatrix' uniform parameter is"
+            " missing from the shader.");
+    }
+
+    extensions.glUniformMatrix4fv(
+        location,
+        1 /*count*/,
+        false /*transpose*/,
+        viewMatrix);
 
     location = extensions.glGetUniformLocation(
         this->shaderProgram,

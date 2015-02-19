@@ -9,6 +9,7 @@
 #define SOURCE_COMMON_DANCESTUDIO_CORE_CAMERA_H_
 
 #include "Typedefs.h"
+#include "Vector3d.h"
 
 namespace DanceStudio {
 namespace Core {
@@ -36,6 +37,14 @@ class Camera {
      void SetPosition(SINGLE x, SINGLE y, SINGLE z);
 
      /// <summary>
+     /// Sets the look at position of the camera.
+     /// </summary>
+     /// <param name="x">The x position to look at.</param>
+     /// <param name="y">The y position to look at.</param>
+     /// <param name="z">The z position to look at.</param>
+     void SetLookAtPosition(SINGLE x, SINGLE y, SINGLE z);
+
+     /// <summary>
      /// Sets the rotation of the camera.
      /// </summary>
      /// <param name="xRadians">The x amount in radians.</param>
@@ -49,41 +58,37 @@ class Camera {
      void Update();
 
      /// <summary>
-     /// Gets the view matrix as an array.
+     /// Gets the view matrix.
      /// </summary>
-     /// <returns>The array of view matrix components.</returns>
-     SINGLE* GetViewMatrix();
+     /// <param name="outMatrix">The output view matrix.</param>
+     void GetViewMatrix(SINGLE* outMatrix);
 
  private:
      /// <summary>
-     /// The x position of the camera.
+     /// The position of the camera.
      /// </summary>
-     SINGLE xPosition;
+     Vector3d position;
 
      /// <summary>
-     /// The y position of the camera.
+     /// The position that the camera is looking at.
      /// </summary>
-     SINGLE yPosition;
+     Vector3d lookAtPosition;
 
      /// <summary>
-     /// The z position of the camera.
+     /// The rotation vector for the rotation along yaw, pitch, and roll
+     /// for the camera (local coordinate system).
      /// </summary>
-     SINGLE zPosition;
+     Vector3d rotationInRadians;
 
      /// <summary>
-     /// The x rotation of the camera.
+     /// The up vector of the camera.
      /// </summary>
-     SINGLE xRotationInRadians;
+     Vector3d upVector;
 
      /// <summary>
-     /// The y rotation of the camera.
+     /// The look-at vector of the camera.
      /// </summary>
-     SINGLE yRotationInRadians;
-
-     /// <summary>
-     /// The z rotation of the camera.
-     /// </summary>
-     SINGLE zRotationInRadians;
+     Vector3d lookAtVector;
 
      /// <summary>
      /// The view matrix components.

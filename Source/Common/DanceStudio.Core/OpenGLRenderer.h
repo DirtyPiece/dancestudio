@@ -11,6 +11,9 @@
 #include "Typedefs.h"
 #include "OpenGL.h"
 #include "OpenGLExtensions.h"
+#include "Camera.h"
+
+using DanceStudio::Core::Camera;
 
 namespace DanceStudio {
 namespace Core {
@@ -65,9 +68,19 @@ class OpenGLRenderer {
     DS_HANDLE* windowHandle;
 
     /// <summary>
+    /// The main world camera.
+    /// </summary>
+    Camera camera;
+
+    /// <summary>
     /// The matrix used to transform all geometry into world space.
     /// </summary>
     SINGLE worldMatrix[4 * 4];
+
+    /// <summary>
+    /// The matrix used to transform all geometry into the view space.
+    /// </summary>
+    SINGLE viewMatrix[4 * 4];
 
     /// <summary>
     /// The matrix used to project geometry into projection space.
