@@ -59,7 +59,7 @@ PROJECT_LOGO           =
 # left blank the current directory will be used.
 
 # For Dance Studio, it uses the relative path from the main DanceStudio project (csproj).
-OUTPUT_DIRECTORY       = ../../../../Documentation
+OUTPUT_DIRECTORY       = ../../../../Documentation/Code
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
