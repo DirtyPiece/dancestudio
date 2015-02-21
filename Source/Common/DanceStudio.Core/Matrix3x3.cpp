@@ -19,13 +19,13 @@ SINGLE* Matrix3x3::RotationYawPitchRoll(
     Validator::IsNotNull(outMatrix, "outMatrix");
 
     // Get the cosine and sine values for the rotation.
-    float yawCos = cosf(yaw);
-    float pitchCos = cosf(pitch);
-    float rollCos = cosf(roll);
+    SINGLE yawCos = cosf(yaw);
+    SINGLE pitchCos = cosf(pitch);
+    SINGLE rollCos = cosf(roll);
 
-    float yawSin = sinf(yaw);
-    float pitchSin = sinf(pitch);
-    float rollSin = sinf(roll);
+    SINGLE yawSin = sinf(yaw);
+    SINGLE pitchSin = sinf(pitch);
+    SINGLE rollSin = sinf(roll);
 
     // Calculate the matrix.
     outMatrix[0] = (rollCos * yawCos) + (rollSin * pitchSin * yawSin);

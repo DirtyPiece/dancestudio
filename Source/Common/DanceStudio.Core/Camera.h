@@ -95,7 +95,7 @@ class Camera {
      /// </summary>
      SINGLE viewMatrix[16];
 };
-}  // namespace DanceStudio
 }  // namespace Core
+}  // namespace DanceStudio
 
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_CAMERA_H_

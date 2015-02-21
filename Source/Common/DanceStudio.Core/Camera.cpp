@@ -17,8 +17,7 @@ Camera::Camera() :
     lookAtPosition(0, 0, 0),
     rotationInRadians(0, 0, 0),
     upVector(0, 1, 0),
-    lookAtVector(0, 0, -1.0f)
-{
+    lookAtVector(0, 0, -1.0f) {
 }
 
 Camera::~Camera() {

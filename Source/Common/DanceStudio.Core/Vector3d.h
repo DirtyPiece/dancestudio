@@ -97,7 +97,7 @@ Vector3d operator%(const Vector3d& v1, const Vector3d& v2);
 /// <returns>The result of the dot product.</returns>
 SINGLE operator*(const Vector3d& v1, const Vector3d& v2);
 
-}  // namespace DanceStudio
 }  // namespace Core
+}  // namespace DanceStudio
 
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_VECTOR3D_H_

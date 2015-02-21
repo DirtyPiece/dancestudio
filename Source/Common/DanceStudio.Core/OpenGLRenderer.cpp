@@ -77,13 +77,17 @@ OpenGLRenderer::~OpenGLRenderer() {
 
 void OpenGLRenderer::BeginScene() {
     // Clear the scene to black.
-    float r = (float)(rand() % 25) / 25.0;
-    float g = (float)(rand() % 25) / 25.0;
-    float b = (float)(rand() % 25) / 25.0;
-    glClearColor(r, g, b, 1.0f);
+    // SINGLE r = static_cast<SINGLE>(rand() % 25) / 25.0f; // NOLINT - can't use rand_r().
+    // SINGLE g = static_cast<SINGLE>(rand() % 25) / 25.0f; // NOLINT - can't use rand_r().
+    // SINGLE b = static_cast<SINGLE>(rand() % 25) / 25.0f; // NOLINT - can't use rand_r().
+    // glClearColor(r, g, b, 1.0f);
+    glClearColor(.5, .5, .5, 1);
 
     // Clear the back buffer and depth buffer.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // Set the vertex and pixel shaders to render with.
+    extensions.glUseProgram(this->shaderProgram);
 
     INT32 location = -1;
     location = extensions.glGetUniformLocation(
@@ -98,10 +102,12 @@ void OpenGLRenderer::BeginScene() {
         location,
         1 /*count*/,
         false /*transpose*/,
-        worldMatrix);
+        this->worldMatrix);
 
+    camera.SetPosition(10, 10, -20);
+    camera.SetLookAtPosition(0, 0, 0);
     camera.Update();
-    camera.GetViewMatrix(viewMatrix);
+    camera.GetViewMatrix(this->viewMatrix);
 
     location = extensions.glGetUniformLocation(
         this->shaderProgram,
@@ -116,7 +122,7 @@ void OpenGLRenderer::BeginScene() {
         location,
         1 /*count*/,
         false /*transpose*/,
-        viewMatrix);
+        this->viewMatrix);
 
     location = extensions.glGetUniformLocation(
         this->shaderProgram,
@@ -131,7 +137,7 @@ void OpenGLRenderer::BeginScene() {
         location,
         1 /*count*/,
         false /*transpose*/,
-        projectionMatrix);
+        this->projectionMatrix);
 
     // Render the geometry.
     extensions.glBindVertexArray(this->vertexArrayId);

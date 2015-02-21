@@ -91,12 +91,11 @@ Exception^ ExceptionHelper::UnpackSEHException(
             exception);
 
         return ex;
-    }
-    else {
+    } else {
         Logger::Instance->LogVerbose(
             "The SEH Exception was not a Dance Studio SEH exception.");
     }
-    
+
     return nullptr;
 }
 
@@ -109,6 +108,7 @@ Exception^ ExceptionHelper::CreateManagedExceptionFromSEHException(
     assert(message != nullptr);
     assert(callstack != nullptr);
     assert(sehException != nullptr);
+    DANCE_STUDIO_UNUSED(callstack);
 
     switch (exceptionCode) {
         case DANCE_STUDIO_EXCEPTION_TYPE_ARGUMENT_NULL:

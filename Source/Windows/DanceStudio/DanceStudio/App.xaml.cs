@@ -8,28 +8,18 @@
 namespace DanceStudio
 {
     using System;
+    using System.Reflection;
     using System.Threading;
     using System.Windows;
+    using System.Windows.Media;
     using System.Windows.Threading;
     using DanceStudio.Core.Cli;
-    using System.Reflection;
-    using DanceStudio.Helpers;
-    using System.Windows.Media;
 
     /// <summary>
     /// Represents the main application class.
     /// </summary>
     public partial class App : Application
     {
-        /// <summary>
-        /// Gets or sets main <see cref="StepChartEditor"/> control.
-        /// </summary>
-        public static StepChartEditor StepChartEditor
-        {
-            get;
-            set;
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="App"/> class.
         /// </summary>
@@ -47,10 +37,24 @@ namespace DanceStudio
             System.Windows.Forms.Application.ThreadException += this.Application_ThreadException;
 
             // Register the main tick function for rendering OpenGL.
-            CompositionTarget.Rendering += CompositionTarget_Rendering;
+            CompositionTarget.Rendering += this.CompositionTarget_Rendering;
         }
 
-        void CompositionTarget_Rendering(object sender, EventArgs e)
+        /// <summary>
+        /// Gets or sets main <see cref="StepChartEditor"/> control.
+        /// </summary>
+        public static StepChartEditor StepChartEditor
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Handles the Rendering event of the CompositionTarget control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void CompositionTarget_Rendering(object sender, EventArgs e)
         {
             if (App.StepChartEditor != null)
             {
