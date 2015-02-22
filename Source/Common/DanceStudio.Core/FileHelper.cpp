@@ -79,4 +79,3 @@ std::string FileHelper::GetExecutingExeDirectory() {
 
     return returnedPath;
 }
-

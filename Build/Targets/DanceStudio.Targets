@@ -94,7 +94,11 @@
   =======================================================================
   -->
   <Target Name="DanceStudioUnitTestResourceCopyTarget" AfterTargets="AfterBuild" Condition="$(ProjectName.EndsWith('Tests'))">
-    <Message Importance="high" Text="Copying the resource test files from '$(ProjectDir)\Resources' to '$(TargetDir)\Resources'." />
-    <Copy SourceFiles="$(ProjectDir)Resources\*.*" DestinationFolder="$(TargetDir)Resources" />
+    <ItemGroup>
+        <TestResourceFiles Include="$(ProjectDir)Resources\*.*"/>
+    </ItemGroup>
+
+    <Message Importance="high" Text="Copying the resource test files from '$(ProjectDir)Resources' to '$(TargetDir)Resources'." />
+    <Copy SourceFiles="@(TestResourceFiles)" DestinationFolder="$(TargetDir)Resources" />
   </Target>
 </Project>

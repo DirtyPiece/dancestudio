@@ -7,6 +7,8 @@
 
 #include "Stdafx.h"
 #include "TestHelper.h"
+#include <Windows.h>
+#include <direct.h>
 
 using DanceStudioCoreUnitTests::TestHelper;
 
@@ -29,4 +31,28 @@ std::string TestHelper::LoadAllFileText(const std::string& filePath) {
     file = nullptr;
 
     return contents;
+}
+
+std::string TestHelper::GetCurrentWorkingDirectory() {
+    return _getcwd(nullptr, 0);
+}
+
+std::string TestHelper::GetResourceDirectory() {
+    return
+        TestHelper::GetCurrentWorkingDirectory()
+        + "\\Resources";
+}
+
+std::string TestHelper::GetFullResourcePath(
+    const std::string& localPath) {
+    return
+        GetResourceDirectory()
+        + "\\"
+        + localPath;
+}
+
+std::string TestHelper::LoadResourceFileAsText(
+    const std::string& localPath) {
+    std::string fullPath = GetFullResourcePath(localPath);
+    return TestHelper::LoadAllFileText(fullPath);
 }

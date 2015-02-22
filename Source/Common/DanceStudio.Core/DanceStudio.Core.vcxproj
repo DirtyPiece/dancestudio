@@ -189,6 +189,7 @@
     <ClCompile Include="OpenGLExtensions.cpp" />
     <ClCompile Include="OpenGLRenderer.cpp" />
     <ClCompile Include="PathHelper.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="StepChartEditor.cpp" />
     <ClCompile Include="Throw.cpp" />
     <ClCompile Include="Vector3d.cpp" />

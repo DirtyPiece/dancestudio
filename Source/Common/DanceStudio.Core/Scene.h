@@ -9,7 +9,7 @@
 #define SOURCE_COMMON_DANCESTUDIO_CORE_SCENE_H_
 
 #include "Model3d.h"
-#include <list>
+#include <vector>
 
 namespace DanceStudio {
 namespace Core {
@@ -35,11 +35,22 @@ class Scene {
      /// <param name="model">The model to add to the scene.</param>
      void AddModel(Model3d* model);
 
+     /// <summary>
+     /// Gets the list of models in the scene.
+     /// </summary>
+     /// <returns>The list of models in the scene.</returns>
+     const std::vector<Model3d*>& GetModels();
+
  private:
      /// <summary>
      /// The list of models that have been placed in the scene.
      /// </summary>
-     std::list<Model3d*> models;
+     std::vector<Model3d*> models;
+
+     /// <summary>
+     /// Frees the model list.
+     /// </summary>
+     void FreeModels();
 };
 }  // namespace Core
 }  // namespace DanceStudio

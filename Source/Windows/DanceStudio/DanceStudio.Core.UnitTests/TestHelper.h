@@ -23,6 +23,38 @@ class TestHelper {
     /// <param name="filePath">The file path to load.</param>
     /// <returns>The text contents of the file.</returns>
     static std::string LoadAllFileText(const std::string& filePath);
+
+    /// <summary>
+    /// Gets the executing executable directory.
+    /// </summary>
+    /// <returns>The path to the current exe.</returns>
+    static std::string GetCurrentWorkingDirectory();
+
+    /// <summary>
+    /// Gets the test resources directory root path.
+    /// </summary>
+    /// <returns>The path to the resource directory root.</returns>
+    static std::string GetResourceDirectory();
+
+    /// <summary>
+    /// Gets the full path to a test resource.
+    /// </summary>
+    /// <param name="localPath">
+    /// The local path to the file (under the Resources folder).
+    /// </param>
+    /// <returns>The path to the resource directory root.</returns>
+    static std::string GetFullResourcePath(
+        const std::string& localPath);
+
+    /// <summary>
+    /// Loads the resource file as text.
+    /// </summary>
+    /// <param name="localPath">
+    /// The local path to the file (under the Resources folder).
+    /// </param>
+    /// <returns>The contents of the file.</returns>
+    static std::string LoadResourceFileAsText(
+        const std::string& localPath);
 };
 } // namespace DanceStudioCoreUnitTests {
 
