@@ -43,6 +43,35 @@ void MathHelper::BuildPerspectiveFovLHMatrix(
     returnedMatrix[15] = 0.0f;
 }
 
+void MathHelper::BuildOrthogonalLHMatrix(
+    SINGLE* returnedMatrix,
+    SINGLE width,
+    SINGLE height,
+    SINGLE znearDistance,
+    SINGLE zfarDistance) {
+    Validator::IsNotNull(returnedMatrix, "returnedMatrix");
+
+    returnedMatrix[0] = 2.0f / width;
+    returnedMatrix[1] = 0.0f;
+    returnedMatrix[2] = 0.0f;
+    returnedMatrix[3] = 0.0f;
+
+    returnedMatrix[4] = 0.0f;
+    returnedMatrix[5] = 2.0f / height;
+    returnedMatrix[6] = 0.0f;
+    returnedMatrix[7] = 0.0f;
+
+    returnedMatrix[8] = 0.0f;
+    returnedMatrix[9] = 0.0f;
+    returnedMatrix[10] = 1.0f / (zfarDistance - znearDistance);
+    returnedMatrix[11] = 0.0f;
+
+    returnedMatrix[12] = 0.0f;
+    returnedMatrix[13] = 0.0f;
+    returnedMatrix[14] = znearDistance / (znearDistance - zfarDistance);
+    returnedMatrix[15] = 1.0f;
+}
+
 void MathHelper::BuildIdentityMatrix(SINGLE* returnedMatrix) {
     Validator::IsNotNull(returnedMatrix, "returnedMatrix");
 

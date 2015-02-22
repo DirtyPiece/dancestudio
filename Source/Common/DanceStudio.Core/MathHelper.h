@@ -42,6 +42,25 @@ class MathHelper {
         SINGLE screenFar);
 
     /// <summary>
+    /// Builds a left-handed orthogonal projection matrix.
+    /// </summary>
+    /// <param name="returnedMatrix">The returned projection matrix.</param>
+    /// <param name="width">The width of the view.</param>
+    /// <param name="height">The height of the view.</param>
+    /// <param name="znearDistance">
+    /// The distance to the near clipping plane along the z-axis.
+    /// </param>
+    /// <param name="zfarDistance">
+    /// The distance to the far clipping plan along the z-axis.
+    /// </param>
+    static void BuildOrthogonalLHMatrix(
+        SINGLE* returnedMatrix,
+        SINGLE width,
+        SINGLE height,
+        SINGLE znearDistance,
+        SINGLE zfarDistance);
+
+    /// <summary>
     /// Builds an identity matrix.
     /// </summary>
     /// <param name="returnedMatrix">The returned matrix.</param>

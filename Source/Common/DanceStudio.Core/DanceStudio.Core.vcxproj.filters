@@ -24,6 +24,12 @@
     <Filter Include="Source Files\Public Interface">
       <UniqueIdentifier>{87451b63-5c9f-4b79-a6e6-be712be2860f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\External">
+      <UniqueIdentifier>{b9250685-1440-4f93-9170-b56824091467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External\RapidXML">
+      <UniqueIdentifier>{8d20ff31-0c59-437d-b8a1-9fe5787a5a15}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DanceStudioExceptionType.h">
@@ -83,6 +89,30 @@
     <ClInclude Include="Matrix3x3.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Model3d.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLVertexType.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColladaImporter.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\RapidXML\rapidxml.hpp">
+      <Filter>Source Files\External\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\RapidXML\rapidxml_iterators.hpp">
+      <Filter>Source Files\External\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\RapidXML\rapidxml_print.hpp">
+      <Filter>Source Files\External\RapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\RapidXML\rapidxml_utils.hpp">
+      <Filter>Source Files\External\RapidXML</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGLExtensions.cpp">
@@ -124,6 +154,12 @@
     <ClCompile Include="Matrix3x3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Model3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColladaImporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="PixelShader.ps">
@@ -132,5 +168,16 @@
     <None Include="VertexShader.vs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="..\..\External\RapidXML\manual.html">
+      <Filter>Source Files\External\RapidXML</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\External\RapidXML\license.txt">
+      <Filter>Source Files\External\RapidXML</Filter>
+    </Text>
+    <Text Include="..\..\External\RapidXML\version.txt">
+      <Filter>Source Files\External\RapidXML</Filter>
+    </Text>
   </ItemGroup>
 </Project>

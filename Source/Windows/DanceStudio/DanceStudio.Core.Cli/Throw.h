@@ -17,8 +17,8 @@ namespace DanceStudio {
 namespace Core {
 namespace Cli {
 /// <summary>
-/// Represents a control that edits stepcharts for StepMania and
-/// In The Groove arcade machines.
+/// Represents the main class for throwing exceptions in the
+/// C++/CLI library.
 /// </summary>
 public ref class Throw {
 public:

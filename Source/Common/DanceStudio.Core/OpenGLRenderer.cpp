@@ -10,10 +10,12 @@
 #include "MathHelper.h"
 #include "FileHelper.h"
 #include "PathHelper.h"
+#include "OpenGLVertexType.h"
 #include <string>
 
 using DanceStudio::Core::OpenGLRenderer;
 using DanceStudio::Core::FileHelper;
+using DanceStudio::Core::OpenGLVertexType;
 
 OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
     deviceContext(nullptr),
@@ -291,13 +293,13 @@ void OpenGLRenderer::Initialize() {
 
     // Load the vertex data.
     Logger::LogCoreVerbose("Loading the vertex data.");
-    VertexType* vertices = nullptr;
+    OpenGLVertexType* vertices = nullptr;
     UINT32* indices = nullptr;
 
     this->vertexCount = 3;
     this->indexCount = 3;
 
-    vertices = new VertexType[this->vertexCount];
+    vertices = new OpenGLVertexType[this->vertexCount];
     Validator::IsMemoryAllocated(vertices, "the vertices of the model");
 
     indices = new UINT32[this->indexCount];
@@ -306,31 +308,31 @@ void OpenGLRenderer::Initialize() {
     // Load the vertex array with data.
 
     // Bottom left.
-    vertices[0].x = -1.0f;  // Position.
-    vertices[0].y = -1.0f;
-    vertices[0].z = 0.0f;
+    vertices[0].X = -1.0f;  // Position.
+    vertices[0].Y = -1.0f;
+    vertices[0].Z = 0.0f;
 
-    vertices[0].r = 0.0f;  // Color.
-    vertices[0].g = 1.0f;
-    vertices[0].b = 0.0f;
+    vertices[0].R = 0.0f;  // Color.
+    vertices[0].G = 1.0f;
+    vertices[0].B = 0.0f;
 
     // Top middle.
-    vertices[1].x = 0.0f;  // Position.
-    vertices[1].y = 1.0f;
-    vertices[1].z = 0.0f;
+    vertices[1].X = 0.0f;  // Position.
+    vertices[1].Y = 1.0f;
+    vertices[1].Z = 0.0f;
 
-    vertices[1].r = 0.0f;  // Color.
-    vertices[1].g = 1.0f;
-    vertices[1].b = 0.0f;
+    vertices[1].R = 0.0f;  // Color.
+    vertices[1].G = 1.0f;
+    vertices[1].B = 0.0f;
 
     // Bottom right.
-    vertices[2].x = 1.0f;  // Position.
-    vertices[2].y = -1.0f;
-    vertices[2].z = 0.0f;
+    vertices[2].X = 1.0f;  // Position.
+    vertices[2].Y = -1.0f;
+    vertices[2].Z = 0.0f;
 
-    vertices[2].r = 0.0f;  // Color.
-    vertices[2].g = 1.0f;
-    vertices[2].b = 0.0f;
+    vertices[2].R = 0.0f;  // Color.
+    vertices[2].G = 1.0f;
+    vertices[2].B = 0.0f;
 
     // Load the index array with data.
     indices[0] = 0;  // Bottom left.
@@ -357,7 +359,7 @@ void OpenGLRenderer::Initialize() {
     Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
     extensions.glBufferData(
         GL_ARRAY_BUFFER,
-        this->vertexCount * sizeof(VertexType),
+        this->vertexCount * sizeof(OpenGLVertexType),
         vertices,
         GL_STATIC_DRAW);
 
@@ -380,7 +382,7 @@ void OpenGLRenderer::Initialize() {
         3 /*size*/,
         GL_FLOAT,
         false /*normalized*/,
-        sizeof(VertexType),
+        sizeof(OpenGLVertexType),
         nullptr);
 
     // Bind the vertex buffer again.
@@ -394,7 +396,7 @@ void OpenGLRenderer::Initialize() {
         3 /*size*/,
         GL_FLOAT,
         false /*normalized*/,
-        sizeof(VertexType),
+        sizeof(OpenGLVertexType),
         reinterpret_cast<BYTE*>(0) + (3 * sizeof(SINGLE)));
 
     // Generate an ID for the index buffer.

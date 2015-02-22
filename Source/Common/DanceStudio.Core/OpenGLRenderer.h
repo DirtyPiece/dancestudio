@@ -159,41 +159,6 @@ class OpenGLRenderer {
     /// Logs a shader link error message to the log file.
     /// </summary>
     void LogShaderLinkErrorMessage();
-
-    /// <summary>
-    /// Represents the format of each vertex in the model.
-    /// </summary>
-    struct VertexType {
-        /// <summary>
-        /// The x coordinate of the vertex.
-        /// </summary>
-        SINGLE x;
-
-        /// <summary>
-        /// The y coordinate of the vertex.
-        /// </summary>
-        SINGLE y;
-
-        /// <summary>
-        /// The z coordinate of the vertex.
-        /// </summary>
-        SINGLE z;
-
-        /// <summary>
-        /// The red color component of the vertex.
-        /// </summary>
-        SINGLE r;
-
-        /// <summary>
-        /// The green color component of the vertex.
-        /// </summary>
-        SINGLE g;
-
-        /// <summary>
-        /// The blue color component of the vertex.
-        /// </summary>
-        SINGLE b;
-    };
 };
 }  // namespace Core
 }  // namespace DanceStudio

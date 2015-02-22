@@ -148,17 +148,25 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\External\RapidXML\rapidxml.hpp" />
+    <ClInclude Include="..\..\External\RapidXML\rapidxml_iterators.hpp" />
+    <ClInclude Include="..\..\External\RapidXML\rapidxml_print.hpp" />
+    <ClInclude Include="..\..\External\RapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ColladaImporter.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DanceStudio.Core.h" />
     <ClInclude Include="DanceStudioExceptionType.h" />
     <ClInclude Include="FileHelper.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Matrix3x3.h" />
+    <ClInclude Include="Model3d.h" />
     <ClInclude Include="OpenGL.h" />
     <ClInclude Include="OpenGLExtensions.h" />
     <ClInclude Include="OpenGLRenderer.h" />
+    <ClInclude Include="OpenGLVertexType.h" />
     <ClInclude Include="PathHelper.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="SEHException.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="StepChartEditor.h" />
@@ -170,12 +178,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ColladaImporter.cpp" />
     <ClCompile Include="DanceStudio.Core.Logger.cpp" />
     <ClCompile Include="DanceStudio.Core.StepChartEditor.cpp" />
     <ClCompile Include="FileHelper.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Matrix3x3.cpp" />
+    <ClCompile Include="Model3d.cpp" />
     <ClCompile Include="OpenGLExtensions.cpp" />
     <ClCompile Include="OpenGLRenderer.cpp" />
     <ClCompile Include="PathHelper.cpp" />
@@ -184,12 +194,17 @@
     <ClCompile Include="Vector3d.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\External\RapidXML\manual.html" />
     <None Include="PixelShader.ps">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="VertexShader.vs">
       <DeploymentContent>true</DeploymentContent>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\External\RapidXML\license.txt" />
+    <Text Include="..\..\External\RapidXML\version.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(ProjectDir)..\..\..\Build\Targets\DanceStudio.Targets" />

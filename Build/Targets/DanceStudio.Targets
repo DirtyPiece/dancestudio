@@ -86,5 +86,15 @@
     <Message Importance="high" Text="Running CppLint in order to validate C++." />
     <Exec Command="$(DanceStudioPythonExePath) $(DanceStudioCppLintPath) --output=vs7 @(CppFiles, ' ')" IgnoreExitCode="true" />
   </Target>
-  
+
+  <!--
+  =======================================================================
+  Copy Unit Test Resource folders to the run directory.
+  Will match all projects that end with the name *Tests.
+  =======================================================================
+  -->
+  <Target Name="DanceStudioUnitTestResourceCopyTarget" AfterTargets="AfterBuild" Condition="$(ProjectName.EndsWith('Tests'))">
+    <Message Importance="high" Text="Copying the resource test files from '$(ProjectDir)\Resources' to '$(TargetDir)\Resources'." />
+    <Copy SourceFiles="$(ProjectDir)Resources\*.*" DestinationFolder="$(TargetDir)Resources" />
+  </Target>
 </Project>

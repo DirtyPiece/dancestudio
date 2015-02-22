@@ -13,5 +13,6 @@
 // Headers for CppUnitTest
 #include "CppUnitTest.h"
 #include "Macros.h"
+#include "TestHelper.h"
 
 #endif  // SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_UNITTESTS_STDAFX_H_

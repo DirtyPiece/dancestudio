@@ -34,6 +34,9 @@ std::string FileHelper::LoadAllFileText(const std::string& filePath) {
     std::string contents = buffer;
     delete[] buffer;
 
+    fclose(file);
+    file = nullptr;
+
     return contents;
 }
 
