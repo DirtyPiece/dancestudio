@@ -25,6 +25,9 @@ void ColladaImporter::Import(const CHAR* colladaFilePath, Scene* outScene) {
       + "'.");
 
     std::string fileContents = FileHelper::LoadAllFileText(colladaFilePath);
+
+    // TODO(dirtypiece) - Need to make this constant string non constant and
+    // copy the buffer.
     ParseModels(fileContents.c_str(), outScene);
 }
 
@@ -38,7 +41,23 @@ void ColladaImporter::ParseModels(const CHAR* fileContents, Scene* scene) {
     rapidxml::xml_document<> doc;
     doc.parse<0>(const_cast<CHAR*>(fileContents));
 
-    doc.first_node("mesh");
+    rapidxml::xml_node<CHAR>* colladaNode = doc.first_node("COLLADA");
+    Validator::IsXmlNodeFound(colladaNode, "colladaNode");
+
+    rapidxml::xml_node<CHAR>* libraryGeometriesNode =
+        colladaNode->first_node("library_geometries");
+    Validator::IsXmlNodeFound(libraryGeometriesNode, "libraryGeometriesNode");
+
+    rapidxml::xml_node<CHAR>* geometryNode =
+        libraryGeometriesNode->first_node("geometry");
+    Validator::IsXmlNodeFound(geometryNode, "geometryNode");
+
+    rapidxml::xml_attribute<CHAR>* attribute =
+        geometryNode->first_attribute("name");
+    Validator::IsXmlAttributeFound(attribute, "geometry.name");
+
+    Model3d* model = new Model3d();
+    model->SetName(attribute->value());
 
     std::stringstream stream;
     stream

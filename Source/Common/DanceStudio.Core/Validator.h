@@ -149,6 +149,44 @@ class Validator {
             Throw::OutOfMemoryException(memoryRegionName);
         }
     }
+
+    /// <summary>
+    /// Determines whether the passed in XML node was found
+    /// or not (null check).
+    /// </summary>
+    /// <param name="node">The node to check.</param>
+    /// <param name="nodeName">The name of the node to check.</param>
+    static inline void IsXmlNodeFound(
+        void* node,
+        const CHAR* nodeName) {
+        if (node == nullptr) {
+            std::string message = 
+                "The XML node with name '"
+              + std::string(nodeName)
+              + "' was not found.";
+
+            Throw::InvalidOperationException(message);
+        }
+    }
+
+    /// <summary>
+    /// Determines whether the passed in XML attribute was found
+    /// or not (null check).
+    /// </summary>
+    /// <param name="attribute">The attribute to check.</param>
+    /// <param name="attributeName">The name of the attribute to check.</param>
+    static inline void IsXmlAttributeFound(
+        void* attribute,
+        const CHAR* attributeName) {
+        if (attributeName == nullptr) {
+            std::string message =
+                "The XML attribute with name '"
+                + std::string(attributeName)
+                + "' was not found.";
+
+            Throw::InvalidOperationException(message);
+        }
+    }
 };
 }  // namespace Core
 }  // namespace DanceStudio
