@@ -9,6 +9,7 @@
 #include "ColladaImporter.h"
 #include "FileHelper.h"
 #include "Scene.h"
+#include "StringHelper.h"
 #include "..\..\External\RapidXML\rapidxml.hpp"
 #include <sstream>
 
@@ -35,8 +36,6 @@ void ColladaImporter::ParseModels(const CHAR* fileContents, Scene* scene) {
     assert(fileContents != nullptr);
     assert(scene != nullptr);
 
-    UINT32 loadedModelCount = 0;
-
     // Use RapidXML to load the Collada XML document.
     rapidxml::xml_document<> doc;
     doc.parse<0>(const_cast<CHAR*>(fileContents));
@@ -52,12 +51,96 @@ void ColladaImporter::ParseModels(const CHAR* fileContents, Scene* scene) {
         libraryGeometriesNode->first_node("geometry");
     Validator::IsXmlNodeFound(geometryNode, "geometryNode");
 
-    rapidxml::xml_attribute<CHAR>* attribute =
-        geometryNode->first_attribute("name");
-    Validator::IsXmlAttributeFound(attribute, "geometry.name");
+    // Load all the models.
+    UINT32 loadedModelCount = 0;
+    do {
+        rapidxml::xml_attribute<CHAR>* attribute =
+            geometryNode->first_attribute("name");
+        Validator::IsXmlAttributeFound(attribute, "geometry.name");
 
-    Model3d* model = new Model3d();
-    model->SetName(attribute->value());
+        Model3d* model = new Model3d();
+        Logger::LogCoreVerbose(
+            "Found model with name '"
+            + std::string(attribute->value())
+            + "' in the Collada file.");
+
+        model->SetName(attribute->value());
+
+        rapidxml::xml_node<CHAR>* meshNode =
+            geometryNode->first_node("mesh");
+        Validator::IsXmlNodeFound(meshNode, "meshNode");
+
+        // The first source element contains the vertex positions.
+        rapidxml::xml_node<CHAR>* sourceNode =
+            meshNode->first_node("source");
+        Validator::IsXmlNodeFound(sourceNode, "sourceNode");
+
+        rapidxml::xml_node<CHAR>* floatArrayNode =
+            sourceNode->first_node("float_array");
+        Validator::IsXmlNodeFound(floatArrayNode, "floatArrayNode");
+
+        std::vector<std::string> values = StringHelper::Split(
+            floatArrayNode->value(),
+            ' ');
+
+        // Ensure that we only have triangles.
+        if (values.size() % 3 != 0) {
+            Throw::InvalidOperationException(
+                "The Collada file contains non-3d positions (x, y, z)"
+                " which are not supported.");
+        }
+
+        UINT32 vertexCount = values.size() / 3;
+        OpenGLVertexType* vertices = new OpenGLVertexType[vertexCount];
+        for (INT32 i = 0; i < values.size(); i += 3) {
+            INT32 vertexIndex = i / 3;
+            vertices[vertexIndex].X = atof(values[i + 0].c_str());
+            vertices[vertexIndex].Y = atof(values[i + 1].c_str());
+            vertices[vertexIndex].Z = atof(values[i + 2].c_str());
+            vertices[vertexIndex].R = 0.0f;
+            vertices[vertexIndex].G = 1.0f;
+            vertices[vertexIndex].B = 0.0f;
+        }
+
+        model->SetVertices(vertices, vertexCount);
+        delete[] vertices;
+        vertices = nullptr;
+
+        rapidxml::xml_node<CHAR>* polylistNode =
+            meshNode->first_node("polylist");
+        Validator::IsXmlNodeFound(polylistNode, "polylistNode");
+
+        rapidxml::xml_node<CHAR>* pNode =
+            polylistNode->first_node("p");
+        Validator::IsXmlNodeFound(pNode, "pNode");
+
+        values = StringHelper::Split(
+            pNode->value(),
+            ' ');
+
+        // Ensure that we only have triangles.
+        if (values.size() % 3 != 0) {
+            Throw::InvalidOperationException(
+                "The Collada file contains quadrangles"
+                " which are not supported (only triangles).");
+        }
+
+        // Loads the indexes for rendering.
+        // TODO(dirtypiece) - skip normals for now, but should load them later.
+        UINT32* indices = new UINT32[values.size() / 2];
+        for (UINT32 i = 0; i < values.size(); i += 2) {
+            indices[i/2] = atoi(values[i/2].c_str());
+        }
+
+        model->SetIndices(indices, values.size() / 2);
+        delete[] indices;
+        indices = nullptr;
+
+        scene->AddModel(model);
+
+        ++loadedModelCount;
+        geometryNode = geometryNode->next_sibling("geometry");
+    } while (geometryNode != nullptr);
 
     std::stringstream stream;
     stream
@@ -67,65 +150,3 @@ void ColladaImporter::ParseModels(const CHAR* fileContents, Scene* scene) {
 
     Logger::LogCoreInfo(stream.str());
 }
-
-//bool ColladaImporter::ScanUntilXmlElement(
-//    const CHAR* elementName,
-//    const CHAR** currentCharacter) {
-//    assert(elementName != nullptr);
-//    assert(currentCharacter != nullptr);
-//    assert(*currentCharacter != nullptr);
-//
-//    const CHAR* c = *currentCharacter;
-//    while (stricmp(elementName, c) != 0) {
-//        // Scan until we reach an element.
-//        bool result = ScanUntilCharacter('<', &c);
-//        if (!result) {
-//            Logger::LogCoreVerbose(
-//                "Reached the end of the Collada file (no more elements).");
-//            return false;
-//        }
-//    }
-//
-//    *currentCharacter = c;
-//    return true;
-//}
-//
-//bool ColladaImporter::ReadXmlElementAttribute(
-//    const CHAR* attributeName,
-//    const CHAR** currentCharacter) {
-//    assert(attributeName != nullptr);
-//    assert(currentCharacter != nullptr);
-//    assert(*currentCharacter != nullptr);
-//
-//    std::string attributeMatch = attributeName + std::string("=");
-//    const CHAR* c = *currentCharacter;
-//    while (*c != '>' && stricmp(attributeName, c) != 0) {
-//        ++c;
-//    }
-//
-//    if (*c == '>') {
-//        // The attribute was not found.
-//        return false;
-//    }
-//
-//    return true;
-//}
-//
-//bool ColladaImporter::ScanUntilCharacter(
-//    CHAR character,
-//    const CHAR** currentCharacter) {
-//    assert(currentCharacter != nullptr);
-//    assert(*currentCharacter != nullptr);
-//
-//    const CHAR* c = *currentCharacter;
-//    while (*c != character && *c != '\0') {
-//        ++c;
-//    }
-//
-//    if (*c == character) {
-//        *currentCharacter = c;
-//        return true;
-//    }
-//
-//    return false;
-//}

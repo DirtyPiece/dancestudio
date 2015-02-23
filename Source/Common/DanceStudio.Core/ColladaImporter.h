@@ -37,56 +37,6 @@ class ColladaImporter {
      /// The scene to add the parsed models to.
      /// </param>
      static void ParseModels(const CHAR* fileContents, Scene* scene);
-
-     /*/// <summary>
-     /// Scans the current character pointer until the specified
-     /// XML element is located in the buffer.
-     /// </summary>
-     /// <param name="elementName">
-     /// The name of the XML element to scan for (don't include brackets).
-     /// The name is case insensitive.
-     /// </param>
-     /// <param name="currentCharacter">
-     /// The current character position in the buffer.  The position
-     /// after scanning will be at the point of the elements opening
-     /// bracket, or its passed in position if not found.
-     /// </param>
-     /// <returns>
-     /// <c>true</c> if the element was found, <c>false</c> otherwise.
-     /// </returns>
-     static bool ScanUntilXmlElement(
-         const CHAR* elementName,
-         const CHAR** currentCharacter);
-
-     /// <summary>
-     /// Reads an XML element attribute.
-     /// </summary>
-     /// <param name="attributeName">
-     /// The name of the attribute to read.
-     /// </param>
-     /// <param name="currentCharacter">
-     /// The current character to read from.  This method assumes that
-     /// the position of the character is at the start of the element
-     /// opening tag bracket.</param>
-     /// <returns>
-     /// <c>true</c> if the attribute was found, <c>false</c> otherwise.
-     /// </returns>
-     static bool ReadXmlElementAttribute(
-         const CHAR* attributeName,
-         std::string& attributeValue,
-         const CHAR** currentCharacter);
-
-     /// <summary>
-     /// Scans the until the specified character is found.
-     /// </summary>
-     /// <param name="character">The character to scan for.</param>
-     /// <param name="currentCharacter">The current character position.</param>
-     /// <returns>
-     /// <c>true</c> if the character was found, <c>false</c> otherwise.
-     /// </returns>
-     static bool ScanUntilCharacter(
-         CHAR character,
-         const CHAR** currentCharacter);*/
 };
 }  // namespace Core
 }  // namespace DanceStudio

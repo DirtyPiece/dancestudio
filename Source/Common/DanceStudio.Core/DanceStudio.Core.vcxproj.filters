@@ -113,6 +113,9 @@
     <ClInclude Include="..\..\External\RapidXML\rapidxml_utils.hpp">
       <Filter>Source Files\External\RapidXML</Filter>
     </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGLExtensions.cpp">
@@ -161,6 +164,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

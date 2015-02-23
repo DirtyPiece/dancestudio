@@ -170,6 +170,7 @@
     <ClInclude Include="SEHException.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="StepChartEditor.h" />
+    <ClInclude Include="StringHelper.h" />
     <ClInclude Include="Throw.h" />
     <ClInclude Include="Typedefs.h" />
     <ClInclude Include="Logger.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="PathHelper.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="StepChartEditor.cpp" />
+    <ClCompile Include="StringHelper.cpp" />
     <ClCompile Include="Throw.cpp" />
     <ClCompile Include="Vector3d.cpp" />
   </ItemGroup>

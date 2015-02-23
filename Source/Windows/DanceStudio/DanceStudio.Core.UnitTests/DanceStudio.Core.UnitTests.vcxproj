@@ -181,6 +181,7 @@
     <None Include="Resources\box.dae">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="Resources\box2.dae" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(ProjectDir)..\..\..\..\Build\Targets\DanceStudio.Targets" />

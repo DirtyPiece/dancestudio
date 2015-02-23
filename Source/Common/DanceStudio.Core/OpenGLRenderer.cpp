@@ -11,11 +11,15 @@
 #include "FileHelper.h"
 #include "PathHelper.h"
 #include "OpenGLVertexType.h"
+#include "ColladaImporter.h"
+#include "Scene.h"
 #include <string>
 
 using DanceStudio::Core::OpenGLRenderer;
 using DanceStudio::Core::FileHelper;
 using DanceStudio::Core::OpenGLVertexType;
+using DanceStudio::Core::ColladaImporter;
+using DanceStudio::Core::Scene;
 
 OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
     deviceContext(nullptr),
@@ -78,11 +82,7 @@ OpenGLRenderer::~OpenGLRenderer() {
 }
 
 void OpenGLRenderer::BeginScene() {
-    // Clear the scene to black.
-    // SINGLE r = static_cast<SINGLE>(rand() % 25) / 25.0f; // NOLINT - can't use rand_r().
-    // SINGLE g = static_cast<SINGLE>(rand() % 25) / 25.0f; // NOLINT - can't use rand_r().
-    // SINGLE b = static_cast<SINGLE>(rand() % 25) / 25.0f; // NOLINT - can't use rand_r().
-    // glClearColor(r, g, b, 1.0f);
+    // Clear the scene to gray.
     glClearColor(.5, .5, .5, 1);
 
     // Clear the back buffer and depth buffer.
@@ -106,8 +106,8 @@ void OpenGLRenderer::BeginScene() {
         false /*transpose*/,
         this->worldMatrix);
 
-    camera.SetPosition(10, 10, -20);
-    camera.SetLookAtPosition(0, 0, 0);
+    camera.SetPosition(-5, 0, -10);
+    //camera.SetLookAtPosition(0, 0, 0);
     camera.Update();
     camera.GetViewMatrix(this->viewMatrix);
 
@@ -306,6 +306,18 @@ void OpenGLRenderer::Initialize() {
     Validator::IsMemoryAllocated(vertices, "the indices of the model");
 
     // Load the vertex array with data.
+    Scene scene;
+    ColladaImporter::Import(
+        "C:\\Code\\DanceStudio\\Source\\Windows\\DanceStudio"
+        "\\DanceStudio.Core.UnitTests\\Resources\\box.dae",
+        &scene);
+
+    const Model3d* model = scene.GetModels()[0];
+    this->vertexCount = model->GetVertexCount();
+    this->indexCount = model->GetIndexCount();
+
+    //this->vertexCount = 3;
+    //this->indexCount = 3;
 
     // Bottom left.
     vertices[0].X = -1.0f;  // Position.
@@ -357,10 +369,11 @@ void OpenGLRenderer::Initialize() {
 
     // Load the vertex data into the buffer.
     Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
+    OpenGLVertexType* vertices2 = model->GetVertices();
     extensions.glBufferData(
         GL_ARRAY_BUFFER,
         this->vertexCount * sizeof(OpenGLVertexType),
-        vertices,
+        vertices2,
         GL_STATIC_DRAW);
 
     // Enable the vertex position attribute.
@@ -379,7 +392,7 @@ void OpenGLRenderer::Initialize() {
     Logger::LogCoreVerbose("Setting the position data format.");
     extensions.glVertexAttribPointer(
         0 /*index*/,
-        3 /*size*/,
+        this->vertexCount /*size*/,
         GL_FLOAT,
         false /*normalized*/,
         sizeof(OpenGLVertexType),
@@ -393,7 +406,7 @@ void OpenGLRenderer::Initialize() {
     Logger::LogCoreVerbose("Setting the color data format.");
     extensions.glVertexAttribPointer(
         1 /*index*/,
-        3 /*size*/,
+        this->indexCount /*size*/,
         GL_FLOAT,
         false /*normalized*/,
         sizeof(OpenGLVertexType),
@@ -408,11 +421,12 @@ void OpenGLRenderer::Initialize() {
     extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->indexBufferId);
 
     // Load the index data into the buffer.
+    UINT32* indices2 = model->GetIndices();
     Logger::LogCoreVerbose("Loading the index data into the buffer.");
     extensions.glBufferData(
         GL_ELEMENT_ARRAY_BUFFER,
         this->indexCount * sizeof(UINT32),
-        indices,
+        indices2,
         GL_STATIC_DRAW);
 
     // Clean up the buffers.

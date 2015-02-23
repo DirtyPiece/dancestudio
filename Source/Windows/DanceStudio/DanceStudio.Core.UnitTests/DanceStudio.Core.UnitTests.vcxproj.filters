@@ -42,5 +42,8 @@
     <None Include="Resources\box.dae">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Resources\box2.dae">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

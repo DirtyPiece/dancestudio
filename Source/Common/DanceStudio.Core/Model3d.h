@@ -46,13 +46,37 @@ class Model3d {
      /// </summary>
      /// <param name="indexArray">The index array to store.</param>
      /// <param name="arraySize">The size of the index array.</param>
-     void SetIndices(const INT32* indexArray, UINT32 arraySize);
+     void SetIndices(const UINT32* indexArray, UINT32 arraySize);
 
      /// <summary>
      /// Sets the name of the model.
      /// </summary>
      /// <param name="name">The name of the model.</param>
      void SetName(const CHAR* name);
+
+     /// <summary>
+     /// Gets the vertices for the model.
+     /// </summary>
+     /// <returns>The vertices for the model.</returns>
+     OpenGLVertexType* GetVertices() const;
+
+     /// <summary>
+     /// Gets the vertex count of vertices in the model.
+     /// </summary>
+     /// <returns>The vertex count of vertices in the model.</returns>
+     UINT32 GetVertexCount() const;
+
+     /// <summary>
+     /// Gets the indices for the model.
+     /// </summary>
+     /// <returns>The indices for the model.</returns>
+     UINT32* GetIndices() const;
+
+     /// <summary>
+     /// Gets the index count of indices in the model.
+     /// </summary>
+     /// <returns>The index count of indices in the model.</returns>
+     UINT32 GetIndexCount() const;
 
  private:
      /// <summary>
@@ -64,10 +88,20 @@ class Model3d {
      OpenGLVertexType* vertices;
 
      /// <summary>
+     /// The size of the array of vertices.
+     /// </summary>
+     UINT32 vertexArraySize;
+
+     /// <summary>
      /// The array of indices that will be copied into an OpenGL index buffer
      /// for rendering into the scene.
      /// </summary>
-     INT32* indices;
+     UINT32* indices;
+
+     /// <summary>
+     /// The size of the array of indices.
+     /// </summary>
+     UINT32 indexArraySize;
 
      /// <summary>
      /// The name of the model.

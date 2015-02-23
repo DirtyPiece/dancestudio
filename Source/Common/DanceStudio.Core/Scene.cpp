@@ -20,6 +20,10 @@ Scene::~Scene() {
     FreeModels();
 }
 
+void Scene::AddModel(Model3d* model) {
+    this->models.push_back(model);
+}
+
 const std::vector<Model3d*>& Scene::GetModels() {
     return this->models;
 }
