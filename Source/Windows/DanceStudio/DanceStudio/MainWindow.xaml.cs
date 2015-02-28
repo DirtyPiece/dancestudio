@@ -115,8 +115,11 @@ namespace DanceStudio
         /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
         private void PlayStepChartEditorCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            //AudioStream stream = new AudioStream(
+            //    @"D:\ITG\Tools\OpenITG\Songs\Drunkers Pack 2\Number 1\Number 1 (Hypasonic Remix)ultimo.ogg");
+
             AudioStream stream = new AudioStream(
-                @"D:\ITG\Tools\OpenITG\Songs\Drunkers Pack 2\Number 1\Number 1 (Hypasonic Remix)ultimo.ogg");
+                @"D:\ITG\Tools\OpenITG\Songs\DDR X3 Vs 2nd Mix\Amalgamation\Amalgamation.mp3");
 
             this.MainStepChartEditor.SetAudioStream(stream);
         }

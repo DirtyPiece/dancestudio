@@ -43,11 +43,12 @@ void AudioStream::Play() {
     if (this->channel == nullptr) {
         this->channel = AudioHelper::PlayStream(this->stream);
     }
-
-    FMOD_RESULT result = this->channel->setPaused(false);
-    Validator::FmodOperationSucceeded(
-        result,
-        "Failed to unpause the channel.");
+    else {
+        FMOD_RESULT result = this->channel->setPaused(false);
+        Validator::FmodOperationSucceeded(
+            result,
+            "Failed to unpause the channel.");
+    }
 }
 
 void AudioStream::Pause() {

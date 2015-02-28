@@ -15,7 +15,8 @@ using DanceStudio::Core::AudioHelper;
 using DanceStudio::Core::AudioStream;
 
 StepChartEditor::StepChartEditor(DS_HANDLE* window) :
-    renderer(nullptr) {
+    renderer(nullptr),
+    stream(nullptr) {
     Logger::LogCoreVerbose(L"Initializing the step chart editor control.");
     Validator::IsNotNull(window, "window");
 
@@ -51,6 +52,12 @@ void StepChartEditor::Update() {
 void StepChartEditor::SetAudioStream(AudioStream* stream) {
     Validator::IsNotNull(stream, "stream");
 
+    if (this->stream != nullptr) {
+        // Stop the current stream.
+        this->stream->Stop();
+    }
+
+    // Set the stream and begin playback.
     this->stream = stream;
     this->stream->Play();
 }

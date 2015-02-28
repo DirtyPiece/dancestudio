@@ -75,7 +75,7 @@ FMOD::Channel* AudioHelper::PlayStream(FMOD::Sound* stream) {
     AudioHelper::system->playSound(
         stream,
         nullptr,
-        true,
+        false,
         &channel);
 
     return channel;
