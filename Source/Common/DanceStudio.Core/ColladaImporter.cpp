@@ -92,11 +92,11 @@ void ColladaImporter::ParseModels(const CHAR* fileContents, Scene* scene) {
 
         UINT32 vertexCount = values.size() / 3;
         OpenGLVertexType* vertices = new OpenGLVertexType[vertexCount];
-        for (INT32 i = 0; i < values.size(); i += 3) {
+        for (UINT32 i = 0; i < values.size(); i += 3) {
             INT32 vertexIndex = i / 3;
-            vertices[vertexIndex].X = atof(values[i + 0].c_str());
-            vertices[vertexIndex].Y = atof(values[i + 1].c_str());
-            vertices[vertexIndex].Z = atof(values[i + 2].c_str());
+            vertices[vertexIndex].X = static_cast<SINGLE>(atof(values[i + 0].c_str()));
+            vertices[vertexIndex].Y = static_cast<SINGLE>(atof(values[i + 1].c_str()));
+            vertices[vertexIndex].Z = static_cast<SINGLE>(atof(values[i + 2].c_str()));
             vertices[vertexIndex].R = 0.0f;
             vertices[vertexIndex].G = 1.0f;
             vertices[vertexIndex].B = 0.0f;

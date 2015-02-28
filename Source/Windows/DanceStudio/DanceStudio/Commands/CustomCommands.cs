@@ -26,5 +26,11 @@ namespace DanceStudio.Commands
         /// </summary>
         public static readonly RoutedUICommand ViewDocumentation =
             new RoutedUICommand("View Documentation", "ViewDocumentation", typeof(CustomCommands));
+
+        /// <summary>
+        /// The command that starts the <see cref="StepChartEditor"/> playback.
+        /// </summary>
+        public static readonly RoutedUICommand PlayStepChartEditor =
+            new RoutedUICommand("Play Step Chart Editor", "PlayStepChartEditor", typeof(CustomCommands));
     }
 }

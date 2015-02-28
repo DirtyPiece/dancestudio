@@ -19,31 +19,34 @@ void AudioHelper::InitializeFmod() {
     FMOD_RESULT result;
 
     result = FMOD::System_Create(&AudioHelper::system);
-    if (result != FMOD_OK) {
-        AudioHelper::LogFmodError(result);
-        Throw::InvalidOperationException(
-            "Failed to create the FMOD system object.");
-    }
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to create the FMOD system object.");
 
     result = AudioHelper::system->init(
         512, /*maxChannels*/
         FMOD_INIT_NORMAL,
         nullptr);
-    if (result != FMOD_OK) {
-        AudioHelper::LogFmodError(result);
-        Throw::InvalidOperationException(
-            "Failed to initialize the FMOD system object.");
-    }
+
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to initialize the FMOD system object.");
 }
 
 void AudioHelper::ShutdownFmod() {
     assert(AudioHelper::system != nullptr);
     FMOD_RESULT result = AudioHelper::system->release();
-    if (result != FMOD_OK) {
-        AudioHelper::LogFmodError(result);
-        Throw::InvalidOperationException(
-            "The FMOD system object failed to shutdown properly.");
-    }
+    Validator::FmodOperationSucceeded(
+        result,
+        "The FMOD system object failed to shutdown properly.");
+}
+
+void AudioHelper::UpdateFmod() {
+    assert(AudioHelper::system != nullptr);
+    FMOD_RESULT result = AudioHelper::system->update();
+    Validator::FmodOperationSucceeded(
+        result,
+        "The FMOD system object failed to update properly.");
 }
 
 FMOD::Sound* AudioHelper::LoadStream(const std::string& audioFilePath) {
@@ -55,6 +58,12 @@ FMOD::Sound* AudioHelper::LoadStream(const std::string& audioFilePath) {
         0,
         nullptr,
         &stream);
+
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to load the FMOD stream for file '"
+        + audioFilePath
+        + "'.");
 
     return stream;
 }

@@ -510,9 +510,7 @@ void OpenGLRenderer::LoadExtensionList() {
 void OpenGLRenderer::InitializeOpenGL() {
     INT32 attributeListInt[19];
     INT32 pixelFormat[1];
-    UINT32 formatCount;
     BOOL result;
-    PIXELFORMATDESCRIPTOR pixelFormatDescriptor;
     INT32 attributeList[5];
     SINGLE fieldOfView, screenAspect;
 

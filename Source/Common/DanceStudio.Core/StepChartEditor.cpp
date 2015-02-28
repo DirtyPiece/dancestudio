@@ -7,9 +7,11 @@
 
 #include "Stdafx.h"
 #include "StepChartEditor.h"
+#include "AudioHelper.h"
 #include "AudioStream.h"
 
 using DanceStudio::Core::StepChartEditor;
+using DanceStudio::Core::AudioHelper;
 using DanceStudio::Core::AudioStream;
 
 StepChartEditor::StepChartEditor(DS_HANDLE* window) :
@@ -21,6 +23,10 @@ StepChartEditor::StepChartEditor(DS_HANDLE* window) :
     Validator::IsMemoryAllocated(
         renderer,
         "the step chart editor's internal renderer.");
+
+    // TODO(dirtypiece): Need to move this to a singleton class in the future
+    // since the StepChartEditor may not always be a singleton control.
+    AudioHelper::InitializeFmod();
 }
 
 StepChartEditor::~StepChartEditor() {
@@ -29,6 +35,8 @@ StepChartEditor::~StepChartEditor() {
         delete renderer;
         renderer = nullptr;
     }
+
+    AudioHelper::ShutdownFmod();
 }
 
 /// <summary>

@@ -53,6 +53,12 @@ class AudioStream {
      bool IsPlaying() const;
 
      /// <summary>
+     /// Gets the length of the stream playback time in milliseconds.
+     /// </summary>
+     /// <returns>The length of the audio stream in milliseconds.</returns>
+     UINT32 GetLengthInMilliseconds() const;
+
+     /// <summary>
      /// Gets the current playback position in milliseconds.
      /// </summary>
      /// <returns>The current playback position in milliseconds.</returns>

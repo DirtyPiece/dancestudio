@@ -20,22 +20,18 @@ AudioStream::AudioStream(const std::string& filePath) :
 AudioStream::~AudioStream() {
     if (this->channel != nullptr) {
         FMOD_RESULT result = this->channel->stop();
-        if (result != FMOD_OK) {
-            AudioHelper::LogFmodError(result);
-            Throw::InvalidOperationException(
-                "Could not stop the channel when cleaning up.");
-        }
+        Validator::FmodOperationSucceeded(
+            result,
+            "Could not stop the channel when cleaning up.");
 
         this->channel = nullptr;
     }
 
     if (this->stream != nullptr) {
         FMOD_RESULT result = this->stream->release();
-        if (result != FMOD_OK) {
-            AudioHelper::LogFmodError(result);
-            Throw::InvalidOperationException(
-                "Could not release the stream when cleaning up.");
-        }
+        Validator::FmodOperationSucceeded(
+            result,
+            "Could not release the stream when cleaning up.");
 
         this->stream = nullptr;
     }
@@ -49,22 +45,18 @@ void AudioStream::Play() {
     }
 
     FMOD_RESULT result = this->channel->setPaused(false);
-    if (result != FMOD_OK) {
-        AudioHelper::LogFmodError(result);
-        Throw::InvalidOperationException(
-            "Failed to unpause the channel.");
-    }
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to unpause the channel.");
 }
 
 void AudioStream::Pause() {
     assert(this->channel != nullptr);
 
     FMOD_RESULT result = this->channel->setPaused(true);
-    if (result != FMOD_OK) {
-        AudioHelper::LogFmodError(result);
-        Throw::InvalidOperationException(
-            "Failed to pause the channel.");
-    }
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to pause the channel.");
 }
 
 void AudioStream::Stop() {
@@ -77,6 +69,21 @@ void AudioStream::Stop() {
     }
 }
 
+UINT32 AudioStream::GetLengthInMilliseconds() const {
+    assert(this->stream != nullptr);
+
+    UINT32 length = 0;
+    FMOD_RESULT result = this->stream->getLength(
+        &length,
+        FMOD_TIMEUNIT_MS);
+
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to get the FMOD stream length in milliseconds.");
+
+    return length;
+}
+
 UINT32 AudioStream::GetCurrentPlaybackPositionInMilliseconds() const {
     assert(this->channel != nullptr);
 
@@ -85,11 +92,9 @@ UINT32 AudioStream::GetCurrentPlaybackPositionInMilliseconds() const {
         &position,
         FMOD_TIMEUNIT_MS);
 
-    if (result != FMOD_OK) {
-        AudioHelper::LogFmodError(result);
-        Throw::InvalidOperationException(
-            "Failed to get the FMOD playback position in milliseconds.");
-    }
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to get the FMOD playback position in milliseconds.");
 
     return position;
 }
@@ -101,11 +106,9 @@ void AudioStream::SetCurrentPlaybackPositionInMilliseconds(UINT32 position) {
         position,
         FMOD_TIMEUNIT_MS);
 
-    if (result != FMOD_OK) {
-        AudioHelper::LogFmodError(result);
-        Throw::InvalidOperationException(
-            "Failed to set the FMOD playback position in milliseconds.");
-    }
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to set the FMOD playback position in milliseconds.");
 }
 
 bool AudioStream::IsPlaying() const {
@@ -113,11 +116,9 @@ bool AudioStream::IsPlaying() const {
 
     bool isPlaying = false;
     FMOD_RESULT result = this->channel->isPlaying(&isPlaying);
-    if (result != FMOD_OK) {
-        AudioHelper::LogFmodError(result);
-        Throw::InvalidOperationException(
-            "Unable to get the playing status of the channel.");
-    }
+    Validator::FmodOperationSucceeded(
+        result,
+        "Unable to get the playing status of the channel.");
 
     return isPlaying;
 }

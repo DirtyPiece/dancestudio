@@ -72,6 +72,29 @@ extern "C" {
     void DSLoggerLogError(DS_LOGGER* logger, const WCHAR* message);
 
     /// ----------------------------------------------------------------------
+    /// AudioStream functions.
+    /// ----------------------------------------------------------------------
+
+    /// <summary>
+    /// Allocates an audio stream from the passed in audio file.  The returned
+    /// stream can be used to play back the audio file to standard audio
+    /// output.  The supported audio file formats are MP3, WAV, and OGG.
+    /// </summary>
+    /// <param name="audioFilePath">
+    /// The file path of the audio file to load.
+    /// </param>
+    /// <returns>The audio stream which can be used for playback.</returns>
+    DS_AUDIOSTREAM* DSAudioStreamAllocate(const CHAR* audioFilePath);
+
+    /// <summary>
+    /// Frees the passed in audio stream.
+    /// </summary>
+    /// <param name="stream">
+    /// The stream to free.
+    /// </param>
+    void DSAudioStreamFree(DS_AUDIOSTREAM* stream);
+
+    /// ----------------------------------------------------------------------
     /// Stepchart Editor functions.
     /// ----------------------------------------------------------------------
 
@@ -99,6 +122,16 @@ extern "C" {
     /// The editor to update.
     /// </param>
     void DSStepChartEditorUpdate(DS_STEPCHARTEDITOR* editor);
+
+    /// <summary>
+    /// Sets the audio stream that the Step Chart Editor will use
+    /// to play a song when the user is editing.  The stream should
+    /// already be created with a call to DSAudioStreamAllocate().
+    /// </summary>
+    /// <param name="stream">
+    /// The stream to associate with the step chart editor.
+    /// </param>
+    void DSStepChartEditorSetAudioStream(DS_AUDIOSTREAM* stream);
 #ifdef __cplusplus
 }
 #endif  // __cplusplus

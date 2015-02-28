@@ -67,9 +67,14 @@
                         
                     </Grid>
                     <Grid x:Uid="Grid_3">
-                        <WindowsFormsHost x:Uid="WindowsFormsHost_1">
-                            <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" x:Name="MainStepChartEditor" />
-                        </WindowsFormsHost>
+                        <DockPanel x:Uid="DockPanel_3">
+                            <ToolBar x:Uid="ToolBar_1" DockPanel.Dock="Top">
+                                <Button x:Uid="StepChartEditorPlayButton" Name="StepChartEditorPlayButton" />
+                            </ToolBar>
+                            <WindowsFormsHost x:Uid="WindowsFormsHost_1">
+                                <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" x:Name="MainStepChartEditor" />
+                            </WindowsFormsHost>
+                        </DockPanel>
                     </Grid>
                 </DockPanel>
             </Grid>

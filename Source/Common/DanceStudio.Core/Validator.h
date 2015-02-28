@@ -11,6 +11,10 @@
 #include <sstream>
 #include <string>
 #include "Throw.h"
+#include "AudioHelper.h"
+#include "..\..\External\FMOD\inc\fmod.hpp"
+
+using DanceStudio::Core::AudioHelper;
 
 namespace DanceStudio {
 namespace Core {
@@ -159,6 +163,8 @@ class Validator {
     static inline void IsXmlNodeFound(
         void* node,
         const CHAR* nodeName) {
+        assert(nodeName != nullptr);
+
         if (node == nullptr) {
             std::string message = 
                 "The XML node with name '"
@@ -178,13 +184,31 @@ class Validator {
     static inline void IsXmlAttributeFound(
         void* attribute,
         const CHAR* attributeName) {
-        if (attributeName == nullptr) {
+        assert(attributeName != nullptr);
+
+        if (attribute == nullptr) {
             std::string message =
                 "The XML attribute with name '"
                 + std::string(attributeName)
                 + "' was not found.";
 
             Throw::InvalidOperationException(message);
+        }
+    }
+
+    /// <summary>
+    /// Determines whether the FMOD operation succeeded or not.
+    /// </summary>
+    /// <param name="result">The FMOD result value to check.</param>
+    /// <param name="errorMessage">
+    /// The error message to throw if the result check fails.
+    /// </param>
+    static inline void FmodOperationSucceeded(
+        FMOD_RESULT result,
+        const std::string& errorMessage) {
+        if (result != FMOD_OK) {
+            AudioHelper::LogFmodError(result);
+            Throw::InvalidOperationException(errorMessage);
         }
     }
 };

@@ -82,7 +82,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmodL_vc.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -102,7 +102,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmodL64_vc.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
       <Command>
@@ -126,8 +126,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmod_vc</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmod_vc.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,8 +147,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmod64_vc</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmod64_vc.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
       <Command>

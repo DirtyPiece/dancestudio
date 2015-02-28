@@ -29,6 +29,11 @@ class AudioHelper {
      static void ShutdownFmod();
 
      /// <summary>
+     /// Updates FMOD.
+     /// </summary>
+     static void UpdateFmod();
+
+     /// <summary>
      /// Loads an audio file as a stream for playback.  Streams are useful
      /// for songs that are of a longer length.
      /// </summary>

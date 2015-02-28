@@ -30,5 +30,6 @@ typedef wchar_t WCHAR;
 typedef void DS_LOGGER;
 typedef void DS_HANDLE;
 typedef void DS_STEPCHARTEDITOR;
+typedef void DS_AUDIOSTREAM;
 
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_TYPEDEFS_H_
