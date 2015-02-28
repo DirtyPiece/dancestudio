@@ -10,6 +10,7 @@
 
 #include "Typedefs.h"
 #include "OpenGLRenderer.h"
+#include <string>
 
 namespace DanceStudio {
 namespace Core {
@@ -40,6 +41,13 @@ class StepChartEditor {
     /// Should be called before Render().
     /// </summary>
     void Update();
+
+    /// <summary>
+    /// Loads an audio file from disk and resets all the internal
+    /// data for the StepChartEditor.
+    /// </summary>
+    /// <param name="audioFilePath">The audio file path to load.</param>
+    void LoadAudioFile(const std::string& audioFilePath);
 
  private:
     /// <summary>

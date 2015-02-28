@@ -75,12 +75,14 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib</AdditionalDependencies>
+      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmodL_vc.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -93,12 +95,14 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib</AdditionalDependencies>
+      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmodL64_vc.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
       <Command>
@@ -114,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -121,7 +126,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib</AdditionalDependencies>
+      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmod_vc</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,6 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -140,7 +147,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib</AdditionalDependencies>
+      <AdditionalDependencies>OpenGL32.lib;User32.lib;Gdi32.lib;Ole32.lib;fmod64_vc</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\External\FMOD;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
       <Command>
@@ -152,6 +160,8 @@
     <ClInclude Include="..\..\External\RapidXML\rapidxml_iterators.hpp" />
     <ClInclude Include="..\..\External\RapidXML\rapidxml_print.hpp" />
     <ClInclude Include="..\..\External\RapidXML\rapidxml_utils.hpp" />
+    <ClInclude Include="AudioHelper.h" />
+    <ClInclude Include="AudioStream.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ColladaImporter.h" />
     <ClInclude Include="Constants.h" />
@@ -178,6 +188,8 @@
     <ClInclude Include="Vector3d.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AudioHelper.cpp" />
+    <ClCompile Include="AudioStream.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColladaImporter.cpp" />
     <ClCompile Include="DanceStudio.Core.Logger.cpp" />

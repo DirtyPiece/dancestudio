@@ -15,9 +15,6 @@
     <Filter Include="Source Files\Exceptions">
       <UniqueIdentifier>{ececcfe9-df65-4c5c-84f3-401914b4cb6a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Graphics">
-      <UniqueIdentifier>{9787577e-1b24-41de-9ad6-3cf51edd1619}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{20d4c02d-f27e-4385-a6b6-7c2064b183fe}</UniqueIdentifier>
     </Filter>
@@ -29,6 +26,9 @@
     </Filter>
     <Filter Include="Source Files\External\RapidXML">
       <UniqueIdentifier>{8d20ff31-0c59-437d-b8a1-9fe5787a5a15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Public Interface\Graphics">
+      <UniqueIdentifier>{9787577e-1b24-41de-9ad6-3cf51edd1619}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +116,12 @@
     <ClInclude Include="StringHelper.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="AudioStream.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGLExtensions.cpp">
@@ -167,6 +173,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StringHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
