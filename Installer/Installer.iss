@@ -26,7 +26,7 @@ OutputDir=C:\Code\DanceStudio\Installer
 OutputBaseFilename=DanceStudioInstall
 Compression=lzma
 SolidCompression=yes
-SourceDir=..\Source\Windows\DanceStudio\DanceStudio\bin\Release
+SourceDir=..\Source\Windows\DanceStudio\DanceStudio\bin\x64\Release
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -40,6 +40,7 @@ Source: "DanceStudio.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "DanceStudio.Controller.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "DanceStudio.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "en-US\DanceStudio.resources.dll"; DestDir: "{app}\en-US"; Flags: ignoreversion
+Source: "Documentation\Dance Studio Help.pdf"; DestDir: "{app}\Documentation"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

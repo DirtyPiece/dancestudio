@@ -172,8 +172,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ProjectDir)..\..\..\..\Build\Targets\DanceStudio.Targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>mkdir $(TargetDir)Documentation
+copy /Y "$(ProjectDir)..\..\..\..\Documentation\User\Pdf\Dance Studio Help.pdf" "$(TargetDir)Documentation\Dance Studio Help.pdf"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

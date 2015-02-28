@@ -305,6 +305,7 @@ void OpenGLRenderer::Initialize() {
     indices = new UINT32[this->indexCount];
     Validator::IsMemoryAllocated(vertices, "the indices of the model");
 
+#if 0
     // Load the vertex array with data.
     Scene scene;
     ColladaImporter::Import(
@@ -315,9 +316,10 @@ void OpenGLRenderer::Initialize() {
     const Model3d* model = scene.GetModels()[0];
     this->vertexCount = model->GetVertexCount();
     this->indexCount = model->GetIndexCount();
+#endif
 
-    //this->vertexCount = 3;
-    //this->indexCount = 3;
+    this->vertexCount = 3;
+    this->indexCount = 3;
 
     // Bottom left.
     vertices[0].X = -1.0f;  // Position.
@@ -369,11 +371,13 @@ void OpenGLRenderer::Initialize() {
 
     // Load the vertex data into the buffer.
     Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
+#if 0
     OpenGLVertexType* vertices2 = model->GetVertices();
+#endif
     extensions.glBufferData(
         GL_ARRAY_BUFFER,
         this->vertexCount * sizeof(OpenGLVertexType),
-        vertices2,
+        vertices,
         GL_STATIC_DRAW);
 
     // Enable the vertex position attribute.
@@ -421,12 +425,14 @@ void OpenGLRenderer::Initialize() {
     extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->indexBufferId);
 
     // Load the index data into the buffer.
+#if 0
     UINT32* indices2 = model->GetIndices();
+#endif
     Logger::LogCoreVerbose("Loading the index data into the buffer.");
     extensions.glBufferData(
         GL_ELEMENT_ARRAY_BUFFER,
         this->indexCount * sizeof(UINT32),
-        indices2,
+        indices,
         GL_STATIC_DRAW);
 
     // Clean up the buffers.
@@ -506,6 +512,7 @@ void OpenGLRenderer::InitializeOpenGL() {
     INT32 pixelFormat[1];
     UINT32 formatCount;
     BOOL result;
+    PIXELFORMATDESCRIPTOR pixelFormatDescriptor;
     INT32 attributeList[5];
     SINGLE fieldOfView, screenAspect;
 
@@ -530,7 +537,7 @@ void OpenGLRenderer::InitializeOpenGL() {
     attributeListInt[4] = WGL_ACCELERATION_ARB;
     attributeListInt[5] = WGL_FULL_ACCELERATION_ARB;
 
-    // Support for 24bit color.
+    // Support for 24 bit color.
     attributeListInt[6] = WGL_COLOR_BITS_ARB;
     attributeListInt[7] = 24;
 
@@ -557,7 +564,53 @@ void OpenGLRenderer::InitializeOpenGL() {
     // Null terminate the attribute list.
     attributeListInt[18] = 0;
 
+    PIXELFORMATDESCRIPTOR pfd = {
+        sizeof(PIXELFORMATDESCRIPTOR),    // size of this pfd 
+        1,                                // version number 
+        PFD_DRAW_TO_WINDOW |              // support window 
+        PFD_SUPPORT_OPENGL |              // support OpenGL 
+        PFD_DOUBLEBUFFER,                 // double buffered 
+        PFD_TYPE_RGBA,                    // RGBA type 
+        24,                               // 24-bit color depth 
+        0, 0, 0, 0, 0, 0,                 // color bits ignored 
+        0,                                // no alpha buffer 
+        0,                                // shift bit ignored 
+        0,                                // no accumulation buffer 
+        0, 0, 0, 0,                       // accum bits ignored 
+        32,                               // 32-bit z-buffer     
+        0,                                // no stencil buffer 
+        0,                                // no auxiliary buffer 
+        PFD_MAIN_PLANE,                   // main layer 
+        0,                                // reserved 
+        0, 0, 0                           // layer masks ignored 
+    };
+
+    ZeroMemory(&pfd, sizeof(pfd));
+    pfd.nSize = sizeof(pfd);
+
+    pfd.nVersion = 1;
+
+    pfd.dwFlags = PFD_DRAW_TO_WINDOW |
+
+    PFD_SUPPORT_OPENGL /*| PFD_DOUBLEBUFFER*/;
+
+    pfd.iPixelType = PFD_TYPE_RGBA;
+
+    pfd.cColorBits = 24;
+
+    pfd.cDepthBits = 16;
+
+    pfd.iLayerType = PFD_MAIN_PLANE;
+
+    pixelFormat[0] = ChoosePixelFormat(this->deviceContext, &pfd);
+    if (pixelFormat[0] == 0) {
+        this->LogLastError();
+        Throw::InvalidOperationException(
+            "The pixel format desired for rendering is not compatible.");
+    }
+
     // Query for a pixel format that fits the attributes we want.
+#if 0
     result = extensions.wglChoosePixelFormatARB(
         this->deviceContext,
         attributeListInt,
@@ -570,6 +623,19 @@ void OpenGLRenderer::InitializeOpenGL() {
         Throw::InvalidOperationException(
             "The pixel format desired for rendering is not compatible.");
     }
+#endif
+
+    /*result = SetPixelFormat(
+        this->deviceContext,
+        pixelFormat[0],
+        &pfd);
+
+    if (result != TRUE)
+    {
+        this->LogLastError();
+        Throw::InvalidOperationException(
+            "The pixel format could not be set for the context.");
+    }*/
 
     // Set the 4.0 version of OpenGL in the attribute list.
     attributeList[0] = WGL_CONTEXT_MAJOR_VERSION_ARB;
