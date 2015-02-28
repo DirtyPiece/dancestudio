@@ -13,6 +13,7 @@
     <Window.CommandBindings>
         <CommandBinding x:Uid="CommandBinding_1" Command="Close" CanExecute="CloseCommandBinding_CanExecute" Executed="CloseCommandBinding_Executed" />
         <CommandBinding x:Uid="CommandBinding_2" Command="{x:Static c:CustomCommands.ViewDocumentation}" CanExecute="ViewDocumentationCommandBinding_CanExecute" Executed="ViewDocumentationCommandBinding_Executed" />
+        <CommandBinding Command="{x:Static c:CustomCommands.PlayStepChartEditor}" CanExecute="PlayStepChartEditorCommandBinding_CanExecute" Executed="PlayStepChartEditorCommandBinding_Executed" />
     </Window.CommandBindings>
     <Grid x:Uid="Grid_1">
         <DockPanel x:Uid="DockPanel_1">
@@ -69,7 +70,7 @@
                     <Grid x:Uid="Grid_3">
                         <DockPanel x:Uid="DockPanel_3">
                             <ToolBar x:Uid="ToolBar_1" DockPanel.Dock="Top">
-                                <Button x:Uid="StepChartEditorPlayButton" Name="StepChartEditorPlayButton" />
+                                <Button x:Uid="StepChartEditorPlayButton" Content="Play" Name="StepChartEditorPlayButton" Command="{x:Static c:CustomCommands.PlayStepChartEditor}" />
                             </ToolBar>
                             <WindowsFormsHost x:Uid="WindowsFormsHost_1">
                                 <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" x:Name="MainStepChartEditor" />

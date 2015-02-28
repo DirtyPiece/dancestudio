@@ -10,8 +10,10 @@
 #include "Stdafx.h"
 #include "DanceStudio.Core.h"
 #include "StepChartEditor.h"
+#include "AudioStream.h"
 
 using DanceStudio::Core::StepChartEditor;
+using DanceStudio::Core::AudioStream;
 using DanceStudio::Core::Validator;
 
 DS_STEPCHARTEDITOR* DSStepChartEditorAllocate(DS_HANDLE* windowHandle) {
@@ -25,7 +27,17 @@ void DSStepChartEditorFree(DS_STEPCHARTEDITOR* editor) {
 }
 
 void DSStepChartEditorUpdate(DS_STEPCHARTEDITOR* editor) {
+    Validator::IsNotNull(editor, "editor");
     StepChartEditor* typedEditor = static_cast<StepChartEditor*>(editor);
-    Validator::IsMemoryAllocated(typedEditor, "the native step chart editor.");
     typedEditor->Update();
+}
+
+void DSStepChartEditorSetAudioStream(
+    DS_STEPCHARTEDITOR* editor,
+    DS_AUDIOSTREAM* stream) {
+    Validator::IsNotNull(editor, "editor");
+
+    StepChartEditor* typedEditor = static_cast<StepChartEditor*>(editor);
+    AudioStream* typedStream = static_cast<AudioStream*>(stream);
+    typedEditor->SetAudioStream(typedStream);
 }

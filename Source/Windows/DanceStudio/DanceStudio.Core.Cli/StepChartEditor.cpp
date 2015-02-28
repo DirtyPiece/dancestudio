@@ -50,6 +50,11 @@ void StepChartEditor::Tick() {
     }
 }
 
+void StepChartEditor::SetAudioStream(AudioStream^ stream) {
+    assert(this->editor != nullptr);
+    DSStepChartEditorSetAudioStream(this->editor, stream->stream);
+}
+
 void StepChartEditor::StepChartEditor_Loaded(Object^ sender, EventArgs^ e) {
     DANCE_STUDIO_UNUSED(sender);
     DANCE_STUDIO_UNUSED(e);

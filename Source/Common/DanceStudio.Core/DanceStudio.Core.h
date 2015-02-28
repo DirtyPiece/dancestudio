@@ -128,10 +128,15 @@ extern "C" {
     /// to play a song when the user is editing.  The stream should
     /// already be created with a call to DSAudioStreamAllocate().
     /// </summary>
+    /// <param name="editor">
+    /// The editor to set the stream for.
+    /// </param>
     /// <param name="stream">
     /// The stream to associate with the step chart editor.
     /// </param>
-    void DSStepChartEditorSetAudioStream(DS_AUDIOSTREAM* stream);
+    void DSStepChartEditorSetAudioStream(
+        DS_STEPCHARTEDITOR* editor,
+        DS_AUDIOSTREAM* stream);
 #ifdef __cplusplus
 }
 #endif  // __cplusplus

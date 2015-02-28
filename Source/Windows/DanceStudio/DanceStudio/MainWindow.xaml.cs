@@ -97,5 +97,28 @@ namespace DanceStudio
             // Now that the step chart editor is initialized, store the global property to it.
             App.StepChartEditor = this.MainStepChartEditor;
         }
+
+        /// <summary>
+        /// Handles the CanExecute event of the PlayStepChartEditorCommandBinding control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="CanExecuteRoutedEventArgs"/> instance containing the event data.</param>
+        private void PlayStepChartEditorCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        /// <summary>
+        /// Handles the Executed event of the PlayStepChartEditorCommandBinding control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
+        private void PlayStepChartEditorCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            AudioStream stream = new AudioStream(
+                @"D:\ITG\Tools\OpenITG\Songs\Drunkers Pack 2\Number 1\Number 1 (Hypasonic Remix)ultimo.ogg");
+
+            this.MainStepChartEditor.SetAudioStream(stream);
+        }
     }
 }

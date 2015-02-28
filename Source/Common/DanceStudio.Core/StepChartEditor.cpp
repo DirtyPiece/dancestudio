@@ -52,4 +52,5 @@ void StepChartEditor::SetAudioStream(AudioStream* stream) {
     Validator::IsNotNull(stream, "stream");
 
     this->stream = stream;
+    this->stream->Play();
 }

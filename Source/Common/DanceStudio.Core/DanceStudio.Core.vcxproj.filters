@@ -181,6 +181,9 @@
     <ClCompile Include="AudioStream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DanceStudio.Core.AudioStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="PixelShader.ps">

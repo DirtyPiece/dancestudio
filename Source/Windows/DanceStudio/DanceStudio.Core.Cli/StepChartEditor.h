@@ -9,12 +9,14 @@
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_CLI_STEPCHARTEDITOR_H_
 
 #include "..\..\..\Common\DanceStudio.Core\DanceStudio.Core.h"
+#include "AudioStream.h"
 
 using System::Windows::Forms::UserControl;
 using System::Object;
 using System::EventArgs;
 using System::Windows::Forms::PaintEventArgs;
 using System::Threading::ThreadExceptionEventArgs;
+using DanceStudio::Core::Cli::AudioStream;
 
 namespace DanceStudio {
 namespace Core {
@@ -39,6 +41,13 @@ public ref class StepChartEditor : public UserControl {
     /// Updates the rendering of the control.
     /// </summary>
     void Tick();
+
+    /// <summary>
+    /// Sets the audio stream to use when playing back with
+    /// the stepchart.
+    /// </summary>
+    /// <param name="stream">The stream to use for playback.</param>
+    void SetAudioStream(AudioStream^ stream);
 
  protected:
     /// <summary>

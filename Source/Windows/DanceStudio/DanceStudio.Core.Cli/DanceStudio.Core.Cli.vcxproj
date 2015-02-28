@@ -149,6 +149,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioStream.h" />
     <ClInclude Include="ExceptionHelper.h" />
     <ClInclude Include="EXCEPTION_POINTERS.h" />
     <ClInclude Include="EXCEPTION_RECORD.h" />
@@ -160,9 +161,11 @@
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="StepChartEditor.h" />
     <ClInclude Include="Throw.h" />
+    <ClInclude Include="Validator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="AudioStream.cpp" />
     <ClCompile Include="ExceptionHelper.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Stdafx.cpp">

@@ -192,6 +192,7 @@
     <ClCompile Include="AudioStream.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColladaImporter.cpp" />
+    <ClCompile Include="DanceStudio.Core.AudioStream.cpp" />
     <ClCompile Include="DanceStudio.Core.Logger.cpp" />
     <ClCompile Include="DanceStudio.Core.StepChartEditor.cpp" />
     <ClCompile Include="FileHelper.cpp" />
