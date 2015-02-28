@@ -38,11 +38,11 @@ namespace DanceStudio
         }
 
         /// <summary>
-        /// Handles the CanExecute event of the ViewOnlineDocumentationCommandBinding control.
+        /// Handles the CanExecute event of the ViewDocumentationCommandBinding control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="CanExecuteRoutedEventArgs"/> instance containing the event data.</param>
-        private void ViewOnlineDocumentationCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        private void ViewDocumentationCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }
@@ -52,9 +52,9 @@ namespace DanceStudio
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
-        private void ViewOnlineDocumentationCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void ViewDocumentationCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            HelpController.LaunchHelpDocumentationInDefaultBrowser();
+            HelpController.LaunchHelpDocumentation();
         }
 
         /// <summary>

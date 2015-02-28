@@ -22,9 +22,9 @@ namespace DanceStudio.Commands
     public static class CustomCommands
     {
         /// <summary>
-        /// The command that launches the user's browser to view the OneNote online documentation.
+        /// The command that launches the user documentation.
         /// </summary>
-        public static readonly RoutedUICommand ViewOnlineDocumentation =
-            new RoutedUICommand("View Online Documentation", "ViewOnlineDocumentation", typeof(CustomCommands));
+        public static readonly RoutedUICommand ViewDocumentation =
+            new RoutedUICommand("View Documentation", "ViewDocumentation", typeof(CustomCommands));
     }
 }
