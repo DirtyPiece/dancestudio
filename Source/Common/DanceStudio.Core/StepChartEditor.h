@@ -10,6 +10,7 @@
 
 #include "Typedefs.h"
 #include "OpenGLRenderer.h"
+#include "AudioStream.h"
 #include <string>
 
 namespace DanceStudio {
@@ -43,11 +44,10 @@ class StepChartEditor {
     void Update();
 
     /// <summary>
-    /// Loads an audio file from disk and resets all the internal
-    /// data for the StepChartEditor.
+    /// Sets the audio stream to apply as part of step chart editing.
     /// </summary>
-    /// <param name="audioFilePath">The audio file path to load.</param>
-    void LoadAudioFile(const std::string& audioFilePath);
+    /// <param name="stream">The stream to apply for audio playback.</param>
+    void SetAudioStream(AudioStream* stream);
 
  private:
     /// <summary>
@@ -55,6 +55,12 @@ class StepChartEditor {
     /// in its entirety.
     /// </summary>
     OpenGLRenderer* renderer;
+
+    /// <summary>
+    /// The audio stream that is playing during editing.  The stepchart being
+    /// created will lay on top and be timed against this audio stream.
+    /// </summary>
+    AudioStream* stream;
 };
 
 }  // namespace Core

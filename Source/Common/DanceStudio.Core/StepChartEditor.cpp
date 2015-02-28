@@ -7,8 +7,10 @@
 
 #include "Stdafx.h"
 #include "StepChartEditor.h"
+#include "AudioStream.h"
 
 using DanceStudio::Core::StepChartEditor;
+using DanceStudio::Core::AudioStream;
 
 StepChartEditor::StepChartEditor(DS_HANDLE* window) :
     renderer(nullptr) {
@@ -36,4 +38,10 @@ void StepChartEditor::Update() {
     assert(this->renderer != nullptr);
     this->renderer->BeginScene();
     this->renderer->EndScene();
+}
+
+void StepChartEditor::SetAudioStream(AudioStream* stream) {
+    Validator::IsNotNull(stream, "stream");
+
+    this->stream = stream;
 }

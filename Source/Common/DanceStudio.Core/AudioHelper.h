@@ -47,6 +47,12 @@ class AudioHelper {
      /// <param name="stream">The stream to play.</param>
      /// <returns>The channel that the stream is playing on.</returns>
      static FMOD::Channel* PlayStream(FMOD::Sound* stream);
+
+     /// <summary>
+     /// Logs the FMOD error to the log file.
+     /// </summary>
+     /// <param name="result">The error result to log.</param>
+     static void LogFmodError(FMOD_RESULT result);
  private:
      /// <summary>
      /// Represents the core system object for FMOD.

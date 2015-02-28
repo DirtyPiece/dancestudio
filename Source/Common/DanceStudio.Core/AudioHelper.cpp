@@ -20,6 +20,7 @@ void AudioHelper::InitializeFmod() {
 
     result = FMOD::System_Create(&AudioHelper::system);
     if (result != FMOD_OK) {
+        AudioHelper::LogFmodError(result);
         Throw::InvalidOperationException(
             "Failed to create the FMOD system object.");
     }
@@ -29,6 +30,7 @@ void AudioHelper::InitializeFmod() {
         FMOD_INIT_NORMAL,
         nullptr);
     if (result != FMOD_OK) {
+        AudioHelper::LogFmodError(result);
         Throw::InvalidOperationException(
             "Failed to initialize the FMOD system object.");
     }
@@ -38,6 +40,7 @@ void AudioHelper::ShutdownFmod() {
     assert(AudioHelper::system != nullptr);
     FMOD_RESULT result = AudioHelper::system->release();
     if (result != FMOD_OK) {
+        AudioHelper::LogFmodError(result);
         Throw::InvalidOperationException(
             "The FMOD system object failed to shutdown properly.");
     }
@@ -67,4 +70,8 @@ FMOD::Channel* AudioHelper::PlayStream(FMOD::Sound* stream) {
         &channel);
 
     return channel;
+}
+
+void AudioHelper::LogFmodError(FMOD_RESULT result) {
+    // TODO(dirtypiece): fill this in.
 }
