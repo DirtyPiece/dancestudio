@@ -30,6 +30,9 @@
     <Filter Include="Source Files\Public Interface\Graphics">
       <UniqueIdentifier>{9787577e-1b24-41de-9ad6-3cf51edd1619}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{09803437-e4c3-4f5a-9f3c-f752aaab39e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DanceStudioExceptionType.h">
@@ -121,6 +124,30 @@
     </ClInclude>
     <ClInclude Include="AudioHelper.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DSProjectModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DSSongPackModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DSSongModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DSStepChartModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DSStepItemModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DSBeatsPerMinuteRangeModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DSStopPeriodModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DSGameType.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

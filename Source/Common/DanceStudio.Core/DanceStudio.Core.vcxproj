@@ -162,11 +162,18 @@
     <ClInclude Include="..\..\External\RapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="AudioHelper.h" />
     <ClInclude Include="AudioStream.h" />
+    <ClInclude Include="DSBeatsPerMinuteRangeModel.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ColladaImporter.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DanceStudio.Core.h" />
     <ClInclude Include="DanceStudioExceptionType.h" />
+    <ClInclude Include="DSGameType.h" />
+    <ClInclude Include="DSProjectModel.h" />
+    <ClInclude Include="DSSongModel.h" />
+    <ClInclude Include="DSSongPackModel.h" />
+    <ClInclude Include="DSStepChartModel.h" />
+    <ClInclude Include="DSStepItemModel.h" />
     <ClInclude Include="FileHelper.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Matrix3x3.h" />
@@ -180,6 +187,7 @@
     <ClInclude Include="SEHException.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="StepChartEditor.h" />
+    <ClInclude Include="DSStopPeriodModel.h" />
     <ClInclude Include="StringHelper.h" />
     <ClInclude Include="Throw.h" />
     <ClInclude Include="Typedefs.h" />

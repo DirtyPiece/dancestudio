@@ -9,6 +9,7 @@
 #define SOURCE_COMMON_DANCESTUDIO_CORE_DANCESTUDIO_CORE_H_
 
 #include "Typedefs.h"
+#include "DSProjectModel.h"
 
 // The following functions are all wrappers to expose the functionality
 // of DanceStudio.Core to Mac (Swift) and C++/Cli.
