@@ -8,6 +8,8 @@
 #ifndef SOURCE_COMMON_DANCESTUDIO_CORE_DSSTEPITEMMODEL_H_
 #define SOURCE_COMMON_DANCESTUDIO_CORE_DSSTEPITEMMODEL_H_
 
+#include "DSStepItemType.h"
+
 #pragma pack(push, 1)
 
 /// <summary>
@@ -15,6 +17,12 @@
 /// etc.
 /// </summary>
 struct DSStepItemModel {
+    /// <summary>
+    /// The type of item this step item is (arrow, mine, etc.).
+    /// </summary>
+    DSStepItemType Type;
+
+
 };
 
 #pragma pack(pop)

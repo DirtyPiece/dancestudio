@@ -188,6 +188,7 @@
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="StepChartEditor.h" />
     <ClInclude Include="DSStopPeriodModel.h" />
+    <ClInclude Include="DSStepItemType.h" />
     <ClInclude Include="StringHelper.h" />
     <ClInclude Include="Throw.h" />
     <ClInclude Include="Typedefs.h" />

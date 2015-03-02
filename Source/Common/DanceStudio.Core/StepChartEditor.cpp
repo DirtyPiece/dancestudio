@@ -60,4 +60,6 @@ void StepChartEditor::SetAudioStream(AudioStream* stream) {
     // Set the stream and begin playback.
     this->stream = stream;
     this->stream->Play();
+
+    this->stream->SetPlaybackSpeed(2.0f);
 }

@@ -70,6 +70,14 @@ class AudioStream {
      /// <param name="position">The milliseconds offet to jump to.</param>
      void SetCurrentPlaybackPositionInMilliseconds(UINT32 position);
 
+     /// <summary>
+     /// Sets the playback speed of the song that is playing.
+     /// </summary>
+     /// <param name="speed">
+     /// The speed of the playback from 0.01f to 100.0f (1.0f is normal speed).
+     /// </param>
+     void SetPlaybackSpeed(SINGLE speed);
+
  private:
      /// <summary>
      /// The loaded audio stream.
@@ -80,6 +88,23 @@ class AudioStream {
      /// The channel that the stream is playing on.
      /// </summary>
      FMOD::Channel* channel;
+
+     /// <summary>
+     /// The default frequency of the audio stream, used to alter
+     /// the playback speed of the song.  Different depending on
+     /// the file that is loaded.
+     /// </summary>
+     SINGLE defaultFrequency;
+
+     /// <summary>
+     /// The current playback speed of the stream.
+     /// </summary>
+     SINGLE playbackSpeed;
+
+     /// <summary>
+     /// Initializes the default frequency value.
+     /// </summary>
+     void InitializeDefaultFrequency();
 };
 }  // namespace Core
 }  // namespace DanceStudio

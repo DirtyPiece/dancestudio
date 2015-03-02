@@ -17,7 +17,7 @@
 /// </summary>
 enum DSGameType {
     /// <summary>
-    /// The starting marker for the range of vales in this enum.
+    /// The starting marker for the range of values in this enum.
     /// </summary>
     DS_GAME_TYPE_START,
 
@@ -27,7 +27,7 @@ enum DSGameType {
     DS_GAME_TYPE_IN_THE_GROOVE = DS_GAME_TYPE_START,
 
     /// <summary>
-    /// The ending marker for the range of vales in this enum.
+    /// The ending marker for the range of values in this enum.
     /// </summary>
     DS_GAME_TYPE_END
 };

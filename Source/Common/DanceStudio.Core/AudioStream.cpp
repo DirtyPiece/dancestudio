@@ -13,7 +13,9 @@ using DanceStudio::Core::AudioStream;
 
 AudioStream::AudioStream(const std::string& filePath) :
     stream(nullptr),
-    channel(nullptr) {
+    channel(nullptr),
+    defaultFrequency(0.0f),
+    playbackSpeed(1.0f) {
     this->stream = AudioHelper::LoadStream(filePath);
 }
 
@@ -42,6 +44,9 @@ void AudioStream::Play() {
 
     if (this->channel == nullptr) {
         this->channel = AudioHelper::PlayStream(this->stream);
+
+        // Get the default frequency of the song so we can change it later.
+
     }
     else {
         FMOD_RESULT result = this->channel->setPaused(false);
@@ -122,4 +127,21 @@ bool AudioStream::IsPlaying() const {
         "Unable to get the playing status of the channel.");
 
     return isPlaying;
+}
+
+void AudioStream::SetPlaybackSpeed(SINGLE speed) {
+    assert(this->stream != nullptr);
+    Validator::IsArgumentOutOfRange(
+        speed < DANCE_STUDIO_MIN_SONG_PLAYBACK_SPEED
+     || speed > DANCE_STUDIO_MAX_SONG_PLAYBACK_SPEED,
+        "speed");
+
+    FMOD_RESULT result = this->stream->setMusicSpeed(speed);
+    Validator::FmodOperationSucceeded(
+        result,
+        "Failed to set the playback speed of the audio stream.");
+}
+
+void AudioStream::InitializeDefaultFrequency() {
+    assert(this->channel != nullptr);
 }

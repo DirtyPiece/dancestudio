@@ -45,4 +45,14 @@
 /// </summary>
 #define DANCE_STUDIO_MAX_CALLSTACK_LENGTH 1024
 
+/// <summary>
+/// The minimum speed that songs can be played back at.
+/// </summary>
+#define DANCE_STUDIO_MIN_SONG_PLAYBACK_SPEED 0.01f
+
+/// <summary>
+/// The maximum speed that songs can be played back at.
+/// </summary>
+#define DANCE_STUDIO_MAX_SONG_PLAYBACK_SPEED 100.0f
+
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_CONSTANTS_H_
