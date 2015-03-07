@@ -116,7 +116,10 @@ namespace DanceStudio
         private void PlayStepChartEditorCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             AudioStream stream = new AudioStream(
-                @"D:\ITG\Tools\OpenITG\Songs\Drunkers Pack 2\Number 1\Number 1 (Hypasonic Remix)ultimo.ogg");
+                @"C:\Documents\Dropbox\ITG\Machine\BrandonSongs\DDR 6th Mix -Max-\GHOSTS (VINCENT DE MOOR REMIX)\GHOSTS (VINCENT DE MOOR REMIX).ogg");
+
+            //AudioStream stream = new AudioStream(
+            //    @"D:\ITG\Tools\OpenITG\Songs\Drunkers Pack 2\Number 1\Number 1 (Hypasonic Remix)ultimo.ogg");
 
             //AudioStream stream = new AudioStream(
             //    @"D:\ITG\Tools\OpenITG\Songs\DDR X3 Vs 2nd Mix\Amalgamation\Amalgamation.mp3");

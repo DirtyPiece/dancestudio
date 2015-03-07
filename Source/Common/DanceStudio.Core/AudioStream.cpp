@@ -46,7 +46,7 @@ void AudioStream::Play() {
         this->channel = AudioHelper::PlayStream(this->stream);
 
         // Get the default frequency of the song so we can change it later.
-
+        this->InitializeDefaultFrequency();
     }
     else {
         FMOD_RESULT result = this->channel->setPaused(false);
@@ -130,13 +130,15 @@ bool AudioStream::IsPlaying() const {
 }
 
 void AudioStream::SetPlaybackSpeed(SINGLE speed) {
-    assert(this->stream != nullptr);
+    assert(this->channel != nullptr);
+    assert(this->defaultFrequency != 0.0f);
     Validator::IsArgumentOutOfRange(
         speed < DANCE_STUDIO_MIN_SONG_PLAYBACK_SPEED
      || speed > DANCE_STUDIO_MAX_SONG_PLAYBACK_SPEED,
         "speed");
 
-    FMOD_RESULT result = this->stream->setMusicSpeed(speed);
+    SINGLE frequency = this->defaultFrequency * speed;
+    FMOD_RESULT result = this->channel->setFrequency(frequency);
     Validator::FmodOperationSucceeded(
         result,
         "Failed to set the playback speed of the audio stream.");
@@ -144,4 +146,9 @@ void AudioStream::SetPlaybackSpeed(SINGLE speed) {
 
 void AudioStream::InitializeDefaultFrequency() {
     assert(this->channel != nullptr);
+
+    FMOD_RESULT result = this->channel->getFrequency(&this->defaultFrequency);
+    Validator::FmodOperationSucceeded(
+        result,
+        "Unable to retrieve the channel frequency.");
 }
