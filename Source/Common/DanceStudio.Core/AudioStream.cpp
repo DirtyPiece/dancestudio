@@ -142,6 +142,12 @@ void AudioStream::SetPlaybackSpeed(SINGLE speed) {
     Validator::FmodOperationSucceeded(
         result,
         "Failed to set the playback speed of the audio stream.");
+
+    // Not sure why, but need to read the frequency again for the changes to take effect.
+    result = this->channel->getFrequency(&this->defaultFrequency);
+    Validator::FmodOperationSucceeded(
+        result,
+        "Unable to retrieve the channel frequency.");
 }
 
 void AudioStream::InitializeDefaultFrequency() {
