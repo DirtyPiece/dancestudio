@@ -21,6 +21,8 @@ using DanceStudio::Core::OpenGLVertexType;
 using DanceStudio::Core::ColladaImporter;
 using DanceStudio::Core::Scene;
 
+#define DS_LOAD_COLLADA
+
 OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
     deviceContext(nullptr),
     renderingContext(nullptr),
@@ -305,7 +307,7 @@ void OpenGLRenderer::Initialize() {
     indices = new UINT32[this->indexCount];
     Validator::IsMemoryAllocated(vertices, "the indices of the model");
 
-#if 0
+#ifdef DS_LOAD_COLLADA
     // Load the vertex array with data.
     Scene scene;
     ColladaImporter::Import(
@@ -316,8 +318,7 @@ void OpenGLRenderer::Initialize() {
     const Model3d* model = scene.GetModels()[0];
     this->vertexCount = model->GetVertexCount();
     this->indexCount = model->GetIndexCount();
-#endif
-
+#else
     this->vertexCount = 3;
     this->indexCount = 3;
 
@@ -352,6 +353,7 @@ void OpenGLRenderer::Initialize() {
     indices[0] = 0;  // Bottom left.
     indices[1] = 1;  // Top middle.
     indices[2] = 2;  // Bottom right.
+#endif
 
     // Allocate the vertex array object for OpenGL.
     Logger::LogCoreVerbose("Allocating the vertex array.");
@@ -371,8 +373,8 @@ void OpenGLRenderer::Initialize() {
 
     // Load the vertex data into the buffer.
     Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
-#if 0
-    OpenGLVertexType* vertices2 = model->GetVertices();
+#ifdef DS_LOAD_COLLADA
+    vertices = model->GetVertices();
 #endif
     extensions.glBufferData(
         GL_ARRAY_BUFFER,
@@ -396,7 +398,7 @@ void OpenGLRenderer::Initialize() {
     Logger::LogCoreVerbose("Setting the position data format.");
     extensions.glVertexAttribPointer(
         0 /*index*/,
-        this->vertexCount /*size*/,
+        3,//this->vertexCount /*size*/,
         GL_FLOAT,
         false /*normalized*/,
         sizeof(OpenGLVertexType),
@@ -410,7 +412,7 @@ void OpenGLRenderer::Initialize() {
     Logger::LogCoreVerbose("Setting the color data format.");
     extensions.glVertexAttribPointer(
         1 /*index*/,
-        this->indexCount /*size*/,
+        3, //this->indexCount /*size*/,
         GL_FLOAT,
         false /*normalized*/,
         sizeof(OpenGLVertexType),
@@ -425,8 +427,8 @@ void OpenGLRenderer::Initialize() {
     extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->indexBufferId);
 
     // Load the index data into the buffer.
-#if 0
-    UINT32* indices2 = model->GetIndices();
+#ifdef DS_LOAD_COLLADA
+    indices = model->GetIndices();
 #endif
     Logger::LogCoreVerbose("Loading the index data into the buffer.");
     extensions.glBufferData(
@@ -436,11 +438,11 @@ void OpenGLRenderer::Initialize() {
         GL_STATIC_DRAW);
 
     // Clean up the buffers.
-    delete[] vertices;
+    /*delete[] vertices;
     vertices = nullptr;
 
     delete[] indices;
-    indices = nullptr;
+    indices = nullptr;*/
 }
 
 void OpenGLRenderer::LoadExtensionList() {

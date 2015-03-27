@@ -59,7 +59,7 @@
     
     <!--First, copy LocBaml.exe to the output path so that it can find all the relevant assemblies for the project.-->
     <Copy SourceFiles="$(DanceStudioLocBamlExePath)" DestinationFiles="$(TargetDir)LocBaml.exe" />
-    <Exec Command="$(TargetDir)LocBaml.exe /parse &quot;$(TargetDir)en-US\$(ProjectName).resources.dll&quot; /out:&quot;$(TargetDir)LocalizationFile.csv&quot;"/>
+    <Exec Command="$(TargetDir)LocBaml.exe /parse &quot;$(TargetDir)en-US\$(ProjectName).resources.dll&quot; /out:&quot;$(TargetDir)LocalizationFile.csv&quot;" IgnoreExitCode="true" />
   </Target>
 
   <!--

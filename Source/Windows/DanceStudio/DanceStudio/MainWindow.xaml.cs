@@ -118,11 +118,11 @@ namespace DanceStudio
             AudioStream stream = new AudioStream(
                 @"C:\Documents\Dropbox\ITG\Machine\BrandonSongs\DDR 6th Mix -Max-\GHOSTS (VINCENT DE MOOR REMIX)\GHOSTS (VINCENT DE MOOR REMIX).ogg");
 
-            //AudioStream stream = new AudioStream(
-            //    @"D:\ITG\Tools\OpenITG\Songs\Drunkers Pack 2\Number 1\Number 1 (Hypasonic Remix)ultimo.ogg");
+            ////AudioStream stream = new AudioStream(
+            ////    @"D:\ITG\Tools\OpenITG\Songs\Drunkers Pack 2\Number 1\Number 1 (Hypasonic Remix)ultimo.ogg");
 
-            //AudioStream stream = new AudioStream(
-            //    @"D:\ITG\Tools\OpenITG\Songs\DDR X3 Vs 2nd Mix\Amalgamation\Amalgamation.mp3");
+            ////AudioStream stream = new AudioStream(
+            ////    @"D:\ITG\Tools\OpenITG\Songs\DDR X3 Vs 2nd Mix\Amalgamation\Amalgamation.mp3");
 
             this.MainStepChartEditor.SetAudioStream(stream);
         }

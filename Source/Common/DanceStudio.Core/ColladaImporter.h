@@ -9,6 +9,11 @@
 #define SOURCE_COMMON_DANCESTUDIO_CORE_COLLADAIMPORTER_H_
 
 #include "Scene.h"
+#include "Model3d.h"
+
+// Forward declarations.
+typedef struct aiScene;
+typedef struct aiMesh;
 
 namespace DanceStudio {
 namespace Core {
@@ -28,15 +33,23 @@ class ColladaImporter {
 
  private:
      /// <summary>
-     /// Parses the 3D models out of the collada file contents.
+     /// Parses the 3D models, materials, textures, cameras, etc.
+     /// out of the Assimp scene.
      /// </summary>
-     /// <param name="fileContents">
-     /// The file contents to parse.
+     /// <param name="assetImportScene">
+     /// The Assimp scene to load the models from.
      /// </param>
      /// <param name="scene">
-     /// The scene to add the parsed models to.
+     /// The parsed scene.
      /// </param>
-     static void ParseModels(const CHAR* fileContents, Scene* scene);
+     static void ParseScene(const aiScene* assetImportScene, Scene* scene);
+
+     /// <summary>
+     /// Parses the model out of the passed in Assimp mesh.
+     /// </summary>
+     /// <param name="assetImportMesh">The Assimp mesh to parse from.</param>
+     /// <returns>The model that was parsed.</returns>
+     static Model3d* ParseMesh(const aiMesh* assetImportMesh);
 };
 }  // namespace Core
 }  // namespace DanceStudio

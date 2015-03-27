@@ -13,7 +13,7 @@
     <Window.CommandBindings>
         <CommandBinding x:Uid="CommandBinding_1" Command="Close" CanExecute="CloseCommandBinding_CanExecute" Executed="CloseCommandBinding_Executed" />
         <CommandBinding x:Uid="CommandBinding_2" Command="{x:Static c:CustomCommands.ViewDocumentation}" CanExecute="ViewDocumentationCommandBinding_CanExecute" Executed="ViewDocumentationCommandBinding_Executed" />
-        <CommandBinding Command="{x:Static c:CustomCommands.PlayStepChartEditor}" CanExecute="PlayStepChartEditorCommandBinding_CanExecute" Executed="PlayStepChartEditorCommandBinding_Executed" />
+        <CommandBinding x:Uid="CommandBinding_3" Command="{x:Static c:CustomCommands.PlayStepChartEditor}" CanExecute="PlayStepChartEditorCommandBinding_CanExecute" Executed="PlayStepChartEditorCommandBinding_Executed" />
     </Window.CommandBindings>
     <Grid x:Uid="Grid_1">
         <DockPanel x:Uid="DockPanel_1">

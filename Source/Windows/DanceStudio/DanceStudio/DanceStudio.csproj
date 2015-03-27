@@ -176,7 +176,9 @@
 copy /Y "$(ProjectDir)..\..\..\..\Documentation\User\Pdf\Dance Studio Help.pdf" "$(TargetDir)Documentation\Dance Studio Help.pdf"
 
 if "$(ConfigurationName)"=="Debug" copy /Y $(ProjectDir)..\..\..\External\FMOD\dll\$(PlatformTarget)\log\*.dll $(TargetDir)
-if "$(ConfigurationName)"=="Release" copy /Y $(ProjectDir)..\..\..\External\FMOD\dll\$(PlatformTarget)\*.dll $(TargetDir)</PostBuildEvent>
+if "$(ConfigurationName)"=="Release" copy /Y $(ProjectDir)..\..\..\External\FMOD\dll\$(PlatformTarget)\*.dll $(TargetDir)
+if "$(ConfigurationName)"=="Debug" copy /Y $(ProjectDir)..\..\..\External\Assimp\dll\$(PlatformTarget)\*.dll $(TargetDir)
+if "$(ConfigurationName)"=="Release" copy /Y $(ProjectDir)..\..\..\External\Assimp\dll\$(PlatformTarget)\*.dll $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>powershell "$(ProjectDir)..\..\..\..\Build\Scripts\FixWpfDesigner.ps1"</PreBuildEvent>
