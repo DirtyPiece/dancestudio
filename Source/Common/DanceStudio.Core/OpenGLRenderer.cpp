@@ -22,6 +22,7 @@ using DanceStudio::Core::ColladaImporter;
 using DanceStudio::Core::Scene;
 
 #define DS_LOAD_COLLADA
+#define SCENE_RENDERING
 
 OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
     deviceContext(nullptr),
@@ -29,12 +30,7 @@ OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
     windowHandle(nullptr),
     vertexShader(0),
     pixelShader(0),
-    shaderProgram(0),
-    vertexCount(0),
-    indexCount(0),
-    vertexArrayId(0),
-    vertexBufferId(0),
-    indexBufferId(0) {
+    shaderProgram(0) {
     Validator::IsNotNull(windowHandle, "windowHandle");
 
     this->windowHandle = windowHandle;
@@ -108,7 +104,9 @@ void OpenGLRenderer::BeginScene() {
         false /*transpose*/,
         this->worldMatrix);
 
-    camera.SetPosition(-5, 0, -10);
+    camera.SetPosition(0, 0, -5);
+    camera.SetLookAtPosition(0, 0, 0);
+    //camera.SetPosition(-5, 0, -10);
     //camera.SetLookAtPosition(0, 0, 0);
     camera.Update();
     camera.GetViewMatrix(this->viewMatrix);
@@ -144,8 +142,10 @@ void OpenGLRenderer::BeginScene() {
         this->projectionMatrix);
 
     // Render the geometry.
-    extensions.glBindVertexArray(this->vertexArrayId);
-    glDrawElements(GL_TRIANGLES, this->indexCount, GL_UNSIGNED_INT, 0);
+    /*extensions.glBindVertexArray(this->vertexArrayId);
+    glDrawElements(GL_TRIANGLES, this->indexCount, GL_UNSIGNED_INT, 0);*/
+
+    RenderScene();
 }
 
 void OpenGLRenderer::EndScene() {
@@ -165,6 +165,13 @@ void OpenGLRenderer::Initialize() {
 
     this->InitializeOpenGL();
 
+    // TODO(dirtypiece): Remove after loading is fixed (wireframe mode).
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+#ifdef SCENE_RENDERING
+    this->LoadShaders();
+    this->LoadModels();
+#else SCENE_RENDERING
     // The shaders are copied to the output folder in the post build scripts.
     const std::string exeDirectory = FileHelper::GetExecutingExeDirectory();
     const std::string shaderDirectory = PathHelper::Combine(
@@ -310,9 +317,14 @@ void OpenGLRenderer::Initialize() {
 #ifdef DS_LOAD_COLLADA
     // Load the vertex array with data.
     Scene scene;
-    ColladaImporter::Import(
+    /*ColladaImporter::Import(
         "C:\\Code\\DanceStudio\\Source\\Windows\\DanceStudio"
         "\\DanceStudio.Core.UnitTests\\Resources\\box.dae",
+        &scene);*/
+
+    ColladaImporter::Import(
+        "C:\\Code\\DanceStudio\\Content\\"
+        "Blender\\ITGMachine\\itgmachine.dae",
         &scene);
 
     const Model3d* model = scene.GetModels()[0];
@@ -443,6 +455,7 @@ void OpenGLRenderer::Initialize() {
 
     delete[] indices;
     indices = nullptr;*/
+#endif // SCENE_RENDERING
 }
 
 void OpenGLRenderer::LoadExtensionList() {
@@ -807,4 +820,246 @@ void OpenGLRenderer::LogShaderLinkErrorMessage() {
         logMessage);
 
     Logger::LogCoreError(logMessage);
+}
+
+void OpenGLRenderer::LoadShaders() {
+    // The shaders are copied to the output folder in the post build scripts.
+    const std::string exeDirectory = FileHelper::GetExecutingExeDirectory();
+    const std::string shaderDirectory = PathHelper::Combine(
+        exeDirectory,
+        "Shaders");
+
+    const std::string vertexShaderFilePath = PathHelper::Combine(
+        shaderDirectory,
+        "VertexShader.vs");
+    const std::string pixelShaderFilePath = PathHelper::Combine(
+        shaderDirectory,
+        "PixelShader.ps");
+
+    Logger::LogCoreVerbose(
+        "Loading the vertex shader file at '"
+        + vertexShaderFilePath
+        + "'.");
+
+    const std::string vertexShaderStringContents =
+        FileHelper::LoadAllFileText(vertexShaderFilePath);
+    const CHAR* vertexShaderContents = vertexShaderStringContents.c_str();
+
+    Logger::LogCoreVerbose(
+        "Loading the pixel shader file at '"
+        + pixelShaderFilePath
+        + "'.");
+
+    const std::string pixelShaderStringContents =
+        FileHelper::LoadAllFileText(pixelShaderFilePath);
+    const CHAR* pixelShaderContents = pixelShaderStringContents.c_str();
+
+    // Create the vertex and pixel shader.
+    Logger::LogCoreVerbose("Creating the vertex shader.");
+    this->vertexShader = extensions.glCreateShader(
+        GL_VERTEX_SHADER);
+
+    Logger::LogCoreVerbose("Creating the pixel shader.");
+    this->pixelShader = extensions.glCreateShader(
+        GL_FRAGMENT_SHADER);
+
+    // Copy the file contents into the shader objects.
+    Logger::LogCoreVerbose("Loading the vertex shader contents.");
+    extensions.glShaderSource(
+        this->vertexShader,
+        1 /*count*/,
+        &vertexShaderContents,
+        nullptr);
+
+    Logger::LogCoreVerbose("Loading the pixel shader contents.");
+    extensions.glShaderSource(
+        this->pixelShader,
+        1 /*count*/,
+        &pixelShaderContents,
+        nullptr);
+
+    // Compile the shaders.
+    BOOL status = FALSE;
+    Logger::LogCoreVerbose("Compiling the vertex shader.");
+    extensions.glCompileShader(this->vertexShader);
+    extensions.glGetShaderiv(
+        this->vertexShader,
+        GL_COMPILE_STATUS,
+        &status);
+    if (status != TRUE) {
+        LogShaderCompileErrorMessage(this->vertexShader);
+        Throw::InvalidOperationException(
+            "The vertex shader at '"
+            + vertexShaderFilePath
+            + "' failed to compile.");
+    }
+
+    Logger::LogCoreVerbose("Compiling the pixel shader.");
+    extensions.glCompileShader(this->pixelShader);
+    extensions.glGetShaderiv(
+        this->pixelShader,
+        GL_COMPILE_STATUS,
+        &status);
+    if (status != TRUE) {
+        LogShaderCompileErrorMessage(this->pixelShader);
+        Throw::InvalidOperationException(
+            "The pixel shader at '"
+            + pixelShaderFilePath
+            + "' failed to compile.");
+    }
+
+    // Create the shader program object.
+    Logger::LogCoreVerbose("Creating the shader program.");
+    this->shaderProgram = extensions.glCreateProgram();
+
+    // Attach the vertex and pixel shaders to the program object.
+    Logger::LogCoreVerbose("Attaching the vertex shader to the program.");
+    extensions.glAttachShader(
+        this->shaderProgram,
+        this->vertexShader);
+
+    Logger::LogCoreVerbose("Attaching the pixel shader to the program.");
+    extensions.glAttachShader(
+        this->shaderProgram,
+        this->pixelShader);
+
+    // Bind the input variables for the shader.
+    Logger::LogCoreVerbose(
+        "Binding the 'inputPosition' attribute to the shader program.");
+    extensions.glBindAttribLocation(
+        this->shaderProgram,
+        0 /*index*/,
+        "inputPosition");
+
+    Logger::LogCoreVerbose(
+        "Binding the 'inputColor' attribute to the shader program.");
+    extensions.glBindAttribLocation(
+        this->shaderProgram,
+        1 /*index*/,
+        "inputColor");
+
+    // Link the shader program.
+    Logger::LogCoreVerbose("Linking the shader program.");
+    extensions.glLinkProgram(this->shaderProgram);
+    extensions.glGetProgramiv(
+        this->shaderProgram,
+        GL_LINK_STATUS,
+        &status);
+
+    if (status != TRUE) {
+        LogShaderLinkErrorMessage();
+        Throw::InvalidOperationException("The shader program failed to link.");
+    }
+}
+
+void OpenGLRenderer::LoadModels() {
+   /* ColladaImporter::Import(
+        "C:\\Code\\DanceStudio\\Content\\"
+        "Blender\\ITGMachine\\itgmachine.dae",
+        &this->scene);*/
+
+    ColladaImporter::Import(
+        "C:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\box2.dae",
+        &this->scene);
+}
+
+void OpenGLRenderer::RenderScene() {
+    // Load the vertex data.
+    Logger::LogCoreVerbose("Loading the vertex data.");
+
+    for (UINT32 i = 0; i < scene.GetModelCount(); ++i)
+    {
+        UINT32 vertexArrayId = 0;
+        UINT32 vertexBufferId = 0;
+        UINT32 indexBufferId = 0;
+
+        const Model3d* model = scene.GetModels()[i];
+        UINT32 vertexCount = model->GetVertexCount();
+        UINT32 indexCount = model->GetIndexCount();
+
+        // Allocate the vertex array object for OpenGL.
+        Logger::LogCoreVerbose("Allocating the vertex array.");
+        extensions.glGenVertexArrays(1, &vertexArrayId);
+
+        // Bind the vertex array object.
+        Logger::LogCoreVerbose("Binding the vertex array object.");
+        extensions.glBindVertexArray(vertexArrayId);
+
+        // Generate an ID for the vertex buffer.
+        Logger::LogCoreVerbose("Generating a vertex buffer ID.");
+        extensions.glGenBuffers(1, &vertexBufferId);
+
+        // Bind the vertex buffer.
+        Logger::LogCoreVerbose("Binding the vertex buffer.");
+        extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+
+        // Load the vertex data into the buffer.
+        Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
+
+        OpenGLVertexType* vertices = model->GetVertices();
+
+        extensions.glBufferData(
+            GL_ARRAY_BUFFER,
+            vertexCount * sizeof(OpenGLVertexType),
+            vertices,
+            GL_STATIC_DRAW);
+
+        // Enable the vertex position attribute.
+        Logger::LogCoreVerbose("Enabling the vertex position attribute.");
+        extensions.glEnableVertexAttribArray(0);
+
+        // Enable the vertex color attribute.
+        Logger::LogCoreVerbose("Enabling the vertex color attribute.");
+        extensions.glEnableVertexAttribArray(1);
+
+        // Bind the vertex buffer again.
+        Logger::LogCoreVerbose("Rebinding the vertex buffer.");
+        extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+
+        // Describe the format of the position data.
+        Logger::LogCoreVerbose("Setting the position data format.");
+        extensions.glVertexAttribPointer(
+            0 /*index*/,
+            3,//this->vertexCount /*size*/,
+            GL_FLOAT,
+            false /*normalized*/,
+            sizeof(OpenGLVertexType),
+            nullptr);
+
+        // Bind the vertex buffer again.
+        Logger::LogCoreVerbose("Rebinding the vertex buffer.");
+        extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+
+        // Describe the format of the color data.
+        Logger::LogCoreVerbose("Setting the color data format.");
+        extensions.glVertexAttribPointer(
+            1 /*index*/,
+            3, //this->indexCount /*size*/,
+            GL_FLOAT,
+            false /*normalized*/,
+            sizeof(OpenGLVertexType),
+            reinterpret_cast<BYTE*>(0) + (3 * sizeof(SINGLE)));
+
+        // Generate an ID for the index buffer.
+        Logger::LogCoreVerbose("Generating an ID for the index buffer.");
+        extensions.glGenBuffers(1, &indexBufferId);
+
+        // Bind the index buffer.
+        Logger::LogCoreVerbose("Binding the index buffer.");
+        extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
+
+        // Load the index data into the buffer.
+        UINT32* indices = model->GetIndices();
+
+        Logger::LogCoreVerbose("Loading the index data into the buffer.");
+        extensions.glBufferData(
+            GL_ELEMENT_ARRAY_BUFFER,
+            indexCount * sizeof(UINT32),
+            indices,
+            GL_STATIC_DRAW);
+
+        // Render the mesh.
+        extensions.glBindVertexArray(vertexArrayId);
+        glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+    }
 }

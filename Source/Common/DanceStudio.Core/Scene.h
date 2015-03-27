@@ -41,6 +41,12 @@ class Scene {
      /// <returns>The list of models in the scene.</returns>
      const std::vector<Model3d*>& GetModels();
 
+     /// <summary>
+     /// Gets the number of models in this scene.
+     /// </summary>
+     /// <returns>The number of models in the scene.</returns>
+     UINT32 GetModelCount() const;
+
  private:
      /// <summary>
      /// The list of models that have been placed in the scene.

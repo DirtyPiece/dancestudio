@@ -51,6 +51,8 @@ void Logger::LogVerbose(const WCHAR* message) {
 }
 
 void Logger::LogVerbose(const CHAR* message) {
+    // TODO(dirtypiece): Add flags for logging.
+    return;
     Validator::IsNotNull(message, "message");
 
     const std::string& adjustedMessage =

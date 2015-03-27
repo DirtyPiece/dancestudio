@@ -12,8 +12,10 @@
 #include "OpenGL.h"
 #include "OpenGLExtensions.h"
 #include "Camera.h"
+#include "Scene.h"
 
 using DanceStudio::Core::Camera;
+using DanceStudio::Core::Scene;
 
 namespace DanceStudio {
 namespace Core {
@@ -102,7 +104,7 @@ class OpenGLRenderer {
     /// </summary>
     UINT32 shaderProgram;
 
-    /// <summary>
+    /*/// <summary>
     /// The number of vertices in the model geometry.
     /// </summary>
     INT32 vertexCount;
@@ -110,9 +112,9 @@ class OpenGLRenderer {
     /// <summary>
     /// The number of indices in the model index buffer.
     /// </summary>
-    INT32 indexCount;
+    INT32 indexCount;*/
 
-    /// <summary>
+    /*/// <summary>
     /// The vertex array identifier.
     /// </summary>
     UINT32 vertexArrayId;
@@ -125,7 +127,12 @@ class OpenGLRenderer {
     /// <summary>
     /// The index buffer identifier.
     /// </summary>
-    UINT32 indexBufferId;
+    UINT32 indexBufferId;*/
+
+    /// <summary>
+    /// The main scene being rendered.
+    /// </summary>
+    Scene scene;
 
     /// <summary>
     /// Initializes OpenGL with the passed in window.
@@ -159,6 +166,21 @@ class OpenGLRenderer {
     /// Logs a shader link error message to the log file.
     /// </summary>
     void LogShaderLinkErrorMessage();
+
+    /// <summary>
+    /// Loads the vertex and pixel shaders.
+    /// </summary>
+    void LoadShaders();
+
+    /// <summary>
+    /// Loads the Collada models from disk for rendering.
+    /// </summary>
+    void LoadModels();
+
+    /// <summary>
+    /// Renders the scene to the 3D window.
+    /// </summary>
+    void RenderScene();
 };
 }  // namespace Core
 }  // namespace DanceStudio

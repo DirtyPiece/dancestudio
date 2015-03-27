@@ -28,6 +28,10 @@ const std::vector<Model3d*>& Scene::GetModels() {
     return this->models;
 }
 
+UINT32 Scene::GetModelCount() const {
+    return this->models.size();
+}
+
 void Scene::FreeModels() {
     for (UINT32 i = 0; i < this->models.size(); ++i) {
         delete this->models[i];

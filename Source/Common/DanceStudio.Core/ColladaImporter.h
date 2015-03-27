@@ -48,7 +48,7 @@ class ColladaImporter {
      /// Parses the model out of the passed in Assimp mesh.
      /// </summary>
      /// <param name="assetImportMesh">The Assimp mesh to parse from.</param>
-     /// <returns>The model that was parsed.</returns>
+     /// <returns>The model that was parsed, or <c>nullptr</c> if it could not be parsed.</returns>
      static Model3d* ParseMesh(const aiMesh* assetImportMesh);
 };
 }  // namespace Core

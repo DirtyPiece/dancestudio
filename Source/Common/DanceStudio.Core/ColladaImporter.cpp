@@ -32,20 +32,25 @@ void ColladaImporter::Import(const CHAR* colladaFilePath, Scene* outScene) {
 
     // Use Assimp to load the Collada XML document.
     Importer assimpImporter;
-    const struct aiScene* assetImporterScene = assimpImporter.ReadFile(colladaFilePath, 0);
+    const struct aiScene* assetImporterScene = assimpImporter.ReadFile(
+        colladaFilePath,
+        0);
 
     if (assetImporterScene == nullptr) {
+        std::string assimpError = assimpImporter.GetErrorString();
         Throw::InvalidOperationException(
             "Failed to import the Collada file at '"
             + std::string(colladaFilePath)
             + "' due to error:\n"
-            + std::string(assimpImporter.GetErrorString()));
+            + assimpError);
     }
 
     ParseScene(assetImporterScene, outScene);
 }
 
-void ColladaImporter::ParseScene(const aiScene* assetImporterScene, Scene* scene) {
+void ColladaImporter::ParseScene(
+    const aiScene* assetImporterScene,
+    Scene* scene) {
     assert(assetImporterScene != nullptr);
     assert(scene != nullptr);
 
@@ -58,7 +63,10 @@ void ColladaImporter::ParseScene(const aiScene* assetImporterScene, Scene* scene
     for (INT32 i = 0; i < assetImporterScene->mNumMeshes; ++i) {
         aiMesh* assetImportMesh = assetImporterScene->mMeshes[i];
         Model3d* model = ParseMesh(assetImportMesh);
-        scene->AddModel(model);
+
+        if (model != nullptr) {
+            scene->AddModel(model);
+        }
     }
 }
 
@@ -66,10 +74,12 @@ Model3d* ColladaImporter::ParseMesh(const aiMesh* assetImportMesh) {
     assert(assetImportMesh != nullptr);
 
     if (assetImportMesh->mPrimitiveTypes != aiPrimitiveType_TRIANGLE) {
-        Throw::InvalidOperationException(
-            "The Mesh with name '"
+        Logger::LogCoreWarning(
+            "Unable to load mesh '"
             + std::string(assetImportMesh->mName.C_Str())
-            + "' contains primitives that are not triangles.");
+            + "' as only triangles are supported.");
+
+        return nullptr;
     }
 
     Model3d* model = new Model3d();
