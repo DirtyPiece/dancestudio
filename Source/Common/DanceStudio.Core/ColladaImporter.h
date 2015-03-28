@@ -10,10 +10,12 @@
 
 #include "Scene.h"
 #include "Model3d.h"
+#include "Node3d.h"
 
 // Forward declarations.
 typedef struct aiScene;
 typedef struct aiMesh;
+typedef struct aiNode;
 
 namespace DanceStudio {
 namespace Core {
@@ -43,6 +45,14 @@ class ColladaImporter {
      /// The parsed scene.
      /// </param>
      static void ParseScene(const aiScene* assetImportScene, Scene* scene);
+
+     /// <summary>
+     /// Parses the node heirarchy out of the passed in Assimp node.
+     /// </summary>
+     /// <param name="assetImporterScene">The asset importer scene.</param>
+     /// <param name="assetImportMesh">The Assimp node to parse from.</param>
+     /// <returns>The node that was parsed, or <c>nullptr</c> if it could not be parsed.</returns>
+     static Node3d* ParseNode(const aiScene* assetImporterScene, const aiNode* assetImportNode);
 
      /// <summary>
      /// Parses the model out of the passed in Assimp mesh.

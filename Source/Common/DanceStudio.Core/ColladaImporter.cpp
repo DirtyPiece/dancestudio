@@ -10,6 +10,7 @@
 #include "FileHelper.h"
 #include "Scene.h"
 #include "StringHelper.h"
+#include "Node3d.h"
 #include "..\..\External\RapidXML\rapidxml.hpp"
 #include "..\..\External\Assimp\include\assimp\Importer.hpp"
 #include "..\..\External\Assimp\include\assimp\scene.h"
@@ -19,6 +20,7 @@ using DanceStudio::Core::ColladaImporter;
 using DanceStudio::Core::Model3d;
 using DanceStudio::Core::Scene;
 using DanceStudio::Core::OpenGLVertexType;
+using DanceStudio::Core::Node3d;
 using Assimp::Importer;
 
 void ColladaImporter::Import(const CHAR* colladaFilePath, Scene* outScene) {
@@ -68,6 +70,21 @@ void ColladaImporter::ParseScene(
             scene->AddModel(model);
         }
     }
+}
+
+Node3d* ColladaImporter::ParseNode(const aiScene* assetImporterScene, const aiNode* assetImportNode) {
+    assert(assetImporterScene != nullptr);
+    assert(assetImportNode != nullptr);
+
+    // Parse all the meshes in this node.
+    for (UINT32 i = 0; i < assetImportNode->mNumMeshes; ++i) {
+        const aiMesh* mesh = assetImporterScene->mMeshes[assetImportNode->mMeshes[i]];
+
+        Model3d* model = ParseMesh(mesh);
+
+    }
+
+    return nullptr;
 }
 
 Model3d* ColladaImporter::ParseMesh(const aiMesh* assetImportMesh) {
