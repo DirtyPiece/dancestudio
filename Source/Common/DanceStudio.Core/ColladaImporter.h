@@ -50,9 +50,15 @@ class ColladaImporter {
      /// Parses the node heirarchy out of the passed in Assimp node.
      /// </summary>
      /// <param name="assetImporterScene">The asset importer scene.</param>
-     /// <param name="assetImportMesh">The Assimp node to parse from.</param>
-     /// <returns>The node that was parsed, or <c>nullptr</c> if it could not be parsed.</returns>
-     static Node3d* ParseNode(const aiScene* assetImporterScene, const aiNode* assetImportNode);
+     /// <param name="assetImportNode">The asset import node.</param>
+     /// <param name="parentMatrix">The parent matrix to apply to this node's matrix.</param>
+     /// <returns>
+     /// The node that was parsed, or <c>nullptr</c> if it could not be parsed.
+     /// </returns>
+     static Node3d* ParseNode(
+         const aiScene* assetImporterScene,
+         const aiNode* assetImportNode,
+         const SINGLE* parentMatrix);
 
      /// <summary>
      /// Parses the model out of the passed in Assimp mesh.

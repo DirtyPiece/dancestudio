@@ -181,6 +181,27 @@ class OpenGLRenderer {
     /// Renders the scene to the 3D window.
     /// </summary>
     void RenderScene();
+
+    /// <summary>
+    /// Renders the node and all its children to the 3D window.
+    /// </summary>
+    /// <param name="node">The node to render.</param>
+    /// <param name="parentMatrix">
+    /// The matrix transformation of the parent node to apply when rendering.
+    /// </param>
+    void RenderNode(const Node3d* node, const SINGLE* parentMatrix);
+
+    /// <summary>
+    /// Renders the model to the 3D window.
+    /// </summary>
+    /// <param name="model">The model to render.</param>
+    void RenderModel(const Model3d* model);
+
+    /// <summary>
+    /// Sets the current world matrix to render with.
+    /// </summary>
+    /// <param name="matrix">The matrix to set as the world matrix.</param>
+    void SetWorldMatrix(const SINGLE* matrix);
 };
 }  // namespace Core
 }  // namespace DanceStudio

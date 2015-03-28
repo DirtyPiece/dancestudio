@@ -11,6 +11,7 @@
 #include "Scene.h"
 #include "StringHelper.h"
 #include "Node3d.h"
+#include "MathHelper.h"
 #include "..\..\External\RapidXML\rapidxml.hpp"
 #include "..\..\External\Assimp\include\assimp\Importer.hpp"
 #include "..\..\External\Assimp\include\assimp\scene.h"
@@ -21,6 +22,7 @@ using DanceStudio::Core::Model3d;
 using DanceStudio::Core::Scene;
 using DanceStudio::Core::OpenGLVertexType;
 using DanceStudio::Core::Node3d;
+using DanceStudio::Core::MathHelper;
 using Assimp::Importer;
 
 void ColladaImporter::Import(const CHAR* colladaFilePath, Scene* outScene) {
@@ -56,35 +58,79 @@ void ColladaImporter::ParseScene(
     assert(assetImporterScene != nullptr);
     assert(scene != nullptr);
 
-    if (!assetImporterScene->HasMeshes()) {
-        Throw::InvalidOperationException(
-            "The Collada file doesn't contain any meshes.");
-    }
+    SINGLE identityMatrix[4 * 4];
+    MathHelper::BuildIdentityMatrix(identityMatrix);
 
-    // Load all the meshes in the scene.
-    for (INT32 i = 0; i < assetImporterScene->mNumMeshes; ++i) {
-        aiMesh* assetImportMesh = assetImporterScene->mMeshes[i];
-        Model3d* model = ParseMesh(assetImportMesh);
+    // Parse all nodes in the scene heirarchy (recursively) starting with the root.
+    Node3d* rootNode = ParseNode(
+        assetImporterScene,
+        assetImporterScene->mRootNode,
+        identityMatrix);
 
-        if (model != nullptr) {
-            scene->AddModel(model);
-        }
-    }
+    scene->SetRootNode(rootNode);
 }
 
-Node3d* ColladaImporter::ParseNode(const aiScene* assetImporterScene, const aiNode* assetImportNode) {
+Node3d* ColladaImporter::ParseNode(
+    const aiScene* assetImporterScene,
+    const aiNode* assetImportNode,
+    const SINGLE* parentMatrix) {
     assert(assetImporterScene != nullptr);
     assert(assetImportNode != nullptr);
+    assert(parentMatrix != nullptr);
+
+    // Create the public node to represent this internal node.
+    Node3d* node = new Node3d();
 
     // Parse all the meshes in this node.
     for (UINT32 i = 0; i < assetImportNode->mNumMeshes; ++i) {
         const aiMesh* mesh = assetImporterScene->mMeshes[assetImportNode->mMeshes[i]];
 
         Model3d* model = ParseMesh(mesh);
-
+        if (model != nullptr) {
+            node->AddModel(model);
+        }
     }
 
-    return nullptr;
+    // Assign the matrix transformation for this node.
+    SINGLE matrix[4 * 4];
+    matrix[0] = assetImportNode->mTransformation.a1;
+    matrix[1] = assetImportNode->mTransformation.a2;
+    matrix[2] = assetImportNode->mTransformation.a3;
+    matrix[3] = assetImportNode->mTransformation.a4;
+    matrix[4] = assetImportNode->mTransformation.b1;
+    matrix[5] = assetImportNode->mTransformation.b2;
+    matrix[6] = assetImportNode->mTransformation.b3;
+    matrix[7] = assetImportNode->mTransformation.b4;
+    matrix[8] = assetImportNode->mTransformation.c1;
+    matrix[9] = assetImportNode->mTransformation.c2;
+    matrix[10] = assetImportNode->mTransformation.c3;
+    matrix[11] = assetImportNode->mTransformation.c4;
+    matrix[12] = assetImportNode->mTransformation.d1;
+    matrix[13] = assetImportNode->mTransformation.d2;
+    matrix[14] = assetImportNode->mTransformation.d3;
+    matrix[15] = assetImportNode->mTransformation.d4;
+
+    SINGLE worldMatrix[4 * 4];
+    MathHelper::MultiplyMatrices(
+        worldMatrix,
+        parentMatrix,
+        matrix);
+
+    node->SetTransformationMatrix(worldMatrix);
+
+    // Load all the child nodes and meshes.
+    for (UINT32 i = 0; i < assetImportNode->mNumChildren; ++i) {
+        const aiNode* childAssetImportNode = assetImportNode->mChildren[i];
+
+        Node3d* childNode = ParseNode(
+            assetImporterScene,
+            childAssetImportNode,
+            worldMatrix);
+
+        node->AddChild(childNode);
+    }
+
+    return node;
 }
 
 Model3d* ColladaImporter::ParseMesh(const aiMesh* assetImportMesh) {

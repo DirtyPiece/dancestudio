@@ -9,6 +9,7 @@
 #define SOURCE_COMMON_DANCESTUDIO_CORE_SCENE_H_
 
 #include "Model3d.h"
+#include "Node3d.h"
 #include <vector>
 
 namespace DanceStudio {
@@ -30,33 +31,22 @@ class Scene {
      ~Scene();
 
      /// <summary>
-     /// Adds a model to the scene.
+     /// Sets the root node of the scene.
      /// </summary>
-     /// <param name="model">The model to add to the scene.</param>
-     void AddModel(Model3d* model);
+     /// <param name="rootNode">The root node to set.</param>
+     void SetRootNode(Node3d* rootNode);
 
      /// <summary>
-     /// Gets the list of models in the scene.
+     /// Gets the root node of the scene.
      /// </summary>
-     /// <returns>The list of models in the scene.</returns>
-     const std::vector<Model3d*>& GetModels();
-
-     /// <summary>
-     /// Gets the number of models in this scene.
-     /// </summary>
-     /// <returns>The number of models in the scene.</returns>
-     UINT32 GetModelCount() const;
+     /// <returns>The root node of the scene.</returns>
+     const Node3d* GetRootNode() const;
 
  private:
      /// <summary>
-     /// The list of models that have been placed in the scene.
+     /// The root node of the scene.
      /// </summary>
-     std::vector<Model3d*> models;
-
-     /// <summary>
-     /// Frees the model list.
-     /// </summary>
-     void FreeModels();
+     Node3d* rootNode;
 };
 }  // namespace Core
 }  // namespace DanceStudio

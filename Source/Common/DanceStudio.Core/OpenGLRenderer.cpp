@@ -13,6 +13,8 @@
 #include "OpenGLVertexType.h"
 #include "ColladaImporter.h"
 #include "Scene.h"
+#include "Node3d.h"
+#include "Model3d.h"
 #include <string>
 
 using DanceStudio::Core::OpenGLRenderer;
@@ -20,6 +22,8 @@ using DanceStudio::Core::FileHelper;
 using DanceStudio::Core::OpenGLVertexType;
 using DanceStudio::Core::ColladaImporter;
 using DanceStudio::Core::Scene;
+using DanceStudio::Core::Node3d;
+using DanceStudio::Core::Model3d;
 
 #define DS_LOAD_COLLADA
 #define SCENE_RENDERING
@@ -90,19 +94,6 @@ void OpenGLRenderer::BeginScene() {
     extensions.glUseProgram(this->shaderProgram);
 
     INT32 location = -1;
-    location = extensions.glGetUniformLocation(
-        this->shaderProgram,
-        "worldMatrix");
-    if (location == -1) {
-        Throw::InvalidOperationException(
-            "The 'worldMatrix' uniform parameter is missing from the shader.");
-    }
-
-    extensions.glUniformMatrix4fv(
-        location,
-        1 /*count*/,
-        false /*transpose*/,
-        this->worldMatrix);
 
     camera.SetPosition(0, 0, -5);
     camera.SetLookAtPosition(0, 0, 0);
@@ -958,108 +949,155 @@ void OpenGLRenderer::LoadModels() {
         "Blender\\ITGMachine\\itgmachine.dae",
         &this->scene);*/
 
-    ColladaImporter::Import(
+    /*ColladaImporter::Import(
         "C:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\box2.dae",
+        &this->scene);*/
+
+    ColladaImporter::Import(
+        "D:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\itgmachine.dae",
         &this->scene);
 }
 
 void OpenGLRenderer::RenderScene() {
-    // Load the vertex data.
-    Logger::LogCoreVerbose("Loading the vertex data.");
+    const Node3d* rootNode = this->scene.GetRootNode();
+    this->RenderNode(rootNode, this->worldMatrix);
+}
 
-    for (UINT32 i = 0; i < scene.GetModelCount(); ++i)
-    {
-        UINT32 vertexArrayId = 0;
-        UINT32 vertexBufferId = 0;
-        UINT32 indexBufferId = 0;
+void OpenGLRenderer::RenderNode(
+    const Node3d* node,
+    const SINGLE* parentMatrix) {
+    assert(node != nullptr);
+    assert(parentMatrix != nullptr);
 
-        const Model3d* model = scene.GetModels()[i];
-        UINT32 vertexCount = model->GetVertexCount();
-        UINT32 indexCount = model->GetIndexCount();
+    // Create the transformation matrix of the parent applied with this
+    // node's local transformation.
+    SINGLE shaderMatrix[4 * 4];
+    const SINGLE* nodeMatrix = node->GetTransformationMatrix();
+    this->SetWorldMatrix(nodeMatrix);
 
-        // Allocate the vertex array object for OpenGL.
-        Logger::LogCoreVerbose("Allocating the vertex array.");
-        extensions.glGenVertexArrays(1, &vertexArrayId);
-
-        // Bind the vertex array object.
-        Logger::LogCoreVerbose("Binding the vertex array object.");
-        extensions.glBindVertexArray(vertexArrayId);
-
-        // Generate an ID for the vertex buffer.
-        Logger::LogCoreVerbose("Generating a vertex buffer ID.");
-        extensions.glGenBuffers(1, &vertexBufferId);
-
-        // Bind the vertex buffer.
-        Logger::LogCoreVerbose("Binding the vertex buffer.");
-        extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-
-        // Load the vertex data into the buffer.
-        Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
-
-        OpenGLVertexType* vertices = model->GetVertices();
-
-        extensions.glBufferData(
-            GL_ARRAY_BUFFER,
-            vertexCount * sizeof(OpenGLVertexType),
-            vertices,
-            GL_STATIC_DRAW);
-
-        // Enable the vertex position attribute.
-        Logger::LogCoreVerbose("Enabling the vertex position attribute.");
-        extensions.glEnableVertexAttribArray(0);
-
-        // Enable the vertex color attribute.
-        Logger::LogCoreVerbose("Enabling the vertex color attribute.");
-        extensions.glEnableVertexAttribArray(1);
-
-        // Bind the vertex buffer again.
-        Logger::LogCoreVerbose("Rebinding the vertex buffer.");
-        extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-
-        // Describe the format of the position data.
-        Logger::LogCoreVerbose("Setting the position data format.");
-        extensions.glVertexAttribPointer(
-            0 /*index*/,
-            3,//this->vertexCount /*size*/,
-            GL_FLOAT,
-            false /*normalized*/,
-            sizeof(OpenGLVertexType),
-            nullptr);
-
-        // Bind the vertex buffer again.
-        Logger::LogCoreVerbose("Rebinding the vertex buffer.");
-        extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-
-        // Describe the format of the color data.
-        Logger::LogCoreVerbose("Setting the color data format.");
-        extensions.glVertexAttribPointer(
-            1 /*index*/,
-            3, //this->indexCount /*size*/,
-            GL_FLOAT,
-            false /*normalized*/,
-            sizeof(OpenGLVertexType),
-            reinterpret_cast<BYTE*>(0) + (3 * sizeof(SINGLE)));
-
-        // Generate an ID for the index buffer.
-        Logger::LogCoreVerbose("Generating an ID for the index buffer.");
-        extensions.glGenBuffers(1, &indexBufferId);
-
-        // Bind the index buffer.
-        Logger::LogCoreVerbose("Binding the index buffer.");
-        extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
-
-        // Load the index data into the buffer.
-        UINT32* indices = model->GetIndices();
-
-        Logger::LogCoreVerbose("Loading the index data into the buffer.");
-        extensions.glBufferData(
-            GL_ELEMENT_ARRAY_BUFFER,
-            indexCount * sizeof(UINT32),
-            indices,
-            GL_STATIC_DRAW);
-
-        // Render the mesh.
-        extensions.glBindVertexArray(vertexArrayId);
-        glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+    // Render the models for this node.
+    for (UINT32 i = 0; i < node->GetModelCount(); ++i) {
+        const Model3d* model = node->GetModel(i);
+        this->RenderModel(model);
     }
+
+    // Render the children of this node.
+    for (UINT32 i = 0; i < node->GetChildrenCount(); ++i) {
+        const Node3d* childNode = node->GetChild(i);
+        this->RenderNode(childNode, shaderMatrix);
+    }
+}
+
+void OpenGLRenderer::RenderModel(const Model3d* model) {
+    assert(model != nullptr);
+
+    UINT32 vertexArrayId = 0;
+    UINT32 vertexBufferId = 0;
+    UINT32 indexBufferId = 0;
+
+    UINT32 vertexCount = model->GetVertexCount();
+    UINT32 indexCount = model->GetIndexCount();
+
+    // Allocate the vertex array object for OpenGL.
+    Logger::LogCoreVerbose("Allocating the vertex array.");
+    extensions.glGenVertexArrays(1, &vertexArrayId);
+
+    // Bind the vertex array object.
+    Logger::LogCoreVerbose("Binding the vertex array object.");
+    extensions.glBindVertexArray(vertexArrayId);
+
+    // Generate an ID for the vertex buffer.
+    Logger::LogCoreVerbose("Generating a vertex buffer ID.");
+    extensions.glGenBuffers(1, &vertexBufferId);
+
+    // Bind the vertex buffer.
+    Logger::LogCoreVerbose("Binding the vertex buffer.");
+    extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+
+    // Load the vertex data into the buffer.
+    Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
+
+    OpenGLVertexType* vertices = model->GetVertices();
+
+    extensions.glBufferData(
+        GL_ARRAY_BUFFER,
+        vertexCount * sizeof(OpenGLVertexType),
+        vertices,
+        GL_STATIC_DRAW);
+
+    // Enable the vertex position attribute.
+    Logger::LogCoreVerbose("Enabling the vertex position attribute.");
+    extensions.glEnableVertexAttribArray(0);
+
+    // Enable the vertex color attribute.
+    Logger::LogCoreVerbose("Enabling the vertex color attribute.");
+    extensions.glEnableVertexAttribArray(1);
+
+    // Bind the vertex buffer again.
+    Logger::LogCoreVerbose("Rebinding the vertex buffer.");
+    extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+
+    // Describe the format of the position data.
+    Logger::LogCoreVerbose("Setting the position data format.");
+    extensions.glVertexAttribPointer(
+        0 /*index*/,
+        3,//this->vertexCount /*size*/,
+        GL_FLOAT,
+        false /*normalized*/,
+        sizeof(OpenGLVertexType),
+        nullptr);
+
+    // Bind the vertex buffer again.
+    Logger::LogCoreVerbose("Rebinding the vertex buffer.");
+    extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+
+    // Describe the format of the color data.
+    Logger::LogCoreVerbose("Setting the color data format.");
+    extensions.glVertexAttribPointer(
+        1 /*index*/,
+        3, //this->indexCount /*size*/,
+        GL_FLOAT,
+        false /*normalized*/,
+        sizeof(OpenGLVertexType),
+        reinterpret_cast<BYTE*>(0) + (3 * sizeof(SINGLE)));
+
+    // Generate an ID for the index buffer.
+    Logger::LogCoreVerbose("Generating an ID for the index buffer.");
+    extensions.glGenBuffers(1, &indexBufferId);
+
+    // Bind the index buffer.
+    Logger::LogCoreVerbose("Binding the index buffer.");
+    extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
+
+    // Load the index data into the buffer.
+    UINT32* indices = model->GetIndices();
+
+    Logger::LogCoreVerbose("Loading the index data into the buffer.");
+    extensions.glBufferData(
+        GL_ELEMENT_ARRAY_BUFFER,
+        indexCount * sizeof(UINT32),
+        indices,
+        GL_STATIC_DRAW);
+
+    // Render the mesh.
+    extensions.glBindVertexArray(vertexArrayId);
+    glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+}
+
+void OpenGLRenderer::SetWorldMatrix(const SINGLE* matrix) {
+    assert(matrix != nullptr);
+
+    INT32 location = extensions.glGetUniformLocation(
+        this->shaderProgram,
+        "worldMatrix");
+    if (location == -1) {
+        Throw::InvalidOperationException(
+            "The 'worldMatrix' uniform parameter is missing from the shader.");
+    }
+
+    extensions.glUniformMatrix4fv(
+        location,
+        1 /*count*/,
+        false /*transpose*/,
+        matrix);
 }

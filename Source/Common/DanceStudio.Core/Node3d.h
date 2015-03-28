@@ -40,6 +40,45 @@ class Node3d {
      /// </summary>
      /// <returns>The number of models associated with the node.</returns>
      UINT32 GetModelCount() const;
+
+     /// <summary>
+     /// Gets the model at the specified index.
+     /// </summary>
+     /// <param name="index">The index to retrieve the model for.</param>
+     /// <returns>The model at the specified index.</returns>
+     const Model3d* GetModel(UINT32 index) const;
+
+     /// <summary>
+     /// Adds the child node to this node.
+     /// </summary>
+     /// <param name="childNode">The child node to add.</param>
+     void AddChild(Node3d* childNode);
+
+     /// <summary>
+     /// Gets the number of children in this node.
+     /// </summary>
+     /// <returns>The number of children in this node.</returns>
+     UINT32 GetChildrenCount() const;
+
+     /// <summary>
+     /// Gets the child at the specified index.
+     /// </summary>
+     /// <param name="index">The index of the child element to retrieve.</param>
+     /// <returns>The child at the specified index.</returns>
+     const Node3d* GetChild(UINT32 index) const;
+
+     /// <summary>
+     /// Gets the transformation matrix for this node.
+     /// </summary>
+     /// <returns>The transformation for this node.</returns>
+     const SINGLE* GetTransformationMatrix() const;
+
+     /// <summary>
+     /// Sets the transformation matrix values.
+     /// </summary>
+     /// <param name="matrix">The matrix to set the values from.</param>
+     void SetTransformationMatrix(const SINGLE* matrix);
+
  private:
     /// <summary>
     /// The transformation matrix that is applied to this node.
@@ -47,19 +86,22 @@ class Node3d {
     SINGLE transformationMatrix[4 * 4];
 
     /// <summary>
-    /// The number of child nodes that this node contains.
-    /// </summary>
-    UINT32 childrenCount;
-
-    /// <summary>
     /// The children of this node.
     /// </summary>
-    Node3d* children;
+    std::vector<Node3d*> children;
 
     /// <summary>
     /// The models that are associated with this node's transformation.
     /// </summary>
     std::vector<Model3d*> models;
+
+    /// <summary>
+    /// Frees the memory for the child nodes of the passed in node.
+    /// </summary>
+    /// <param name="node">
+    /// The node to free memory for.
+    /// </param>
+    void FreeChildNodes(Node3d* node);
 };
 }  // Core
 }  // DanceStudio
