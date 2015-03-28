@@ -89,3 +89,10 @@ void Camera::GetViewMatrix(SINGLE* outMatrix) {
     Validator::IsNotNull(outMatrix, "outMatrix");
     memcpy(outMatrix, this->viewMatrix, sizeof(this->viewMatrix));
 }
+
+void Camera::Zoom(SINGLE distance) {
+    this->position = Vector3d(
+        this->position.X + this->lookAtVector.X * distance,
+        this->position.Y + this->lookAtVector.Y * distance,
+        this->position.Z + this->lookAtVector.Z * distance);
+}

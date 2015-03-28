@@ -49,6 +49,12 @@ public ref class StepChartEditor : public UserControl {
     /// <param name="stream">The stream to use for playback.</param>
     void SetAudioStream(AudioStream^ stream);
 
+    /// <summary>
+    /// Zooms the camera by the specified distance.
+    /// </summary>
+    /// <param name="zoomDistance">The zoom distance to apply.</param>
+    void ZoomCamera(float zoomDistance);
+
  protected:
     /// <summary>
     /// Called when the background is about to paint.  Overriding it

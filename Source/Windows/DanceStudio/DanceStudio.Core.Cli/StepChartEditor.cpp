@@ -55,6 +55,10 @@ void StepChartEditor::SetAudioStream(AudioStream^ stream) {
     DSStepChartEditorSetAudioStream(this->editor, stream->stream);
 }
 
+void StepChartEditor::ZoomCamera(float zoomDistance) {
+    DSStepChartEditorZoomCamera(this->editor, zoomDistance);
+}
+
 void StepChartEditor::StepChartEditor_Loaded(Object^ sender, EventArgs^ e) {
     DANCE_STUDIO_UNUSED(sender);
     DANCE_STUDIO_UNUSED(e);

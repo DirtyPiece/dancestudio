@@ -31,7 +31,10 @@ class OpenGLRenderer {
     /// <param name="windowHandle">
     /// The handle of the window to render to.
     /// </param>
-    explicit OpenGLRenderer(DS_HANDLE* windowHandle);
+     /// <param name="camera">
+     /// The camera to render with.
+     /// </param>
+    explicit OpenGLRenderer(DS_HANDLE* windowHandle, Camera* camera);
 
     /// <summary>
     /// Finalizes an instance of the <see cref="OpenGLRenderer"/> class.
@@ -72,7 +75,7 @@ class OpenGLRenderer {
     /// <summary>
     /// The main world camera.
     /// </summary>
-    Camera camera;
+    Camera* camera;
 
     /// <summary>
     /// The matrix used to transform all geometry into world space.
@@ -103,31 +106,6 @@ class OpenGLRenderer {
     /// The compiled shader program.
     /// </summary>
     UINT32 shaderProgram;
-
-    /*/// <summary>
-    /// The number of vertices in the model geometry.
-    /// </summary>
-    INT32 vertexCount;
-
-    /// <summary>
-    /// The number of indices in the model index buffer.
-    /// </summary>
-    INT32 indexCount;*/
-
-    /*/// <summary>
-    /// The vertex array identifier.
-    /// </summary>
-    UINT32 vertexArrayId;
-
-    /// <summary>
-    /// The vertex buffer identifier.
-    /// </summary>
-    UINT32 vertexBufferId;
-
-    /// <summary>
-    /// The index buffer identifier.
-    /// </summary>
-    UINT32 indexBufferId;*/
 
     /// <summary>
     /// The main scene being rendered.

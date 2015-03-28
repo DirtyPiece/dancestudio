@@ -28,7 +28,7 @@ using DanceStudio::Core::Model3d;
 #define DS_LOAD_COLLADA
 #define SCENE_RENDERING
 
-OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
+OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle, Camera* camera) :
     deviceContext(nullptr),
     renderingContext(nullptr),
     windowHandle(nullptr),
@@ -38,6 +38,7 @@ OpenGLRenderer::OpenGLRenderer(DS_HANDLE* windowHandle) :
     Validator::IsNotNull(windowHandle, "windowHandle");
 
     this->windowHandle = windowHandle;
+    this->camera = camera;
 
     this->Initialize();
 }
@@ -95,12 +96,12 @@ void OpenGLRenderer::BeginScene() {
 
     INT32 location = -1;
 
-    camera.SetPosition(0, 0, -15);
-    camera.SetLookAtPosition(0, 0, 0);
-    //camera.SetPosition(-5, 0, -10);
-    //camera.SetLookAtPosition(0, 0, 0);
-    camera.Update();
-    camera.GetViewMatrix(this->viewMatrix);
+    //camera->SetPosition(0, -10, 0);
+    //camera->SetLookAtPosition(0, 0, 0);
+    //camera->SetPosition(-5, 0, -10);
+    //camera->SetLookAtPosition(0, 0, 0);
+    camera->Update();
+    camera->GetViewMatrix(this->viewMatrix);
 
     location = extensions.glGetUniformLocation(
         this->shaderProgram,
@@ -944,14 +945,14 @@ void OpenGLRenderer::LoadShaders() {
 }
 
 void OpenGLRenderer::LoadModels() {
-   /* ColladaImporter::Import(
+    ColladaImporter::Import(
         "C:\\Code\\DanceStudio\\Content\\"
         "Blender\\ITGMachine\\itgmachine.dae",
-        &this->scene);*/
-
-    ColladaImporter::Import(
-        "C:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\box2.dae",
         &this->scene);
+
+    /*ColladaImporter::Import(
+        "C:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\box2.dae",
+        &this->scene);*/
 
     /*ColladaImporter::Import(
         "D:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\itgmachine.dae",

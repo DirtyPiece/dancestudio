@@ -138,6 +138,20 @@ extern "C" {
     void DSStepChartEditorSetAudioStream(
         DS_STEPCHARTEDITOR* editor,
         DS_AUDIOSTREAM* stream);
+
+    /// <summary>
+    /// Zooms the camera by the specified distance along
+    /// the look at vector.
+    /// </summary>
+    /// <param name="editor">
+    /// The editor to set the stream for.
+    /// </param>
+    /// <param name="zoomDistance">
+    /// The editor to set the camera distance on.
+    /// </param>
+    void DSStepChartEditorZoomCamera(
+        DS_STEPCHARTEDITOR* editor,
+        SINGLE zoomDistance);
 #ifdef __cplusplus
 }
 #endif  // __cplusplus

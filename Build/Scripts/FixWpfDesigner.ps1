@@ -29,3 +29,7 @@ AddDLLToPathIfNotPresent "$externalRoot\FMOD\dll\x64"
 AddDLLToPathIfNotPresent "$externalRoot\FMOD\dll\x64\log"
 AddDLLToPathIfNotPresent "$externalRoot\FMOD\dll\x86"
 AddDLLToPathIfNotPresent "$externalRoot\FMOD\dll\x86\log"
+
+# Assimp DLLs.
+AddDLLToPathIfNotPresent "$externalRoot\Assimp\dll\x86"
+AddDLLToPathIfNotPresent "$externalRoot\Assimp\dll\x64"

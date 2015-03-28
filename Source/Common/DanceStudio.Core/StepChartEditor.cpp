@@ -20,7 +20,7 @@ StepChartEditor::StepChartEditor(DS_HANDLE* window) :
     Logger::LogCoreVerbose(L"Initializing the step chart editor control.");
     Validator::IsNotNull(window, "window");
 
-    renderer = new OpenGLRenderer(window);
+    renderer = new OpenGLRenderer(window, &this->camera);
     Validator::IsMemoryAllocated(
         renderer,
         "the step chart editor's internal renderer.");
@@ -62,4 +62,8 @@ void StepChartEditor::SetAudioStream(AudioStream* stream) {
     this->stream->Play();
 
     this->stream->SetPlaybackSpeed(2.0f);
+}
+
+Camera* StepChartEditor::GetCamera() {
+    return &this->camera;
 }

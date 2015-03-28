@@ -63,6 +63,12 @@ class Camera {
      /// <param name="outMatrix">The output view matrix.</param>
      void GetViewMatrix(SINGLE* outMatrix);
 
+     /// <summary>
+     /// Zooms the camera by the specified distance along the look at vector.
+     /// </summary>
+     /// <param name="distance">The distance to zoom the camera.</param>
+     void Zoom(SINGLE distance);
+
  private:
      /// <summary>
      /// The position of the camera.

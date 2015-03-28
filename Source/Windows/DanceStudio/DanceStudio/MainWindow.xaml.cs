@@ -126,5 +126,16 @@ namespace DanceStudio
 
             this.MainStepChartEditor.SetAudioStream(stream);
         }
+
+        /// <summary>
+        /// Handles the MouseWheel event of the MainStepChartEditor control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        private void MainStepChartEditor_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            float zoom = e.Delta / 120.0f;
+            this.MainStepChartEditor.ZoomCamera(zoom);
+        }
     }
 }

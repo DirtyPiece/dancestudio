@@ -73,7 +73,7 @@
                                 <Button x:Uid="StepChartEditorPlayButton" Content="Play" Name="StepChartEditorPlayButton" Command="{x:Static c:CustomCommands.PlayStepChartEditor}" />
                             </ToolBar>
                             <WindowsFormsHost x:Uid="WindowsFormsHost_1">
-                                <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" x:Name="MainStepChartEditor" />
+                                <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" x:Name="MainStepChartEditor" MouseWheel="MainStepChartEditor_MouseWheel" />
                             </WindowsFormsHost>
                         </DockPanel>
                     </Grid>

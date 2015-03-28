@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanceStudio", "DanceStudio\DanceStudio.csproj", "{66ED48B4-D509-4980-AAA2-D39E5D45E085}"
 EndProject
@@ -49,6 +49,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DanceStudio.Core", "..\..\Common\DanceStudio.Core\DanceStudio.Core.vcxproj", "{2AB9CC54-A705-4BB7-8D6E-77C409FB10ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9491C510-7B78-489C-8889-5E74D9576A2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{1E12239E-A737-4F46-9626-AF4907AC27B6}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Build\Scripts\FixWpfDesigner.ps1 = ..\..\..\Build\Scripts\FixWpfDesigner.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -184,5 +189,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4043B375-E2B7-48E2-BB8D-1B97343C5DC3} = {6B9D7995-5DC1-4F90-8AA8-4F2CBE02CFA5}
+		{1E12239E-A737-4F46-9626-AF4907AC27B6} = {6B9D7995-5DC1-4F90-8AA8-4F2CBE02CFA5}
 	EndGlobalSection
 EndGlobal

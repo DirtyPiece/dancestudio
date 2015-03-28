@@ -11,6 +11,7 @@
 #include "Typedefs.h"
 #include "OpenGLRenderer.h"
 #include "AudioStream.h"
+#include "Camera.h"
 #include <string>
 
 namespace DanceStudio {
@@ -49,6 +50,12 @@ class StepChartEditor {
     /// <param name="stream">The stream to apply for audio playback.</param>
     void SetAudioStream(AudioStream* stream);
 
+    /// <summary>
+    /// Gets the camera for the step chart editor.
+    /// </summary>
+    /// <returns>The camera for the editor.</returns>
+    Camera* GetCamera();
+
  private:
     /// <summary>
     /// The internal OpenGL renderer used to render the control
@@ -61,6 +68,11 @@ class StepChartEditor {
     /// created will lay on top and be timed against this audio stream.
     /// </summary>
     AudioStream* stream;
+
+    /// <summary>
+    /// The main camera for the StepChartEditor.
+    /// </summary>
+    Camera camera;
 };
 
 }  // namespace Core

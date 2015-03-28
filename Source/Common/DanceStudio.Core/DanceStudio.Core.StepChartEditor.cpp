@@ -41,3 +41,10 @@ void DSStepChartEditorSetAudioStream(
     AudioStream* typedStream = static_cast<AudioStream*>(stream);
     typedEditor->SetAudioStream(typedStream);
 }
+
+void DSStepChartEditorZoomCamera(
+    DS_STEPCHARTEDITOR* editor,
+    SINGLE zoomDistance) {
+    StepChartEditor* typedEditor = static_cast<StepChartEditor*>(editor);
+    typedEditor->GetCamera()->Zoom(zoomDistance);
+}
