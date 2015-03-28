@@ -93,21 +93,22 @@ Node3d* ColladaImporter::ParseNode(
 
     // Assign the matrix transformation for this node.
     SINGLE matrix[4 * 4];
+
     matrix[0] = assetImportNode->mTransformation.a1;
-    matrix[1] = assetImportNode->mTransformation.a2;
-    matrix[2] = assetImportNode->mTransformation.a3;
-    matrix[3] = assetImportNode->mTransformation.a4;
-    matrix[4] = assetImportNode->mTransformation.b1;
+    matrix[1] = assetImportNode->mTransformation.b1;
+    matrix[2] = assetImportNode->mTransformation.c1;
+    matrix[3] = assetImportNode->mTransformation.d1;
+    matrix[4] = assetImportNode->mTransformation.a2;
     matrix[5] = assetImportNode->mTransformation.b2;
-    matrix[6] = assetImportNode->mTransformation.b3;
-    matrix[7] = assetImportNode->mTransformation.b4;
-    matrix[8] = assetImportNode->mTransformation.c1;
-    matrix[9] = assetImportNode->mTransformation.c2;
+    matrix[6] = assetImportNode->mTransformation.c2;
+    matrix[7] = assetImportNode->mTransformation.d2;
+    matrix[8] = assetImportNode->mTransformation.a3;
+    matrix[9] = assetImportNode->mTransformation.b3;
     matrix[10] = assetImportNode->mTransformation.c3;
-    matrix[11] = assetImportNode->mTransformation.c4;
-    matrix[12] = assetImportNode->mTransformation.d1;
-    matrix[13] = assetImportNode->mTransformation.d2;
-    matrix[14] = assetImportNode->mTransformation.d3;
+    matrix[11] = assetImportNode->mTransformation.d3;
+    matrix[12] = assetImportNode->mTransformation.a4;
+    matrix[13] = assetImportNode->mTransformation.b4;
+    matrix[14] = assetImportNode->mTransformation.c4;
     matrix[15] = assetImportNode->mTransformation.d4;
 
     SINGLE worldMatrix[4 * 4];

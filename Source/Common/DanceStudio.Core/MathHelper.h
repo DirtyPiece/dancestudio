@@ -89,6 +89,13 @@ class MathHelper {
         SINGLE* returnedMatrix,
         const SINGLE* const matrix1,
         const SINGLE* const matrix2);
+
+    /// <summary>
+    /// Returns the transpose of a matrix.
+    /// </summary>
+    /// <param name="returnedMatrix">The transposed matrix.</param>
+    /// <param name="matrix">The matrix to return the transpose of.</param>
+    static void TransposeMatrix(SINGLE* returnedMatrix, const SINGLE* matrix);
 };
 }  // namespace Core
 }  // namespace DanceStudio

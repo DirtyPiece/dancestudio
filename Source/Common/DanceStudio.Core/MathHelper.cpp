@@ -228,3 +228,33 @@ void MathHelper::MultiplyMatrices(
       + (matrix1[14] * matrix2[11])
       + (matrix1[15] * matrix2[15]);
 }
+
+void MathHelper::TransposeMatrix(SINGLE* returnedMatrix, const SINGLE* matrix) {
+    Validator::IsNotNull(returnedMatrix, "returnedMatrix");
+    Validator::IsNotNull(matrix, "matrix");
+
+    // Copy the diagonals.
+    returnedMatrix[0] = matrix[0];
+    returnedMatrix[5] = matrix[5];
+    returnedMatrix[10] = matrix[10];
+    returnedMatrix[15] = matrix[15];
+
+    // Transpose.
+    returnedMatrix[1] = matrix[4];
+    returnedMatrix[4] = matrix[1];
+
+    returnedMatrix[2] = matrix[8];
+    returnedMatrix[8] = matrix[2];
+
+    returnedMatrix[3] = matrix[12];
+    returnedMatrix[12] = matrix[3];
+
+    returnedMatrix[6] = matrix[9];
+    returnedMatrix[9] = matrix[6];
+
+    returnedMatrix[7] = matrix[13];
+    returnedMatrix[13] = matrix[7];
+
+    returnedMatrix[11] = matrix[14];
+    returnedMatrix[14] = matrix[11];
+}

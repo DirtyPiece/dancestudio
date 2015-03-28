@@ -95,7 +95,7 @@ void OpenGLRenderer::BeginScene() {
 
     INT32 location = -1;
 
-    camera.SetPosition(0, 0, -5);
+    camera.SetPosition(0, 0, -15);
     camera.SetLookAtPosition(0, 0, 0);
     //camera.SetPosition(-5, 0, -10);
     //camera.SetLookAtPosition(0, 0, 0);
@@ -688,8 +688,8 @@ void OpenGLRenderer::InitializeOpenGL() {
     // Set the field of view and screen aspect ratio.
     fieldOfView = 3.14159265358979323846f / 4.0f;
 
-    SINGLE screenWidth = 100;
-    SINGLE screenHeight = 100;
+    SINGLE screenWidth = 1000;
+    SINGLE screenHeight = 1000;
     screenAspect = screenWidth / screenHeight;
 
     SINGLE screenNear = 0.1f;
@@ -949,13 +949,13 @@ void OpenGLRenderer::LoadModels() {
         "Blender\\ITGMachine\\itgmachine.dae",
         &this->scene);*/
 
-    /*ColladaImporter::Import(
-        "C:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\box2.dae",
-        &this->scene);*/
-
     ColladaImporter::Import(
-        "D:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\itgmachine.dae",
+        "C:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\box2.dae",
         &this->scene);
+
+    /*ColladaImporter::Import(
+        "D:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\itgmachine.dae",
+        &this->scene);*/
 }
 
 void OpenGLRenderer::RenderScene() {
