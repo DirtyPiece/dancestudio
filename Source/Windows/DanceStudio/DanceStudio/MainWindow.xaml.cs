@@ -134,7 +134,7 @@ namespace DanceStudio
         /// <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
         private void MainStepChartEditor_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            float zoom = e.Delta / 120.0f;
+            float zoom = e.Delta / 120.0f * 2.0f;
             this.MainStepChartEditor.ZoomCamera(zoom);
         }
     }

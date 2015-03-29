@@ -112,6 +112,10 @@ class OpenGLRenderer {
     /// </summary>
     Scene scene;
 
+    UINT32 vertexArrayId;
+    UINT32 vertexBufferId;
+    UINT32 indexBufferId;
+
     /// <summary>
     /// Initializes OpenGL with the passed in window.
     /// </summary>

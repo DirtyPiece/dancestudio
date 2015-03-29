@@ -96,10 +96,6 @@ void OpenGLRenderer::BeginScene() {
 
     INT32 location = -1;
 
-    //camera->SetPosition(0, -10, 0);
-    //camera->SetLookAtPosition(0, 0, 0);
-    //camera->SetPosition(-5, 0, -10);
-    //camera->SetLookAtPosition(0, 0, 0);
     camera->Update();
     camera->GetViewMatrix(this->viewMatrix);
 
@@ -133,10 +129,6 @@ void OpenGLRenderer::BeginScene() {
         false /*transpose*/,
         this->projectionMatrix);
 
-    // Render the geometry.
-    /*extensions.glBindVertexArray(this->vertexArrayId);
-    glDrawElements(GL_TRIANGLES, this->indexCount, GL_UNSIGNED_INT, 0);*/
-
     RenderScene();
 }
 
@@ -160,231 +152,24 @@ void OpenGLRenderer::Initialize() {
     // TODO(dirtypiece): Remove after loading is fixed (wireframe mode).
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-#ifdef SCENE_RENDERING
     this->LoadShaders();
     this->LoadModels();
-#else SCENE_RENDERING
-    // The shaders are copied to the output folder in the post build scripts.
-    const std::string exeDirectory = FileHelper::GetExecutingExeDirectory();
-    const std::string shaderDirectory = PathHelper::Combine(
-        exeDirectory,
-        "Shaders");
-
-    const std::string vertexShaderFilePath = PathHelper::Combine(
-        shaderDirectory,
-        "VertexShader.vs");
-    const std::string pixelShaderFilePath = PathHelper::Combine(
-        shaderDirectory,
-        "PixelShader.ps");
-
-    Logger::LogCoreVerbose(
-        "Loading the vertex shader file at '"
-      + vertexShaderFilePath
-      + "'.");
-
-    const std::string vertexShaderStringContents =
-        FileHelper::LoadAllFileText(vertexShaderFilePath);
-    const CHAR* vertexShaderContents = vertexShaderStringContents.c_str();
-
-    Logger::LogCoreVerbose(
-        "Loading the pixel shader file at '"
-        + pixelShaderFilePath
-        + "'.");
-
-    const std::string pixelShaderStringContents =
-        FileHelper::LoadAllFileText(pixelShaderFilePath);
-    const CHAR* pixelShaderContents = pixelShaderStringContents.c_str();
-
-    // Create the vertex and pixel shader.
-    Logger::LogCoreVerbose("Creating the vertex shader.");
-    this->vertexShader = extensions.glCreateShader(
-        GL_VERTEX_SHADER);
-
-    Logger::LogCoreVerbose("Creating the pixel shader.");
-    this->pixelShader = extensions.glCreateShader(
-        GL_FRAGMENT_SHADER);
-
-    // Copy the file contents into the shader objects.
-    Logger::LogCoreVerbose("Loading the vertex shader contents.");
-    extensions.glShaderSource(
-        this->vertexShader,
-        1 /*count*/,
-        &vertexShaderContents,
-        nullptr);
-
-    Logger::LogCoreVerbose("Loading the pixel shader contents.");
-    extensions.glShaderSource(
-        this->pixelShader,
-        1 /*count*/,
-        &pixelShaderContents,
-        nullptr);
-
-    // Compile the shaders.
-    BOOL status = FALSE;
-    Logger::LogCoreVerbose("Compiling the vertex shader.");
-    extensions.glCompileShader(this->vertexShader);
-    extensions.glGetShaderiv(
-        this->vertexShader,
-        GL_COMPILE_STATUS,
-        &status);
-    if (status != TRUE) {
-        LogShaderCompileErrorMessage(this->vertexShader);
-        Throw::InvalidOperationException(
-            "The vertex shader at '"
-            + vertexShaderFilePath
-            + "' failed to compile.");
-    }
-
-    Logger::LogCoreVerbose("Compiling the pixel shader.");
-    extensions.glCompileShader(this->pixelShader);
-    extensions.glGetShaderiv(
-        this->pixelShader,
-        GL_COMPILE_STATUS,
-        &status);
-    if (status != TRUE) {
-        LogShaderCompileErrorMessage(this->pixelShader);
-        Throw::InvalidOperationException(
-            "The pixel shader at '"
-            + pixelShaderFilePath
-            + "' failed to compile.");
-    }
-
-    // Create the shader program object.
-    Logger::LogCoreVerbose("Creating the shader program.");
-    this->shaderProgram = extensions.glCreateProgram();
-
-    // Attach the vertex and pixel shaders to the program object.
-    Logger::LogCoreVerbose("Attaching the vertex shader to the program.");
-    extensions.glAttachShader(
-        this->shaderProgram,
-        this->vertexShader);
-
-    Logger::LogCoreVerbose("Attaching the pixel shader to the program.");
-    extensions.glAttachShader(
-        this->shaderProgram,
-        this->pixelShader);
-
-    // Bind the input variables for the shader.
-    Logger::LogCoreVerbose(
-        "Binding the 'inputPosition' attribute to the shader program.");
-    extensions.glBindAttribLocation(
-        this->shaderProgram,
-        0 /*index*/,
-        "inputPosition");
-
-    Logger::LogCoreVerbose(
-        "Binding the 'inputColor' attribute to the shader program.");
-    extensions.glBindAttribLocation(
-        this->shaderProgram,
-        1 /*index*/,
-        "inputColor");
-
-    // Link the shader program.
-    Logger::LogCoreVerbose("Linking the shader program.");
-    extensions.glLinkProgram(this->shaderProgram);
-    extensions.glGetProgramiv(
-        this->shaderProgram,
-        GL_LINK_STATUS,
-        &status);
-
-    if (status != TRUE) {
-        LogShaderLinkErrorMessage();
-        Throw::InvalidOperationException("The shader program failed to link.");
-    }
-
-    // Load the vertex data.
-    Logger::LogCoreVerbose("Loading the vertex data.");
-    OpenGLVertexType* vertices = nullptr;
-    UINT32* indices = nullptr;
-
-    this->vertexCount = 3;
-    this->indexCount = 3;
-
-    vertices = new OpenGLVertexType[this->vertexCount];
-    Validator::IsMemoryAllocated(vertices, "the vertices of the model");
-
-    indices = new UINT32[this->indexCount];
-    Validator::IsMemoryAllocated(vertices, "the indices of the model");
-
-#ifdef DS_LOAD_COLLADA
-    // Load the vertex array with data.
-    Scene scene;
-    /*ColladaImporter::Import(
-        "C:\\Code\\DanceStudio\\Source\\Windows\\DanceStudio"
-        "\\DanceStudio.Core.UnitTests\\Resources\\box.dae",
-        &scene);*/
-
-    ColladaImporter::Import(
-        "C:\\Code\\DanceStudio\\Content\\"
-        "Blender\\ITGMachine\\itgmachine.dae",
-        &scene);
-
-    const Model3d* model = scene.GetModels()[0];
-    this->vertexCount = model->GetVertexCount();
-    this->indexCount = model->GetIndexCount();
-#else
-    this->vertexCount = 3;
-    this->indexCount = 3;
-
-    // Bottom left.
-    vertices[0].X = -1.0f;  // Position.
-    vertices[0].Y = -1.0f;
-    vertices[0].Z = 0.0f;
-
-    vertices[0].R = 0.0f;  // Color.
-    vertices[0].G = 1.0f;
-    vertices[0].B = 0.0f;
-
-    // Top middle.
-    vertices[1].X = 0.0f;  // Position.
-    vertices[1].Y = 1.0f;
-    vertices[1].Z = 0.0f;
-
-    vertices[1].R = 0.0f;  // Color.
-    vertices[1].G = 1.0f;
-    vertices[1].B = 0.0f;
-
-    // Bottom right.
-    vertices[2].X = 1.0f;  // Position.
-    vertices[2].Y = -1.0f;
-    vertices[2].Z = 0.0f;
-
-    vertices[2].R = 0.0f;  // Color.
-    vertices[2].G = 1.0f;
-    vertices[2].B = 0.0f;
-
-    // Load the index array with data.
-    indices[0] = 0;  // Bottom left.
-    indices[1] = 1;  // Top middle.
-    indices[2] = 2;  // Bottom right.
-#endif
 
     // Allocate the vertex array object for OpenGL.
     Logger::LogCoreVerbose("Allocating the vertex array.");
-    extensions.glGenVertexArrays(1, &this->vertexArrayId);
+    extensions.glGenVertexArrays(1, &vertexArrayId);
 
     // Bind the vertex array object.
     Logger::LogCoreVerbose("Binding the vertex array object.");
-    extensions.glBindVertexArray(this->vertexArrayId);
+    extensions.glBindVertexArray(vertexArrayId);
 
     // Generate an ID for the vertex buffer.
     Logger::LogCoreVerbose("Generating a vertex buffer ID.");
-    extensions.glGenBuffers(1, &this->vertexBufferId);
+    extensions.glGenBuffers(1, &vertexBufferId);
 
     // Bind the vertex buffer.
     Logger::LogCoreVerbose("Binding the vertex buffer.");
-    extensions.glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferId);
-
-    // Load the vertex data into the buffer.
-    Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
-#ifdef DS_LOAD_COLLADA
-    vertices = model->GetVertices();
-#endif
-    extensions.glBufferData(
-        GL_ARRAY_BUFFER,
-        this->vertexCount * sizeof(OpenGLVertexType),
-        vertices,
-        GL_STATIC_DRAW);
+    extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
 
     // Enable the vertex position attribute.
     Logger::LogCoreVerbose("Enabling the vertex position attribute.");
@@ -394,9 +179,13 @@ void OpenGLRenderer::Initialize() {
     Logger::LogCoreVerbose("Enabling the vertex color attribute.");
     extensions.glEnableVertexAttribArray(1);
 
-    // Bind the vertex buffer again.
-    Logger::LogCoreVerbose("Rebinding the vertex buffer.");
-    extensions.glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferId);
+    // Generate an ID for the index buffer.
+    Logger::LogCoreVerbose("Generating an ID for the index buffer.");
+    extensions.glGenBuffers(1, &indexBufferId);
+
+    // Bind the index buffer.
+    Logger::LogCoreVerbose("Binding the index buffer.");
+    extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
 
     // Describe the format of the position data.
     Logger::LogCoreVerbose("Setting the position data format.");
@@ -408,10 +197,6 @@ void OpenGLRenderer::Initialize() {
         sizeof(OpenGLVertexType),
         nullptr);
 
-    // Bind the vertex buffer again.
-    Logger::LogCoreVerbose("Rebinding the vertex buffer.");
-    extensions.glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferId);
-
     // Describe the format of the color data.
     Logger::LogCoreVerbose("Setting the color data format.");
     extensions.glVertexAttribPointer(
@@ -421,33 +206,6 @@ void OpenGLRenderer::Initialize() {
         false /*normalized*/,
         sizeof(OpenGLVertexType),
         reinterpret_cast<BYTE*>(0) + (3 * sizeof(SINGLE)));
-
-    // Generate an ID for the index buffer.
-    Logger::LogCoreVerbose("Generating an ID for the index buffer.");
-    extensions.glGenBuffers(1, &this->indexBufferId);
-
-    // Bind the index buffer.
-    Logger::LogCoreVerbose("Binding the index buffer.");
-    extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->indexBufferId);
-
-    // Load the index data into the buffer.
-#ifdef DS_LOAD_COLLADA
-    indices = model->GetIndices();
-#endif
-    Logger::LogCoreVerbose("Loading the index data into the buffer.");
-    extensions.glBufferData(
-        GL_ELEMENT_ARRAY_BUFFER,
-        this->indexCount * sizeof(UINT32),
-        indices,
-        GL_STATIC_DRAW);
-
-    // Clean up the buffers.
-    /*delete[] vertices;
-    vertices = nullptr;
-
-    delete[] indices;
-    indices = nullptr;*/
-#endif // SCENE_RENDERING
 }
 
 void OpenGLRenderer::LoadExtensionList() {
@@ -992,28 +750,8 @@ void OpenGLRenderer::RenderNode(
 void OpenGLRenderer::RenderModel(const Model3d* model) {
     assert(model != nullptr);
 
-    UINT32 vertexArrayId = 0;
-    UINT32 vertexBufferId = 0;
-    UINT32 indexBufferId = 0;
-
     UINT32 vertexCount = model->GetVertexCount();
     UINT32 indexCount = model->GetIndexCount();
-
-    // Allocate the vertex array object for OpenGL.
-    Logger::LogCoreVerbose("Allocating the vertex array.");
-    extensions.glGenVertexArrays(1, &vertexArrayId);
-
-    // Bind the vertex array object.
-    Logger::LogCoreVerbose("Binding the vertex array object.");
-    extensions.glBindVertexArray(vertexArrayId);
-
-    // Generate an ID for the vertex buffer.
-    Logger::LogCoreVerbose("Generating a vertex buffer ID.");
-    extensions.glGenBuffers(1, &vertexBufferId);
-
-    // Bind the vertex buffer.
-    Logger::LogCoreVerbose("Binding the vertex buffer.");
-    extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
 
     // Load the vertex data into the buffer.
     Logger::LogCoreVerbose("Loading the vertex data into the buffer.");
@@ -1025,50 +763,6 @@ void OpenGLRenderer::RenderModel(const Model3d* model) {
         vertexCount * sizeof(OpenGLVertexType),
         vertices,
         GL_STATIC_DRAW);
-
-    // Enable the vertex position attribute.
-    Logger::LogCoreVerbose("Enabling the vertex position attribute.");
-    extensions.glEnableVertexAttribArray(0);
-
-    // Enable the vertex color attribute.
-    Logger::LogCoreVerbose("Enabling the vertex color attribute.");
-    extensions.glEnableVertexAttribArray(1);
-
-    // Bind the vertex buffer again.
-    Logger::LogCoreVerbose("Rebinding the vertex buffer.");
-    extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-
-    // Describe the format of the position data.
-    Logger::LogCoreVerbose("Setting the position data format.");
-    extensions.glVertexAttribPointer(
-        0 /*index*/,
-        3,//this->vertexCount /*size*/,
-        GL_FLOAT,
-        false /*normalized*/,
-        sizeof(OpenGLVertexType),
-        nullptr);
-
-    // Bind the vertex buffer again.
-    Logger::LogCoreVerbose("Rebinding the vertex buffer.");
-    extensions.glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-
-    // Describe the format of the color data.
-    Logger::LogCoreVerbose("Setting the color data format.");
-    extensions.glVertexAttribPointer(
-        1 /*index*/,
-        3, //this->indexCount /*size*/,
-        GL_FLOAT,
-        false /*normalized*/,
-        sizeof(OpenGLVertexType),
-        reinterpret_cast<BYTE*>(0) + (3 * sizeof(SINGLE)));
-
-    // Generate an ID for the index buffer.
-    Logger::LogCoreVerbose("Generating an ID for the index buffer.");
-    extensions.glGenBuffers(1, &indexBufferId);
-
-    // Bind the index buffer.
-    Logger::LogCoreVerbose("Binding the index buffer.");
-    extensions.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
 
     // Load the index data into the buffer.
     UINT32* indices = model->GetIndices();
