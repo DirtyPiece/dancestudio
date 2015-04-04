@@ -96,6 +96,17 @@ class MathHelper {
     /// <param name="returnedMatrix">The transposed matrix.</param>
     /// <param name="matrix">The matrix to return the transpose of.</param>
     static void TransposeMatrix(SINGLE* returnedMatrix, const SINGLE* matrix);
+
+    /// <summary>
+    /// Returns the inverse of the passed in matrix.
+    /// </summary>
+    /// <param name="returnedMatrix">The inverted matrix.</param>
+    /// <param name="matrix">The matrix to return the inverse of.</param>
+    /// <returns>
+    /// <c>true</c> if the matrix was invertable,
+    /// otherwise <c>false</c>.
+    /// </returns>
+    static bool InvertMatrix(SINGLE* returnedMatrix, const SINGLE* matrix);
 };
 }  // namespace Core
 }  // namespace DanceStudio

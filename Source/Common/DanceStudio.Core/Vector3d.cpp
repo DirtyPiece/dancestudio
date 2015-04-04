@@ -31,20 +31,33 @@ Vector3d Vector3d::TransformCoordinate(
 
     x =
         (vector.X * matrix[0])
-      + (vector.Y * matrix[3])
-      + (vector.Z * matrix[6]);
+      + (vector.Y * matrix[4])
+      + (vector.Z * matrix[8])
+      + matrix[12];
 
     y =
         (vector.X * matrix[1])
-      + (vector.Y * matrix[4])
-      + (vector.Z * matrix[7]);
+      + (vector.Y * matrix[5])
+      + (vector.Z * matrix[9])
+      + matrix[13];
 
     z =
         (vector.X * matrix[2])
-      + (vector.Y * matrix[5])
-      + (vector.Z * matrix[8]);
+      + (vector.Y * matrix[6])
+      + (vector.Z * matrix[10])
+      + matrix[14];
 
-    return vector;
+    return Vector3d(x, y, z);
+}
+
+Vector3d Vector3d::TransformNormal(
+    const Vector3d& normal,
+    const SINGLE* const matrix) {
+    SINGLE x;
+    SINGLE y;
+    SINGLE z;
+
+    return Vector3d();
 }
 
 SINGLE Vector3d::GetLength() const {

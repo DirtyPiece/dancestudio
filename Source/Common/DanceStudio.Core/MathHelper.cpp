@@ -258,3 +258,156 @@ void MathHelper::TransposeMatrix(SINGLE* returnedMatrix, const SINGLE* matrix) {
     returnedMatrix[11] = matrix[14];
     returnedMatrix[14] = matrix[11];
 }
+
+bool MathHelper::InvertMatrix(SINGLE* returnedMatrix, const SINGLE* matrix) {
+    Validator::IsNotNull(returnedMatrix, "returnedMatrix");
+    Validator::IsNotNull(matrix, "matrix");
+
+    returnedMatrix[0] =
+        matrix[5] * matrix[10] * matrix[15] -
+        matrix[5] * matrix[11] * matrix[14] -
+        matrix[9] * matrix[6] * matrix[15] +
+        matrix[9] * matrix[7] * matrix[14] +
+        matrix[13] * matrix[6] * matrix[11] -
+        matrix[13] * matrix[7] * matrix[10];
+
+    returnedMatrix[4] =
+        -matrix[4] * matrix[10] * matrix[15] +
+        matrix[4] * matrix[11] * matrix[14] +
+        matrix[8] * matrix[6] * matrix[15] -
+        matrix[8] * matrix[7] * matrix[14] -
+        matrix[12] * matrix[6] * matrix[11] +
+        matrix[12] * matrix[7] * matrix[10];
+
+    returnedMatrix[8] =
+        matrix[4] * matrix[9] * matrix[15] -
+        matrix[4] * matrix[11] * matrix[13] -
+        matrix[8] * matrix[5] * matrix[15] +
+        matrix[8] * matrix[7] * matrix[13] +
+        matrix[12] * matrix[5] * matrix[11] -
+        matrix[12] * matrix[7] * matrix[9];
+
+    returnedMatrix[12] =
+        -matrix[4] * matrix[9] * matrix[14] +
+        matrix[4] * matrix[10] * matrix[13] +
+        matrix[8] * matrix[5] * matrix[14] -
+        matrix[8] * matrix[6] * matrix[13] -
+        matrix[12] * matrix[5] * matrix[10] +
+        matrix[12] * matrix[6] * matrix[9];
+
+    returnedMatrix[1] =
+        -matrix[1] * matrix[10] * matrix[15] +
+        matrix[1] * matrix[11] * matrix[14] +
+        matrix[9] * matrix[2] * matrix[15] -
+        matrix[9] * matrix[3] * matrix[14] -
+        matrix[13] * matrix[2] * matrix[11] +
+        matrix[13] * matrix[3] * matrix[10];
+
+    returnedMatrix[5] =
+        matrix[0] * matrix[10] * matrix[15] -
+        matrix[0] * matrix[11] * matrix[14] -
+        matrix[8] * matrix[2] * matrix[15] +
+        matrix[8] * matrix[3] * matrix[14] +
+        matrix[12] * matrix[2] * matrix[11] -
+        matrix[12] * matrix[3] * matrix[10];
+
+    returnedMatrix[9] =
+        -matrix[0] * matrix[9] * matrix[15] +
+        matrix[0] * matrix[11] * matrix[13] +
+        matrix[8] * matrix[1] * matrix[15] -
+        matrix[8] * matrix[3] * matrix[13] -
+        matrix[12] * matrix[1] * matrix[11] +
+        matrix[12] * matrix[3] * matrix[9];
+
+    returnedMatrix[13] =
+        matrix[0] * matrix[9] * matrix[14] -
+        matrix[0] * matrix[10] * matrix[13] -
+        matrix[8] * matrix[1] * matrix[14] +
+        matrix[8] * matrix[2] * matrix[13] +
+        matrix[12] * matrix[1] * matrix[10] -
+        matrix[12] * matrix[2] * matrix[9];
+
+    returnedMatrix[2] =
+        matrix[1] * matrix[6] * matrix[15] -
+        matrix[1] * matrix[7] * matrix[14] -
+        matrix[5] * matrix[2] * matrix[15] +
+        matrix[5] * matrix[3] * matrix[14] +
+        matrix[13] * matrix[2] * matrix[7] -
+        matrix[13] * matrix[3] * matrix[6];
+
+    returnedMatrix[6] =
+        -matrix[0] * matrix[6] * matrix[15] +
+        matrix[0] * matrix[7] * matrix[14] +
+        matrix[4] * matrix[2] * matrix[15] -
+        matrix[4] * matrix[3] * matrix[14] -
+        matrix[12] * matrix[2] * matrix[7] +
+        matrix[12] * matrix[3] * matrix[6];
+
+    returnedMatrix[10] =
+        matrix[0] * matrix[5] * matrix[15] -
+        matrix[0] * matrix[7] * matrix[13] -
+        matrix[4] * matrix[1] * matrix[15] +
+        matrix[4] * matrix[3] * matrix[13] +
+        matrix[12] * matrix[1] * matrix[7] -
+        matrix[12] * matrix[3] * matrix[5];
+
+    returnedMatrix[14] =
+        -matrix[0] * matrix[5] * matrix[14] +
+        matrix[0] * matrix[6] * matrix[13] +
+        matrix[4] * matrix[1] * matrix[14] -
+        matrix[4] * matrix[2] * matrix[13] -
+        matrix[12] * matrix[1] * matrix[6] +
+        matrix[12] * matrix[2] * matrix[5];
+
+    returnedMatrix[3] =
+        -matrix[1] * matrix[6] * matrix[11] +
+        matrix[1] * matrix[7] * matrix[10] +
+        matrix[5] * matrix[2] * matrix[11] -
+        matrix[5] * matrix[3] * matrix[10] -
+        matrix[9] * matrix[2] * matrix[7] +
+        matrix[9] * matrix[3] * matrix[6];
+
+    returnedMatrix[7] =
+        matrix[0] * matrix[6] * matrix[11] -
+        matrix[0] * matrix[7] * matrix[10] -
+        matrix[4] * matrix[2] * matrix[11] +
+        matrix[4] * matrix[3] * matrix[10] +
+        matrix[8] * matrix[2] * matrix[7] -
+        matrix[8] * matrix[3] * matrix[6];
+
+    returnedMatrix[11] =
+        -matrix[0] * matrix[5] * matrix[11] +
+        matrix[0] * matrix[7] * matrix[9] +
+        matrix[4] * matrix[1] * matrix[11] -
+        matrix[4] * matrix[3] * matrix[9] -
+        matrix[8] * matrix[1] * matrix[7] +
+        matrix[8] * matrix[3] * matrix[5];
+
+    returnedMatrix[15] =
+        matrix[0] * matrix[5] * matrix[10] -
+        matrix[0] * matrix[6] * matrix[9] -
+        matrix[4] * matrix[1] * matrix[10] +
+        matrix[4] * matrix[2] * matrix[9] +
+        matrix[8] * matrix[1] * matrix[6] -
+        matrix[8] * matrix[2] * matrix[5];
+
+    SINGLE det;
+    det =
+        matrix[0] * returnedMatrix[0]
+        + matrix[1] * returnedMatrix[4]
+        + matrix[2] * returnedMatrix[8]
+        + matrix[3] * returnedMatrix[12];
+
+    if (det == 0.0f) {
+        return false;
+    }
+
+    det = 1.0f / det;
+
+    for (INT32 i = 0; i < 16; i++) {
+        returnedMatrix[i] = returnedMatrix[i] * det;
+    }
+
+    return true;
+
+}

@@ -177,6 +177,7 @@
     <ClInclude Include="FileHelper.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Matrix3x3.h" />
+    <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="Model3d.h" />
     <ClInclude Include="Node3d.h" />
     <ClInclude Include="OpenGL.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Matrix3x3.cpp" />
+    <ClCompile Include="Matrix4x4.cpp" />
     <ClCompile Include="Model3d.cpp" />
     <ClCompile Include="Node3d.cpp" />
     <ClCompile Include="OpenGLExtensions.cpp" />

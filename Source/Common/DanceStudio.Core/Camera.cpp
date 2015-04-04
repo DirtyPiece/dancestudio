@@ -9,6 +9,7 @@
 #include "Camera.h"
 #include "Vector3d.h"
 #include "Matrix3x3.h"
+#include "MathHelper.h"
 
 using DanceStudio::Core::Camera;
 
@@ -18,6 +19,7 @@ Camera::Camera() :
     rotationInRadians(0, 0, 0),
     upVector(0, 1, 0),
     lookAtVector(0, 0, -1.0f) {
+    this->Update();
 }
 
 Camera::~Camera() {
@@ -27,35 +29,67 @@ void Camera::SetPosition(SINGLE x, SINGLE y, SINGLE z) {
     this->position.X = x;
     this->position.Y = y;
     this->position.Z = z;
+
+    this->Update();
 }
 
 void Camera::SetLookAtPosition(SINGLE x, SINGLE y, SINGLE z) {
     this->lookAtPosition.X = x;
     this->lookAtPosition.Y = y;
     this->lookAtPosition.Z = z;
+
+    this->Update();
 }
 
 void Camera::SetRotation(SINGLE xRadians, SINGLE yRadians, SINGLE zRadians) {
     this->rotationInRadians.X = xRadians;
     this->rotationInRadians.Y = yRadians;
     this->rotationInRadians.Z = zRadians;
+
+    this->Update();
 }
 
 void Camera::Update() {
-    SINGLE rotationMatrix[9];
+    SINGLE translationMatrix[4 * 4];
+    SINGLE inverseTranslationMatrix[4 * 4];
+    SINGLE rotationMatrix[4 * 4];
+    SINGLE transformationMatrix1[4 * 4];
+    SINGLE transformationMatrix2[4 * 4];
 
     // Create the rotation matrix to move the camera.
+    MathHelper::BuildTranslationMatrix(
+        translationMatrix,
+        -this->position.X,
+        -this->position.Y,
+        -this->position.Z);
+
     Matrix3x3::RotationYawPitchRoll(
         rotationMatrix,
         this->rotationInRadians.Y,
         this->rotationInRadians.X,
         this->rotationInRadians.Z);
 
-    // Transform the look at and up vectors.
-    Vector3d::TransformCoordinate(this->lookAtVector, rotationMatrix);
-    Vector3d::TransformCoordinate(this->upVector, rotationMatrix);
+    MathHelper::BuildTranslationMatrix(
+        inverseTranslationMatrix,
+        this->position.X,
+        this->position.Y,
+        this->position.Z);
 
-    Vector3d zAxis = (this->lookAtVector - this->position).Normalize();
+    MathHelper::MultiplyMatrices(
+        transformationMatrix1,
+        translationMatrix,
+        rotationMatrix);
+
+    MathHelper::MultiplyMatrices(
+        transformationMatrix2,
+        transformationMatrix1,
+        inverseTranslationMatrix);
+
+    // Transform the look at and up vectors.
+    this->lookAtVector = Vector3d::TransformCoordinate(this->lookAtVector, transformationMatrix2);
+    this->upVector = Vector3d::TransformCoordinate(this->upVector, transformationMatrix2);
+
+    Vector3d zAxis = (this->lookAtPosition - this->position).Normalize();
     Vector3d xAxis = (this->upVector % zAxis).Normalize();
     Vector3d yAxis = zAxis % xAxis;
 
@@ -95,4 +129,13 @@ void Camera::Zoom(SINGLE distance) {
         this->position.X + this->lookAtVector.X * distance,
         this->position.Y + this->lookAtVector.Y * distance,
         this->position.Z + this->lookAtVector.Z * distance);
+
+    this->Update();
+}
+
+void Camera::RotateWorld(SINGLE xRadians, SINGLE yRadians) {
+    this->rotationInRadians.X = xRadians;
+    this->rotationInRadians.Y = yRadians;
+    this->rotationInRadians.Z = 0.0f;
+    this->Update();
 }

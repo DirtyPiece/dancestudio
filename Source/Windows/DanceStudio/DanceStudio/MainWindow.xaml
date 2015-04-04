@@ -4,7 +4,7 @@
         xmlns:c="clr-namespace:DanceStudio.Commands"
         xmlns:cli="clr-namespace:DanceStudio.Core.Cli;assembly=DanceStudio.Core.Cli"
         xml:lang="en-US"
-        Title="Dance Studio" Height="350" Width="525"
+        Title="Dance Studio" Height="800" Width="800"
         x:Name="DanceStudioWindow"
         Closed="DanceStudioWindow_Closed"
         Loaded="DanceStudioWindow_Loaded">
@@ -61,19 +61,19 @@
                     </StatusBar>
                     <Grid x:Uid="leftPane" Name="leftPane" DockPanel.Dock="Left" MinWidth="100">
                         <TreeView x:Uid="songPacksTreeView" Name="songPacksTreeView">
-                            
+
                         </TreeView>
                     </Grid>
                     <Grid x:Uid="rightPane" Name="rightPane" DockPanel.Dock="Right" MinWidth="100">
-                        
+
                     </Grid>
                     <Grid x:Uid="Grid_3">
                         <DockPanel x:Uid="DockPanel_3">
                             <ToolBar x:Uid="ToolBar_1" DockPanel.Dock="Top">
                                 <Button x:Uid="StepChartEditorPlayButton" Content="Play" Name="StepChartEditorPlayButton" Command="{x:Static c:CustomCommands.PlayStepChartEditor}" />
                             </ToolBar>
-                            <WindowsFormsHost x:Uid="WindowsFormsHost_1">
-                                <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" x:Name="MainStepChartEditor" MouseWheel="MainStepChartEditor_MouseWheel" />
+                            <WindowsFormsHost x:Uid="WindowsFormsHost_1" Name="mainFormsHost">
+                                <cli:StepChartEditor x:Uid="cli:StepChartEditor_1" x:Name="MainStepChartEditor" MouseWheel="MainStepChartEditor_MouseWheel" Width="1000" Height="1000"/>
                             </WindowsFormsHost>
                         </DockPanel>
                     </Grid>

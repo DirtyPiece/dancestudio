@@ -45,13 +45,26 @@ struct Vector3d {
     Vector3d(SINGLE x, SINGLE y, SINGLE z);
 
     /// <summary>
-    /// Transforms a vector using the passed in matrix.
+    /// Performs a coordinate transform of a vector using the passed in matrix.
     /// </summary>
     /// <param name="vector">The vector to transform.</param>
     /// <param name="matrix">The matrix to transform with.</param>
     /// <returns>This transformed vector.</returns>
     static Vector3d TransformCoordinate(
         const Vector3d& vector,
+        const SINGLE* const matrix);
+
+    /// <summary>
+    /// Performs a normal transform of a vector using the passed in matrix.
+    /// </summary>
+    /// <param name="normal">The normal to transform (must be unit length).</param>
+    /// <param name="matrix">
+    /// The matrix to transform with (will apply the inverse transpose
+    /// in the method).
+    /// </param>
+    /// <returns>This transformed normal.</returns>
+    static Vector3d TransformNormal(
+        const Vector3d& normal,
         const SINGLE* const matrix);
 
     /// <summary>

@@ -69,6 +69,13 @@ class Camera {
      /// <param name="distance">The distance to zoom the camera.</param>
      void Zoom(SINGLE distance);
 
+     /// <summary>
+     /// Rotates the camera along the x and y world axes.
+     /// </summary>
+     /// <param name="xRadians">The x radians to rotate.</param>
+     /// <param name="yRadians">The y radians to rotate.</param>
+     void RotateWorld(SINGLE xRadians, SINGLE yRadians);
+
  private:
      /// <summary>
      /// The position of the camera.
