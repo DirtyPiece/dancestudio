@@ -17,99 +17,121 @@ namespace Core {
 /// Represents a 4x4 matrix.
 /// </summary>
 struct Matrix4x4 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Matrix4x4"/> struct.
-    /// </summary>
-    Matrix4x4();
+ public:
+     /// <summary>
+     /// Initializes a new instance of the <see cref="Matrix4x4"/> struct.
+     /// </summary>
+     Matrix4x4();
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Matrix4x4"/> struct.
-    /// </summary>
-    /// <param name="matrix">
-    /// The matrix to initialize the matrix with (16 elements, column major).
-    /// </param>
-    Matrix4x4(const SINGLE* matrix);
+     /// <summary>
+     /// Initializes a new instance of the <see cref="Matrix4x4"/> struct.
+     /// </summary>
+     /// <param name="matrix">
+     /// The matrix to initialize the matrix with (16 elements, column major).
+     /// </param>
+     Matrix4x4(const SINGLE* matrix);
+
+     /// <summary>
+     /// Operator overload that returns a pointer to a column.
+     /// </summary>
+     /// <param name="column">The index of the column to retrieve.</param>
+     /// <returns>
+     /// A pointer to the column, which can be indexed by row.
+     /// </returns>
+     const SINGLE* operator[](const UINT32 column) const;
+
+     /// <summary>
+     /// Operator overload that returns a pointer to a column.
+     /// </summary>
+     /// <param name="column">The index of the column to retrieve.</param>
+     /// <returns>
+     /// A pointer to the column, which can be indexed by row.
+     /// </returns>
+     SINGLE* operator[](const UINT32 column);
+
+     /// <summary>
+     /// Builds a perspective field of view, left-handed
+     /// perspective projection matrix.
+     /// </summary>
+     /// <param name="fieldOfView">The field of view of the eyepoint (in radians).</param>
+     /// <param name="screenAspect">The screen aspect ratio (width / height).</param>
+     /// <param name="screenNear">The screen near clipping plane distance from the eyepoint.</param>
+     /// <param name="screenFar">The screen far clipping plane distance from the eyepoint.</param>
+     /// <returns>The perspective projection matrix.</returns>
+     static Matrix4x4 PerspectiveLeftHanded(
+         SINGLE fieldOfView,
+         SINGLE screenAspect,
+         SINGLE screenNear,
+         SINGLE screenFar);
+
+     /// <summary>
+     /// Builds a left-handed orthogonal projection matrix.
+     /// </summary>
+     /// <param name="width">The width of the view.</param>
+     /// <param name="height">The height of the view.</param>
+     /// <param name="znearDistance">
+     /// The distance to the near clipping plane along the z-axis.
+     /// </param>
+     /// <param name="zfarDistance">
+     /// The distance to the far clipping plan along the z-axis.
+     /// </param>
+     /// <returns>The orthogonal projection matrix.</returns>
+     static Matrix4x4 OrthogonalLeftHanded(
+         SINGLE width,
+         SINGLE height,
+         SINGLE znearDistance,
+         SINGLE zfarDistance);
+
+     /// <summary>
+     /// Builds a translation matrix.
+     /// </summary>
+     /// <param name="x">The x translation factor.</param>
+     /// <param name="y">The y translation factor.</param>
+     /// <param name="z">The z translation factor.</param>
+     /// <returns>The translation matrix.</returns>
+     static Matrix4x4 Translation(
+         SINGLE x,
+         SINGLE y,
+         SINGLE z);
+
+     /// <summary>
+     /// Returns a rotation matrix based on yaw,
+     /// pitch, and roll.
+     /// </summary>
+     /// <param name="outMatrix">
+     /// The returned rotation matrix (9 elements - 3x3).
+     /// </param>
+     /// <param name="yaw">The yaw rotation factor.</param>
+     /// <param name="pitch">The pitch rotation factor.</param>
+     /// <param name="roll">The roll rotation factor.</param>
+     /// <returns>The rotation matrix.</returns>
+     static Matrix4x4 RotationYawPitchRoll(
+         SINGLE yaw,
+         SINGLE pitch,
+         SINGLE roll);
+
+     /// <summary>
+     /// Returns the transpose of a matrix.
+     /// </summary>
+     /// <param name="matrix">The matrix to return the transpose of.</param>
+     /// <returns>The transposed matrix.</returns>
+     static Matrix4x4 Transpose(const Matrix4x4& matrix);
+
+     /// <summary>
+     /// Builds the inverse of the passed in matrix.  If the
+     /// inverse cannot be calculated, an exception will be
+     /// thrown.
+     /// </summary>
+     /// <param name="matrix">The matrix to invert.</param>
+     /// <returns>The inverted matrix.</returns>
+     static Matrix4x4 Invert(const Matrix4x4& matrix);
 
  private:
      /// <summary>
-     /// The matrix component in column 1, row 1.
+     /// The components of the matrix.  (0-3) represents the first column,
+     /// (4-7) represents column 2, etc.
      /// </summary>
-     SINGLE c1r1;
-
-     /// <summary>
-     /// The matrix component in column 1, row 2.
-     /// </summary>
-     SINGLE c1r2;
-
-     /// <summary>
-     /// The matrix component in column 1, row 3.
-     /// </summary>
-     SINGLE c1r3;
-
-     /// <summary>
-     /// The matrix component in column 1, row 4.
-     /// </summary>
-     SINGLE c1r4;
-
-     /// <summary>
-     /// The matrix component in column 2, row 1.
-     /// </summary>
-     SINGLE c2r1;
-
-     /// <summary>
-     /// The matrix component in column 2, row 2.
-     /// </summary>
-     SINGLE c2r2;
-
-     /// <summary>
-     /// The matrix component in column 2, row 3.
-     /// </summary>
-     SINGLE c2r3;
-
-     /// <summary>
-     /// The matrix component in column 2, row 4.
-     /// </summary>
-     SINGLE c2r4;
-
-     /// <summary>
-     /// The matrix component in column 3, row 1.
-     /// </summary>
-     SINGLE c3r1;
-
-     /// <summary>
-     /// The matrix component in column 3, row 2.
-     /// </summary>
-     SINGLE c3r2;
-
-     /// <summary>
-     /// The matrix component in column 3, row 3.
-     /// </summary>
-     SINGLE c3r3;
-
-     /// <summary>
-     /// The matrix component in column 3, row 4.
-     /// </summary>
-     SINGLE c3r4;
-
-     /// <summary>
-     /// The matrix component in column 4, row 1.
-     /// </summary>
-     SINGLE c4r1;
-
-     /// <summary>
-     /// The matrix component in column 4, row 2.
-     /// </summary>
-     SINGLE c4r2;
-
-     /// <summary>
-     /// The matrix component in column 4, row 3.
-     /// </summary>
-     SINGLE c4r3;
-
-     /// <summary>
-     /// The matrix component in column 4, row 4.
-     /// </summary>
-     SINGLE c4r4;
+     SINGLE components[4 * 4];
 };
 
 /// <summary>

@@ -704,18 +704,18 @@ void OpenGLRenderer::LoadShaders() {
 }
 
 void OpenGLRenderer::LoadModels() {
-    ColladaImporter::Import(
+    /*ColladaImporter::Import(
         "C:\\Code\\DanceStudio\\Content\\"
         "Blender\\ITGMachine\\itgmachine.dae",
-        &this->scene);
+        &this->scene);*/
 
     /*ColladaImporter::Import(
         "C:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\box2.dae",
         &this->scene);*/
 
-    /*ColladaImporter::Import(
+    ColladaImporter::Import(
         "D:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\itgmachine.dae",
-        &this->scene);*/
+        &this->scene);
 }
 
 void OpenGLRenderer::RenderScene() {
