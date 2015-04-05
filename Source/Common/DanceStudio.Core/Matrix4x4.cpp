@@ -453,3 +453,10 @@ Matrix4x4 Matrix4x4::Invert(const Matrix4x4& matrix) {
 
     return result;
 }
+
+Matrix4x4 Matrix4x4::NormalTransform(const Matrix4x4& matrix) {
+    Matrix4x4 result = Matrix4x4::Invert(matrix);
+    result = Matrix4x4::Transpose(result);
+
+    return result;
+}

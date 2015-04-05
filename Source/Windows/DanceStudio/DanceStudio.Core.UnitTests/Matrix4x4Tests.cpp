@@ -8,10 +8,12 @@
 #include "Stdafx.h"
 #include "CppUnitTest.h"
 #include "Matrix4x4.h"
+#include "Vector3d.h"
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;  // NOLINT
 using DanceStudio::Core::Matrix4x4;
+using DanceStudio::Core::Vector3d;
 
 namespace DanceStudioCoreUnitTests {
     TEST_CLASS(PathHelperTests) {
@@ -204,6 +206,20 @@ public:
             Matrix4x4::RotationX(90.0f);
 
         this->AssertIsIdentity(result);
+    }
+
+    DANCE_STUDIO_TEST_METHOD(
+        NormalTransform_WhenCalled_CorrectlySetsMatrixValues,
+        L"DirtyPiece") {
+        Vector3d normal = Vector3d(0.0f, 0.0f, -1.0f);
+        Matrix4x4 matrix = Matrix4x4::RotationY(90.0f);
+        matrix = Matrix4x4::NormalTransform(matrix);
+
+        Vector3d result = normal * matrix;
+
+        Assert::IsTrue(TestHelper::FuzzyEquals(-1.0f, result.X), L"The x-component was not transformed correctly.");
+        Assert::IsTrue(TestHelper::FuzzyEquals(0.0f, result.Y), L"The x-component was not transformed correctly.");
+        Assert::IsTrue(TestHelper::FuzzyEquals(0.0f, result.Z), L"The x-component was not transformed correctly.");
     }
 
  private:

@@ -65,8 +65,7 @@ void Camera::Update() {
         this->position.Y,
         this->position.Z);
 
-    matrix = Matrix4x4::Invert(matrix);
-    matrix = Matrix4x4::Transpose(matrix);
+    matrix = Matrix4x4::NormalTransform(matrix);
 
     // Transform the look at and up vectors.
     this->lookAtVector = this->lookAtVector * matrix;

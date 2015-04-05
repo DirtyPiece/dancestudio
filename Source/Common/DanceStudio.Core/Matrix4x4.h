@@ -162,6 +162,15 @@ struct Matrix4x4 {
      /// <returns>The inverted matrix.</returns>
      static Matrix4x4 Invert(const Matrix4x4& matrix);
 
+     /// <summary>
+     /// Builds a matrix that can transform normal vectors ((M^-1)^T).
+     /// </summary>
+     /// <param name="matrix">
+     /// The matrix to turn into a normal transformation matrix.
+     /// </param>
+     /// <returns>The transpose of the inverse of the matrix.</returns>
+     static Matrix4x4 NormalTransform(const Matrix4x4& matrix);
+
  private:
      /// <summary>
      /// The components of the matrix.  (0-3) represents the first column,
