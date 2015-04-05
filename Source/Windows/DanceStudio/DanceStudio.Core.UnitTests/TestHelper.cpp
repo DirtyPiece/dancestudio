@@ -56,3 +56,7 @@ std::string TestHelper::LoadResourceFileAsText(
     std::string fullPath = GetFullResourcePath(localPath);
     return TestHelper::LoadAllFileText(fullPath);
 }
+
+bool TestHelper::FuzzyEquals(SINGLE first, SINGLE second) {
+    return abs(first - second) <= 0.001f;
+}

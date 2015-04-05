@@ -8,6 +8,7 @@
 #ifndef SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_UNITTESTS_TESTHELPER_H_
 #define SOURCE_WINDOWS_DANCESTUDIO_DANCESTUDIO_CORE_UNITTESTS_TESTHELPER_H_
 
+#include "Typedefs.h"
 #include <string>
 
 namespace DanceStudioCoreUnitTests {
@@ -55,6 +56,19 @@ class TestHelper {
     /// <returns>The contents of the file.</returns>
     static std::string LoadResourceFileAsText(
         const std::string& localPath);
+
+    /// <summary>
+    /// Performs a fuzzy equals operation against the passed
+    /// in float values.
+    /// </summary>
+    /// <param name="first">The first value to compare.</param>
+    /// <param name="second">The second value to compare.</param>
+    /// <returns>
+    /// <c>true</c> if the values are close to equal
+    /// (within 0.001 margin of difference), <c>false</c>
+    /// otherwise.
+    /// </returns>
+    static bool FuzzyEquals(SINGLE first, SINGLE second);
 };
 } // namespace DanceStudioCoreUnitTests {
 

@@ -55,6 +55,10 @@ SINGLE* Matrix4x4::operator[](const UINT32 column) {
     return &this->components[column * 4];
 }
 
+SINGLE* Matrix4x4::Get() {
+    return this->components;
+}
+
 Matrix4x4 Matrix4x4::PerspectiveLeftHanded(
     SINGLE fieldOfView,
     SINGLE screenAspect,
@@ -146,6 +150,66 @@ Matrix4x4 Matrix4x4::Translation(
     return result;
 }
 
+Matrix4x4 Matrix4x4::RotationX(SINGLE degrees) {
+    Matrix4x4 result;
+
+    SINGLE radians = degrees / 180.0f * DANCE_STUDIO_PI;
+    SINGLE cosine = cosf(radians);
+    SINGLE sine = sinf(radians);
+
+    // Rotation matrix along x:
+    // 1    0   0       0
+    // 0    cos -sin    0
+    // 0    sin cos     0
+    // 0    0   0       1
+    result[1][1] = cosine;
+    result[1][2] = sine;
+    result[2][1] = -sine;
+    result[2][2] = cosine;
+
+    return result;
+}
+
+Matrix4x4 Matrix4x4::RotationY(SINGLE degrees) {
+    Matrix4x4 result;
+
+    SINGLE radians = degrees / 180.0f * DANCE_STUDIO_PI;
+    SINGLE cosine = cosf(radians);
+    SINGLE sine = sinf(radians);
+
+    // Rotation matrix along x:
+    // cos  0   sin     0
+    // 0    1   0       0
+    // -sin 0   cos     0
+    // 0    0   0       1
+    result[0][0] = cosine;
+    result[2][0] = sine;
+    result[0][2] = -sine;
+    result[2][2] = cosine;
+
+    return result;
+}
+
+Matrix4x4 Matrix4x4::RotationZ(SINGLE degrees) {
+    Matrix4x4 result;
+
+    SINGLE radians = degrees / 180.0f * DANCE_STUDIO_PI;
+    SINGLE cosine = cosf(radians);
+    SINGLE sine = sinf(radians);
+
+    // Rotation matrix along x:
+    // cos  -sin    0   0
+    // sin  cos     0   0
+    // 0    0       1   0
+    // 0    0       0   1
+    result[0][0] = cosine;
+    result[1][0] = -sine;
+    result[0][1] = sine;
+    result[1][1] = cosine;
+
+    return result;
+}
+
 Matrix4x4 Matrix4x4::RotationYawPitchRoll(
     SINGLE yaw,
     SINGLE pitch,
@@ -186,7 +250,7 @@ Matrix4x4 Matrix4x4::RotationYawPitchRoll(
     return result;
 }
 
-Matrix4x4 Transpose(const Matrix4x4& matrix) {
+Matrix4x4 Matrix4x4::Transpose(const Matrix4x4& matrix) {
     Matrix4x4 result;
     for (UINT32 c = 0; c < 4; ++c) {
         for (UINT32 r = 0; r < 4; ++r) {

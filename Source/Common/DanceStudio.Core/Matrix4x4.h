@@ -50,6 +50,12 @@ struct Matrix4x4 {
      SINGLE* operator[](const UINT32 column);
 
      /// <summary>
+     /// Gets the internal matrix representation.
+     /// </summary>
+     /// <returns>The matrix array (column major).</returns>
+     SINGLE* Get();
+
+     /// <summary>
      /// Builds a perspective field of view, left-handed
      /// perspective projection matrix.
      /// </summary>
@@ -93,6 +99,30 @@ struct Matrix4x4 {
          SINGLE x,
          SINGLE y,
          SINGLE z);
+
+     /// <summary>
+     /// Builds a rotation matrix along the x-axis by
+     /// the specified number of degrees.
+     /// </summary>
+     /// <param name="degrees">The degrees to rotate by.</param>
+     /// <returns>The rotation matrix around the x-axis.</returns>
+     static Matrix4x4 RotationX(SINGLE degrees);
+
+     /// <summary>
+     /// Builds a rotation matrix along the y-axis by
+     /// the specified number of degrees.
+     /// </summary>
+     /// <param name="degrees">The degrees to rotate by.</param>
+     /// <returns>The rotation matrix around the y-axis.</returns>
+     static Matrix4x4 RotationY(SINGLE degrees);
+
+     /// <summary>
+     /// Builds a rotation matrix along the z-axis by
+     /// the specified number of degrees.
+     /// </summary>
+     /// <param name="degrees">The degrees to rotate by.</param>
+     /// <returns>The rotation matrix around the z-axis.</returns>
+     static Matrix4x4 RotationZ(SINGLE degrees);
 
      /// <summary>
      /// Returns a rotation matrix based on yaw,

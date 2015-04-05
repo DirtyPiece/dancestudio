@@ -55,4 +55,9 @@
 /// </summary>
 #define DANCE_STUDIO_MAX_SONG_PLAYBACK_SPEED 100.0f
 
+/// <summary>
+/// The mathematical value of PI.
+/// </summary>
+#define DANCE_STUDIO_PI 3.14159265f
+
 #endif  // SOURCE_COMMON_DANCESTUDIO_CORE_CONSTANTS_H_
