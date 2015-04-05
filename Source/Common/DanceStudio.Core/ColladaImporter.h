@@ -11,6 +11,7 @@
 #include "Scene.h"
 #include "Model3d.h"
 #include "Node3d.h"
+#include "Matrix4x4.h"
 
 // Forward declarations.
 typedef struct aiScene;
@@ -58,7 +59,7 @@ class ColladaImporter {
      static Node3d* ParseNode(
          const aiScene* assetImporterScene,
          const aiNode* assetImportNode,
-         const SINGLE* parentMatrix);
+         const Matrix4x4& parentMatrix);
 
      /// <summary>
      /// Parses the model out of the passed in Assimp mesh.

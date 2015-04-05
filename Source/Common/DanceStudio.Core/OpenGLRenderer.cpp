@@ -704,18 +704,18 @@ void OpenGLRenderer::LoadShaders() {
 }
 
 void OpenGLRenderer::LoadModels() {
-    /*ColladaImporter::Import(
+    ColladaImporter::Import(
         "C:\\Code\\DanceStudio\\Content\\"
         "Blender\\ITGMachine\\itgmachine.dae",
-        &this->scene);*/
+        &this->scene);
 
     /*ColladaImporter::Import(
         "C:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\box2.dae",
         &this->scene);*/
 
-    ColladaImporter::Import(
+    /*ColladaImporter::Import(
         "D:\\Code\\DanceStudio\\Content\\Blender\\ITGMachine\\itgmachine.dae",
-        &this->scene);
+        &this->scene);*/
 }
 
 void OpenGLRenderer::RenderScene() {
@@ -732,8 +732,8 @@ void OpenGLRenderer::RenderNode(
     // Create the transformation matrix of the parent applied with this
     // node's local transformation.
     SINGLE shaderMatrix[4 * 4];
-    const SINGLE* nodeMatrix = node->GetTransformationMatrix();
-    this->SetWorldMatrix(nodeMatrix);
+    const Matrix4x4 nodeMatrix = node->GetTransformationMatrix();
+    this->SetWorldMatrix(nodeMatrix.Get());
 
     // Render the models for this node.
     for (UINT32 i = 0; i < node->GetModelCount(); ++i) {

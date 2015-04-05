@@ -7,8 +7,10 @@
 
 #include "Stdafx.h"
 #include "Matrix4x4.h"
+#include "Vector3d.h"
 
 using DanceStudio::Core::Matrix4x4;
+using DanceStudio::Core::Vector3d;
 
 Matrix4x4::Matrix4x4() {
     // Set the matrix to be the identity.
@@ -45,6 +47,42 @@ Matrix4x4 DanceStudio::Core::operator*(const Matrix4x4& matrix1, const Matrix4x4
     return result;
 }
 
+Vector3d DanceStudio::Core::operator*(const Vector3d& vector, const Matrix4x4& matrix) {
+    Vector3d result;
+
+    // Transform.
+    result.X =
+        vector.X * matrix[0][0] +
+        vector.Y * matrix[1][0] +
+        vector.Z * matrix[2][0] +
+        1.0f     * matrix[3][0];
+
+    result.Y =
+        vector.X * matrix[0][1] +
+        vector.Y * matrix[1][1] +
+        vector.Z * matrix[2][1] +
+        1.0f     * matrix[3][1];
+
+    result.Z =
+        vector.X * matrix[0][2] +
+        vector.Y * matrix[1][2] +
+        vector.Z * matrix[2][2] +
+        1.0f     * matrix[3][2];
+
+    SINGLE w =
+        vector.X * matrix[0][3] +
+        vector.Y * matrix[1][3] +
+        vector.Z * matrix[2][3] +
+        1.0f     * matrix[3][3];
+
+    // Divide out the W param.
+    result.X /= w;
+    result.Y /= w;
+    result.Z /= w;
+
+    return result;
+}
+
 const SINGLE* Matrix4x4::operator[](const UINT32 column) const {
     Validator::IsArgumentOutOfRange(column > 4, "column");
     return &this->components[column * 4];
@@ -56,6 +94,10 @@ SINGLE* Matrix4x4::operator[](const UINT32 column) {
 }
 
 SINGLE* Matrix4x4::Get() {
+    return this->components;
+}
+
+const SINGLE* Matrix4x4::Get() const {
     return this->components;
 }
 

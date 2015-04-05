@@ -12,6 +12,7 @@
 #include "StringHelper.h"
 #include "Node3d.h"
 #include "MathHelper.h"
+#include "Matrix4x4.h"
 #include "..\..\External\RapidXML\rapidxml.hpp"
 #include "..\..\External\Assimp\include\assimp\Importer.hpp"
 #include "..\..\External\Assimp\include\assimp\scene.h"
@@ -23,6 +24,7 @@ using DanceStudio::Core::Scene;
 using DanceStudio::Core::OpenGLVertexType;
 using DanceStudio::Core::Node3d;
 using DanceStudio::Core::MathHelper;
+using DanceStudio::Core::Matrix4x4;
 using Assimp::Importer;
 
 void ColladaImporter::Import(const CHAR* colladaFilePath, Scene* outScene) {
@@ -73,10 +75,9 @@ void ColladaImporter::ParseScene(
 Node3d* ColladaImporter::ParseNode(
     const aiScene* assetImporterScene,
     const aiNode* assetImportNode,
-    const SINGLE* parentMatrix) {
+    const Matrix4x4& parentMatrix) {
     assert(assetImporterScene != nullptr);
     assert(assetImportNode != nullptr);
-    assert(parentMatrix != nullptr);
 
     // Create the public node to represent this internal node.
     Node3d* node = new Node3d();
@@ -111,12 +112,7 @@ Node3d* ColladaImporter::ParseNode(
     matrix[14] = assetImportNode->mTransformation.c4;
     matrix[15] = assetImportNode->mTransformation.d4;
 
-    SINGLE worldMatrix[4 * 4];
-    MathHelper::MultiplyMatrices(
-        worldMatrix,
-        parentMatrix,
-        matrix);
-
+    Matrix4x4 worldMatrix = parentMatrix * Matrix4x4(matrix);
     node->SetTransformationMatrix(worldMatrix);
 
     // Load all the child nodes and meshes.

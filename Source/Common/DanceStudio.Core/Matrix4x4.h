@@ -56,6 +56,12 @@ struct Matrix4x4 {
      SINGLE* Get();
 
      /// <summary>
+     /// Gets the internal matrix representation.
+     /// </summary>
+     /// <returns>The matrix array (column major).</returns>
+     const SINGLE* Get() const;
+
+     /// <summary>
      /// Builds a perspective field of view, left-handed
      /// perspective projection matrix.
      /// </summary>
@@ -175,10 +181,10 @@ Matrix4x4 operator*(const Matrix4x4& matrix1, const Matrix4x4& matrix2);
 /// <summary>
 /// Operator overload for transforming a vector by a matrix.
 /// </summary>
-/// <param name="matrix">The matrix to multiply the vector by.</param>
 /// <param name="vector">The vector to multiply.</param>
+/// <param name="matrix">The matrix to multiply the vector by.</param>
 /// <returns>The result of the multiplication.</returns>
-Vector3d operator*(const Matrix4x4& matrix, const Vector3d& vector);
+Vector3d operator*(const Vector3d& vector, const Matrix4x4& matrix);
 
 }  // Core
 }  // DanceStudio

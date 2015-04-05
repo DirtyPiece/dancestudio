@@ -10,6 +10,7 @@
 
 #include "Typedefs.h"
 #include "Model3d.h"
+#include "Matrix4x4.h"
 #include <vector>
 
 namespace DanceStudio {
@@ -71,19 +72,19 @@ class Node3d {
      /// Gets the transformation matrix for this node.
      /// </summary>
      /// <returns>The transformation for this node.</returns>
-     const SINGLE* GetTransformationMatrix() const;
+     const Matrix4x4& GetTransformationMatrix() const;
 
      /// <summary>
      /// Sets the transformation matrix values.
      /// </summary>
      /// <param name="matrix">The matrix to set the values from.</param>
-     void SetTransformationMatrix(const SINGLE* matrix);
+     void SetTransformationMatrix(const Matrix4x4& matrix);
 
  private:
     /// <summary>
     /// The transformation matrix that is applied to this node.
     /// </summary>
-    SINGLE transformationMatrix[4 * 4];
+    Matrix4x4 transformationMatrix;
 
     /// <summary>
     /// The children of this node.

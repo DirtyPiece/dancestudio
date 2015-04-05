@@ -194,6 +194,18 @@ public:
         this->AssertIsIdentity(result);
     }
 
+    DANCE_STUDIO_TEST_METHOD(
+        Multiply_WhenCalled_CorrectlySetsMatrixValues,
+        L"DirtyPiece") {
+        Matrix4x4 result =
+            Matrix4x4::RotationX(90.0f) *
+            Matrix4x4::RotationX(90.0f) *
+            Matrix4x4::RotationX(90.0f) *
+            Matrix4x4::RotationX(90.0f);
+
+        this->AssertIsIdentity(result);
+    }
+
  private:
     void AssertIsIdentity(const Matrix4x4& matrix) {
         WCHAR tempBuffer[3];

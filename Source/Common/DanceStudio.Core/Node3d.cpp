@@ -9,13 +9,14 @@
 #include "Node3d.h"
 #include "Model3d.h"
 #include "MathHelper.h"
+#include "Matrix4x4.h"
 
 using DanceStudio::Core::Node3d;
 using DanceStudio::Core::MathHelper;
 using DanceStudio::Core::Model3d;
+using DanceStudio::Core::Matrix4x4;
 
 Node3d::Node3d() {
-    MathHelper::BuildIdentityMatrix(this->transformationMatrix);
 }
 
 Node3d::~Node3d() {
@@ -56,14 +57,12 @@ const Node3d* Node3d::GetChild(UINT32 index) const {
     return this->children[index];
 }
 
-const SINGLE* Node3d::GetTransformationMatrix() const {
+const Matrix4x4& Node3d::GetTransformationMatrix() const {
     return this->transformationMatrix;
 }
 
-void Node3d::SetTransformationMatrix(const SINGLE* matrix) {
-    Validator::IsNotNull(matrix, "matrix");
-
-    memcpy(this->transformationMatrix, matrix, sizeof(this->transformationMatrix));
+void Node3d::SetTransformationMatrix(const Matrix4x4& matrix) {
+    this->transformationMatrix = matrix;
 }
 
 void Node3d::FreeChildNodes(Node3d* node) {

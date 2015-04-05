@@ -9,9 +9,11 @@
 #include "Camera.h"
 #include "Vector3d.h"
 #include "Matrix3x3.h"
+#include "Matrix4x4.h"
 #include "MathHelper.h"
 
 using DanceStudio::Core::Camera;
+using DanceStudio::Core::Matrix4x4;
 
 Camera::Camera() :
     position(0, 0, -10.0f),
@@ -50,44 +52,25 @@ void Camera::SetRotation(SINGLE xRadians, SINGLE yRadians, SINGLE zRadians) {
 }
 
 void Camera::Update() {
-    SINGLE translationMatrix[4 * 4];
-    SINGLE inverseTranslationMatrix[4 * 4];
-    SINGLE rotationMatrix[4 * 4];
-    SINGLE transformationMatrix1[4 * 4];
-    SINGLE transformationMatrix2[4 * 4];
-
-    // Create the rotation matrix to move the camera.
-    MathHelper::BuildTranslationMatrix(
-        translationMatrix,
+    Matrix4x4 matrix =
+        Matrix4x4::Translation(
         -this->position.X,
         -this->position.Y,
-        -this->position.Z);
-
-    Matrix3x3::RotationYawPitchRoll(
-        rotationMatrix,
-        this->rotationInRadians.Y,
-        this->rotationInRadians.X,
-        this->rotationInRadians.Z);
-
-    MathHelper::BuildTranslationMatrix(
-        inverseTranslationMatrix,
+        -this->position.Z) *
+        Matrix4x4::RotationX(this->rotationInRadians.X) *
+        Matrix4x4::RotationY(this->rotationInRadians.Y) *
+        Matrix4x4::RotationZ(this->rotationInRadians.Z) *
+        Matrix4x4::Translation(
         this->position.X,
         this->position.Y,
         this->position.Z);
 
-    MathHelper::MultiplyMatrices(
-        transformationMatrix1,
-        translationMatrix,
-        rotationMatrix);
-
-    MathHelper::MultiplyMatrices(
-        transformationMatrix2,
-        transformationMatrix1,
-        inverseTranslationMatrix);
+    matrix = Matrix4x4::Invert(matrix);
+    matrix = Matrix4x4::Transpose(matrix);
 
     // Transform the look at and up vectors.
-    this->lookAtVector = Vector3d::TransformCoordinate(this->lookAtVector, transformationMatrix2);
-    this->upVector = Vector3d::TransformCoordinate(this->upVector, transformationMatrix2);
+    this->lookAtVector = this->lookAtVector * matrix;
+    this->upVector = this->upVector * matrix;
 
     Vector3d zAxis = (this->lookAtPosition - this->position).Normalize();
     Vector3d xAxis = (this->upVector % zAxis).Normalize();
