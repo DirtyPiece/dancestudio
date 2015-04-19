@@ -97,7 +97,7 @@ void OpenGLRenderer::BeginScene() {
     INT32 location = -1;
 
     //camera->Update();
-    camera->RotateWorld(1 / 8.0, 0);
+    //camera->RotateWorld(0, .025);
     camera->GetViewMatrix(this->viewMatrix);
 
     location = extensions.glGetUniformLocation(

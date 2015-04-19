@@ -59,6 +59,14 @@ void StepChartEditor::ZoomCamera(float zoomDistance) {
     DSStepChartEditorZoomCamera(this->editor, zoomDistance);
 }
 
+void StepChartEditor::RotateCameraWorldX(float radians) {
+
+}
+
+void StepChartEditor::RotateCameraWorldY(float radians) {
+
+}
+
 void StepChartEditor::StepChartEditor_Loaded(Object^ sender, EventArgs^ e) {
     DANCE_STUDIO_UNUSED(sender);
     DANCE_STUDIO_UNUSED(e);

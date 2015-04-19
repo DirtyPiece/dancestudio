@@ -65,13 +65,15 @@ void Camera::Update() {
         this->position.Y,
         this->position.Z);
 
+    this->position = this->position * matrix;
+
     matrix = Matrix4x4::NormalTransform(matrix);
 
     // Transform the look at and up vectors.
     this->lookAtVector = this->lookAtVector * matrix;
     this->upVector = this->upVector * matrix;
 
-    Vector3d zAxis = (this->lookAtPosition - this->position).Normalize();
+    Vector3d zAxis = (this->lookAtVector).Normalize();
     Vector3d xAxis = (this->upVector % zAxis).Normalize();
     Vector3d yAxis = zAxis % xAxis;
 
@@ -116,8 +118,8 @@ void Camera::Zoom(SINGLE distance) {
 }
 
 void Camera::RotateWorld(SINGLE xRadians, SINGLE yRadians) {
-    this->rotationInRadians.X = xRadians;
-    this->rotationInRadians.Y = yRadians;
+    this->rotationInRadians.X += xRadians;
+    this->rotationInRadians.Y += yRadians;
     this->rotationInRadians.Z = 0.0f;
     this->Update();
 }

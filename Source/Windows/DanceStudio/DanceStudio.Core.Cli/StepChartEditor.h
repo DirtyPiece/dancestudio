@@ -55,6 +55,18 @@ public ref class StepChartEditor : public UserControl {
     /// <param name="zoomDistance">The zoom distance to apply.</param>
     void ZoomCamera(float zoomDistance);
 
+    /// <summary>
+    /// Rotates the camera along the x world axis by the specified radians.
+    /// </summary>
+    /// <param name="radians">The radians to rotate by.</param>
+    void RotateCameraWorldX(float radians);
+
+    /// <summary>
+    /// Rotates the camera along the y world axis by the specified radians.
+    /// </summary>
+    /// <param name="radians">The radians to rotate by.</param>
+    void RotateCameraWorldY(float radians);
+
  protected:
     /// <summary>
     /// Called when the background is about to paint.  Overriding it
